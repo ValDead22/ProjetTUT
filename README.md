@@ -1,6 +1,9 @@
 # ProjetTUT
 Projet tuteuré de seconde année d'IUT informatique
 
+Sujet n°21
+Groupe n°1
+
 ## Membres du projet :
 <ul>
 <li>Ilyes NOURINE</li>
@@ -10,7 +13,7 @@ Projet tuteuré de seconde année d'IUT informatique
 <li>Valentin REVERSAT</li>
 </ul>
 
-Notre chez de projet est **Ilyes NOURINE**
+Notre chef de projet est **Ilyes NOURINE**
 
 
 
