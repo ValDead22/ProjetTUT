@@ -1,10 +1,12 @@
 # JamPay
+**`Contexte`**
 Projet tuteuré de seconde année d'IUT informatique
 
-Sujet : Implémentation d’un lecteur de badges dans le cadre d’un système de Gestion de Restaurant d’entreprise
+**`Sujet`**
+Implémentation d’un lecteur de badges dans le cadre d’un système de Gestion de Restaurant d’entreprise
 
 
-## Membres du projet :
+## Membres du projet
 **`DEVELOPPEURS`**
 -	Tom SANCHEZ
 -	Charly RASCLARD
