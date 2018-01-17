@@ -25,7 +25,7 @@ Le personnel de cette entreprise sera identifié par une carte d’accès au mom
 Il aura le choix entre plusieurs plats ayant chacun un coût spécifique. 
 Le personnel aura la possibilité de payer directement à la caisse via sa carte magnétique près alimentée ou bien sous la forme d’une retenus sur salaire.
 
-## Les acteurs
+## Acteurs
 
 **`Le gérant`**
 Il sera le responsable de la cafétéria. Il aura accès à toute les fonctionnalités (composer des menus, gérer les authentifications, suivre les statistiques)
@@ -43,7 +43,7 @@ Il sera en charge du paramétrage de l’application
 Ce seront les membres de l’entreprise. Ils pourront choisir leur repas parmi les plats présentés et payeront à la caisse en bout de chaîne. Ils pourront aussi recharger leur carte magnétique via un monnayeur.
 
 
-## Fonctionnalité
+## Fonctionnalités
 
 -	La composition des menus (ensemble des plats journaliers proposés)
 -	La sélection des plats lors du passage du client au self se fera au travers d’un écran tactile
