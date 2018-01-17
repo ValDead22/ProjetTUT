@@ -3,11 +3,10 @@ Projet tuteuré de seconde année d'IUT informatique
 
 Sujet : Implémentation d’un lecteur de badges dans le cadre d’un système de Gestion de Restaurant d’entreprise
 
-* * *
 
 ## Membres du projet :
-<ul>
 **`DEVELOPPEURS`**
+<ul>
 <li>Tom SANCHEZ</li>
 <li>Charly RASCLARD</li>
 <li>Maxime VIDAL</li>
@@ -16,7 +15,6 @@ Sujet : Implémentation d’un lecteur de badges dans le cadre d’un système d
 <li>Ilyes NOURINE</li>
 </ul>
 
-* * *
 
 ## But
 
@@ -43,7 +41,7 @@ Il sera en charge du paramétrage de l’application
 Ce seront les membres de l’entreprise. Ils pourront choisir leur repas parmi les plats présentés et payeront à la caisse en bout de chaîne. Ils pourront aussi recharger leur carte magnétique via un monnayeur.
 
 
-##Fonctionnalité
+## Fonctionnalité
 
 -	La composition des menus (ensemble des plats journaliers proposés)
 -	La sélection des plats lors du passage du client au self se fera au travers d’un écran tactile
