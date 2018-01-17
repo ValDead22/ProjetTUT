@@ -6,14 +6,14 @@ Sujet : Implémentation d’un lecteur de badges dans le cadre d’un système d
 
 ## Membres du projet :
 **`DEVELOPPEURS`**
-<ul>
-<li>Tom SANCHEZ</li>
-<li>Charly RASCLARD</li>
-<li>Maxime VIDAL</li>
-<li>Valentin REVERSAT</li>
+-	Tom SANCHEZ
+-	Charly RASCLARD
+-	Maxime VIDAL
+-	Valentin REVERSAT
+
 **`CHEF DE PROJET`**
-<li>Ilyes NOURINE</li>
-</ul>
+-	Ilyes NOURINE
+
 
 
 ## But
