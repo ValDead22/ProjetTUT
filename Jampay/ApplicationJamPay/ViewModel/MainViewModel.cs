@@ -16,19 +16,24 @@ namespace ApplicationJamPay.ViewModel
     /// </summary>
     public class MainViewModel : ViewModelBase
     {
+        public string Title { get; set; }
+        public string Matricule { get; set; }
+
         /// <summary>
         /// Initializes a new instance of the MainViewModel class.
         /// </summary>
         public MainViewModel()
         {
-            ////if (IsInDesignMode)
-            ////{
-            ////    // Code runs in Blend --> create design time data.
-            ////}
-            ////else
-            ////{
-            ////    // Code runs "for real"
-            ////}
+            if (IsInDesignMode)
+            {
+                Title = "Connexion (DESING)";
+                Matricule = "02356433";
+                // Code runs in Blend --> create design time data.
+            }
+            else
+            {
+                Title = "Connexion";
+            }
         }
     }
 }
