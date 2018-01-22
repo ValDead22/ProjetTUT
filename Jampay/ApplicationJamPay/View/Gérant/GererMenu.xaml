@@ -12,7 +12,7 @@
             <StackPanel Orientation="Horizontal" DockPanel.Dock="Bottom" Margin="2,5">
                 <Label x:Name="isConnected" Content="Connecté en tant que : Alice"  >
                 </Label>
-                <Button x:Name="button" Content="Deconnexion" Width="426" HorizontalAlignment="Right" HorizontalContentAlignment="Center" Height="35" />
+                <Button x:Name="button" Content="Deconnexion" Width="426" HorizontalAlignment="Right" HorizontalContentAlignment="Center" />
             </StackPanel>
 
         <TabControl>
@@ -45,6 +45,18 @@
                     </StackPanel>
                 </TabItem>
             <TabItem Header="Gérer les usagers" />
+                <StackPanel>
+                    <ListView Margin="10" Name="tUsager" Height="167">
+                        <ListView.View>
+                            <GridView>
+                                <GridViewColumn Header="Usager" Width="220" />
+                                <GridViewColumn Header="Paiement" Width="180"  />
+                                <GridViewColumn Header="Supprimer" Width="150"/>
+                                
+                            </GridView>
+                        </ListView.View>
+                    </ListView>
+               </StackPanel>
                 
             </TabControl>
             
