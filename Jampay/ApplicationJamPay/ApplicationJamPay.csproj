@@ -69,6 +69,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Model\DateUtilisation.cs" />
     <Compile Include="Model\Menu.cs" />
     <Compile Include="ViewModel\Caissier\EnregistrementPlatViewModel.cs" />
     <Compile Include="ViewModel\MainViewModel.cs" />
