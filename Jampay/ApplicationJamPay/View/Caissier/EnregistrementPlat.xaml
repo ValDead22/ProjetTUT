@@ -8,8 +8,65 @@
         Title="{Binding Title}"
         DataContext="{Binding EnregistrementPlat, Source={StaticResource Locator}}"
         Height="453.782" Width="516.807">
+    
+    
+    
+    
+    
+
     <Grid>
-        <Button Content="Réglement" HorizontalAlignment="Left" Margin="323,272,0,0" VerticalAlignment="Top" Width="117" Height="62"/>
+
+        <TabControl Name="tcSample">
+            
+            <TabItem Header="Enregistrement">
+
+                <DockPanel>
+
+                    <StackPanel DockPanel.Dock="Top">
+
+                        <ListView ItemsSource="{Binding}" Margin="32,31,203,223">
+
+                            <ListView.View>
+                                <GridView>
+                                    <GridViewColumn Header="Plat"
+                                    Width="Auto"
+                                    DisplayMemberBinding="{Binding Path=ProductId}" />
+                                    <GridViewColumn Header="Prix"
+                                    Width="Auto"
+                                    DisplayMemberBinding="{Binding Path=ProductName}" />
+                                    <GridViewColumn Header="Quantité"
+                                    Width="Auto"
+                                    DisplayMemberBinding="{Binding Path=ProducatQt}" />
+                                </GridView>
+                            </ListView.View>
+
+                        </ListView>
+
+                    </StackPanel>
+
+                    <StackPanel DockPanel.Dock="Bottom">
+                        <Label Content="Label" />
+                    </StackPanel>
+                </DockPanel>
+            </TabItem>
+            
+            
+            
+            <TabItem Header="Security" />
+            <TabItem Header="Details" />
+        </TabControl>
+        
+        
 
     </Grid>
+
+
+                     
+    
+
+        
+        
+
+
+    
 </Window>
