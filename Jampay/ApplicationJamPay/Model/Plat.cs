@@ -10,6 +10,8 @@ namespace ApplicationJamPay.Model
     {
         private int CodePlat { get; set; }
 
+        private int IdTarif { get; set; }
+
         private DateTime DateEffet { get; set; }
 
         private DateTime DateFin { get; set; }
