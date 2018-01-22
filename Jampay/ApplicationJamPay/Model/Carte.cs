@@ -8,13 +8,14 @@ namespace ApplicationJamPay.Model
 {
     class Carte
     {
-        private int _MatriculeCarte { get; set; }
-        private int _Credit { get; set; }
+        private int MatriculeCarte { get; set; }
 
-        public Carte(int _MatriculeCarte , int _Credit )
+        private int Credit { get; set; }
+
+        public Carte(int MatriculeCarte,int Credit)
         {
-            this._MatriculeCarte = _MatriculeCarte;
-            this._Credit = _Credit;
+            this.MatriculeCarte = MatriculeCarte;
+            this.Credit = Credit;
         }
     }
 }

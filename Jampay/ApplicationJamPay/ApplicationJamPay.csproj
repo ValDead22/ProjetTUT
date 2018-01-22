@@ -71,6 +71,7 @@
     </ApplicationDefinition>
     <Compile Include="Model\Administrateur.cs" />
     <Compile Include="Model\Caissier.cs" />
+    <Compile Include="Model\Carte.cs" />
     <Compile Include="Model\Commande.cs" />
     <Compile Include="Model\CompositionMenu.cs" />
     <Compile Include="Model\CompositionPlat.cs" />
