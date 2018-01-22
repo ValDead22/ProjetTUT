@@ -26,11 +26,5 @@ namespace ApplicationJamPay.Model
             this.Nom = Nom;
             this.Observation = Observation;
         }
-
-
-
-         
-
-
     }
 }
