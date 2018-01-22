@@ -20,50 +20,45 @@
 
             <TabItem Header="Enregistrement">
 
-                <DockPanel>
-                    <StackPanel DockPanel.Dock="Top">
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition/>
+                            <ColumnDefinition/>
+                            <ColumnDefinition/>
+                        </Grid.ColumnDefinitions>
 
-                        <ListView ItemsSource="{Binding}" Margin="32,31,267,223">
-
-                            <ListView.View>
-                                <GridView>
-                                    <GridViewColumn Header="Plat"
-                                    Width="100"
-                                    DisplayMemberBinding="{Binding Path=ProductId}" />
-                                    <GridViewColumn Header="Prix"
-                                    Width="100"
-                                    DisplayMemberBinding="{Binding Path=ProductName}" />
-                                    <GridViewColumn Header="Quantité"
-                                    Width="100"
-                                    DisplayMemberBinding="{Binding Path=ProducatQt}" />
-                                </GridView>
-                            </ListView.View>
-
-
-
-                        </ListView>
-
-                        <StackPanel  Orientation="Horizontal">
-                            <Button Content="Ajouter un plat" Height="65" Width="303"/>
-                            <Button Content="Réglement" Height="65" Width="212"/>                            
-                        </StackPanel>
-                        
-
-                    </StackPanel>
-
-                    <StackPanel Orientation="Horizontal" DockPanel.Dock="Bottom" Margin="2,5">
-                        <Label x:Name="isConnected" Content="Connecté en tant que : Alice"  >
-                        </Label>
-                        <Button x:Name="button" Content="Deconnexion" Width="75" HorizontalAlignment="Right" HorizontalContentAlignment="Center" />
-                    </StackPanel>
                     
-                </DockPanel>
+
+                    <ListView ItemsSource="{Binding}" Margin="10,10,286,186" Grid.Column="1" Grid.Row="1" Grid.ColumnSpan="2" Grid.RowSpan="2" Width="100" Height="100">
+
+                        <ListView.View>
+                            <GridView>
+                                <GridViewColumn Header="Plat"
+                                    Width="Auto"
+                                    DisplayMemberBinding="{Binding ProductId}" />
+                                <GridViewColumn Header="Prix"
+                                    Width="Auto"
+                                    DisplayMemberBinding="{Binding ProductName}" />
+                                <GridViewColumn Header="Quantité"
+                                    Width="Auto"
+                                    DisplayMemberBinding="{Binding ProducatQt}" />
+                            </GridView>
+                        </ListView.View>
+                    </ListView>
+
+
+                </Grid>
+
+                
+
             </TabItem>
 
-
-
-            <TabItem Header="Security" />
-            <TabItem Header="Details" />
         </TabControl>
 
 
