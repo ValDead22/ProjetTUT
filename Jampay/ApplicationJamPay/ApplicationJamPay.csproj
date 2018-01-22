@@ -70,6 +70,7 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="Model\Administrateur.cs" />
+    <Compile Include="Model\Caissier.cs" />
     <Compile Include="Model\CompositionMenu.cs" />
     <Compile Include="Model\Cuisinier.cs" />
     <Compile Include="Model\DateUtilisation.cs" />
