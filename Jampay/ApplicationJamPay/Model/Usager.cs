@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ApplicationJamPay.Model
 {
-    class Gerant : Usager
+    class Usager
     {
         private DateTime DateEntree { get; set; }
 
@@ -17,18 +17,26 @@ namespace ApplicationJamPay.Model
         private int CodeFonction { get; set; }
 
         private int Service { get; set; }
-
+        
         private string Nom { get; set; }
 
         private string Prenom { get; set; }
 
         private string Titre { get; set; }
 
-        private int idUsager { get; set; }
+       
 
-        public Gerant(DateTime DateEntree, DateTime DateFinContrat, int Matricule, int CodeFonction, int Service, string Nom, string Prenom, string Titre, int idUsager) : base(DateEntree,DateFinContrat,Matricule,CodeFonction,Service,Nom,Prenom,Titre)
+        public Usager(DateTime DateEntree, DateTime DateFinContrat, int Matricule, int CodeFonction, int Service, string Nom, string Prenom,string Titre)
         {
-            this.idUsager = idUsager;
+            this.Matricule = Matricule;
+            this.DateEntree = DateEntree;
+            this.DateFinContrat = DateFinContrat;
+            this.Nom = Nom;
+            this.Prenom = Prenom;
+            this.Service = Service;
+            this.CodeFonction = CodeFonction;
+            this.Titre = Titre;
+        
         }
     }
 }
