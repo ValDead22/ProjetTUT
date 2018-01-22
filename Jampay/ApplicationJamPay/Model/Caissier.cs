@@ -6,18 +6,29 @@ using System.Threading.Tasks;
 
 namespace ApplicationJamPay.Model
 {
-    class Caissier : Utilisateur
+    class Caissier : Usager
     {
+        private DateTime DateEntree { get; set; }
+
+        private DateTime DateFinContrat { get; set; }
+
+        private int Matricule { get; set; }
+
+        private int CodeFonction { get; set; }
+
+        private int Service { get; set; }
+
+        private string Nom { get; set; }
+
+        private string Prenom { get; set; }
+
+        private string Titre { get; set; }
+
         private int idCaissier { get; set; }
 
-        private string Fonction { get; set; }
-
-        private int idUtilisateur { get; set; }
-
-        public Caissier(int idCaissier, string Fonction, int idUtilisateur) : base(Fonction,idUtilisateur)
+        public Caissier(DateTime DateEntree, DateTime DateFinContrat, int Matricule, int CodeFonction, int Service, string Nom, string Prenom, string Titre, int idCaissier) : base(DateEntree,DateFinContrat,Matricule,CodeFonction,Service,Nom,Prenom,Titre)
         {
             this.idCaissier = idCaissier;
-
         }
     }
 }
