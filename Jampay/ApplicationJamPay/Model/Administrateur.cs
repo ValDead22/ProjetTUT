@@ -14,9 +14,8 @@ namespace ApplicationJamPay.Model
 
         private int idUtilisateur;
 
-        public Administrateur(int idAdmin, string Fonction, int idUtilisateur)
+        public Administrateur(int idAdmin, string Fonction, int idUtilisateur) : base(Fonction, idUtilisateur)
         {
-            base(Fonction, idUtilisateur);
             this.idAdmin = idAdmin;
         }
 

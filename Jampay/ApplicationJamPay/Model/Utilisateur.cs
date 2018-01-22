@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ApplicationJamPay.Model
 {
-    class Utilisateur : Usager
+    class Utilisateur
     {
         private string Fonction { get; set; }
 
@@ -16,6 +16,10 @@ namespace ApplicationJamPay.Model
         {
             this.Fonction = Fonction;
             this.idUtilisateur = idUtilisateur;
+        }
+
+        public Utilisateur()
+        {
         }
     }
 }
