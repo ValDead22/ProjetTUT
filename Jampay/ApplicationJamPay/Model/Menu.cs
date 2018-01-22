@@ -10,8 +10,6 @@ namespace ApplicationJamPay.Model
     {
         private int CodeMenu { get; set; }
 
-        private int idGerant { get; set; }
-
         private DateTime DateElaboration { get; set; }
 
         private string Categorie { get; set; }
@@ -22,7 +20,7 @@ namespace ApplicationJamPay.Model
 
         private Gerant Gerant { get; set; }
 
-        public Menu(int CodeMenu,int idGerant, DateTime DateElaboration, string Categorie, string Nom, string Observation)
+        public Menu(int CodeMenu, DateTime DateElaboration, string Categorie, string Nom, string Observation)
         {
             this.CodeMenu = CodeMenu;
             this.DateElaboration = DateElaboration;
