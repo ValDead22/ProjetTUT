@@ -72,6 +72,7 @@
     <Compile Include="Model\CompositionMenu.cs" />
     <Compile Include="Model\DateUtilisation.cs" />
     <Compile Include="Model\Menu.cs" />
+    <Compile Include="Model\Utilisateur.cs" />
     <Compile Include="ViewModel\Caissier\EnregistrementPlatViewModel.cs" />
     <Compile Include="ViewModel\MainViewModel.cs" />
     <Compile Include="ViewModel\ViewModelLocator.cs" />
