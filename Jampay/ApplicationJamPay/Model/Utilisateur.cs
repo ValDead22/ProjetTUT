@@ -1,0 +1,21 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace ApplicationJamPay.Model
+{
+    class Utilisateur : Usager
+    {
+        private string Fonction { get; set; }
+
+        private int idUtilisateur { get; set; }
+
+        public Utilisateur(string Fonction, int idUtilisateur)
+        {
+            this.Fonction = Fonction;
+            this.idUtilisateur = idUtilisateur;
+        }
+    }
+}
