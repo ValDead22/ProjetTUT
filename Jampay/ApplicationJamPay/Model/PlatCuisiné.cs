@@ -16,6 +16,8 @@ namespace ApplicationJamPay.Model
 
         private Cuisinier Cuisinier { get; set; }
 
+        private Plat Plat { get; set; }
+
         public PlatCuisiné(int Matricule, int CodePlat, DateTime DateConfection)
         {
             this.Matricule = Matricule;
