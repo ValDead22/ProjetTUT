@@ -12,13 +12,13 @@
             <StackPanel Orientation="Horizontal" DockPanel.Dock="Bottom" Margin="2,5">
                 <Label x:Name="isConnected" Content="Connecté en tant que : Alice"  >
                 </Label>
-                <Button x:Name="button" Content="Deconnexion" Width="75" HorizontalAlignment="Right" HorizontalContentAlignment="Center" />
+                <Button x:Name="button" Content="Deconnexion" Width="426" HorizontalAlignment="Right" HorizontalContentAlignment="Center" Height="35" />
             </StackPanel>
 
         <TabControl>
             <TabItem Header="Consulter les menus">
                     <StackPanel>
-                    <ListView Margin="10" Name="tMenu">
+                    <ListView Margin="10" Name="tMenu" Height="167">
                         <ListView.View>
                             <GridView>
                                 <GridViewColumn Header="Date" Width="75" />
@@ -30,9 +30,9 @@
                     </ListView>
                         <StackPanel Orientation="Horizontal" DockPanel.Dock="Bottom" Margin="2,5">
                             <StackPanel  DockPanel.Dock="Bottom" Margin="2,5">
-                                <Button x:Name="addMenu" Content="Ajouter un nouveau menu" Width="150"  HorizontalContentAlignment="Center" />
-                                <Button x:Name="addPlat" Content="Ajouter un nouveau plat" Width="150"  HorizontalContentAlignment="Center" />
-                         </StackPanel>
+                                <Button x:Name="addMenu" Content="Ajouter un nouveau menu" Width="150"  HorizontalContentAlignment="Center" Height="75" />
+                                <Button x:Name="addPlat" Content="Ajouter un nouveau plat" Width="150"  HorizontalContentAlignment="Center" Height="82" />
+                            </StackPanel>
                             <ListView  HorizontalAlignment="Right" Margin="10" Name="tPlat">
                                 <ListView.View>
                                     <GridView>
