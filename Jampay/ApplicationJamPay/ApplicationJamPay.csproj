@@ -69,6 +69,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Model\Administrateur.cs" />
     <Compile Include="Model\CompositionMenu.cs" />
     <Compile Include="Model\DateUtilisation.cs" />
     <Compile Include="Model\Menu.cs" />
