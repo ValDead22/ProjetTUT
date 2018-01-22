@@ -26,7 +26,7 @@ namespace ApplicationJamPay.Model
 
        
 
-        public Usager(int Matricule, int CodeFonction, int Service, DateTime DateEntree, DateTime DateFinContrat, string Titre, string Nom, string Prenom)
+        public Usager(DateTime DateEntree, DateTime DateFinContrat, int Matricule, int CodeFonction, int Service, string Nom, string Prenom,string Titre)
         {
             this.Matricule = Matricule;
             this.DateEntree = DateEntree;

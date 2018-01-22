@@ -71,12 +71,16 @@
     </ApplicationDefinition>
     <Compile Include="Model\Administrateur.cs" />
     <Compile Include="Model\Caissier.cs" />
+    <Compile Include="Model\Carte.cs" />
+    <Compile Include="Model\Commande.cs" />
     <Compile Include="Model\CompositionMenu.cs" />
+    <Compile Include="Model\CompositionPlat.cs" />
     <Compile Include="Model\Cuisinier.cs" />
     <Compile Include="Model\DateUtilisation.cs" />
     <Compile Include="Model\Gerant.cs" />
     <Compile Include="Model\Menu.cs" />
     <Compile Include="Model\Plat.cs" />
+    <Compile Include="Model\PlatCommandé.cs" />
     <Compile Include="Model\PlatCuisiné.cs" />
     <Compile Include="Model\Produit.cs" />
     <Compile Include="Model\Tarif.cs" />
