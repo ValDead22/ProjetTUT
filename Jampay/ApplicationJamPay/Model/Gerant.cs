@@ -6,17 +6,29 @@ using System.Threading.Tasks;
 
 namespace ApplicationJamPay.Model
 {
-    class Gerant : Utilisateur
+    class Gerant : Usager
     {
-        private int idGerant { get; set; }
+        private DateTime DateEntree { get; set; }
 
-        private string Fonction { get; set; }
+        private DateTime DateFinContrat { get; set; }
 
-        private int idUtilisateur { get; set; }
+        private int Matricule { get; set; }
 
-        public Gerant(int idGerant, string Fonction, int idUtilisateur) : base(Fonction,idUtilisateur)
+        private int CodeFonction { get; set; }
+
+        private int Service { get; set; }
+
+        private string Nom { get; set; }
+
+        private string Prenom { get; set; }
+
+        private string Titre { get; set; }
+
+        private int idUsager { get; set; }
+
+        public Gerant(DateTime DateEntree, DateTime DateFinContrat, int Matricule, int CodeFonction, int Service, string Nom, string Prenom, string Titre, int idUsager) : base(DateEntree,DateFinContrat,Matricule,CodeFonction,Service,Nom,Prenom,Titre)
         {
-            this.idGerant = idGerant;
+            this.idUsager = idUsager;
         }
     }
 }
