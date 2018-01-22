@@ -18,6 +18,8 @@ namespace ApplicationJamPay.Model
 
         private string Observation { get; set; }
 
+        private Gerant Gerant { get; set; }
+
         public Menu(int CodeMenu, DateTime DateElaboration, string Categorie, string Nom, string Observation)
         {
             this.CodeMenu = CodeMenu;

@@ -6,20 +6,18 @@ using System.Threading.Tasks;
 
 namespace ApplicationJamPay.Model
 {
-    class Utilisateur : 
+    class Caissier : Utilisateur
     {
+        private int idCaissier { get; set; }
+
         private string Fonction { get; set; }
 
         private int idUtilisateur { get; set; }
 
-        public Utilisateur(string Fonction, int idUtilisateur)
+        public Caissier(int idCaissier, string Fonction, int idUtilisateur) : base(Fonction,idUtilisateur)
         {
-            this.Fonction = Fonction;
-            this.idUtilisateur = idUtilisateur;
-        }
+            this.idCaissier = idCaissier;
 
-        public Utilisateur()
-        {
         }
     }
 }
