@@ -8,7 +8,7 @@ namespace ApplicationJamPay.Model
 {
     class PlatCuisiné
     {
-        private int Matricule { get; set; }
+        private int idCuisinier { get; set; }
 
         private int CodePlat { get; set; }
 
@@ -18,9 +18,9 @@ namespace ApplicationJamPay.Model
 
         private Plat Plat { get; set; }
 
-        public PlatCuisiné(int Matricule, int CodePlat, DateTime DateConfection)
+        public PlatCuisiné(int idCuisinier,int CodePlat, DateTime DateConfection)
         {
-            this.Matricule = Matricule;
+            this.idCuisinier = idCuisinier;
             this.CodePlat = CodePlat;
             this.DateConfection = DateConfection;
         }
