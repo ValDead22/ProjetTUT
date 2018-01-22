@@ -10,6 +10,8 @@ namespace ApplicationJamPay.Model
     {
         private DateTime DateUtil { get; set;  }
 
+        private Menu Menu { get; set; }
+
         public DateUtilisation(DateTime DateUtil)
         {
             this.DateUtil = DateUtil;
