@@ -23,5 +23,10 @@ namespace ApplicationJamPay.View.Caissier
         {
             InitializeComponent();
         }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }

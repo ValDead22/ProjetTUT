@@ -9,6 +9,7 @@
         DataContext="{Binding EnregistrementPlat, Source={StaticResource Locator}}"
         Height="453.782" Width="516.807">
     <Grid>
+        <Button Content="Réglement" HorizontalAlignment="Left" Margin="323,272,0,0" VerticalAlignment="Top" Width="117" Height="62"/>
 
     </Grid>
 </Window>

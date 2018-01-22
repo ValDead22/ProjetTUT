@@ -69,8 +69,18 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Model\Administrateur.cs" />
+    <Compile Include="Model\Caissier.cs" />
+    <Compile Include="Model\CompositionMenu.cs" />
+    <Compile Include="Model\Cuisinier.cs" />
     <Compile Include="Model\DateUtilisation.cs" />
+    <Compile Include="Model\Gerant.cs" />
     <Compile Include="Model\Menu.cs" />
+    <Compile Include="Model\Plat.cs" />
+    <Compile Include="Model\PlatCuisiné.cs" />
+    <Compile Include="Model\Produit.cs" />
+    <Compile Include="Model\Tarif.cs" />
+    <Compile Include="Model\Utilisateur.cs" />
     <Compile Include="ViewModel\Caissier\EnregistrementPlatViewModel.cs" />
     <Compile Include="ViewModel\MainViewModel.cs" />
     <Compile Include="ViewModel\ViewModelLocator.cs" />
