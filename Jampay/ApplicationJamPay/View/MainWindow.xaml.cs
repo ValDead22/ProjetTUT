@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ApplicationJamPay.Service;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -23,6 +24,8 @@ namespace ApplicationJamPay
         public MainWindow()
         {
             InitializeComponent();
+
+            ConnexionBD co =  new ConnexionBD();
         }
     }
 }
