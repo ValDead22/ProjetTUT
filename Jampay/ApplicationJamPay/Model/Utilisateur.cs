@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ApplicationJamPay.Model
 {
-    class Utilisateur : 
+    class Utilisateur 
     {
         private string Fonction { get; set; }
 
