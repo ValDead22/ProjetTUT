@@ -17,9 +17,9 @@ namespace ApplicationJamPay.View.Gérant
     /// <summary>
     /// Logique d'interaction pour GererMenu.xaml
     /// </summary>
-    public partial class GererMenu : Window
+    public partial class Gérant1 : Window
     {
-        public GererMenu()
+        public Gérant1()
         {
             InitializeComponent();
         }
