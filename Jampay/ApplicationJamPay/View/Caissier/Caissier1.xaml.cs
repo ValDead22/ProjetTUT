@@ -17,9 +17,9 @@ namespace ApplicationJamPay.View.Caissier
     /// <summary>
     /// Logique d'interaction pour Window1.xaml
     /// </summary>
-    public partial class Window1 : Window
+    public partial class Caissier1 : Window
     {
-        public Window1()
+        public Caissier1()
         {
             InitializeComponent();
         }
