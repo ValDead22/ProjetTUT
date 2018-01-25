@@ -8,20 +8,20 @@ using GalaSoft.MvvmLight.Messaging;
 
 namespace ApplicationJamPay.ViewModel.Caissier
 {
-    public class EnregistrementPlatViewModel : ViewModelBase
+    public class Cassier1ViewModel : ViewModelBase
     {
         public string Title { get; set; }
 
-        public EnregistrementPlatViewModel()
+        public Cassier1ViewModel()
         {
             if (IsInDesignMode)
             {
-                Title = "Enregistrement Plat (DESING)";
+                Title = "Caissier (DESING)";
                 // Code runs in Blend --> create design time data.
             }
             else
             {
-                Title = "Enregistrement Plat";
+                Title = "Caissier";
             }
         }
 

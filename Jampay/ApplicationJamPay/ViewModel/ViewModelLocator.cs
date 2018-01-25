@@ -43,23 +43,23 @@ namespace ApplicationJamPay.ViewModel
             ////    SimpleIoc.Default.Register<IDataService, DataService>();
             ////}
 
-            SimpleIoc.Default.Register<MainViewModel>();
-            SimpleIoc.Default.Register<EnregistrementPlatViewModel>();
+            SimpleIoc.Default.Register<LoginViewModel>();
+            SimpleIoc.Default.Register<Cassier1ViewModel>();
         }
 
-        public MainViewModel Main
+        public LoginViewModel Main
         {
             get
             {
-                return ServiceLocator.Current.GetInstance<MainViewModel>();
+                return ServiceLocator.Current.GetInstance<LoginViewModel>();
             }
         }
 
-        public EnregistrementPlatViewModel Caissier
+        public Cassier1ViewModel Caissier
         {
             get
             {
-                return ServiceLocator.Current.GetInstance<EnregistrementPlatViewModel>();
+                return ServiceLocator.Current.GetInstance<Cassier1ViewModel>();
             }
         }
         
