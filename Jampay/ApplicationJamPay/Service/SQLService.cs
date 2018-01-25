@@ -8,16 +8,30 @@ using System.Windows;
 
 namespace ApplicationJamPay.Service
 {
-    class ConnexionBD
+    class SQLService
     {
         private MySqlConnection connection;
         private string server;
         private string database;
         private string uid;
         private string password;
+        
+
+
+        private static SQLService _instance;
+        public static SQLService Instance
+        {
+            get
+            {
+                if (_instance == null)
+                    _instance = new SQLService();
+
+                return _instance;
+            }
+        }
 
         //Constructor
-        public ConnexionBD()
+        private SQLService()
         {
             Initialize();
         }
@@ -34,9 +48,7 @@ namespace ApplicationJamPay.Service
             database + ";" + "UID=" + uid + ";" + "PASSWORD=" + password + ";";
 
             connection = new MySqlConnection(connectionString);
-
-            OpenConnection();
-            
+            OpenConnection();            
         }
 
         //open connection to database
@@ -84,6 +96,47 @@ namespace ApplicationJamPay.Service
             }
         }
 
- 
+        //Select statement
+        public List<string>[] Select(string query)
+        {
+
+            //Create a list to store the result
+            List<string>[] list = new List<string>[3];
+            list[0] = new List<string>();
+            list[1] = new List<string>();
+            list[2] = new List<string>();
+
+            //Open connection
+            if (this.OpenConnection() == true)
+            {
+                //Create Command
+                MySqlCommand cmd = new MySqlCommand(query, connection);
+                //Create a data reader and Execute the command
+                MySqlDataReader dataReader = cmd.ExecuteReader();
+
+                //Read the data and store them in the list
+                while (dataReader.Read())
+                {
+                    list[0].Add(dataReader["id"] + "");
+                    list[1].Add(dataReader["name"] + "");
+                    list[2].Add(dataReader["age"] + "");
+                }
+
+                //close Data Reader
+                dataReader.Close();
+
+                //close Connection
+                this.CloseConnection();
+
+                //return list to be displayed
+                return list;
+            }
+            else
+            {
+                return list;
+            }
+        }
+
+
     }
 }
