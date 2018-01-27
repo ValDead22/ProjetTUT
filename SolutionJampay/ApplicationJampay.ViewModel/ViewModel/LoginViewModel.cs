@@ -1,41 +1,35 @@
-using ApplicationJamPay.Service;
-using GalaSoft.MvvmLight.Messaging;
-using System;
+ï»¿using System;
+using System.Collections.Generic;
 using System.ComponentModel;
+using System.Linq;
 using System.Runtime.InteropServices;
 using System.Security;
-using System.Windows.Input;
+using System.Text;
+using System.Threading.Tasks;
+using ApplicationJampay.Model.Service;
+using ApplicationJampay.ViewModel.Command;
 
-namespace ApplicationJamPay.ViewModel
+namespace ApplicationJampay.ViewModel.ViewModel
 {
-    public class LoginViewModel : ViewModelBase, INotifyPropertyChanged
+    class LoginViewModel : INotifyPropertyChanged
     {
-
-        public event PropertyChangedEventHandler PropertyChangedEH;
+        public event PropertyChangedEventHandler PropertyChanged;
 
         void OnPropertyChanged(string propertyName)
         {
-            PropertyChangedEH?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
-        
+
         public RelayCommand LoginCommand { get; private set; }
         private SQLService _sQLService;
-        
+
 
         public LoginViewModel()
         {
-            LoginCommand = new RelayCommand(() => Login());
+            LoginCommand = new RelayCommand(() => Login(), o => true);
             _sQLService = SQLService.Instance;
 
-            if (IsInDesignMode)
-            {
-                _title = "Connexion (DESING)";
-                _id = "02356433";
-            }
-            else
-            {
-                _title = "Connexion";
-            }
+            
         }
 
         private string _id;
@@ -70,17 +64,13 @@ namespace ApplicationJamPay.ViewModel
                 OnPropertyChanged(nameof(Password));
             }
         }
-
-        public void OpenWindowCanExecute()
-        {
-            Messenger.Default.Send(new NotificationMessage("OpenView"));
-        }
+        
 
 
-        private bool isMatching(string login, SecureString password)
+        private bool IsMatching(string login, SecureString password)
         {
 
-
+            return true;
         }
 
 
@@ -91,25 +81,15 @@ namespace ApplicationJamPay.ViewModel
             Console.WriteLine("slt");
             Console.WriteLine(ID);
 
-            try {
+            try
+            {
                 Console.WriteLine(Marshal.PtrToStringBSTR(Marshal.SecureStringToBSTR(Password)));
             }
             catch
             { }
-            
 
-            //TODO Connexion à la bonne catégorie d'utilisateur
+
+            //TODO Connexion Ã  la bonne catÃ©gorie d'utilisateur
         }
-
-
-
-        
-
-        
-
-        
-
-        
-
     }
 }
