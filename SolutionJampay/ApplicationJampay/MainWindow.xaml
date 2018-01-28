@@ -20,7 +20,7 @@
 
         <StackPanel Grid.Row="1" Orientation="Vertical" Margin="15">
             <Label Content="Votre matricule"/>
-            <TextBox TextWrapping="Wrap" Text="{Binding Identifiant}"/>
+            <TextBox TextWrapping="Wrap" Text="{Binding Matricule}"/>
 
             <Label Content="Votre mot de passe"/>
             <PasswordBox>
