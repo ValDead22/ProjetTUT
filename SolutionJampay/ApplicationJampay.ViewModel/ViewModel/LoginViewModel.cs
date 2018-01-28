@@ -4,14 +4,17 @@ using System.ComponentModel;
 using System.Linq;
 using System.Runtime.InteropServices;
 using System.Security;
+using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
+using ApplicationJampay.Model.DAL;
+using ApplicationJampay.Model.DAL.Usager;
 using ApplicationJampay.Model.Service;
 using ApplicationJampay.ViewModel.Command;
 
 namespace ApplicationJampay.ViewModel.ViewModel
 {
-    class LoginViewModel : INotifyPropertyChanged
+    public class LoginViewModel : INotifyPropertyChanged
     {
         public event PropertyChangedEventHandler PropertyChanged;
 
@@ -21,25 +24,23 @@ namespace ApplicationJampay.ViewModel.ViewModel
         }
 
         public RelayCommand LoginCommand { get; private set; }
-        private SQLService _sQLService;
+        private UserBusinessLayer _userBusinessLayer;
 
 
         public LoginViewModel()
         {
             LoginCommand = new RelayCommand(() => Login(), o => true);
-            _sQLService = SQLService.Instance;
-
-            
+            _userBusinessLayer = new UserBusinessLayer();            
         }
 
-        private string _id;
-        public string ID
+        private string _matricule;
+        public string Matricule
         {
-            get { return _id; }
+            get { return _matricule; }
             set
             {
-                _id = value;
-                OnPropertyChanged(nameof(ID));
+                _matricule = value;
+                OnPropertyChanged(nameof(Matricule));
             }
         }
 
@@ -66,30 +67,64 @@ namespace ApplicationJampay.ViewModel.ViewModel
         }
         
 
-
-        private bool IsMatching(string login, SecureString password)
+        public string SecureStringToSHA256(SecureString secureString)
         {
+            IntPtr intPtr = IntPtr.Zero;
 
-            return true;
+            try
+            {
+                intPtr = Marshal.SecureStringToGlobalAllocUnicode(secureString);
+                string clearPassword = Marshal.PtrToStringUni(intPtr);
+
+                using(SHA256 hash = SHA256Managed.Create())
+                {
+                    Encoding encoding = Encoding.UTF8;
+                    StringBuilder finalHash = new StringBuilder();
+
+                    byte[] result = hash.ComputeHash(encoding.GetBytes(clearPassword));
+
+                    foreach (byte theByte in result)
+                    {
+                        finalHash.Append(theByte.ToString("x2"));
+                    }
+
+                    return finalHash.ToString();
+
+                }
+            }
+            finally
+            {
+                Marshal.ZeroFreeGlobalAllocUnicode(intPtr);
+            }
         }
-
 
 
         public void Login()
         {
-
-            Console.WriteLine("slt");
-            Console.WriteLine(ID);
-
             try
             {
-                Console.WriteLine(Marshal.PtrToStringBSTR(Marshal.SecureStringToBSTR(Password)));
+                string role = _userBusinessLayer.GetUser(Matricule, SecureStringToSHA256(Password));
+
+                switch(role)
+                {
+                    case "Gérant":
+                        DialogService.ShowGerantWindow();
+                        break;
+
+                    case "Caissier":
+                        DialogService.ShowCaissierWindow();
+                        break;
+                }
+                                
             }
-            catch
-            { }
-
-
-            //TODO Connexion à la bonne catégorie d'utilisateur
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+            
         }
+
+
+       
     }
 }
