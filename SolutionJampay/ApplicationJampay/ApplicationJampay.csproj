@@ -88,9 +88,6 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="View\Plat.xaml.cs">
-      <DependentUpon>Plat.xaml</DependentUpon>
-    </Compile>
     <Compile Include="View\Snack.xaml.cs">
       <DependentUpon>Snack.xaml</DependentUpon>
     </Compile>
@@ -135,10 +132,6 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\LoginView.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="View\Plat.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

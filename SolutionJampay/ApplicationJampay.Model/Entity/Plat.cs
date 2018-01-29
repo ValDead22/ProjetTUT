@@ -18,7 +18,7 @@ namespace ApplicationJampay.Model.Entity
 
         private string Categorie { get; set; }
 
-        private string Nom { get; set; }
+        public string Nom { get; set; }
 
         private Tarif Tarif { get; set; }
 
