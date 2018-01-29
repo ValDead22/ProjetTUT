@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ApplicationJampay.Model.Entity
 {
-    class DateUtilisation
+    public class DateUtilisation
     {
         private DateTime DateUtil { get; set; }
 

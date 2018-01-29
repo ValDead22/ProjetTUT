@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ApplicationJampay.Model.Entity
 {
-    class Cuisinier : Usager
+    public class Cuisinier : Usager
     {
         private DateTime DateEntree { get; set; }
 

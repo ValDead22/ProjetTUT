@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ApplicationJampay.Model.Entity
 {
-    class Utilisateur
+    public class Utilisateur
     {
         private string Fonction { get; set; }
 

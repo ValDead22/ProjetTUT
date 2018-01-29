@@ -55,8 +55,14 @@
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DAL\Menu\IMenuDataAccessLayer.cs" />
+    <Compile Include="DAL\Menu\MenuBusiness.cs" />
+    <Compile Include="DAL\Menu\MenuDataAccessLayer.cs" />
+    <Compile Include="DAL\Produit\IProductDataAccessLayer.cs" />
+    <Compile Include="DAL\Produit\ProductBusiness.cs" />
+    <Compile Include="DAL\Produit\ProductDataAccessLayer.cs" />
     <Compile Include="DAL\Usager\IUserDataAccessLayer.cs" />
-    <Compile Include="DAL\Usager\UserBusinessLayer.cs" />
+    <Compile Include="DAL\Usager\UserBusiness.cs" />
     <Compile Include="DAL\Usager\UserDataAccessLayer.cs" />
     <Compile Include="Entity\Administrateur.cs" />
     <Compile Include="Entity\Caissier.cs" />
