@@ -18,12 +18,12 @@
             <TabControl>
                 <TabItem Header="Consulter les menus">
                     <StackPanel>
-                        <ListView Margin="10" Name="tMenu" Height="167">
+                        <ListView ItemsSource="{Binding CollectionMenus}" Margin="10" Name="tMenu" Height="167">
                             <ListView.View>
                                 <GridView>
-                                    <GridViewColumn Header="Date" Width="75" />
-                                    <GridViewColumn Header="Menu" Width="200"  />
-                                    <GridViewColumn Header="Supprimer" Width="140"/>
+                                    <GridViewColumn Header="Date" Width="75" DisplayMemberBinding="{Binding DateElaboration}" />
+                                    <GridViewColumn Header="Menu" Width="200" DisplayMemberBinding="{Binding Nom}" />
+                                    <GridViewColumn Header="Supprimer" Width="140" />
                                     <GridViewColumn Header="Créer un menu"  Width="145" />
                                 </GridView>
                             </ListView.View>
@@ -33,10 +33,10 @@
                                 <Button x:Name="addMenu" Content="Ajouter un nouveau menu" Width="150"  HorizontalContentAlignment="Center" Height="75" />
                                 <Button x:Name="addPlat" Content="Ajouter un nouveau plat" Width="150"  HorizontalContentAlignment="Center" Height="82" />
                             </StackPanel>
-                            <ListView  HorizontalAlignment="Right" Margin="10" Name="tPlat">
+                            <ListView ItemsSource="{Binding CollectionPlats}" HorizontalAlignment="Right" Margin="10" Name="tPlat">
                                 <ListView.View>
                                     <GridView>
-                                        <GridViewColumn Header="Plat" Width="250" />
+                                        <GridViewColumn Header="Plat" Width="250" DisplayMemberBinding="{Binding Nom}" />
                                         <GridViewColumn Header="Supprimer" Width="150"/>
                                     </GridView>
                                 </ListView.View>
