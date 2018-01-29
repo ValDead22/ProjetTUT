@@ -23,7 +23,7 @@ namespace ApplicationJampay.Model.DAL.Menu
 
         public void AddProduit(Entity.Menu menu)
         {
-            _menuDAL.AddMenu(menu)
+            _menuDAL.AddMenu(menu);
         }
     }
 }
