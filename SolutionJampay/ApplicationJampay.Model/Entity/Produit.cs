@@ -29,5 +29,9 @@ namespace ApplicationJampay.Model.Entity
             this.Nom = Nom;
             this.Observation = Observation;
         }
+
+        public Produit()
+        {
+        }
     }
 }
