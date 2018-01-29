@@ -8,15 +8,15 @@ namespace ApplicationJampay.Model.Entity
 {
    public class Menu
     {
-        private int CodeMenu { get; set; }
+        public int CodeMenu { get; set; }
 
-        private int idGerant { get; set; }
+        public int idGerant { get; set; }
 
-        private DateTime DateElaboration { get; set; }
+        public DateTime DateElaboration { get; set; }
 
         private string Categorie { get; set; }
 
-        private string Nom { get; set; }
+        public string Nom { get; set; }
 
         private string Observation { get; set; }
 
@@ -31,5 +31,8 @@ namespace ApplicationJampay.Model.Entity
             this.Nom = Nom;
             this.Observation = Observation;
         }
+
+        
+        
     }
 }
