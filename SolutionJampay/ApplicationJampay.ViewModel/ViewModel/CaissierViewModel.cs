@@ -1,7 +1,9 @@
 ﻿using ApplicationJampay.Model.DAL.Usager;
+using ApplicationJampay.Model.Entity;
 using ApplicationJampay.ViewModel.Command;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Linq;
 using System.Text;
@@ -18,7 +20,12 @@ namespace ApplicationJampay.ViewModel.ViewModel
                 PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
             }
 
-            public RelayCommand AjoutP { get; private set; }
+        //List implémente IEnumerable, pas de sousses
+        
+        private ObservableCollection<Plat> _collectionPlat = new ObservableCollection<Plat>();
+        public IEnumerable<Menu> CollectionPlat { get { return _collectionPlat; } }
+
+        public RelayCommand AjoutP { get; private set; }
             public RelayCommand Reglement { get; private set; }
             private UserBusinessLayer _userBusinessLayer;
 
