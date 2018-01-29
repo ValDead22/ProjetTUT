@@ -7,11 +7,11 @@ using System.Threading.Tasks;
 
 namespace ApplicationJampay.Model.DAL.Usager
 {
-    public class UserBusinessLayer
+    public class UserBusiness
     {
-        private UserDataAccessLayer _userDAL;
+        private IUserDataAccessLayer _userDAL;
 
-        public UserBusinessLayer()
+        public UserBusiness()
         {
             _userDAL = new UserDataAccessLayer();
         }
