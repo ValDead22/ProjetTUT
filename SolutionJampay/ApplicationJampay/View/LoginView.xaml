@@ -8,6 +8,7 @@
         xmlns:local="clr-namespace:ApplicationJampay.View"
         mc:Ignorable="d"
         Title="LoginView" Height="406.832" Width="343.478">
+
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition/>
@@ -20,10 +21,10 @@
 
         <StackPanel Grid.Row="1" Orientation="Vertical" Margin="15">
             <Label Content="Votre matricule"/>
-            <TextBox TextWrapping="Wrap" Text="{Binding Identifiant}"/>
+            <TextBox TextWrapping="Wrap" Text="{Binding Matricule}"/>
 
             <Label Content="Votre mot de passe"/>
-            <PasswordBox >
+            <PasswordBox>
                 <i:Interaction.Behaviors>
                     <behavior:PasswordBehavior Password="{Binding Password}"/>
                 </i:Interaction.Behaviors>
