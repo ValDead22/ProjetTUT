@@ -1,5 +1,9 @@
-﻿using System.Linq;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
 using System.Security;
+using System.Text;
+using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
@@ -16,8 +20,8 @@ namespace ApplicationJampay.ViewModel.Behavior
 
         public SecureString Password
         {
-            get { return (SecureString)GetValue(PasswordProperty); }
-            set { SetValue(PasswordProperty, value); }
+            get => (SecureString)GetValue(PasswordProperty);
+            set => SetValue(PasswordProperty, value);
         }
 
         protected override void OnAttached()
