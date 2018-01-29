@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ApplicationJampay.Model.Entity
 {
-    class CompositionMenu
+    public class CompositionMenu
     {
         private int CodePlat { get; set; }
 

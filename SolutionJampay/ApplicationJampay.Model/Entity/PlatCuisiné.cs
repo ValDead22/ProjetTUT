@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ApplicationJampay.Model.Entity
 {
-    class PlatCuisiné
+    public class PlatCuisiné
     {
         private int idCuisinier { get; set; }
 

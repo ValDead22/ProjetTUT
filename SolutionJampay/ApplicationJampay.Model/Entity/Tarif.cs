@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ApplicationJampay.Model.Entity
 {
-    class Tarif
+    public class Tarif
     {
         private float Prix { get; set; }
 
