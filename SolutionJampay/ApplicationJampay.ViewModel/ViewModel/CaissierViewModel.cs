@@ -1,5 +1,6 @@
 ﻿using ApplicationJampay.Model.DAL.Usager;
 using ApplicationJampay.Model.Entity;
+using ApplicationJampay.Model.Service;
 using ApplicationJampay.ViewModel.Command;
 using System;
 using System.Collections.Generic;
@@ -14,30 +15,30 @@ namespace ApplicationJampay.ViewModel.ViewModel
 {
     public class CaissierViewModel : INotifyPropertyChanged
     {
-            public event PropertyChangedEventHandler PropertyChanged;
+        public event PropertyChangedEventHandler PropertyChanged;
 
-            void OnPropertyChanged(string propertyName)
-            {
-                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
-            }
+        void OnPropertyChanged(string propertyName)
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+        }
 
         //List implémente IEnumerable, pas de sousses
-        
+
         private ObservableCollection<Plat> _collectionPlat = new ObservableCollection<Plat>();
         public IEnumerable<Plat> CollectionPlat { get { return _collectionPlat; } }
 
-            
-            
 
 
-            public CaissierViewModel()
-            {
 
-                AjoutP = new RelayCommand(() => AjoutPlat(), o => true);
-                Reglement = new RelayCommand(() => ReglementCommand(), o => true);
 
-            
-    }
+        public CaissierViewModel()
+        {
+
+            _AddPlatCommand = new RelayCommand(() => AddPlat(), o => true);
+           
+
+
+        }
 
         private Plat _platService;
         //Table sélectionnée dans la ListView
@@ -70,6 +71,8 @@ namespace ApplicationJampay.ViewModel.ViewModel
         public RelayCommand AjoutP { get; private set; }
         public RelayCommand Reglement { get; private set; }
 
+        private readonly RelayCommand _AddPlatCommand;
+        public ICommand LoginCommand => _AddPlatCommand;
 
         private readonly RelayCommand _openCreatePlatViewCommand;
         public ICommand OpenCreatePlatViewCommand => _openCreatePlatViewCommand;
@@ -97,20 +100,21 @@ namespace ApplicationJampay.ViewModel.ViewModel
 
 
 
-        public void AjoutPlat() {
+        public void AddPlat()
+        {
+
+            DialogService.ShowAjouterPlatWindow();
+
         }
+    }
+}
       
 
-        public void ReglementCommand()
-        {
-           
-
-
-        }
+        
 
 
 
-    }
-    }
-}
-}
+    
+    
+
+

@@ -24,5 +24,13 @@ namespace ApplicationJampay.Model.Service
 
             windows.ShowDialog();
         }
+
+        public static void ShowAjouterPlatWindow()
+        {
+            var createType = Type.GetType("ApplicationJampay.View.AjouterPlat, ApplicationJampay");
+            var windows = (System.Windows.Window)Activator.CreateInstance(createType);
+
+            windows.ShowDialog();
+        }
     }
 }

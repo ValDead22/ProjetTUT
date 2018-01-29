@@ -22,7 +22,7 @@
                     <StackPanel Orientation="Horizontal" Grid.Column="0" Grid.ColumnSpan="2" DockPanel.Dock="Bottom" Margin="10">
                         <Label Content="0.00€" HorizontalAlignment="Center" FontSize="36" Margin="20,10,0,226"/>
                         <Button  Content="Réglement" Width="150"  HorizontalContentAlignment="Center"  Margin="20,10,0,226"  />
-                        <Button  Content="Ajouter un plat" Width="150"  HorizontalContentAlignment="Center" Margin="20,10,0,226" RenderTransformOrigin="0.5,0.5"  />
+                        <Button  Content="Ajouter un plat" Width="150"  HorizontalContentAlignment="Center" Margin="20,10,0,226" RenderTransformOrigin="0.5,0.5" Command="{Binding AddPlatCommand}" />
                         <Separator Width="20" Height="25" Background="Transparent"/>
                         <Separator Width="20" Height="25" Background="Transparent"/>
                 
