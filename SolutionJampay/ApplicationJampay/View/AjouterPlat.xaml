@@ -1,0 +1,64 @@
+﻿<Window x:Class="ApplicationJampay.View.Caissier1"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ApplicationJampay.View"
+        mc:Ignorable="d"
+        Title="Caissier1" Height="413.665" Width="519.255">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="4*"/>
+            <RowDefinition Height="4*"/>
+           
+            <RowDefinition Height="1*"/>
+
+        </Grid.RowDefinitions>
+
+        <Grid.ColumnDefinitions>
+            
+            <ColumnDefinition Width="2*"/>
+            <ColumnDefinition Width="2*"/>
+                              
+        </Grid.ColumnDefinitions>
+
+        <Image Grid.Row="0" Grid.Column="0"
+        Source="C:\Users\chrasclard2\Source\Repos\ProjetTUT\SolutionJampay\ApplicationJampay.Model\docs\platprinc.jpg">
+        </Image>
+        <Button Grid.Row="0" Grid.Column="0"  FontSize="20" Opacity="0.5" >
+        </Button>
+        <Label Grid.Row="0" Grid.Column="0" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="24">Les Plats</Label>
+
+        <Image Grid.Row="0" Grid.Column="1"
+        Source="C:\Users\chrasclard2\Source\Repos\ProjetTUT\SolutionJampay\ApplicationJampay.Model\docs\entree.jpg">
+        </Image>
+        <Button Grid.Row="0" Grid.Column="1"  FontSize="20" Opacity="0.5" >
+        </Button>
+        <Label Grid.Row="0" Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="24">Les Entrées</Label>
+
+        <Image Grid.Row="1" Grid.Column="0"
+        Source="C:\Users\chrasclard2\Source\Repos\ProjetTUT\SolutionJampay\ApplicationJampay.Model\docs\dessert.jpg">
+        </Image>
+        <Button Grid.Row="1" Grid.Column="0"  FontSize="20" Opacity="0.5" >
+        </Button>
+        <Label Grid.Row="1" Grid.Column="0" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="24">Les Desserts</Label>
+
+        <Image Grid.Row="1" Grid.Column="1"
+        Source="C:\Users\chrasclard2\Source\Repos\ProjetTUT\SolutionJampay\ApplicationJampay.Model\docs\snack.jpg">
+        </Image>
+        <Button Grid.Row="1" Grid.Column="1"  FontSize="20" Opacity="0.5" >
+        </Button>
+        <Label Grid.Row="1" Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="24">Les Snacks</Label>
+        
+        <Grid Grid.Row="3" Grid.ColumnSpan="2">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="5*"/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+
+            <Label Grid.Column="0" Content="Connecté en tant que :" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+            <Button Grid.Column="1" Content="Déconnexion" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+        </Grid>
+
+    </Grid>
+</Window>

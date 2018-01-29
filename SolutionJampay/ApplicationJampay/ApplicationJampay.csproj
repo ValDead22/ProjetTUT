@@ -66,8 +66,17 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="View\AjouterPlat.xaml.cs">
+      <DependentUpon>AjouterPlat.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\Caissier1.xaml.cs">
       <DependentUpon>Caissier1.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Dessert.xaml.cs">
+      <DependentUpon>Dessert.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Entree.xaml.cs">
+      <DependentUpon>Entree.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\Gérant1.xaml.cs">
       <DependentUpon>Gérant1.xaml</DependentUpon>
@@ -78,6 +87,12 @@
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="View\Plat.xaml.cs">
+      <DependentUpon>Plat.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Snack.xaml.cs">
+      <DependentUpon>Snack.xaml</DependentUpon>
     </Compile>
     <Page Include="Themes\Metro\Metro.MSControls.Core.Implicit.xaml">
       <Generator>MSBuild:Compile</Generator>
@@ -99,7 +114,19 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
+    <Page Include="View\AjouterPlat.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="View\Caissier1.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Dessert.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Entree.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -108,6 +135,14 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\LoginView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Plat.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Snack.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

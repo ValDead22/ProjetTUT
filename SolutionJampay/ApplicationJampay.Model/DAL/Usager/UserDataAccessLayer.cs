@@ -16,10 +16,11 @@ namespace ApplicationJampay.Model.DAL.Usager
         {
             _sQLService = SQLService.Instance;
         }
+        
 
         public string GetUser(string matricule, string password)
         {
-            var query = "SELECT * FROM Utilisateur WHERE idUtilisateur=" + matricule + " AND MotDePasse=\"" + password + "\"";
+            var query = "SELECT * FROM Utilisateur WHERE idUtilisateur=\"" + matricule + "\"" + " AND MotDePasse=\"" + password + "\"";
             MySqlDataReader mySqlDataReader = _sQLService.Load(query);
 
             try 

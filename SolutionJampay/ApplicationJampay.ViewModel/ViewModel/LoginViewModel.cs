@@ -7,6 +7,7 @@ using System.Security;
 using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Input;
 using ApplicationJampay.Model.DAL;
 using ApplicationJampay.Model.DAL.Usager;
 using ApplicationJampay.Model.Service;
@@ -23,14 +24,16 @@ namespace ApplicationJampay.ViewModel.ViewModel
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
 
-        public RelayCommand LoginCommand { get; private set; }
-        private UserBusinessLayer _userBusinessLayer;
+        private readonly RelayCommand _loginCommand;
+        public ICommand LoginCommand => _loginCommand;
+
+        private UserBusiness _userBusinessLayer;
 
 
         public LoginViewModel()
         {
-            LoginCommand = new RelayCommand(() => Login(), o => true);
-            _userBusinessLayer = new UserBusinessLayer();            
+            _loginCommand = new RelayCommand(() => Login(), o => true);
+            _userBusinessLayer = new UserBusiness();            
         }
 
         private string _matricule;
