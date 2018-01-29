@@ -111,6 +111,6 @@ namespace ApplicationJampay.ViewModel.ViewModel
 
 
     }
-    }
-}
+    
+
 }
