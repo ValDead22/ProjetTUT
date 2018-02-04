@@ -17,6 +17,14 @@ namespace ApplicationJampay.Model.Service
             windows.ShowDialog();
         }
 
+        public static void ShowErrorWindow(string message)
+        {
+            var createType = Type.GetType("ApplicationJampay.View.ErrorView, ApplicationJampay");
+            var windows = (System.Windows.Window)Activator.CreateInstance(createType, message);
+            
+            windows.ShowDialog();
+        }
+
         public static void ShowGerantWindow()
         {
             var createType = Type.GetType("ApplicationJampay.View.Gérant1, ApplicationJampay");
