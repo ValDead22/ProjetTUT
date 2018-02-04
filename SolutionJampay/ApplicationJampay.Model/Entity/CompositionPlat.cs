@@ -14,7 +14,7 @@ namespace ApplicationJampay.Model.Entity
 
         private Plat Plat { get; set; }
 
-        private Produit Produit { get; set; }
+        private Menu Produit { get; set; }
 
         public CompositionPlat(int CodePlat, int CodeProduit)
         {

@@ -8,23 +8,22 @@ namespace ApplicationJampay.Model.Entity
 {
     public class Plat
     {
-        private int CodePlat { get; set; }
+        public int CodePlat { get; private set; }
 
-        private int IdTarif { get; set; }
+        public int IdTarif { get; private set; }
 
-        private DateTime DateEffet { get; set; }
+        public DateTime DateEffet { get; private set; }
 
-        private DateTime DateFin { get; set; }
+        public DateTime DateFin { get; private set; }
 
-        private string Categorie { get; set; }
+        public string Categorie { get; private set; }
 
-        public string Nom { get; set; }
+        public string Nom { get; private set; }
 
-        private Tarif Tarif { get; set; }
-
-        public Plat(int CodePlat, DateTime DateEffet, DateTime DateFin, string Categorie, string Nom)
+        public Plat(int CodePlat, int idTarif, DateTime DateEffet, DateTime DateFin, string Categorie, string Nom)
         {
             this.CodePlat = CodePlat;
+            this.IdTarif = idTarif;
             this.DateEffet = DateEffet;
             this.DateFin = DateFin;
             this.Categorie = Categorie;

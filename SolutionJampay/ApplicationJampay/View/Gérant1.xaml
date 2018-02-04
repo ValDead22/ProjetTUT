@@ -4,8 +4,10 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ApplicationJampay.View"
+        xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
         mc:Ignorable="d"
-        Title="Gérant1" Height="497.304" Width="606.18">
+        
+        Title="Gérant1" Height="497.304" Width="606.18" >
     <Grid>
         <DockPanel>
 
@@ -18,13 +20,18 @@
             <TabControl>
                 <TabItem Header="Consulter les menus">
                     <StackPanel>
-                        <ListView ItemsSource="{Binding CollectionMenus}" Margin="10" Name="tMenu" Height="167">
+                        <ListView x:Name="listView1" ItemsSource="{Binding CollectionMenus}" SelectedItem="{Binding SelectedMenu}" Margin="10" Height="167">
+                            
+                            <i:Interaction.Triggers>
+                                <i:EventTrigger EventName="MouseDoubleClick">
+                                    <i:InvokeCommandAction Command="{Binding SelectionChanged}" CommandParameter="{Binding ElementName=listView1,Path=SelectedItem}"/>
+                                </i:EventTrigger>
+                            </i:Interaction.Triggers>
+                            
                             <ListView.View>
                                 <GridView>
-                                    <GridViewColumn Header="Date" Width="75" DisplayMemberBinding="{Binding DateElaboration}" />
-                                    <GridViewColumn Header="Menu" Width="200" DisplayMemberBinding="{Binding Nom}" />
-                                    <GridViewColumn Header="Supprimer" Width="140" />
-                                    <GridViewColumn Header="Créer un menu"  Width="145" />
+                                    <GridViewColumn Header="Date"  DisplayMemberBinding="{Binding DateElaboration}" />
+                                    <GridViewColumn Header="Menu"  DisplayMemberBinding="{Binding Nom}" />
                                 </GridView>
                             </ListView.View>
                         </ListView>
@@ -36,8 +43,7 @@
                             <ListView ItemsSource="{Binding CollectionPlats}" HorizontalAlignment="Right" Margin="10" Name="tPlat">
                                 <ListView.View>
                                     <GridView>
-                                        <GridViewColumn Header="Plat" Width="250" DisplayMemberBinding="{Binding Nom}" />
-                                        <GridViewColumn Header="Supprimer" Width="150"/>
+                                        <GridViewColumn Header="Plat" DisplayMemberBinding="{Binding Nom}" />
                                     </GridView>
                                 </ListView.View>
                             </ListView>

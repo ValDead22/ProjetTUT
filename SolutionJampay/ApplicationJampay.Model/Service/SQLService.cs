@@ -56,7 +56,7 @@ namespace ApplicationJampay.Model.Service
             try
             {
                 connection.Open();
-                Console.WriteLine("Connecté ma couille");
+                Console.WriteLine("Connecté à la base de données");
                 return true;
             }
             catch (MySqlException ex)

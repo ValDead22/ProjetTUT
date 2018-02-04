@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace ApplicationJampay.Model.DAL.Usager
 {
-    public class UserDataAccessLayer : IUserDataAccessLayer
+    class UserDataAccessLayer : IUserDataAccessLayer
     {
         private SQLService _sQLService;
         

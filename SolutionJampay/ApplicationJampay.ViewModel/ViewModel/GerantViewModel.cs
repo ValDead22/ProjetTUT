@@ -7,48 +7,81 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Documents;
 using ApplicationJampay.Model.Entity;
+using ApplicationJampay.Model.DAL;
+using ApplicationJampay.Model.DAL.Menu;
+using ApplicationJampay.Model.Service;
+using ApplicationJampay.Model.DAL.Plat;
+using ApplicationJampay.ViewModel.Command;
+using System.Windows.Input;
 
 namespace ApplicationJampay.ViewModel.ViewModel
 {
     public class GerantViewModel : IViewModelBase
     {
-
-        public GerantViewModel()
-        {
-            _collectionMenu.Add(new Menu(111, 222, new DateTime(2018, 01, 29), "entrée", "macédoine", "viable"));
-            _collectionPlat.Add(new Plat(3553, new DateTime(2018, 01, 29), new DateTime(2018, 02, 5), "skfds", "Frites"));
-        }
-
-        
-
-        private ObservableCollection<Menu> _collectionMenu = new ObservableCollection<Menu>();
-        private ObservableCollection<Plat> _collectionPlat = new ObservableCollection<Plat>();
-
-        public IEnumerable<Menu> CollectionMenus { get { return _collectionMenu; } }
-        public IEnumerable<Plat> CollectionPlats { get { return _collectionPlat; } }
-
         public event PropertyChangedEventHandler PropertyChanged;
-
-        private string _nom;
-
-        public string Nom
-        {
-            get { return _nom; }
-            set
-            {
-                _nom = value;
-                OnPropertyChanged(nameof(Nom));
-            }
-        }
-
 
         void OnPropertyChanged(string propertyName)
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
-    }
 
-    
-    
+
+        private MenuBusiness _menuBusiness;
+        private PlatBusiness _platBusiness;
+
+        private readonly RelayCommand _selectionChanged;
+        public ICommand SelectionChanged => _selectionChanged;
+
+
+        private ObservableCollection<Menu> _collectionMenu = new ObservableCollection<Menu>();
+        private ObservableCollection<Plat> _collectionPlat;
+
+        public IEnumerable<Menu> CollectionMenus { get { return _collectionMenu; } }
+        public IEnumerable<Plat> CollectionPlats { get { return _collectionPlat; } }
+
+        public GerantViewModel()
+        {
+            _menuBusiness = new MenuBusiness();
+            _platBusiness = new PlatBusiness();
+
+            _selectionChanged = new RelayCommand(() => test(), o => true);
+
+            try
+            {
+                foreach (Menu menu in _menuBusiness.GetAllMenus())
+                {
+                    _collectionMenu.Add(menu);
+                }
+            }
+            catch (Exception ex)
+            {
+                DialogService.ShowErrorWindow(ex.Message);
+            }
+
+            
+        }
+
+        private void test()
+        {
+            Console.WriteLine("slt");
+            Console.Write(SelectedMenu.Nom);
+        }
+
+        private Menu _selectedMenu;
+        public Menu SelectedMenu
+        {
+            get
+            {                
+                return _selectedMenu;
+            }
+            set
+            {
+                _selectedMenu = value;
+                OnPropertyChanged(nameof(SelectedMenu));
+            }
+        }
+
+
+    }    
 
 }

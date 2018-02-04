@@ -11,9 +11,9 @@ namespace ApplicationJampay.Model.DAL.Usager
     {
         private IUserDataAccessLayer _userDAL;
 
-        public UserBusiness(IUserDataAccessLayer accessLayer)
+        public UserBusiness()
         {
-            _userDAL = accessLayer;
+            _userDAL = new UserDataAccessLayer();
         }
 
         public Entity.Utilisateur GetUser(string matricule, string password)

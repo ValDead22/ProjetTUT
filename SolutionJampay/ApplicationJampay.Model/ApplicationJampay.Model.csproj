@@ -58,6 +58,9 @@
     <Compile Include="DAL\Menu\IMenuDataAccessLayer.cs" />
     <Compile Include="DAL\Menu\MenuBusiness.cs" />
     <Compile Include="DAL\Menu\MenuDataAccessLayer.cs" />
+    <Compile Include="DAL\Plat\IPlatDataAccessLayer.cs" />
+    <Compile Include="DAL\Plat\PlatAccessLayer.cs" />
+    <Compile Include="DAL\Plat\PlatBusiness.cs" />
     <Compile Include="DAL\Produit\IProductDataAccessLayer.cs" />
     <Compile Include="DAL\Produit\ProductBusiness.cs" />
     <Compile Include="DAL\Produit\ProductDataAccessLayer.cs" />

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ApplicationJampay.Model.DAL.Menu
 {
-    interface IMenuDataAccessLayer
+    public interface IMenuDataAccessLayer
     {
         /// <summary>
         /// Get all menus

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ApplicationJampay.Model.DAL.Menu
 {
-    class MenuBusiness
+    public class MenuBusiness
     {
         private IMenuDataAccessLayer _menuDAL;
 
