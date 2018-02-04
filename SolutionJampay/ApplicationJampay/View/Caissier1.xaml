@@ -5,29 +5,34 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ApplicationJampay.View"
         mc:Ignorable="d"
-        Title="Caissier1" Height="413.665" Width="519.255">
+        Title="Caissier1" Height="Auto" Width="Auto">
     <Grid>
-        <Grid.RowDefinitions>
-            <RowDefinition Height="10*"/>
-           
-            <RowDefinition Height="1*"/>
-           
-        </Grid.RowDefinitions>
         
-       
+        <Grid.RowDefinitions>
+            <RowDefinition Height="10*"/>           
+            <RowDefinition Height="1.3*"/>           
+        </Grid.RowDefinitions>
 
-       
-                <Grid>
+        <Grid Grid.Row="0">
+
+            <Grid.RowDefinitions>
+                <RowDefinition Height="0.7*"/>
+                <RowDefinition Height="2*"/>
+            </Grid.RowDefinitions>
+
+            <StackPanel Grid.Row="0" Orientation="Horizontal" Grid.Column="0" Grid.ColumnSpan="2" DockPanel.Dock="Bottom" Margin="10pt" Height="60pt">
+
                 
-                    <StackPanel Orientation="Horizontal" Grid.Column="0" Grid.ColumnSpan="2" DockPanel.Dock="Bottom" Margin="10">
-                        <Label Content="0.00€" HorizontalAlignment="Center" FontSize="36" Margin="20,10,0,226"/>
-                        <Button  Content="Réglement" Width="150"  HorizontalContentAlignment="Center"  Margin="20,10,0,226"  />
-                        <Button  Content="Ajouter un plat" Width="150"  HorizontalContentAlignment="Center" Margin="20,10,0,226" RenderTransformOrigin="0.5,0.5" Command="{Binding AddPlatCommand}" />
-                        <Separator Width="20" Height="25" Background="Transparent"/>
-                        <Separator Width="20" Height="25" Background="Transparent"/>
+                <Label Grid.Column="0" Content="0.00€" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="36" />
+                <Separator Width="20" Height="25" Background="Transparent"/>
+                <Button Grid.Column="1"  Content="Réglement" Padding="15"/>
+                <Separator Width="20" Height="25" Background="Transparent"/>
+                <Button Grid.Column="2" Content="Ajouter un plat" Padding="15" />
                 
-                    </StackPanel>
-            <ListView Grid.Column="0"  HorizontalAlignment="Stretch" Margin="10,146,10,10">
+            </StackPanel>
+
+
+            <ListView Grid.Row="1" Grid.Column="0"  HorizontalAlignment="Stretch" Margin="10">
                 <ListView.View>
                     <GridView>
                         <GridViewColumn Header="Plat"/>
@@ -42,7 +47,7 @@
 
 
 
-        <Grid Grid.Row="1">
+        <Grid Grid.Row="1" Margin="10" Height="28pt">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="5*"/>
                 <ColumnDefinition/>
