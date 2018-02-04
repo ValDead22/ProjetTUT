@@ -23,7 +23,15 @@ namespace ApplicationJampay.View
         public LoginView()
         {
             InitializeComponent();
-            DataContext = new LoginViewModel();
+
+            IViewModelBase viewModel = new LoginViewModel()
+            {
+                Close = () => Hide()
+            };
+
+            DataContext = viewModel;
+
+           
         }
     }
 }
