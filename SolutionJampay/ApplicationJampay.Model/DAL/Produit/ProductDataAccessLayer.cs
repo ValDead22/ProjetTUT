@@ -51,7 +51,7 @@ namespace ApplicationJampay.Model.DAL.Produit
             }
             catch
             {
-                throw new Exception("Utilisateur introuvable !");
+                throw new Exception("Pas de produits !");
             }
             finally
             {
