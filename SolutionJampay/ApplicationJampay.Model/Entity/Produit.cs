@@ -8,30 +8,21 @@ namespace ApplicationJampay.Model.Entity
 {
     public class Produit
     {
-        private int CodeProduit { get; set; }
+        public int CodeProduit { get; private set; }
 
-        private DateTime DateEffet { get; set; }
+        public DateTime DateEffet { get; private set; }
 
-        private DateTime DateFin { get; set; }
+        public DateTime DateFin { get; private set; }
 
-        private string Categorie { get; set; }
+        public string Categorie { get; private set; }
 
-        private string Nom { get; set; }
+        public string Nom { get; private set; }
 
-        private string Observation { get; set; }
-
-        public Produit(int CodeProduit, DateTime DateEffet, DateTime DateFin, string Categorie, string Nom, string Observation)
-        {
-            this.CodeProduit = CodeProduit;
-            this.DateEffet = DateEffet;
-            this.DateFin = DateFin;
-            this.Categorie = Categorie;
-            this.Nom = Nom;
-            this.Observation = Observation;
-        }
+        public string Observation { get; private set; }
 
         public Produit()
         {
         }
+        
     }
 }
