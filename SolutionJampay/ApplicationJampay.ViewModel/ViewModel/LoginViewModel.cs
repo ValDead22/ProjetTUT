@@ -40,7 +40,7 @@ namespace ApplicationJampay.ViewModel.ViewModel
         public LoginViewModel()
         {
             _loginCommand = new RelayCommand(() => Login(), o => true);
-            _userBusiness = new UserBusiness(new UserDataAccessLayer());            
+            _userBusiness = new UserBusiness();            
         }
         
         #region Properties
