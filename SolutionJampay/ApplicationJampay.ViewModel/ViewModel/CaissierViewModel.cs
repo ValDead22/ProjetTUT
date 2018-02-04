@@ -13,7 +13,7 @@ using System.Windows.Input;
 
 namespace ApplicationJampay.ViewModel.ViewModel
 {
-    public class CaissierViewModel : INotifyPropertyChanged
+    public class CaissierViewModel : IViewModelBase
     {
         public event PropertyChangedEventHandler PropertyChanged;
 

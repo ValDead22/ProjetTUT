@@ -10,7 +10,7 @@ using ApplicationJampay.Model.Entity;
 
 namespace ApplicationJampay.ViewModel.ViewModel
 {
-    public class GerantViewModel : INotifyPropertyChanged
+    public class GerantViewModel : IViewModelBase
     {
 
         public GerantViewModel()
