@@ -8,18 +8,15 @@ namespace ApplicationJampay.Model.Entity
 {
     public class Utilisateur
     {
-        private string Fonction { get; set; }
+        public string Fonction { get; private set; }
 
-        private int idUtilisateur { get; set; }
+        public int IdUtilisateur { get; private set; }
 
         public Utilisateur(string Fonction, int idUtilisateur)
         {
             this.Fonction = Fonction;
-            this.idUtilisateur = idUtilisateur;
+            this.IdUtilisateur = idUtilisateur;
         }
-
-        public Utilisateur()
-        {
-        }
+                
     }
 }
