@@ -10,6 +10,7 @@ using System.Threading.Tasks;
 using System.Windows.Input;
 using ApplicationJampay.Model.DAL;
 using ApplicationJampay.Model.DAL.Usager;
+using ApplicationJampay.Model.Entity;
 using ApplicationJampay.Model.Service;
 using ApplicationJampay.ViewModel.Command;
 
@@ -26,13 +27,12 @@ namespace ApplicationJampay.ViewModel.ViewModel
         }
         #endregion
 
-
         public Action Close;
 
         private readonly RelayCommand _loginCommand;
         public ICommand LoginCommand => _loginCommand;
 
-        private UserBusiness _userBusinessLayer;
+        private UserBusiness _userBusiness;
 
         /// <summary>
         /// Constructor
@@ -40,10 +40,9 @@ namespace ApplicationJampay.ViewModel.ViewModel
         public LoginViewModel()
         {
             _loginCommand = new RelayCommand(() => Login(), o => true);
-            _userBusinessLayer = new UserBusiness();            
+            _userBusiness = new UserBusiness(new UserDataAccessLayer());            
         }
-
-
+        
         #region Properties
         private string _matricule;
         public string Matricule
@@ -78,7 +77,6 @@ namespace ApplicationJampay.ViewModel.ViewModel
             }
         }
         #endregion
-
 
         /// <summary>
         /// Convert a SecureString into a SHA256 hash
@@ -121,11 +119,11 @@ namespace ApplicationJampay.ViewModel.ViewModel
         {
             try
             {
-                string role = _userBusinessLayer.GetUser(Matricule, SecureStringToSHA256(Password));
-
+                Utilisateur utilisateur = _userBusiness.GetUser(Matricule, SecureStringToSHA256(Password));
+                
                 Close();
 
-                switch (role)
+                switch (utilisateur.Fonction)
                 {
                     case "Gérant":
                         DialogService.ShowGerantWindow();
