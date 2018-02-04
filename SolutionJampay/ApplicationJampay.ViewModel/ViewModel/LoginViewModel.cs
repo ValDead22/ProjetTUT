@@ -15,27 +15,36 @@ using ApplicationJampay.ViewModel.Command;
 
 namespace ApplicationJampay.ViewModel.ViewModel
 {
-    public class LoginViewModel : INotifyPropertyChanged
+    public class LoginViewModel : IViewModelBase
     {
+        #region PropertyChanged stuff
         public event PropertyChangedEventHandler PropertyChanged;
 
         void OnPropertyChanged(string propertyName)
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
+        #endregion
+
+
+        public Action Close;
 
         private readonly RelayCommand _loginCommand;
         public ICommand LoginCommand => _loginCommand;
 
         private UserBusiness _userBusinessLayer;
 
-
+        /// <summary>
+        /// Constructor
+        /// </summary>
         public LoginViewModel()
         {
             _loginCommand = new RelayCommand(() => Login(), o => true);
             _userBusinessLayer = new UserBusiness();            
         }
 
+
+        #region Properties
         private string _matricule;
         public string Matricule
         {
@@ -68,8 +77,14 @@ namespace ApplicationJampay.ViewModel.ViewModel
                 OnPropertyChanged(nameof(Password));
             }
         }
-        
+        #endregion
 
+
+        /// <summary>
+        /// Convert a SecureString into a SHA256 hash
+        /// </summary>
+        /// <param name="secureString"></param>
+        /// <returns></returns>
         public string SecureStringToSHA256(SecureString secureString)
         {
             IntPtr intPtr = IntPtr.Zero;
@@ -108,7 +123,9 @@ namespace ApplicationJampay.ViewModel.ViewModel
             {
                 string role = _userBusinessLayer.GetUser(Matricule, SecureStringToSHA256(Password));
 
-                switch(role)
+                Close();
+
+                switch (role)
                 {
                     case "Gérant":
                         DialogService.ShowGerantWindow();
@@ -122,12 +139,10 @@ namespace ApplicationJampay.ViewModel.ViewModel
             }
             catch (Exception ex)
             {
-                Console.WriteLine(ex.Message);
+                DialogService.ShowErrorWindow(ex.Message);
             }
             
         }
-
-
-       
+        
     }
 }
