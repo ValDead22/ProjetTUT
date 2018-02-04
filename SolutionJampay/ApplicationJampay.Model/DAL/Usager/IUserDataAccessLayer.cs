@@ -6,8 +6,8 @@ using System.Threading.Tasks;
 
 namespace ApplicationJampay.Model.DAL.Usager
 {
-    interface IUserDataAccessLayer
+    public interface IUserDataAccessLayer
     {
-        string GetUser(string matricule, string password);
+        Entity.Utilisateur GetUser(string matricule, string password);
     }
 }
