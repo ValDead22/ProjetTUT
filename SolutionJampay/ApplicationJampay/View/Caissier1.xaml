@@ -24,17 +24,15 @@
 
                 
                 <Label Grid.Column="0" Content="0.00€" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="36" />
-                <Separator Width="10" Height="25" Background="Transparent"/>
+                <Separator Width="20" Height="25" Background="Transparent"/>
                 <Button Grid.Column="1"  Content="Réglement" Padding="15"/>
-                <Separator Width="10" Height="25" Background="Transparent"/>
+                <Separator Width="20" Height="25" Background="Transparent"/>
                 <Button Grid.Column="2" Content="Ajouter un plat" Padding="15" />
-                <Separator Width="10" Height="25" Background="Transparent"/>
+                <Separator Width="20" Height="25" Background="Transparent"/>
                 <Button Grid.Column="2" Content="Supprimer un plat" Padding="15" />
-                <Separator Width="10" Height="25" Background="Transparent"/>
+                <Separator Width="20" Height="25" Background="Transparent"/>
                 <Button Grid.Column="2" Content="Edition du ticket" Padding="15" />
-                <Separator Width="10" Height="25" Background="Transparent"/>
-                <Button Grid.Column="2" Content="Carte Usager" Padding="15" />
-                
+
             </StackPanel>
 
 
