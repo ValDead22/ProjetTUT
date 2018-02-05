@@ -34,10 +34,14 @@ namespace ApplicationJampay.ViewModel.ViewModel
 
 
         private ObservableCollection<Menu> _collectionMenu = new ObservableCollection<Menu>();
-        private ObservableCollection<Plat> _collectionPlat;
-
         public IEnumerable<Menu> CollectionMenus { get { return _collectionMenu; } }
-        public IEnumerable<Plat> CollectionPlats { get { return _collectionPlat; } }
+
+        private Dictionary<int, ObservableCollection<Plat>> _dictionaryPlat = new Dictionary<int, ObservableCollection<Plat>>();
+        public IDictionary<int, ObservableCollection<Plat>> DictionaryPlat => _dictionaryPlat;
+
+        private ObservableCollection<Plat> _collectionPlat = new ObservableCollection<Plat>();
+        public ObservableCollection<Plat> CollectionPlats => _dictionaryPlat.Values;
+
 
         public GerantViewModel()
         {
@@ -51,14 +55,21 @@ namespace ApplicationJampay.ViewModel.ViewModel
                 foreach (Menu menu in _menuBusiness.GetAllMenus())
                 {
                     _collectionMenu.Add(menu);
+                    ObservableCollection<Plat> observable = new ObservableCollection<Plat>();
+
+                    foreach (Plat p in _platBusiness.GetPlatByMenuId(menu.CodeMenu))
+                    {
+                        observable.Add(p);
+                    }
+                    _dictionaryPlat.Add(menu.CodeMenu, observable);
                 }
+                _selectedMenu = _collectionMenu[0];
+                Console.WriteLine(DictionaryPlat[2]);
             }
             catch (Exception ex)
             {
                 DialogService.ShowErrorWindow(ex.Message);
-            }
-
-            
+            }            
         }
 
         private void test()
@@ -66,6 +77,8 @@ namespace ApplicationJampay.ViewModel.ViewModel
             Console.WriteLine("slt");
             Console.Write(SelectedMenu.Nom);
         }
+
+
 
         private Menu _selectedMenu;
         public Menu SelectedMenu
