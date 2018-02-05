@@ -9,66 +9,76 @@
         
         Title="Gérant1" Height="497.304" Width="606.18" >
     <Grid>
-        <DockPanel>
 
-            <StackPanel Orientation="Horizontal" DockPanel.Dock="Bottom" Margin="2,5">
-                <Label x:Name="isConnected" Content="Connecté en tant que : Alice"  >
-                </Label>
-                <Button x:Name="button" Content="Deconnexion" Width="426" HorizontalAlignment="Right" HorizontalContentAlignment="Center" />
-            </StackPanel>
-
-            <TabControl>
-                <TabItem Header="Consulter les menus">
-                    <StackPanel>
-                        <ListView x:Name="listView1" ItemsSource="{Binding CollectionMenus}" SelectedItem="{Binding SelectedMenu}" Margin="10" Height="167">
-                            
-                            <i:Interaction.Triggers>
-                                <i:EventTrigger EventName="MouseDoubleClick">
-                                    <i:InvokeCommandAction Command="{Binding SelectionChanged}" CommandParameter="{Binding ElementName=listView1,Path=SelectedItem}"/>
-                                </i:EventTrigger>
-                            </i:Interaction.Triggers>
-                            
-                            <ListView.View>
-                                <GridView>
-                                    <GridViewColumn Header="Date"  DisplayMemberBinding="{Binding DateElaboration}" />
-                                    <GridViewColumn Header="Menu"  DisplayMemberBinding="{Binding Nom}" />
-                                </GridView>
-                            </ListView.View>
-                        </ListView>
-                        <StackPanel Orientation="Horizontal" DockPanel.Dock="Bottom" Margin="2,5">
-                            <StackPanel  DockPanel.Dock="Bottom" Margin="2,5">
-                                <Button x:Name="addMenu" Content="Ajouter un nouveau menu" Width="150"  HorizontalContentAlignment="Center" Height="75" />
-                                <Button x:Name="addPlat" Content="Ajouter un nouveau plat" Width="150"  HorizontalContentAlignment="Center" Height="82" />
-                            </StackPanel>
-                            <ListView ItemsSource="{Binding CollectionPlats}" HorizontalAlignment="Right" Margin="10" Name="tPlat">
-                                <ListView.View>
-                                    <GridView>
-                                        <GridViewColumn Header="Plat" DisplayMemberBinding="{Binding Nom}" />
-                                    </GridView>
-                                </ListView.View>
-                            </ListView>
-                        </StackPanel>
-                    </StackPanel>
-                </TabItem>
-                <TabItem Header="Gérer les usagers" />
-                <StackPanel>
-                    <ListView Margin="10" Name="tUsager" Height="167">
-                        <ListView.View>
-                            <GridView>
-                                <GridViewColumn Header="Usager" Width="220" />
-                                <GridViewColumn Header="Paiement" Width="180"  />
-                                <GridViewColumn Header="Supprimer" Width="150"/>
-
-                            </GridView>
-                        </ListView.View>
-                    </ListView>
-                </StackPanel>
-
-            </TabControl>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="5*"/>
+            <RowDefinition Height="5*"/>
+            <RowDefinition Height="1*"/>
+        </Grid.RowDefinitions>
 
 
 
+        <ListView Grid.Row="0" Grid.ColumnSpan="2" x:Name="listView1" ItemsSource="{Binding CollectionMenus}" SelectedItem="{Binding SelectedMenu}" Margin="10" Height="167">
 
-        </DockPanel>
+            <i:Interaction.Triggers>
+                <i:EventTrigger EventName="MouseDoubleClick">
+                    <i:InvokeCommandAction Command="{Binding SelectionChanged}" CommandParameter="{Binding ElementName=listView1,Path=SelectedItem}"/>
+                </i:EventTrigger>
+            </i:Interaction.Triggers>
+
+
+
+            <ListView.View Grid.Row="0" Grid.ColumnSpan="2">
+                <GridView>
+                    <GridViewColumn Header="Date"  DisplayMemberBinding="{Binding DateElaboration}" />
+                    <GridViewColumn Header="Menu"  DisplayMemberBinding="{Binding Nom}" />
+                </GridView>
+            </ListView.View>
+        </ListView>
+
+        <Grid Grid.Row="1" Grid.ColumnSpan="2">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="2*"/>
+            </Grid.ColumnDefinitions>
+            <Grid Grid.Row="0">
+
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="1*"/>
+                    <RowDefinition Height="5" />
+                    <RowDefinition Height="1*"/>
+                </Grid.RowDefinitions>
+
+                <Button Grid.Row ="0" x:Name="addMenu" Content="Ajouter un nouveau menu" HorizontalContentAlignment="Center"  />
+                <Separator Grid.Row="1" Height="5" Background="Transparent" Margin="0,50.489,0,0"/>
+                <Button Grid.Row ="2" x:Name="addPlat" Content="Ajouter un nouveau plat" HorizontalContentAlignment="Center"  />
+            </Grid>
+
+            <ListView Grid.Row="1" Grid.Column="1" ItemsSource="{Binding CollectionPlats}" Margin="10" Name="tPlat">
+                <ListView.View>
+                    <GridView>
+                        <GridViewColumn Header="Plat" DisplayMemberBinding="{Binding Nom}" />
+                    </GridView>
+                </ListView.View>
+            </ListView>
+        </Grid>
+        <Grid Grid.Row="3" Grid.ColumnSpan="2">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="5*"/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+
+            <Label Grid.Column="0" Content="Connecté en tant que :" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+            <Button Grid.Column="1" Content="Déconnexion" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+        </Grid>
+
+
+
+
+
+
+
+
+
     </Grid>
 </Window>
