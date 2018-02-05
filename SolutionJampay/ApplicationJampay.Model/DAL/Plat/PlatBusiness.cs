@@ -12,7 +12,7 @@ namespace ApplicationJampay.Model.DAL.Plat
 
         public PlatBusiness()
         {
-            _platDAL = new PlatAccessLayer();
+            _platDAL = new PlatDataAccessLayer();
         }
 
         public List<Entity.Plat> GetPlatByMenuId(int menuId)

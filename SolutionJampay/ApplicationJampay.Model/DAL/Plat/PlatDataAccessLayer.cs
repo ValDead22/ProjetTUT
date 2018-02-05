@@ -9,7 +9,7 @@ using MySql.Data.MySqlClient;
 
 namespace ApplicationJampay.Model.DAL.Plat
 {
-    public class PlatAccessLayer : IPlatDataAccessLayer
+    public class PlatDataAccessLayer : IPlatDataAccessLayer
     {
         private SQLService _sQLService = SQLService.Instance;
 
@@ -30,7 +30,7 @@ namespace ApplicationJampay.Model.DAL.Plat
                 while (mySqlDataReader.Read())
                 {
                     Entity.Plat plat = new Entity.Plat((int)mySqlDataReader["CodePlat"], (int)mySqlDataReader["idTarif"], (DateTime)mySqlDataReader["DateEffet"], (DateTime)mySqlDataReader["DateFin"], mySqlDataReader["Categorie"] as string, mySqlDataReader["Nom"] as string);
-                    Console.Write(plat.ToString());
+
                     list.Add(plat);
                 }
                 return list;
