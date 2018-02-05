@@ -59,7 +59,7 @@
     <Compile Include="DAL\Menu\MenuBusiness.cs" />
     <Compile Include="DAL\Menu\MenuDataAccessLayer.cs" />
     <Compile Include="DAL\Plat\IPlatDataAccessLayer.cs" />
-    <Compile Include="DAL\Plat\PlatAccessLayer.cs" />
+    <Compile Include="DAL\Plat\PlatDataAccessLayer.cs" />
     <Compile Include="DAL\Plat\PlatBusiness.cs" />
     <Compile Include="DAL\Produit\IProductDataAccessLayer.cs" />
     <Compile Include="DAL\Produit\ProductBusiness.cs" />
