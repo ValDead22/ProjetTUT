@@ -29,5 +29,11 @@ namespace ApplicationJampay.Model.Entity
             this.Categorie = Categorie;
             this.Nom = Nom;
         }
+
+        override
+        public string ToString()
+        {
+            return CodePlat + " " + " "+  IdTarif + " " + Categorie + " " + Nom;
+        }
     }
 }

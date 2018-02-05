@@ -22,6 +22,8 @@ namespace ApplicationJampay.Model.Entity
 
         public Gerant Gerant { get; private set; }
 
+        public List<Plat> ListPLats { get; private set; }
+ 
         public Menu(int CodeMenu, int idGerant, DateTime DateElaboration, string Categorie, string Nom, string Observation)
         {
             this.CodeMenu = CodeMenu;
@@ -32,7 +34,12 @@ namespace ApplicationJampay.Model.Entity
             this.Observation = Observation;
         }
 
-        
-        
+        public void SetListPlats(List<Plat> list)
+        {
+            this.ListPLats = list;
+        }
+
+
+
     }
 }
