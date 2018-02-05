@@ -34,7 +34,7 @@ namespace ApplicationJampay.ViewModel.ViewModel
         public CaissierViewModel()
         {
 
-            _AddPlatCommand = new RelayCommand(() => AddPlat(), o => true);
+            _openAddPlatViewCommand = new RelayCommand(() => AddPlat(), o => true);
            
 
 
@@ -71,8 +71,8 @@ namespace ApplicationJampay.ViewModel.ViewModel
         public RelayCommand AjoutP { get; private set; }
         public RelayCommand Reglement { get; private set; }
 
-        private readonly RelayCommand _AddPlatCommand;
-        public ICommand LoginCommand => _AddPlatCommand;
+        private readonly RelayCommand _openAddPlatViewCommand;
+        public ICommand OpenAddPlatViewCommand => _openAddPlatViewCommand;
 
         private readonly RelayCommand _openCreatePlatViewCommand;
         public ICommand OpenCreatePlatViewCommand => _openCreatePlatViewCommand;
