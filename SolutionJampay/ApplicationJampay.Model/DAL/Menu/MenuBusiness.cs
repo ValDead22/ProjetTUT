@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ApplicationJampay.Model.DAL.Plat;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -9,15 +10,26 @@ namespace ApplicationJampay.Model.DAL.Menu
     public class MenuBusiness
     {
         private IMenuDataAccessLayer _menuDAL;
+        private IPlatDataAccessLayer _platDAL;
 
         public MenuBusiness()
         {
             _menuDAL = new MenuDataAccessLayer();
+            _platDAL = new PlatDataAccessLayer();
         }
 
         public List<Entity.Menu> GetAllMenus()
         {
-            return _menuDAL.GetAllMenus();
+            List<Entity.Menu> list = _menuDAL.GetAllMenus();
+
+
+            foreach(Entity.Menu m in list)
+            {
+                m.SetListPlats(_platDAL.GetPlatByMenuID(m.CodeMenu));
+            }
+            
+
+            return list;
         }
 
 
