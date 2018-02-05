@@ -49,6 +49,7 @@
     <Compile Include="Behavior\PasswordBehavior.cs" />
     <Compile Include="Command\RelayCommand.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ViewModel\AjouterPlatViewModelcs.cs" />
     <Compile Include="ViewModel\ErrorViewModel.cs" />
     <Compile Include="ViewModel\LoginViewModel.cs" />
     <Compile Include="ViewModel\GerantViewModel.cs" />

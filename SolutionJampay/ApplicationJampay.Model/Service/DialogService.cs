@@ -40,5 +40,33 @@ namespace ApplicationJampay.Model.Service
 
             windows.ShowDialog();
         }
+        public static void ShowPlatsWindow()
+        {
+            var createType = Type.GetType("ApplicationJampay.View.Plat, ApplicationJampay");
+            var windows = (System.Windows.Window)Activator.CreateInstance(createType);
+
+            windows.ShowDialog();
+        }
+        public static void ShowEntreesWindow()
+        {
+            var createType = Type.GetType("ApplicationJampay.View.Entree, ApplicationJampay");
+            var windows = (System.Windows.Window)Activator.CreateInstance(createType);
+
+            windows.ShowDialog();
+        }
+        public static void ShowSnacksWindow()
+        {
+            var createType = Type.GetType("ApplicationJampay.View.Snack, ApplicationJampay");
+            var windows = (System.Windows.Window)Activator.CreateInstance(createType);
+
+            windows.ShowDialog();
+        }
+        public static void ShowDessertstWindow()
+        {
+            var createType = Type.GetType("ApplicationJampay.View.Dessert, ApplicationJampay");
+            var windows = (System.Windows.Window)Activator.CreateInstance(createType);
+
+            windows.ShowDialog();
+        }
     }
 }
