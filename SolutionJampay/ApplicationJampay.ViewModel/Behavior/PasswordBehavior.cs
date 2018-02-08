@@ -20,9 +20,16 @@ namespace ApplicationJampay.ViewModel.Behavior
 
         public SecureString Password
         {
-            get => (SecureString)GetValue(PasswordProperty);
-            set => SetValue(PasswordProperty, value);
+            get
+            {
+                return (SecureString)GetValue(PasswordProperty);
+            }
+            set
+            {
+                SetValue(PasswordProperty, value);
+            }
         }
+       
 
         protected override void OnAttached()
         {
