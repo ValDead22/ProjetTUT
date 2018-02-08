@@ -31,8 +31,8 @@
             
             <ListView.View>
                 <GridView>
-                    <GridViewColumn Header="Date"   />
-                    <GridViewColumn Header="Menu"  />
+                    <GridViewColumn Header="Nom" DisplayMemberBinding="{Binding Nom}"/>
+                    <GridViewColumn Header="Date" DisplayMemberBinding="{Binding DateElaboration}"  />
                 </GridView>
                 </ListView.View>
             </ListView>

@@ -32,39 +32,25 @@ namespace ApplicationJampay.ViewModel.ViewModel
         private readonly RelayCommand _selectionChanged;
         public ICommand SelectionChanged => _selectionChanged;
 
-
         private ObservableCollection<Menu> _collectionMenu = new ObservableCollection<Menu>();
         public IEnumerable<Menu> CollectionMenus { get { return _collectionMenu; } }
-
-        private Dictionary<int, ObservableCollection<Plat>> _dictionaryPlat = new Dictionary<int, ObservableCollection<Plat>>();
-        public IDictionary<int, ObservableCollection<Plat>> DictionaryPlat => _dictionaryPlat;
-
+       
         private ObservableCollection<Plat> _collectionPlat = new ObservableCollection<Plat>();
-        public ObservableCollection<Plat> CollectionPlats => _dictionaryPlat.Values;
-
+        public IEnumerable<Plat> CollectionPlats { get { return _collectionPlat; } }
 
         public GerantViewModel()
         {
             _menuBusiness = new MenuBusiness();
             _platBusiness = new PlatBusiness();
 
-            _selectionChanged = new RelayCommand(() => test(), o => true);
+            _selectionChanged = new RelayCommand(() => UpdatePlatCollection(), o => true);
 
             try
             {
                 foreach (Menu menu in _menuBusiness.GetAllMenus())
                 {
                     _collectionMenu.Add(menu);
-                    ObservableCollection<Plat> observable = new ObservableCollection<Plat>();
-
-                    foreach (Plat p in _platBusiness.GetPlatByMenuId(menu.CodeMenu))
-                    {
-                        observable.Add(p);
-                    }
-                    _dictionaryPlat.Add(menu.CodeMenu, observable);
                 }
-                _selectedMenu = _collectionMenu[0];
-                Console.WriteLine(DictionaryPlat[2]);
             }
             catch (Exception ex)
             {
@@ -72,29 +58,25 @@ namespace ApplicationJampay.ViewModel.ViewModel
             }            
         }
 
-        private void test()
+        private void UpdatePlatCollection()
         {
-            Console.WriteLine("slt");
-            Console.Write(SelectedMenu.Nom);
+            _collectionPlat.Clear();
+            _platBusiness.GetPlatByMenuId(SelectedMenu.CodeMenu).ForEach(p => _collectionPlat.Add(p));
         }
-
-
 
         private Menu _selectedMenu;
         public Menu SelectedMenu
         {
             get
-            {                
+            {
                 return _selectedMenu;
             }
             set
-            {
+            {            
                 _selectedMenu = value;
                 OnPropertyChanged(nameof(SelectedMenu));
+                UpdatePlatCollection();
             }
         }
-
-
-    }    
-
+    }
 }
