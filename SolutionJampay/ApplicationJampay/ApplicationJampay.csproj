@@ -69,11 +69,17 @@
     <Compile Include="View\AjouterPlat.xaml.cs">
       <DependentUpon>AjouterPlat.xaml</DependentUpon>
     </Compile>
+    <Compile Include="View\AjouterPlatGerantView.xaml.cs">
+      <DependentUpon>AjouterPlatGerantView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\Caissier1.xaml.cs">
       <DependentUpon>Caissier1.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\Dessert.xaml.cs">
       <DependentUpon>Dessert.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\DialogYesNo.xaml.cs">
+      <DependentUpon>DialogYesNo.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\Entree.xaml.cs">
       <DependentUpon>Entree.xaml</DependentUpon>
@@ -118,11 +124,19 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="View\AjouterPlatGerantView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="View\Caissier1.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\Dessert.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\DialogYesNo.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
