@@ -26,7 +26,7 @@ namespace ApplicationJampay.View
 
             IViewModelBase viewModel = new LoginViewModel()
             {
-                Close = () => Hide()
+                Close = () => Close()
             };
 
             DataContext = viewModel;
