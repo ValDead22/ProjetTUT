@@ -15,6 +15,12 @@ namespace ApplicationJampay.Model.DAL.Plat
             _platDAL = new PlatDataAccessLayer();
         }
 
+        public List<Entity.Plat> GetAllPlat()
+        {
+            return _platDAL.GetAllPlat();
+        }
+
+
         public List<Entity.Plat> GetPlatByMenuId(int menuId)
         {
             return _platDAL.GetPlatByMenuID(menuId);

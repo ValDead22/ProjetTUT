@@ -10,6 +10,8 @@ namespace ApplicationJampay.Model.DAL.Plat
     {
         List<Entity.Plat> GetPlatByMenuID(int menuID);
 
+        List<Entity.Plat> GetAllPlat();
+
         void AddPlat(Entity.Plat plat);
     }
 }
