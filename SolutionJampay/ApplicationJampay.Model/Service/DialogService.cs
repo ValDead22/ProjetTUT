@@ -17,6 +17,15 @@ namespace ApplicationJampay.Model.Service
             windows.ShowDialog();
         }
 
+
+        public static void ShowLoginWindow()
+        {
+            var createType = Type.GetType("ApplicationJampay.View.LoginView, ApplicationJampay");
+            var windows = (System.Windows.Window)Activator.CreateInstance(createType);
+
+            windows.Show();
+        }
+
         public static void ShowErrorWindow(string message)
         {
             var createType = Type.GetType("ApplicationJampay.View.ErrorView, ApplicationJampay");
@@ -25,12 +34,21 @@ namespace ApplicationJampay.Model.Service
             windows.ShowDialog();
         }
 
+
+        public static void ShowAjouterPlatGerantWindow()
+        {
+            var createType = Type.GetType("ApplicationJampay.View.AjouterPlatGerantView, ApplicationJampay");
+            var windows = (System.Windows.Window)Activator.CreateInstance(createType);
+
+            windows.ShowDialog();
+        }
+
         public static void ShowGerantWindow()
         {
             var createType = Type.GetType("ApplicationJampay.View.Gérant1, ApplicationJampay");
             var windows = (System.Windows.Window)Activator.CreateInstance(createType);
 
-            windows.ShowDialog();
+            windows.Show();
         }
 
         public static void ShowAjouterPlatWindow()
