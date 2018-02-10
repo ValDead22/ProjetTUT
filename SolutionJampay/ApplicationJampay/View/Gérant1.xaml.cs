@@ -23,7 +23,15 @@ namespace ApplicationJampay.View
         public Gérant1()
         {
             InitializeComponent();
-            DataContext = new GerantViewModel();
+
+            GerantViewModel viewModel = new GerantViewModel()
+            {
+                Close = () => Hide()
+            };
+
+            DataContext = viewModel;
+            
         }
+        
     }
 }
