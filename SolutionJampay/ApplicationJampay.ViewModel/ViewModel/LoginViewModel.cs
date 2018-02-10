@@ -29,9 +29,17 @@ namespace ApplicationJampay.ViewModel.ViewModel
 
         public Action Close;
 
+        private int Try;
+
+        /// <summary>
+        /// Login Command
+        /// </summary>
         private readonly RelayCommand _loginCommand;
         public ICommand LoginCommand => _loginCommand;
 
+        /// <summary>
+        /// Logic to access to the Users data
+        /// </summary>
         private UserBusiness _userBusiness;
 
         /// <summary>
@@ -105,7 +113,6 @@ namespace ApplicationJampay.ViewModel.ViewModel
                     }
 
                     return finalHash.ToString();
-
                 }
             }
             finally
@@ -121,23 +128,29 @@ namespace ApplicationJampay.ViewModel.ViewModel
             {
                 Utilisateur utilisateur = _userBusiness.GetUser(Matricule, SecureStringToSHA256(Password));
                 
-                Close();
+                
 
                 switch (utilisateur.Fonction)
                 {
                     case "Gérant":
                         DialogService.ShowGerantWindow();
+                        Close();
                         break;
 
                     case "Caissier":
                         DialogService.ShowCaissierWindow();
+                        Close();
                         break;
                 }
-                                
+
+                
+
             }
             catch (Exception ex)
             {
-                DialogService.ShowErrorWindow(ex.Message);
+                Try++;
+                var msg = "Il vous reste " + (5 - Try).ToString() + " essais";
+                DialogService.ShowErrorWindow(ex.Message + "\n" + msg);
             }
             
         }
