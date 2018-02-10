@@ -7,7 +7,7 @@
         mc:Ignorable="d"
         Title="ErrorView" Height="171.429" Width="344.72">
     <Grid>
-        <Label x:Name="MsgLabel" Content="Label" HorizontalAlignment="Left" Margin="140,60,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="MsgLabel" Content="Label" HorizontalAlignment="Center" VerticalAlignment="Center" FontWeight="Bold" FontSize="20"/>
 
     </Grid>
 </Window>
