@@ -22,20 +22,22 @@ namespace ApplicationJampay.Model.DAL.Menu
         {
             List<Entity.Menu> list = _menuDAL.GetAllMenus();
 
-
             foreach(Entity.Menu m in list)
             {
                 m.SetListPlats(_platDAL.GetPlatByMenuID(m.CodeMenu));
-            }
-            
+            }         
 
             return list;
         }
 
-
-        public void AddProduit(Entity.Menu menu)
+        public void AddMenu(Entity.Menu menu)
         {
             _menuDAL.AddMenu(menu);
+        }
+
+        public List<string> GetAllCategories()
+        {
+            return _menuDAL.GetAllCategories();
         }
     }
 }

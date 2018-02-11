@@ -21,6 +21,14 @@ namespace ApplicationJampay.Model.DAL.Menu
             throw new NotImplementedException();
         }
 
+        public List<string> GetAllCategories()
+        {
+            return new List<string>
+            {
+                "test menu"
+            };
+        }
+
         public List<Entity.Menu> GetAllMenus()
         {
             var query = "SELECT * FROM Menu";

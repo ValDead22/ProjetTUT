@@ -19,5 +19,11 @@ namespace ApplicationJampay.Model.DAL.Menu
         /// </summary>
         /// <param name="menu">Menu to add</param>
         void AddMenu(Entity.Menu menu);
+
+        /// <summary>
+        /// Get all categories of menu
+        /// </summary>
+        /// <returns></returns>
+        List<string> GetAllCategories();
     }
 }
