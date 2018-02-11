@@ -4,6 +4,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using ApplicationJampay.Model.Entity;
+using System.Windows.Input;
 
 namespace ApplicationJampay.Model.Service
 {
@@ -35,17 +37,34 @@ namespace ApplicationJampay.Model.Service
         }
 
 
-        public static void ShowAjouterPlatGerantWindow()
+        public static void ShowYesNoWindow(string msg, Action yes)
         {
-            var createType = Type.GetType("ApplicationJampay.View.AjouterPlatGerantView, ApplicationJampay");
+            var createType = Type.GetType("ApplicationJampay.View.DialogYesNo, ApplicationJampay");
+            var windows = (System.Windows.Window)Activator.CreateInstance(createType, msg, yes);
+
+            windows.ShowDialog();
+        }
+
+
+        public static void ShowAjoutMenuView()
+        {
+            var createType = Type.GetType("ApplicationJampay.View.Gérant.AjoutPlatView, ApplicationJampay");
             var windows = (System.Windows.Window)Activator.CreateInstance(createType);
 
             windows.ShowDialog();
         }
 
-        public static void ShowGerantWindow()
+        public static void ShowAjoutPlatView()
         {
-            var createType = Type.GetType("ApplicationJampay.View.Gérant1, ApplicationJampay");
+            var createType = Type.GetType("ApplicationJampay.View.Gérant.AjoutMenuView, ApplicationJampay");
+            var windows = (System.Windows.Window)Activator.CreateInstance(createType);
+
+            windows.ShowDialog();
+        }
+
+        public static void ShowGérantMainView()
+        {
+            var createType = Type.GetType("ApplicationJampay.View.Gérant.GérantMainView, ApplicationJampay");
             var windows = (System.Windows.Window)Activator.CreateInstance(createType);
 
             windows.Show();
