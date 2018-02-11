@@ -66,11 +66,14 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="View\Gérant\AjoutMenuView.xaml.cs">
+      <DependentUpon>AjoutMenuView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\AjouterPlat.xaml.cs">
       <DependentUpon>AjouterPlat.xaml</DependentUpon>
     </Compile>
-    <Compile Include="View\AjouterPlatGerantView.xaml.cs">
-      <DependentUpon>AjouterPlatGerantView.xaml</DependentUpon>
+    <Compile Include="View\Gérant\AjoutPlatView.xaml.cs">
+      <DependentUpon>AjoutPlatView.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\Caissier1.xaml.cs">
       <DependentUpon>Caissier1.xaml</DependentUpon>
@@ -87,8 +90,8 @@
     <Compile Include="View\ErrorView.xaml.cs">
       <DependentUpon>ErrorView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="View\Gérant1.xaml.cs">
-      <DependentUpon>Gérant1.xaml</DependentUpon>
+    <Compile Include="View\Gérant\GérantMainView.xaml.cs">
+      <DependentUpon>GérantMainView.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\LoginView.xaml.cs">
       <DependentUpon>LoginView.xaml</DependentUpon>
@@ -120,11 +123,15 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
+    <Page Include="View\Gérant\AjoutMenuView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="View\AjouterPlat.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="View\AjouterPlatGerantView.xaml">
+    <Page Include="View\Gérant\AjoutPlatView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -148,7 +155,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="View\Gérant1.xaml">
+    <Page Include="View\Gérant\GérantMainView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -197,5 +204,6 @@
   <ItemGroup>
     <Resource Include="Themes\Metro\HowToApplyTheme.txt" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
