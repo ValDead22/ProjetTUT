@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ApplicationJampay.ViewModel.ViewModel;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -19,9 +20,14 @@ namespace ApplicationJampay.View
     /// </summary>
     public partial class DialogYesNo : Window
     {
-        public DialogYesNo()
-        {
+        public DialogYesNo(string msg, Action yes)
+        {    
             InitializeComponent();
+
+            DataContext = new YesNoViewModel(msg, yes)
+            {
+                Close = () => this.Close()
+            };
         }
     }
 }

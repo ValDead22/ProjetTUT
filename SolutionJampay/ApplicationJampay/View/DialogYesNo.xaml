@@ -13,12 +13,12 @@
             <RowDefinition/>
         </Grid.RowDefinitions>
 
-        <TextBlock Text="Test" FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+        <TextBlock Text="{Binding Msg}" FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Center"/>
 
         <StackPanel Orientation="Horizontal" Grid.Row="1" HorizontalAlignment="Center" >
-            <Button Content="Oui" Padding="5" Command="{Binding Yes}"/>
+            <Button Content="Confirmer" Padding="5" Command="{Binding YesCommand}"/>
             <Separator Visibility="Hidden" Width="20"/>
-            <Button Content="Non" Padding="5" Command="{Binding No}"/>
+            <Button Content="Annuler" Padding="5" Command="{Binding NoCommand}"/>
 
         </StackPanel>
 
