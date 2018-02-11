@@ -133,7 +133,7 @@ namespace ApplicationJampay.ViewModel.ViewModel
                 switch (utilisateur.Fonction)
                 {
                     case "Gérant":
-                        DialogService.ShowGerantWindow();
+                        DialogService.ShowGérantMainView();
                         Close();
                         break;
 
