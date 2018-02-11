@@ -10,7 +10,7 @@ namespace ApplicationJampay.Model.Entity
     {
         public int CodePlat { get; private set; }
 
-        public int IdTarif { get; private set; }
+        public int Tarif { get; private set; }
 
         public DateTime DateEffet { get; private set; }
 
@@ -20,20 +20,24 @@ namespace ApplicationJampay.Model.Entity
 
         public string Nom { get; private set; }
 
-        public Plat(int CodePlat, int idTarif, DateTime DateEffet, DateTime DateFin, string Categorie, string Nom)
+        public Plat(int CodePlat, int Tarif, DateTime DateEffet, DateTime DateFin, string Categorie, string Nom)
         {
             this.CodePlat = CodePlat;
-            this.IdTarif = idTarif;
+            this.Tarif = Tarif;
             this.DateEffet = DateEffet;
             this.DateFin = DateFin;
             this.Categorie = Categorie;
             this.Nom = Nom;
         }
 
-        override
-        public string ToString()
+        public Plat(int Tarif, DateTime DateEffet, DateTime DateFin, string Categorie, string Nom)
         {
-            return CodePlat + " " + " "+  IdTarif + " " + Categorie + " " + Nom;
+            this.Tarif = Tarif;
+            this.DateEffet = DateEffet;
+            this.DateFin = DateFin;
+            this.Categorie = Categorie;
+            this.Nom = Nom;
         }
+
     }
 }

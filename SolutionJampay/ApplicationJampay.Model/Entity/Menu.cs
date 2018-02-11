@@ -20,13 +20,20 @@ namespace ApplicationJampay.Model.Entity
 
         public string Observation { get; private set; }
 
-        public Gerant Gerant { get; private set; }
-
         public List<Plat> ListPLats { get; private set; }
  
         public Menu(int CodeMenu, int idGerant, DateTime DateElaboration, string Categorie, string Nom, string Observation)
         {
             this.CodeMenu = CodeMenu;
+            this.IdGerant = idGerant;
+            this.DateElaboration = DateElaboration;
+            this.Categorie = Categorie;
+            this.Nom = Nom;
+            this.Observation = Observation;
+        }
+
+        public Menu( int idGerant, DateTime DateElaboration, string Categorie, string Nom, string Observation)
+        {
             this.IdGerant = idGerant;
             this.DateElaboration = DateElaboration;
             this.Categorie = Categorie;
