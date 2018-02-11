@@ -18,6 +18,14 @@ namespace ApplicationJampay.Model.DAL.Plat
             throw new NotImplementedException();
         }
 
+        public List<string> GetAllCategories()
+        {
+            return new List<string>
+            {
+                "test plat"
+            };
+        }
+
         public List<Entity.Plat> GetAllPlat()
         {
             var query = "SELECT * FROM Plat";

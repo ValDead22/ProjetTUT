@@ -20,16 +20,19 @@ namespace ApplicationJampay.Model.DAL.Plat
             return _platDAL.GetAllPlat();
         }
 
-
         public List<Entity.Plat> GetPlatByMenuId(int menuId)
         {
             return _platDAL.GetPlatByMenuID(menuId);
         }
 
-
         public void AddPlat(Entity.Plat plat)
         {
             _platDAL.AddPlat(plat);
+        }
+
+        public List<string> GetAllCategories()
+        {
+            return _platDAL.GetAllCategories();
         }
     }
 }
