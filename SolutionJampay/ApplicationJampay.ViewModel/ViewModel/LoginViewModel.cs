@@ -9,7 +9,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
 using ApplicationJampay.Model.DAL;
-using ApplicationJampay.Model.DAL.Usager;
+using ApplicationJampay.Model.DAL.Utilisateur;
 using ApplicationJampay.Model.Entity;
 using ApplicationJampay.Model.Service;
 using ApplicationJampay.ViewModel.Command;
