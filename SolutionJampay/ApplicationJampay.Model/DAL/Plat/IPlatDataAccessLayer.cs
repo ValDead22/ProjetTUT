@@ -15,5 +15,7 @@ namespace ApplicationJampay.Model.DAL.Plat
         void AddPlat(Entity.Plat plat);
 
         List<string> GetAllCategories();
+
+        List<Entity.Plat> GetPlatbyCateg(string Categorie);
     }
 }

@@ -34,5 +34,10 @@ namespace ApplicationJampay.Model.DAL.Plat
         {
             return _platDAL.GetAllCategories();
         }
+
+        public List<Entity.Plat> GetPlatbyCateg(string Categorie)
+        {
+            return _platDAL.GetPlatbyCateg(Categorie);
+        }
     }
 }
