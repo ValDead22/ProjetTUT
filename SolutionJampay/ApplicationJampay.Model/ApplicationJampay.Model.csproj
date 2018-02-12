@@ -64,9 +64,9 @@
     <Compile Include="DAL\Produit\IProductDataAccessLayer.cs" />
     <Compile Include="DAL\Produit\ProductBusiness.cs" />
     <Compile Include="DAL\Produit\ProductDataAccessLayer.cs" />
-    <Compile Include="DAL\Usager\IUserDataAccessLayer.cs" />
-    <Compile Include="DAL\Usager\UserBusiness.cs" />
-    <Compile Include="DAL\Usager\UserDataAccessLayer.cs" />
+    <Compile Include="DAL\Utilisateur\IUserDataAccessLayer.cs" />
+    <Compile Include="DAL\Utilisateur\UserBusiness.cs" />
+    <Compile Include="DAL\Utilisateur\UserDataAccessLayer.cs" />
     <Compile Include="Entity\Administrateur.cs" />
     <Compile Include="Entity\Caissier.cs" />
     <Compile Include="Entity\Carte.cs" />
