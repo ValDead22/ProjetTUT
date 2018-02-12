@@ -15,17 +15,66 @@ namespace ApplicationJampay.Model.DAL.Plat
 
         public void AddPlat(Entity.Plat plat)
         {
-            throw new NotImplementedException();
         }
 
         public List<string> GetAllCategories()
         {
-            return new List<string>
+            var query = "SELECT * FROM CategoriePlat";
+            MySqlDataReader mySqlDataReader = _sQLService.Load(query);
+
+            try
             {
-                "test plat"
-            };
+                List<string> list = new List<string>();
+
+                while (mySqlDataReader.Read())
+                {
+                    string categ = (string)mySqlDataReader["Libelle"];
+                    list.Add(categ);
+
+                }
+                return list;
+            }
+            catch
+            {
+                throw new Exception("Aucune catégories !");
+            }
+            finally
+            {
+                mySqlDataReader.Close();
+            }
         }
 
+        public List<Entity.Plat> GetPlatbyCateg(string Categorie)
+        {
+            var query = "SELECT * FROM Plat WHERE Categorie=\"" + Categorie + "\"";
+            MySqlDataReader mySqlDataReader = _sQLService.Load(query);
+
+            try
+            {
+                List<Entity.Plat> list = new List<Entity.Plat>();
+
+                while (mySqlDataReader.Read())
+                {
+                    Entity.Plat plat = new Entity.Plat((int)mySqlDataReader["CodePlat"],
+                        (int)mySqlDataReader["idTarif"],
+                        (DateTime)mySqlDataReader["DateEffet"],
+                        (DateTime)mySqlDataReader["DateFin"],
+                        mySqlDataReader["Categorie"] as string,
+                        mySqlDataReader["Nom"] as string);
+
+                    list.Add(plat);
+                }
+                return list;
+            }
+            catch
+            {
+                throw new Exception("Pas de plats !");
+            }
+            finally
+            {
+                mySqlDataReader.Close();
+            }
+        }
         public List<Entity.Plat> GetAllPlat()
         {
             var query = "SELECT * FROM Plat";
