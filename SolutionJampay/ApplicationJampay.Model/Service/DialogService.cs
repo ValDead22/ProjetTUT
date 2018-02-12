@@ -11,6 +11,22 @@ namespace ApplicationJampay.Model.Service
 {
     public class DialogService
     {
+        public static void ShowModifMenuView()
+        {
+            var createType = Type.GetType("ApplicationJampay.View.Gérant.ModifMenuView, ApplicationJampay");
+            var windows = (System.Windows.Window)Activator.CreateInstance(createType);
+
+            windows.ShowDialog();
+        }
+
+        public static void ShowModifPlatView()
+        {
+            var createType = Type.GetType("ApplicationJampay.View.Gérant.ModifPlatView, ApplicationJampay");
+            var windows = (System.Windows.Window)Activator.CreateInstance(createType);
+
+            windows.ShowDialog();
+        }
+
         public static void ShowCaissierWindow()
         {
             var createType = Type.GetType("ApplicationJampay.View.Caissier1, ApplicationJampay");
