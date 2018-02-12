@@ -23,15 +23,34 @@ namespace ApplicationJampay.Model.DAL.Menu
 
         public List<string> GetAllCategories()
         {
-            return new List<string>
+            var query = "SELECT * FROM CategorieMenu ";
+            MySqlDataReader mySqlDataReader = _sQLService.Load(query);
+
+            try
             {
-                "test menu"
-            };
+                List<string> list = new List<string>();
+                while (mySqlDataReader.Read())
+                {
+                    string categ = mySqlDataReader["Libelle"];
+
+                    list.Add(categ);
+                }
+                return list;
+            }
+            catch
+            {
+                throw new Exception("Aucune catégories !");
+            }
+            finally
+            {
+                mySqlDataReader.Close();
+            }
         }
 
         public List<Entity.Menu> GetAllMenus()
         {
             var query = "SELECT * FROM Menu";
+
             MySqlDataReader mySqlDataReader = _sQLService.Load(query);
 
             try
