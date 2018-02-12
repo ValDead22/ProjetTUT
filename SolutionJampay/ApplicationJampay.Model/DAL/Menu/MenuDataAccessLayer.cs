@@ -18,7 +18,8 @@ namespace ApplicationJampay.Model.DAL.Menu
 
         public void AddMenu(Entity.Menu menu)
         {
-            throw new NotImplementedException();
+            var query = "INSERT INTO Plat VALUES(\"" + null + "\"" + ",\"" + menu.DateElaboration + "\"" + ",\"" + menu.Categorie + "\"" + ",\"" + menu.Nom + "\"" + ",\"" + menu.Observation + "\"" + ",\"" + menu.IdGerant+ "\"";
+            MySqlDataReader mySqlDataReader = _sQLService.Load(query);
         }
 
         public List<string> GetAllCategories()
