@@ -31,7 +31,7 @@ namespace ApplicationJampay.Model.DAL.Menu
                 List<string> list = new List<string>();
                 while (mySqlDataReader.Read())
                 {
-                    string categ = mySqlDataReader["Libelle"];
+                    string categ = (string)mySqlDataReader["Libelle"];
 
                     list.Add(categ);
                 }
