@@ -29,7 +29,7 @@
                 <Separator Width="20" Height="25" Background="Transparent"/>
                 <Button Grid.Column="2" Content="Ajouter un plat" Padding="15" Command="{Binding OpenAddPlatViewCommand}"/>
                 <Separator Width="20" Height="25" Background="Transparent"/>
-                <Button Grid.Column="2" Content="Supprimer un plat" Command="{Binding DeletePlatCommand}" Padding="15" />
+                <Button Grid.Column="2" Content="Supprimer un plat" Command="{Binding OpenRemovePlatCommand}" Padding="15" />
                 <Separator Width="20" Height="25" Background="Transparent"/>
 
             </StackPanel>
