@@ -10,6 +10,7 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Diagnostics;
+using System.Linq;
 using System.Windows.Input;
 
 namespace ApplicationJampay.ViewModel.ViewModel.Gérant
@@ -106,6 +107,8 @@ namespace ApplicationJampay.ViewModel.ViewModel.Gérant
                 foreach (Utilisateur utilisateur in _userBusiness.GetAllUser())
                 {
                     _collectionUtilisateur.Add(utilisateur);
+
+                    SelectedFonction = _collectionUtilisateur.FirstOrDefault().Fonction;
                 }
 
             }
@@ -135,7 +138,7 @@ namespace ApplicationJampay.ViewModel.ViewModel.Gérant
                 {
                     "Gérant",
                     "Caissier",
-                    "Administrateur"
+                    "Cuisinier"
                 };
             }
             set
@@ -144,6 +147,31 @@ namespace ApplicationJampay.ViewModel.ViewModel.Gérant
                 OnPropertyChanged(nameof(AvailableFonction));
             }
         }
+
+        private Utilisateur _selectedUtilisateur;
+        public Utilisateur SelectedUtilisateur
+        {
+            get { return _selectedUtilisateur; }
+            set
+            {
+                _selectedUtilisateur = value;
+                OnPropertyChanged(nameof(SelectedUtilisateur));
+            }
+        }
+
+
+
+        private string _selectedFonction;
+        public string SelectedFonction
+        {
+            get { return _selectedUtilisateur.Fonction; }
+            set {
+                _selectedFonction = value;
+                OnPropertyChanged(nameof(SelectedFonction));
+            }
+        }
+
+
 
 
         private void UpdatePlatCollection()

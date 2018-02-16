@@ -38,32 +38,21 @@ namespace ApplicationJampay.ViewModel.ViewModel
 
         }
         private readonly RelayCommand _displayPlatCommand;
-        public ICommand displayPlatViewCommand => _displayPlatCommand;
+        public ICommand DisplayPlatViewCommand => _displayPlatCommand;
 
         private readonly RelayCommand _displayEntreeCommand;
-        public ICommand displayEntreeViewCommand => _displayEntreeCommand;
+        public ICommand DisplayEntreeViewCommand => _displayEntreeCommand;
 
         private readonly RelayCommand _displayDessertCommand;
-        public ICommand displayDessertViewCommand => _displayDessertCommand;
+        public ICommand DisplayDessertViewCommand => _displayDessertCommand;
 
         private readonly RelayCommand _displaySnackCommand;
-        public ICommand displaySnackViewCommand => _displaySnackCommand;
-
-        private List<Plat> _collectionOfSelectedCateg;
-        public List<Plat> CollectionOfSelectedCateg
-        {
+        public ICommand DisplaySnackViewCommand => _displaySnackCommand;
 
 
-            get
-            {
-                return _collectionOfSelectedCateg;
-            }
-            set
-            {
-                _collectionOfSelectedCateg = value;
-                OnPropertyChanged(nameof(CollectionOfSelectedCateg));
-            }
-        }
+
+        private ObservableCollection<Plat> _coollectionOfSelectedCateg = new ObservableCollection<Plat>();
+        public IEnumerable<Plat> CollectionOfSelectedCateg { get { return _coollectionOfSelectedCateg; } }
 
 
 
@@ -71,21 +60,21 @@ namespace ApplicationJampay.ViewModel.ViewModel
 
         public void Plats()
         {
-            CollectionOfSelectedCateg.Clear();
+            _coollectionOfSelectedCateg.Clear();
 
             List<Plat> listPlats = new List<Plat>();
             listPlats = _platBusiness.GetPlatbyCateg("Plat");
 
             foreach(Plat plat in listPlats)
             {
-                CollectionOfSelectedCateg.Add(plat);
+                _coollectionOfSelectedCateg.Add(plat);
             }
 
         }
 
         public void Entrees()
        {
-            CollectionOfSelectedCateg.Clear();
+            _coollectionOfSelectedCateg.Clear();
 
             List<Plat> listEntrees = new List<Plat>();
 
@@ -93,21 +82,21 @@ namespace ApplicationJampay.ViewModel.ViewModel
 
             foreach (Plat entree in listEntrees)
             {
-                CollectionOfSelectedCateg.Add(entree);
+                _coollectionOfSelectedCateg.Add(entree);
             }
         }
 
         public void Desserts()
-        { 
+        {
 
-            CollectionOfSelectedCateg.Clear();
+            _coollectionOfSelectedCateg.Clear();
             List<Plat> listDesserts = new List<Plat>();
 
             listDesserts = _platBusiness.GetPlatbyCateg("Dessert");
 
             foreach (Plat dessert in listDesserts)
             {
-                CollectionOfSelectedCateg.Add(dessert);
+                _coollectionOfSelectedCateg.Add(dessert);
             }
 
 
@@ -117,7 +106,7 @@ namespace ApplicationJampay.ViewModel.ViewModel
         public void Snacks()
         {
 
-            CollectionOfSelectedCateg.Clear();
+            _coollectionOfSelectedCateg.Clear();
 
             List<Plat> listSnacks = new List<Plat>();
 
@@ -125,7 +114,7 @@ namespace ApplicationJampay.ViewModel.ViewModel
 
             foreach (Plat snack in listSnacks)
             {
-                CollectionOfSelectedCateg.Add(snack);
+                _coollectionOfSelectedCateg.Add(snack);
             }
 
         }

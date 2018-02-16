@@ -119,7 +119,7 @@
 
         <TabItem Header="Gestion - Utilisateurs" >
 
-            <ListView ItemsSource="{Binding CollectionUtilisateur}">
+            <ListView ItemsSource="{Binding CollectionUtilisateur}" SelectedItem="{Binding SelectedUtilisateur}">
                 <ListView.View>
                     <GridView>
 
@@ -131,9 +131,7 @@
                         <GridViewColumn Header="Role utilisateur" Width="115" >
                             <GridViewColumn.CellTemplate>
                                 <DataTemplate>
-                                    <ComboBox IsEditable="False" 
-                          IsSynchronizedWithCurrentItem="False"
-                          ItemsSource="{Binding Path=DataContext.AvailableFonction}"/>
+                                    <ComboBox  IsSynchronizedWithCurrentItem="False" ItemsSource="{Binding RelativeSource={RelativeSource AncestorType=ListView}, Path=DataContext.AvailableFonction}" SelectedIndex="{Binding RelativeSource={RelativeSource AncestorType=ListView}, Path=DataContext.CollectionUtilisateur.IndexOf(SelectedUtilisateur), Mode=TwoWay}" />
                                 </DataTemplate>
                             </GridViewColumn.CellTemplate>
                         </GridViewColumn>
