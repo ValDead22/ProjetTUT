@@ -66,6 +66,8 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Converter\DateToStringConverter.cs" />
+    <Compile Include="Converter\SelectedItemToIsEnable.cs" />
     <Compile Include="View\Gérant\AjoutMenuView.xaml.cs">
       <DependentUpon>AjoutMenuView.xaml</DependentUpon>
     </Compile>
