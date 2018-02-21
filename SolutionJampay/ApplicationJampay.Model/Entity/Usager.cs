@@ -8,35 +8,43 @@ namespace ApplicationJampay.Model.Entity
 {
     public class Usager
     {
-        private DateTime DateEntree { get; set; }
+        public int Matricule { get; private set; }
 
-        private DateTime DateFinContrat { get; set; }
+        public string Nom { get; private set; }
+        public string Prenom { get; private set; }
+        public string Titre { get; private set; }
+        public string Paiement { get; private set; }
 
-        private int Matricule { get; set; }
+        public int CodeFonction { get; private set; }
+        public int Service { get; private set; }
+        public int? MatriculeCarte { get; private set; }
 
-        private int CodeFonction { get; set; }
-
-        private int Service { get; set; }
-
-        private string Nom { get; set; }
-
-        private string Prenom { get; set; }
-
-        private string Titre { get; set; }
+        public DateTime DateEntree { get; private set; }
+        public DateTime? DateFinContrat { get; private set; }
 
 
 
-        public Usager(DateTime DateEntree, DateTime DateFinContrat, int Matricule, int CodeFonction, int Service, string Nom, string Prenom, string Titre)
+        public Usager(DateTime dateEntree, 
+            int matricule, 
+            int codeFonction, 
+            int service, 
+            string nom, 
+            string prenom, 
+            string titre, 
+            string paiement,
+            int? matriculeCarte = default(int), 
+            DateTime? dateFinContrat = default(DateTime?))
         {
-            this.Matricule = Matricule;
-            this.DateEntree = DateEntree;
-            this.DateFinContrat = DateFinContrat;
-            this.Nom = Nom;
-            this.Prenom = Prenom;
-            this.Service = Service;
-            this.CodeFonction = CodeFonction;
-            this.Titre = Titre;
-
+            Paiement = paiement;
+            Matricule = matricule;
+            DateEntree = dateEntree;
+            DateFinContrat = dateFinContrat;
+            Nom = nom;
+            Prenom = prenom;
+            Service = service;
+            CodeFonction = codeFonction;
+            Titre = titre;
+            DateFinContrat = dateFinContrat;
         }
     }
 }

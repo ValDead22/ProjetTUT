@@ -6,28 +6,23 @@ using System.Threading.Tasks;
 
 namespace ApplicationJampay.Model.Entity
 {
-    public class Utilisateur
+    public class Utilisateur : Usager
     {
         public string Fonction { get; private set; }
 
-        public int IdUtilisateur { get; private set; }
-
-        public string Nom { get; private set; }
-
-        public string Prenom { get; private set; }
-
-        public Utilisateur(string Fonction, int idUtilisateur)
+        public Utilisateur(string fonction, 
+            DateTime dateEntree,
+            int matricule,
+            int codeFonction,
+            int service,
+            string nom,
+            string prenom,
+            string titre,
+            string paiement,
+            int? matriculeCarte = default(int),
+            DateTime? dateFinContrat = default(DateTime?)) : base(dateEntree, matricule, codeFonction, service, nom, prenom, titre, paiement, matriculeCarte, dateFinContrat)
         {
-            this.Fonction = Fonction;
-            this.IdUtilisateur = idUtilisateur;
-        }
-
-        public Utilisateur(int idUtilisateur, string Fonction, string nom, string prenom)
-        {
-            this.Fonction = Fonction;
-            this.IdUtilisateur = idUtilisateur;
-            this.Nom = nom;
-            this.Prenom = prenom;
+            Fonction = fonction;
         }
 
     }

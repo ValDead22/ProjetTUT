@@ -64,10 +64,12 @@
     <Compile Include="DAL\Produit\IProductDataAccessLayer.cs" />
     <Compile Include="DAL\Produit\ProductBusiness.cs" />
     <Compile Include="DAL\Produit\ProductDataAccessLayer.cs" />
-    <Compile Include="DAL\Utilisateur\IUserDataAccessLayer.cs" />
-    <Compile Include="DAL\Utilisateur\UserBusiness.cs" />
-    <Compile Include="DAL\Utilisateur\UserDataAccessLayer.cs" />
-    <Compile Include="Entity\Administrateur.cs" />
+    <Compile Include="DAL\Usager\IUsagerDataAccessLayer.cs" />
+    <Compile Include="DAL\Usager\UsagerBusiness.cs" />
+    <Compile Include="DAL\Usager\UsagerDataAccessLayer.cs" />
+    <Compile Include="DAL\Utilisateur\IUtilisateurDataAccessLayer.cs" />
+    <Compile Include="DAL\Utilisateur\UtilisateurBusiness.cs" />
+    <Compile Include="DAL\Utilisateur\UtilisateurDataAccessLayer.cs" />
     <Compile Include="Entity\Caissier.cs" />
     <Compile Include="Entity\Carte.cs" />
     <Compile Include="Entity\Commande.cs" />

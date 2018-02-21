@@ -1,5 +1,6 @@
 ﻿using ApplicationJampay.Model.DAL.Menu;
 using ApplicationJampay.Model.DAL.Plat;
+using ApplicationJampay.Model.DAL.Usager;
 using ApplicationJampay.Model.DAL.Utilisateur;
 using ApplicationJampay.Model.Entity;
 using ApplicationJampay.Model.Service;
@@ -20,18 +21,19 @@ namespace ApplicationJampay.ViewModel.ViewModel.Gérant
     public class GérantMainViewModel : IViewModelBase
     {
 
+        public Action Close;
+
         #region Property stuff
         public event PropertyChangedEventHandler PropertyChanged;
-
         
 
         void OnPropertyChanged(string propertyName)
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
-        #endregion
+        #endregion        
 
-        public Action Close;
+        #region Commands
 
         private readonly RelayCommand _openAddingPlatWindow;
         public ICommand OpenAddingPlatWindow => _openAddingPlatWindow;
@@ -51,16 +53,25 @@ namespace ApplicationJampay.ViewModel.ViewModel.Gérant
         private readonly RelayCommand _openModifyingPlatWindow;
         public ICommand OpenModifyingPlatWindow => _openModifyingPlatWindow;
 
-        /// <summary>
-        /// Logic to access to the Menus data
-        /// </summary>
+        private readonly RelayCommand _openModifyingMoyenDePaiementWindow;
+        public ICommand OpenModifyingMoyenDePaiementWindow => _openModifyingMoyenDePaiementWindow;
+
+        private readonly RelayCommand _openModifyingFonctionWindow;
+        public ICommand OpenModifyingFonctionWindow => _openModifyingFonctionWindow;
+
+        #endregion
+
+        #region Data Access
+
         private MenuBusiness _menuBusiness;
-        /// <summary>
-        /// Logic to access to the PLats data
-        /// </summary>
+
         private PlatBusiness _platBusiness;
 
-        private UserBusiness _userBusiness;
+        private UtilisateurBusiness _utilisateurBusiness;
+
+        private UsagerBusiness _usagerBusiness;
+
+        #endregion
 
         #region ObservableCollections
 
@@ -76,23 +87,30 @@ namespace ApplicationJampay.ViewModel.ViewModel.Gérant
         private ObservableCollection<Utilisateur> _collectionUtilisateur = new ObservableCollection<Utilisateur>();
         public IEnumerable<Utilisateur> CollectionUtilisateur { get { return _collectionUtilisateur; } }
 
+        private ObservableCollection<Usager> _collectionUsager = new ObservableCollection<Usager>();
+        public IEnumerable<Usager> CollectionUsager { get { return _collectionUsager; } }
+
         #endregion
 
         public GérantMainViewModel()
         {
             _menuBusiness = new MenuBusiness();
             _platBusiness = new PlatBusiness();
-            _userBusiness = new UserBusiness();
+            _utilisateurBusiness = new UtilisateurBusiness();
+            _usagerBusiness = new UsagerBusiness();
 
 
-            _openDeletingMenuWindow = new RelayCommand(() => DialogService.ShowYesNoWindow("Etes-vous sûr de vouloir supprimer ce menu ?", new Action(test1)), o => _selectedMenu != null);
-            _openDeletingPlatWindow = new RelayCommand(() => DialogService.ShowYesNoWindow("Etes-vous sûr de vouloir supprimer ce plat ?", new Action(test1)), o => _selectedPlat != null);
+            _openDeletingMenuWindow = new RelayCommand(() => DialogService.ShowYesNoWindow("Etes-vous sûr de vouloir supprimer ce menu ?", new Action(test1)), o => true);
+            _openDeletingPlatWindow = new RelayCommand(() => DialogService.ShowYesNoWindow("Etes-vous sûr de vouloir supprimer ce plat ?", new Action(test1)), o => true);
 
             _openAddingPlatWindow = new RelayCommand(() => DialogService.ShowAjoutMenuView(), o => true);
             _openAddingMenuWindow = new RelayCommand(() => DialogService.ShowAjoutPlatView(), o => true);
 
-            _openModifyingMenuWindow = new RelayCommand(() => DialogService.ShowModifMenuView(), o => _selectedMenu == null);
-            _openModifyingPlatWindow = new RelayCommand(() => DialogService.ShowModifPlatView(), o => _selectedPlat != null);
+            _openModifyingMenuWindow = new RelayCommand(() => DialogService.ShowModifMenuView(), o => true);
+            _openModifyingPlatWindow = new RelayCommand(() => DialogService.ShowModifPlatView(), o => true);
+
+            _openModifyingMoyenDePaiementWindow = new RelayCommand(() => DialogService.ShowYesNoWindow("Etes-vous sûr de vouloir modifier le moyen de paiement de " + SelectedUsager.Titre + " " + SelectedUsager.Nom + "\n" + SelectedUsager.Paiement + " => " + SelectedMoyenDePaiement, new Action(ModifyMoyenDePaiement)), o => true);
+            _openModifyingFonctionWindow = new RelayCommand(() => DialogService.ShowYesNoWindow("Etes vous sût de vouloir changer la fonction de " + SelectedUtilisateur.Titre + " " + SelectedUtilisateur.Nom + "\n" + SelectedUtilisateur.Fonction + " => " + SelectedFonction, new Action(ModifyFonction)), o => true);
 
             try
             {
@@ -100,15 +118,20 @@ namespace ApplicationJampay.ViewModel.ViewModel.Gérant
                 {
                     _collectionPlat.Add(plat);
                 }
+
                 foreach (Menu menu in _menuBusiness.GetAllMenus())
                 {
                     _collectionMenu.Add(menu);
                 }
-                foreach (Utilisateur utilisateur in _userBusiness.GetAllUser())
+
+                foreach (Utilisateur utilisateur in _utilisateurBusiness.GetAllUtilisateurs())
                 {
                     _collectionUtilisateur.Add(utilisateur);
+                }
 
-                    SelectedFonction = _collectionUtilisateur.FirstOrDefault().Fonction;
+                foreach (Usager usager in _usagerBusiness.GetAllUsagers())
+                {
+                    _collectionUsager.Add(usager);
                 }
 
             }
@@ -116,6 +139,45 @@ namespace ApplicationJampay.ViewModel.ViewModel.Gérant
             {
                 DialogService.ShowErrorWindow(ex.Message);
             }            
+        }
+
+        private Usager _selectedUsager;
+        public Usager SelectedUsager
+        {
+            get { return _selectedUsager; }
+            set
+            {
+                _selectedUsager = value;
+                OnPropertyChanged(nameof(SelectedUsager));
+            }
+        }
+
+        private Utilisateur _selectedUtilisateur;
+        public Utilisateur SelectedUtilisateur
+        {
+            get { return _selectedUtilisateur; }
+            set
+            {
+                _selectedUtilisateur = value;
+                OnPropertyChanged(nameof(SelectedUtilisateur));
+            }
+        }
+
+
+        private void ModifyMoyenDePaiement()
+        {
+            _usagerBusiness.ModifyMoyenDePaiement(SelectedUsager.Matricule, SelectedMoyenDePaiement);
+            _collectionUsager.Clear();
+            _usagerBusiness.GetAllUsagers().ForEach(u => _collectionUsager.Add(u));
+
+        }
+
+        private void ModifyFonction()
+        {
+            _utilisateurBusiness.ModifyFonction(SelectedUtilisateur.Matricule, SelectedFonction);
+            _collectionUtilisateur.Clear();
+            _utilisateurBusiness.GetAllUtilisateurs().ForEach(u => _collectionUtilisateur.Add(u));
+
         }
 
 
@@ -134,12 +196,7 @@ namespace ApplicationJampay.ViewModel.ViewModel.Gérant
         {
             get
             {
-                return new List<string>
-                {
-                    "Gérant",
-                    "Caissier",
-                    "Cuisinier"
-                };
+                return _utilisateurBusiness.GetAllFonctions();
             }
             set
             {
@@ -148,26 +205,43 @@ namespace ApplicationJampay.ViewModel.ViewModel.Gérant
             }
         }
 
-        private Utilisateur _selectedUtilisateur;
-        public Utilisateur SelectedUtilisateur
+        private List<string> _availableMoyenDePaiement;
+        public List<string> AvailableMoyenDePaiement
         {
-            get { return _selectedUtilisateur; }
+            get
+            {
+                return _usagerBusiness.GetAllMoyenDePaiements();
+            }
             set
             {
-                _selectedUtilisateur = value;
-                OnPropertyChanged(nameof(SelectedUtilisateur));
+                _availableMoyenDePaiement = value;
+                OnPropertyChanged(nameof(AvailableMoyenDePaiement));
             }
         }
+
+
+
 
 
 
         private string _selectedFonction;
         public string SelectedFonction
         {
-            get { return _selectedUtilisateur.Fonction; }
+            get { return _selectedFonction; }
             set {
                 _selectedFonction = value;
-                OnPropertyChanged(nameof(SelectedFonction));
+                OnPropertyChanged(nameof(SelectedFonction));                
+            }
+        }
+
+        private string _selectedMoyenDePaiement;
+        public string SelectedMoyenDePaiement
+        {
+            get { return _selectedMoyenDePaiement; }
+            set
+            {
+                _selectedMoyenDePaiement = value;
+                OnPropertyChanged(nameof(SelectedMoyenDePaiement));
             }
         }
 

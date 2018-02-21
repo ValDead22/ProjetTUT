@@ -5,9 +5,16 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ApplicationJampay.View"
         xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
+        xmlns:converter="clr-namespace:ApplicationJampay.Converter"
         mc:Ignorable="d"
         
-        Title="Gérant1" Height="547.304" Width="818.18" >
+        Title="Gestionnaire de la cafétéria" Height="568.754" Width="848.823" >
+
+    <Window.Resources>
+        <converter:DateToStringConverter x:Key="date2string"/>
+        <converter:SelectedItemToIsEnable x:Key="selected2isEnable"/>
+        <converter:MultipleSelectedItemToIsEnable x:Key="multiSelected2isEnable"/>
+    </Window.Resources>
 
     <TabControl TabStripPlacement="Left">
 
@@ -32,7 +39,7 @@
                         <ListView.View>
                             <GridView>
                                 <GridViewColumn Header="Menu" DisplayMemberBinding="{Binding Nom}"/>
-                                <GridViewColumn Header="Date" DisplayMemberBinding="{Binding DateElaboration}"  />
+                                <GridViewColumn Header="Date" DisplayMemberBinding="{Binding DateElaboration, Converter={StaticResource date2string}}"  />
                             </GridView>
                         </ListView.View>
                     </ListView>
@@ -41,7 +48,7 @@
                         <ListView.View>
                             <GridView>
                                 <GridViewColumn Header="Plat" DisplayMemberBinding="{Binding Nom}"/>
-                                <GridViewColumn Header="Date" DisplayMemberBinding="{Binding DateEffet}"  />
+                                <GridViewColumn Header="Date" DisplayMemberBinding="{Binding DateEffet ,Converter={StaticResource date2string}}"  />
                             </GridView>
                         </ListView.View>
                     </ListView>
@@ -112,32 +119,178 @@
                     <Label Grid.Column="0" Content="Connecté en tant que :" HorizontalAlignment="Left" VerticalAlignment="Center"/>
                     <Button Grid.Column="1" Content="Déconnexion" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
                 </Grid>
-                
+
             </Grid>
-            
+
         </TabItem>
 
         <TabItem Header="Gestion - Utilisateurs" >
 
-            <ListView ItemsSource="{Binding CollectionUtilisateur}" SelectedItem="{Binding SelectedUtilisateur}">
-                <ListView.View>
-                    <GridView>
+            <Grid Margin="10">
 
-                        <GridViewColumn Header="ID" DisplayMemberBinding="{Binding IdUtilisateur}"/>
-                        <GridViewColumn Header="Nom" DisplayMemberBinding="{Binding Nom}"/>
-                        <GridViewColumn Header="Prenom" DisplayMemberBinding="{Binding Prenom}"  />
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="2*"/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+
+                <ListView Grid.Row="0" ItemsSource="{Binding CollectionUtilisateur}" SelectedItem="{Binding SelectedUtilisateur}">
+                    <ListView.View>
+                        <GridView>
+
+                            <GridViewColumn Header="Matricule" DisplayMemberBinding="{Binding Matricule}"/>
+                            <GridViewColumn Header="Nom" DisplayMemberBinding="{Binding Nom}"/>
+                            <GridViewColumn Header="Prenom" DisplayMemberBinding="{Binding Prenom}"/>
+                            <GridViewColumn Header="Fonction" DisplayMemberBinding="{Binding Fonction}"/>
+
+                        </GridView>
+                    </ListView.View>
+                </ListView>
+
+                <Grid Grid.Row="1" Margin="15" VerticalAlignment="Center">
+
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="1.3*"/>
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
+
+                    <StackPanel Orientation="Vertical" Grid.Column="0">
+
+                        <TextBlock FontWeight="Bold" FontSize="48" Text="{Binding SelectedUtilisateur.Nom}"/>
+                        <TextBlock FontWeight="Bold" FontSize="48" Text="{Binding SelectedUtilisateur.Prenom}"/>
+
+                    </StackPanel>
+
+                    <StackPanel Orientation="Vertical" Grid.Column="1">
+
+                        <TextBlock FontSize="25" Text="Nouvelle fonction :"/>
+                        <StackPanel Orientation="Horizontal">
 
 
-                        <GridViewColumn Header="Role utilisateur" Width="115" >
-                            <GridViewColumn.CellTemplate>
-                                <DataTemplate>
-                                    <ComboBox  IsSynchronizedWithCurrentItem="False" ItemsSource="{Binding RelativeSource={RelativeSource AncestorType=ListView}, Path=DataContext.AvailableFonction}" SelectedIndex="{Binding RelativeSource={RelativeSource AncestorType=ListView}, Path=DataContext.CollectionUtilisateur.IndexOf(SelectedUtilisateur), Mode=TwoWay}" />
-                                </DataTemplate>
-                            </GridViewColumn.CellTemplate>
-                        </GridViewColumn>
-                    </GridView>
-                </ListView.View>
-            </ListView>
+                            <ComboBox Width="100"
+                                IsSynchronizedWithCurrentItem="False" 
+                                ItemsSource="{Binding AvailableFonction}" 
+                                SelectedValue ="{Binding SelectedFonction, Mode=TwoWay}" />
+
+                            <Separator Width="15" Visibility="Hidden"/>
+
+                            <Button Content="Valider" Padding="10" Command="{Binding OpenModifyingFonctionWindow}">
+
+                                <Button.IsEnabled>
+                                    <MultiBinding Converter="{StaticResource multiSelected2isEnable}">
+                                        <Binding Path="SelectedUtilisateur"/>
+                                        <Binding Path="SelectedFonction"/>
+                                    </MultiBinding>
+
+                                </Button.IsEnabled>
+
+                            </Button>
+
+
+                        </StackPanel>
+                        
+                        
+
+
+                    </StackPanel>
+
+                    <StackPanel Orientation="Horizontal" Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Bottom">
+
+                        <Button Content="Ajouter utilisateur" Padding="10"/>
+
+                        <Separator Width="15" Visibility="Hidden"/>
+
+                        <Button Content="Supprimer utilisateur" Padding="10"/>
+
+
+                    </StackPanel>
+
+
+                </Grid>
+
+
+
+            </Grid>
+
+        </TabItem>
+
+        <TabItem Header="Gestion - Usagers" >
+
+            <Grid Margin="10">
+
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="2*"/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+
+                <ListView Grid.Row="0" ItemsSource="{Binding CollectionUsager}" SelectedItem="{Binding SelectedUsager}">
+                    <ListView.View>
+                        <GridView>
+
+                            <GridViewColumn Header="Matricule" DisplayMemberBinding="{Binding Matricule}"/>
+                            <GridViewColumn Header="Titre" DisplayMemberBinding="{Binding Titre}"/>
+                            <GridViewColumn Header="Nom" DisplayMemberBinding="{Binding Nom}"/>
+                            <GridViewColumn Header="Prenom" DisplayMemberBinding="{Binding Prenom}"/>
+                            <GridViewColumn Header="Paiement" DisplayMemberBinding="{Binding Paiement}"/>
+                            <GridViewColumn Header="Date d'entree" DisplayMemberBinding="{Binding DateEntree, Converter={StaticResource date2string}}"/>
+                            <GridViewColumn Header="Date de sortie" DisplayMemberBinding="{Binding DateFinContrat ,Converter={StaticResource date2string}}"/>
+                            <GridViewColumn Header="Matricule de la carte" DisplayMemberBinding="{Binding MatriculeCarte}"/>
+
+                        </GridView>
+                    </ListView.View>
+                </ListView>
+
+                <Grid Grid.Row="1" Margin="15" VerticalAlignment="Center">
+
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="1.3*"/>
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
+
+                    <StackPanel Orientation="Vertical" Grid.Column="0">
+
+                        <TextBlock FontWeight="Bold" FontSize="48" Text="{Binding SelectedUsager.Nom}"/>
+                        <TextBlock FontWeight="Bold" FontSize="48" Text="{Binding SelectedUsager.Prenom}"/>
+
+                    </StackPanel>
+
+                    <StackPanel Orientation="Vertical" Grid.Column="1">
+
+                        <TextBlock FontSize="20" Text="Nouveau moyen de paiement :"/>
+
+                        <StackPanel Orientation="Horizontal">
+
+
+                            <ComboBox Width="100"
+                                IsSynchronizedWithCurrentItem="False" 
+                                ItemsSource="{Binding AvailableMoyenDePaiement}" 
+                                SelectedValue ="{Binding SelectedMoyenDePaiement, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" />
+
+                            <Separator Width="15" Visibility="Hidden"/>
+
+                            <Button Content="Valider" Padding="10" Command="{Binding OpenModifyingMoyenDePaiementWindow}">
+                                
+                                <Button.IsEnabled>                                            
+                                    <MultiBinding Converter="{StaticResource multiSelected2isEnable}">                                                
+                                        <Binding Path="SelectedUsager"/>
+                                        <Binding Path="SelectedMoyenDePaiement"/>                                            
+                                    </MultiBinding>                                   
+                                        
+                                </Button.IsEnabled>
+                                
+                            </Button>
+
+
+                        </StackPanel>
+
+
+                    </StackPanel>
+
+
+                </Grid>
+
+
+
+            </Grid>
 
         </TabItem>
 

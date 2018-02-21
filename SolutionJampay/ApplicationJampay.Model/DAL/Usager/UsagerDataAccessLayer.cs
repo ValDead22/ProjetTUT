@@ -94,6 +94,8 @@ namespace ApplicationJampay.Model.DAL.Usager
         {
             var query = "UPDATE Usager SET Paiement=\"" + moyenDePaiement + "\" WHERE Matricule=\"" + matricule + "\"";
             MySqlDataReader mySqlDataReader = _sQLService.Load(query);
+
+            mySqlDataReader.Close();
         }
     }
 }

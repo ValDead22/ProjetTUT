@@ -24,7 +24,7 @@ namespace ApplicationJampay.ViewModel.Command
             _actionToExecute = actionToExecute;
             _checkCanExecute = actionToCheckExecute;
         }
-
+      
         /// <summary>
         /// Occurs when the <see cref="CanExecute(object)"/> changed
         /// </summary>

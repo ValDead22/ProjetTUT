@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ApplicationJampay.Model.Entity
 {
-   public class Caissier : Usager
+    public class Caissier
     {
         private DateTime DateEntree { get; set; }
 
@@ -26,7 +26,7 @@ namespace ApplicationJampay.Model.Entity
 
         private int idCaissier { get; set; }
 
-        public Caissier(DateTime DateEntree, DateTime DateFinContrat, int Matricule, int CodeFonction, int Service, string Nom, string Prenom, string Titre, int idCaissier) : base(DateEntree, DateFinContrat, Matricule, CodeFonction, Service, Nom, Prenom, Titre)
+        public Caissier(DateTime DateEntree, DateTime DateFinContrat, int Matricule, int CodeFonction, int Service, string Nom, string Prenom, string Titre, int idCaissier)
         {
             this.idCaissier = idCaissier;
         }
