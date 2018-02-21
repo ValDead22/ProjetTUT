@@ -30,5 +30,10 @@ namespace ApplicationJampay.Model.DAL.Utilisateur
         {
             return _utilisateurDAL.GetAllFonctions();
         }
+
+        public void ModifyFonction(int matricule, string fonction)
+        {
+            _utilisateurDAL.ModifyFonction(matricule, fonction);
+        }
     }
 }

@@ -13,5 +13,7 @@ namespace ApplicationJampay.Model.DAL.Utilisateur
         List<Entity.Utilisateur> GetAllUtilisateurs();
 
         List<string> GetAllFonctions();
+
+        void ModifyFonction(int matricule, string fonction);
     }
 }

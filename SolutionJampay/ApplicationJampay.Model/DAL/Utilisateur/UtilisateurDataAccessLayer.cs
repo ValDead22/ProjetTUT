@@ -119,5 +119,13 @@ namespace ApplicationJampay.Model.DAL.Utilisateur
             }
             
         }
+
+        public void ModifyFonction(int matricule, string fonction)
+        {
+            var query = "UPDATE Utilisateur SET Fonction=\"" + fonction + "\" WHERE idUtilisateur=\"" + matricule + "\"";
+            MySqlDataReader mySqlDataReader = _sQLService.Load(query);
+
+            mySqlDataReader.Close();
+        }
     }
 }
