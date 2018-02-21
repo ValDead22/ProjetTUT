@@ -40,7 +40,7 @@ namespace ApplicationJampay.ViewModel.ViewModel
         /// <summary>
         /// Logic to access to the Users data
         /// </summary>
-        private UserBusiness _userBusiness;
+        private UtilisateurBusiness _userBusiness;
 
         /// <summary>
         /// Constructor
@@ -48,7 +48,7 @@ namespace ApplicationJampay.ViewModel.ViewModel
         public LoginViewModel()
         {
             _loginCommand = new RelayCommand(() => Login(), o => true);
-            _userBusiness = new UserBusiness();            
+            _userBusiness = new UtilisateurBusiness();            
         }
         
         #region Properties
@@ -126,7 +126,7 @@ namespace ApplicationJampay.ViewModel.ViewModel
         {
             try
             {
-                Utilisateur utilisateur = _userBusiness.GetUser(Matricule, SecureStringToSHA256(Password));
+                Utilisateur utilisateur = _userBusiness.GetUtilisateur(Matricule, SecureStringToSHA256(Password));
                 
                 
 
