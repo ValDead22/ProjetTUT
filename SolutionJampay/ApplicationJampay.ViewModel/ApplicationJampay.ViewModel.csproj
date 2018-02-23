@@ -77,10 +77,6 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\..\pcsc-sharp\pcsc-sharp\pcsc-sharp.csproj">
-      <Project>{459e0fb4-af42-4123-9923-7ea68ca01b09}</Project>
-      <Name>pcsc-sharp</Name>
-    </ProjectReference>
     <ProjectReference Include="..\ApplicationJampay.Model\ApplicationJampay.Model.csproj">
       <Project>{78483b3b-342e-4648-a058-d9c0c6865a2d}</Project>
       <Name>ApplicationJampay.Model</Name>
