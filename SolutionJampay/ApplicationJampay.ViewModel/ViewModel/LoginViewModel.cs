@@ -11,6 +11,7 @@ using ApplicationJampay.Model.Entity;
 using ApplicationJampay.Model.Service;
 using ApplicationJampay.ViewModel.Command;
 
+
 namespace ApplicationJampay.ViewModel.ViewModel
 {
     public class LoginViewModel : IViewModelBase
