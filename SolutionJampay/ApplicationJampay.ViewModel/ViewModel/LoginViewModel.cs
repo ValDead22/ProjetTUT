@@ -1,18 +1,16 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.ComponentModel;
-using System.Linq;
+using System.Diagnostics;
 using System.Runtime.InteropServices;
 using System.Security;
 using System.Security.Cryptography;
 using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Input;
-using ApplicationJampay.Model.DAL;
 using ApplicationJampay.Model.DAL.Utilisateur;
 using ApplicationJampay.Model.Entity;
 using ApplicationJampay.Model.Service;
 using ApplicationJampay.ViewModel.Command;
+using ApplicationJampay
 
 namespace ApplicationJampay.ViewModel.ViewModel
 {
@@ -37,6 +35,9 @@ namespace ApplicationJampay.ViewModel.ViewModel
         private readonly RelayCommand _loginCommand;
         public ICommand LoginCommand => _loginCommand;
 
+        private readonly RelayCommand _cardLoginCommand;
+        public ICommand CardLoginCommand => _cardLoginCommand;
+
         /// <summary>
         /// Logic to access to the Users data
         /// </summary>
@@ -48,6 +49,7 @@ namespace ApplicationJampay.ViewModel.ViewModel
         public LoginViewModel()
         {
             _loginCommand = new RelayCommand(() => Login(), o => true);
+
             _userBusiness = new UtilisateurBusiness();            
         }
         
@@ -91,7 +93,7 @@ namespace ApplicationJampay.ViewModel.ViewModel
         /// </summary>
         /// <param name="secureString"></param>
         /// <returns></returns>
-        public string SecureStringToSHA256(SecureString secureString)
+        private string SecureStringToSHA256(SecureString secureString)
         {
             IntPtr intPtr = IntPtr.Zero;
 
@@ -121,8 +123,7 @@ namespace ApplicationJampay.ViewModel.ViewModel
             }
         }
 
-
-        public void Login()
+        private void Login()
         {
             try
             {
@@ -154,6 +155,7 @@ namespace ApplicationJampay.ViewModel.ViewModel
             }
             
         }
+
         
     }
 }

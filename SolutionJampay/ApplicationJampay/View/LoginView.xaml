@@ -35,8 +35,11 @@
                 </PasswordBox.InputBindings>
             </PasswordBox>
 
+            <Button Content="Connexion" Grid.Row="2" HorizontalAlignment="Right"  VerticalAlignment="Bottom" Margin="15" Command="{Binding LoginCommand}"/>
+
+
         </StackPanel>
-        <Button Content="Connexion" Grid.Row="2" HorizontalAlignment="Right"  VerticalAlignment="Bottom" Margin="15" Command="{Binding LoginCommand}"/>
+        <Button Content="Connexion via badge à puce" Grid.Row="2" HorizontalAlignment="Right"  VerticalAlignment="Bottom" Margin="15" Command="{Binding CardLoginCommand}"/>
 
     </Grid>
 </Window>
