@@ -10,7 +10,6 @@ using ApplicationJampay.Model.DAL.Utilisateur;
 using ApplicationJampay.Model.Entity;
 using ApplicationJampay.Model.Service;
 using ApplicationJampay.ViewModel.Command;
-using ApplicationJampay
 
 namespace ApplicationJampay.ViewModel.ViewModel
 {
