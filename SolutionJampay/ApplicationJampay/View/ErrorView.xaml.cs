@@ -23,7 +23,7 @@ namespace ApplicationJampay.View
         {
             
             InitializeComponent();
-            MsgLabel.Content = message;
+            MsgLabel.Text = message;
         }
     }
 }
