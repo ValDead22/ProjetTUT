@@ -105,6 +105,9 @@
     <Compile Include="View\Gérant\ModifPlatView.xaml.cs">
       <DependentUpon>ModifPlatView.xaml</DependentUpon>
     </Compile>
+    <Compile Include="View\Gérant\UserControltest.xaml.cs">
+      <DependentUpon>UserControltest.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\LoginView.xaml.cs">
       <DependentUpon>LoginView.xaml</DependentUpon>
     </Compile>
@@ -180,6 +183,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\Gérant\ModifPlatView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Gérant\UserControltest.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
