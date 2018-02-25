@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ApplicationJampay.ViewModel.ViewModel.Cuisinier;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -21,7 +22,9 @@ namespace ApplicationJampay.View.Cuisinier
     {
         public CuisinierMainView()
         {
-            InitializeComponent();
+            DataContext = new CuisinierMainViewModel();
+
+            InitializeComponent();            
         }
     }
 }
