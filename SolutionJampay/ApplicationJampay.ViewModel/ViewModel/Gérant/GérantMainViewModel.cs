@@ -264,7 +264,6 @@ namespace ApplicationJampay.ViewModel.ViewModel.Gérant
             set
             {            
                 _selectedMenu = value;
-                _openDeletingMenuWindow.RaiseCanExecuteChanged();
                 OnPropertyChanged(nameof(SelectedMenu));
                 UpdatePlatCollection();
             }
@@ -280,7 +279,6 @@ namespace ApplicationJampay.ViewModel.ViewModel.Gérant
             set
             {
                 _selectedPlat = value;
-                _openDeletingPlatWindow.RaiseCanExecuteChanged();
                 OnPropertyChanged(nameof(SelectedPlat));
             }
         }
