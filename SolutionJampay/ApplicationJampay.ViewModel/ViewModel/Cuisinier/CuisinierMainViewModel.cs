@@ -74,7 +74,11 @@ namespace ApplicationJampay.ViewModel.ViewModel.Cuisinier
             {
                 _selectedPlat = value;
                 OnPropertyChanged(nameof(SelectedPlat));
-                UpdateProduitCollection();
+                if(_selectedPlat != null)
+                {
+                    UpdateProduitCollection();
+                }
+                
             }
         }
 
@@ -82,6 +86,7 @@ namespace ApplicationJampay.ViewModel.ViewModel.Cuisinier
 
         private void UpdatePlatCollection()
         {
+            _collectionProduitOfSelectedPlat.Clear();
             _collectionPlatOfSelectedMenu.Clear();
             _platBusiness.GetPlatByMenuId(SelectedMenu.CodeMenu).ForEach(p => _collectionPlatOfSelectedMenu.Add(p));
         }
