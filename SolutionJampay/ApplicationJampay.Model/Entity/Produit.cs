@@ -20,8 +20,14 @@ namespace ApplicationJampay.Model.Entity
 
         public string Observation { get; private set; }
 
-        public Produit()
+        public Produit(int codeProduit, DateTime dateEffet, DateTime dateFin, string categorie, string nom, string observation)
         {
+            CodeProduit = codeProduit;
+            DateEffet = dateEffet;
+            DateFin = dateFin;
+            Categorie = categorie;
+            Nom = nom;
+            Observation = observation;
         }
         
     }
