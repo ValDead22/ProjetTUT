@@ -1,0 +1,90 @@
+﻿<UserControl x:Class="ApplicationJampay.View.Gérant.UserControlTab.UserControlUtilisateur"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:converter="clr-namespace:ApplicationJampay.Converter"
+             mc:Ignorable="d" 
+             d:DesignHeight="500" d:DesignWidth="700">
+
+    <UserControl.Resources>
+        <converter:DateToStringConverter x:Key="date2string"/>
+        <converter:SelectedItemToIsEnable x:Key="selected2isEnable"/>
+        <converter:MultipleSelectedItemToIsEnable x:Key="multiSelected2isEnable"/>
+    </UserControl.Resources>
+
+
+    <Grid Margin="10">
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="2*"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+
+        <ListView Grid.Row="0" ItemsSource="{Binding CollectionUtilisateur}" SelectedItem="{Binding SelectedUtilisateur}">
+            <ListView.View>
+                <GridView>
+
+                    <GridViewColumn Header="Matricule" DisplayMemberBinding="{Binding Matricule}"/>
+                    <GridViewColumn Header="Nom" DisplayMemberBinding="{Binding Nom}"/>
+                    <GridViewColumn Header="Prenom" DisplayMemberBinding="{Binding Prenom}"/>
+                    <GridViewColumn Header="Fonction" DisplayMemberBinding="{Binding Fonction}"/>
+
+                </GridView>
+            </ListView.View>
+        </ListView>
+
+        <Grid Grid.Row="1" Margin="15" VerticalAlignment="Center">
+
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="1.3*"/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+
+            <StackPanel Orientation="Vertical" Grid.Column="0">
+
+                <TextBlock FontWeight="Bold" FontSize="48" Text="{Binding SelectedUtilisateur.Nom}"/>
+                <TextBlock FontWeight="Bold" FontSize="48" Text="{Binding SelectedUtilisateur.Prenom}"/>
+
+            </StackPanel>
+
+            <StackPanel Orientation="Vertical" Grid.Column="1">
+
+                <TextBlock FontSize="25" Text="Nouvelle fonction :"/>
+                <StackPanel Orientation="Horizontal">
+
+
+                    <ComboBox Width="100"
+                                IsSynchronizedWithCurrentItem="False" 
+                                ItemsSource="{Binding AvalaibleFonction}" 
+                                SelectedValue ="{Binding SelectedFonction, Mode=TwoWay}" />
+
+                    <Separator Width="15" Visibility="Hidden"/>
+
+                    <Button Content="Valider" Padding="10" Command="{Binding OpenModifyingFonctionWindow}">
+
+                        <Button.IsEnabled>
+                            <MultiBinding Converter="{StaticResource multiSelected2isEnable}">
+                                <Binding Path="SelectedUtilisateur"/>
+                                <Binding Path="SelectedFonction"/>
+                            </MultiBinding>
+
+                        </Button.IsEnabled>
+                        
+                    </Button>
+                </StackPanel>
+                
+            </StackPanel>
+
+            <StackPanel Orientation="Horizontal" Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Bottom">
+
+                <Button Content="Ajouter utilisateur" Padding="10" Command="{Binding OpenAddingUtilisateurWindow}"/>
+                <Separator Width="15" Visibility="Hidden"/>
+                <Button Command="{Binding OpenDeletingUtilisateurWindow}" Content="Supprimer utilisateur" Padding="10" IsEnabled="{Binding SelectedUtilisateur, Converter={StaticResource selected2isEnable}}"/>
+
+            </StackPanel>
+
+        </Grid>
+
+    </Grid>
+</UserControl>

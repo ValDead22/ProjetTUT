@@ -1,0 +1,84 @@
+﻿<UserControl x:Class="ApplicationJampay.View.Gérant.UserControlTab.UserControlUsager"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:converter="clr-namespace:ApplicationJampay.Converter"
+             mc:Ignorable="d" 
+             d:DesignHeight="500" d:DesignWidth="700">
+
+    <UserControl.Resources>
+        <converter:DateToStringConverter x:Key="date2string"/>
+        <converter:SelectedItemToIsEnable x:Key="selected2isEnable"/>
+        <converter:MultipleSelectedItemToIsEnable x:Key="multiSelected2isEnable"/>
+    </UserControl.Resources>
+
+
+    <Grid Margin="10">
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="2*"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+
+        <ListView Grid.Row="0" ItemsSource="{Binding CollectionUsager}" SelectedItem="{Binding SelectedUsager}">
+            <ListView.View>
+                <GridView>
+
+                    <GridViewColumn Header="Matricule" DisplayMemberBinding="{Binding Matricule}"/>
+                    <GridViewColumn Header="Titre" DisplayMemberBinding="{Binding Titre}"/>
+                    <GridViewColumn Header="Nom" DisplayMemberBinding="{Binding Nom}"/>
+                    <GridViewColumn Header="Prenom" DisplayMemberBinding="{Binding Prenom}"/>
+                    <GridViewColumn Header="Paiement" DisplayMemberBinding="{Binding Paiement}"/>
+                    <GridViewColumn Header="Date d'entree" DisplayMemberBinding="{Binding DateEntree, Converter={StaticResource date2string}}"/>
+                    <GridViewColumn Header="Date de sortie" DisplayMemberBinding="{Binding DateFinContrat ,Converter={StaticResource date2string}}"/>
+                    <GridViewColumn Header="Matricule de la carte" DisplayMemberBinding="{Binding MatriculeCarte}"/>
+
+                </GridView>
+            </ListView.View>
+        </ListView>
+
+        <Grid Grid.Row="1" Margin="15" VerticalAlignment="Center">
+
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="1.3*"/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+
+            <StackPanel Orientation="Vertical" Grid.Column="0">
+
+                <TextBlock FontWeight="Bold" FontSize="48" Text="{Binding SelectedUsager.Nom}"/>
+                <TextBlock FontWeight="Bold" FontSize="48" Text="{Binding SelectedUsager.Prenom}"/>
+
+            </StackPanel>
+
+            <StackPanel Orientation="Vertical" Grid.Column="1">
+                
+                <TextBlock FontSize="20" Text="Nouveau moyen de paiement :"/>
+
+                <StackPanel Orientation="Horizontal">
+                    <ComboBox Width="100"
+                                IsSynchronizedWithCurrentItem="False" 
+                                ItemsSource="{Binding AvailableMoyenDePaiement}" 
+                                SelectedValue ="{Binding SelectedMoyenDePaiement, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" />
+
+                    <Separator Width="15" Visibility="Hidden"/>
+
+                    <Button Content="Valider" Padding="10" Command="{Binding OpenModifyingMoyenDePaiementWindow}">
+
+                        <Button.IsEnabled>
+                            <MultiBinding Converter="{StaticResource multiSelected2isEnable}">
+                                <Binding Path="SelectedUsager"/>
+                                <Binding Path="SelectedMoyenDePaiement"/>
+                            </MultiBinding>
+
+                        </Button.IsEnabled>
+                    </Button>
+                    
+                </StackPanel>
+                
+            </StackPanel>
+            
+        </Grid>        
+    </Grid>
+</UserControl>
