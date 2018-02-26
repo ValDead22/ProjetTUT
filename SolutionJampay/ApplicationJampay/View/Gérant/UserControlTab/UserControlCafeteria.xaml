@@ -87,7 +87,7 @@
                     <StackPanel Grid.Row="1" Orientation="Horizontal" HorizontalAlignment="Left">
                         <Button Grid.Row ="0" Content="Ajouter" HorizontalContentAlignment="Center" Padding="10" Command="{Binding OpenAddingPlatWindow}"/>
                         <Separator Grid.Row="1" Background="Transparent" Width="2"/>
-                        <Button Grid.Row ="0"  Content="Modifier" HorizontalContentAlignment="Center" Padding="10" Command="{Binding OpenModifyingMenuWindow}" IsEnabled="{Binding SelectedPlat, Converter={StaticResource selected2isEnable}}"/>
+                        <Button Grid.Row ="0"  Content="Modifier" HorizontalContentAlignment="Center" Padding="10" Command="{Binding OpenModifyingPlatWindow}" IsEnabled="{Binding SelectedPlat, Converter={StaticResource selected2isEnable}}"/>
                         <Separator Grid.Row="1" Background="Transparent" Width="2"/>
                         <Button Grid.Row ="0" Content="Supprimer" HorizontalContentAlignment="Center" Padding="10" Command="{Binding OpenDeletingPlatWindow}" IsEnabled="{Binding SelectedPlat, Converter={StaticResource selected2isEnable}}"/>
 
