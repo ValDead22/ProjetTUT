@@ -96,6 +96,9 @@
     <Compile Include="View\ErrorView.xaml.cs">
       <DependentUpon>ErrorView.xaml</DependentUpon>
     </Compile>
+    <Compile Include="View\Gérant\AjoutUtilisateurView.xaml.cs">
+      <DependentUpon>AjoutUtilisateurView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\Gérant\GérantMainView.xaml.cs">
       <DependentUpon>GérantMainView.xaml</DependentUpon>
     </Compile>
@@ -171,6 +174,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\ErrorView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Gérant\AjoutUtilisateurView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
