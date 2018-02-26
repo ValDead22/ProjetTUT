@@ -4,7 +4,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
-         xmlns:behavior="clr-namespace:ApplicationJampay.ViewModel.Behavior;assembly=ApplicationJampay.ViewModel"
+        xmlns:behavior="clr-namespace:ApplicationJampay.ViewModel.Behavior;assembly=ApplicationJampay.ViewModel"
         xmlns:local="clr-namespace:ApplicationJampay.View.Gérant"
         xmlns:converter="clr-namespace:ApplicationJampay.Converter"
         mc:Ignorable="d"
