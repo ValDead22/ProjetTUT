@@ -72,44 +72,44 @@
     <Compile Include="View\Cuisinier\CuisinierMainView.xaml.cs">
       <DependentUpon>CuisinierMainView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="View\Gérant\AjoutMenuView.xaml.cs">
+    <Compile Include="View\Gérant\PopUp\Menu\AjoutMenuView.xaml.cs">
       <DependentUpon>AjoutMenuView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="View\AjouterPlat.xaml.cs">
+    <Compile Include="View\Caissier\PopUp\AjouterPlat.xaml.cs">
       <DependentUpon>AjouterPlat.xaml</DependentUpon>
     </Compile>
-    <Compile Include="View\Gérant\AjoutPlatView.xaml.cs">
+    <Compile Include="View\Gérant\PopUp\Plat\AjoutPlatView.xaml.cs">
       <DependentUpon>AjoutPlatView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="View\Caissier1.xaml.cs">
-      <DependentUpon>Caissier1.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="View\Dessert.xaml.cs">
-      <DependentUpon>Dessert.xaml</DependentUpon>
+    <Compile Include="View\Caissier\CaissierMainView.xaml.cs">
+      <DependentUpon>CaissierMainView.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\DialogYesNo.xaml.cs">
       <DependentUpon>DialogYesNo.xaml</DependentUpon>
     </Compile>
-    <Compile Include="View\Entree.xaml.cs">
-      <DependentUpon>Entree.xaml</DependentUpon>
-    </Compile>
     <Compile Include="View\ErrorView.xaml.cs">
       <DependentUpon>ErrorView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="View\Gérant\AjoutUtilisateurView.xaml.cs">
+    <Compile Include="View\Gérant\PopUp\AjoutUtilisateurView.xaml.cs">
       <DependentUpon>AjoutUtilisateurView.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\Gérant\GérantMainView.xaml.cs">
       <DependentUpon>GérantMainView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="View\Gérant\ModifMenuView.xaml.cs">
+    <Compile Include="View\Gérant\PopUp\Menu\ModifMenuView.xaml.cs">
       <DependentUpon>ModifMenuView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="View\Gérant\ModifPlatView.xaml.cs">
+    <Compile Include="View\Gérant\PopUp\Plat\ModifPlatView.xaml.cs">
       <DependentUpon>ModifPlatView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="View\Gérant\UserControltest.xaml.cs">
-      <DependentUpon>UserControltest.xaml</DependentUpon>
+    <Compile Include="View\Gérant\UserControlTab\UserControlCafeteria.xaml.cs">
+      <DependentUpon>UserControlCafeteria.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Gérant\UserControlTab\UserControlUsager.xaml.cs">
+      <DependentUpon>UserControlUsager.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Gérant\UserControlTab\UserControlUtilisateur.xaml.cs">
+      <DependentUpon>UserControlUtilisateur.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\LoginView.xaml.cs">
       <DependentUpon>LoginView.xaml</DependentUpon>
@@ -117,9 +117,6 @@
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="View\Snack.xaml.cs">
-      <DependentUpon>Snack.xaml</DependentUpon>
     </Compile>
     <Page Include="Themes\Metro\Metro.MSControls.Core.Implicit.xaml">
       <Generator>MSBuild:Compile</Generator>
@@ -145,23 +142,19 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="View\Gérant\AjoutMenuView.xaml">
+    <Page Include="View\Gérant\PopUp\Menu\AjoutMenuView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="View\AjouterPlat.xaml">
+    <Page Include="View\Caissier\PopUp\AjouterPlat.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="View\Gérant\AjoutPlatView.xaml">
+    <Page Include="View\Gérant\PopUp\Plat\AjoutPlatView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="View\Caissier1.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="View\Dessert.xaml">
+    <Page Include="View\Caissier\CaissierMainView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -169,15 +162,11 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="View\Entree.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
     <Page Include="View\ErrorView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="View\Gérant\AjoutUtilisateurView.xaml">
+    <Page Include="View\Gérant\PopUp\AjoutUtilisateurView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -185,23 +174,27 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="View\Gérant\ModifMenuView.xaml">
+    <Page Include="View\Gérant\PopUp\Menu\ModifMenuView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="View\Gérant\ModifPlatView.xaml">
+    <Page Include="View\Gérant\PopUp\Plat\ModifPlatView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="View\Gérant\UserControltest.xaml">
+    <Page Include="View\Gérant\UserControlTab\UserControlCafeteria.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Gérant\UserControlTab\UserControlUsager.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Gérant\UserControlTab\UserControlUtilisateur.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\LoginView.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="View\Snack.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ApplicationJampay.ViewModel.ViewModel;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -12,16 +13,18 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 
-namespace ApplicationJampay.View
+namespace ApplicationJampay.View.Caissier
 {
     /// <summary>
-    /// Logique d'interaction pour Snack.xaml
+    /// Logique d'interaction pour Caissier1.xaml
     /// </summary>
-    public partial class Snack : Window
+    public partial class CaissierMainView : Window
     {
-        public Snack()
+        public CaissierMainView()
         {
             InitializeComponent();
+
+            DataContext = new CaissierViewModel();
         }
     }
 }

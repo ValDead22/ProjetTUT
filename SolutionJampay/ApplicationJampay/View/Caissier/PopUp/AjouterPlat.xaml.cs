@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ApplicationJampay.ViewModel.ViewModel;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -12,16 +13,17 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 
-namespace ApplicationJampay.View.Gérant
+namespace ApplicationJampay.View.Caissier.PopUp
 {
     /// <summary>
-    /// Logique d'interaction pour ModifiMenuView.xaml
+    /// Logique d'interaction pour AjouterPlat.xaml
     /// </summary>
-    public partial class ModifMenuView : Window
+    public partial class AjouterPlat : Window
     {
-        public ModifMenuView()
+        public AjouterPlat()
         {
             InitializeComponent();
+            DataContext = new AjouterPlatViewModel();
         }
     }
 }

@@ -1,19 +1,20 @@
 ﻿using ApplicationJampay.ViewModel.ViewModel.Gérant;
 using System.Windows;
 
-namespace ApplicationJampay.View.Gérant
+namespace ApplicationJampay.View.Gérant.PopUp.Plat
 {
     /// <summary>
-    /// Logique d'interaction pour AjouterMenuGerantView.xaml
+    /// Logique d'interaction pour AjouterPlatGerantView.xaml
     /// </summary>
-    public partial class AjoutMenuView : Window
+    public partial class AjoutPlatView : Window
     {
-        public AjoutMenuView()
+        public AjoutPlatView()
         {
-            DataContext = new AjoutMenuViewModel()
+            DataContext = new AjoutPlatViewModel()
             {
                 Close = () => Close()
             };
+
             InitializeComponent();
         }
     }

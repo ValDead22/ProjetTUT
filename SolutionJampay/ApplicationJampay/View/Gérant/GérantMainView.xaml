@@ -4,6 +4,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ApplicationJampay.View.Gérant"
+        xmlns:usercontrol="clr-namespace:ApplicationJampay.View.Gérant.UserControlTab"
         xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
         xmlns:converter="clr-namespace:ApplicationJampay.Converter"
         mc:Ignorable="d"
@@ -296,7 +297,7 @@
 
         <TabItem Header="testusercontrol">
 
-            <local:UserControltest/>
+            <usercontrol:UserControlCafeteria/>
 
         </TabItem>
 

@@ -12,7 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 
-namespace ApplicationJampay.View.Gérant
+namespace ApplicationJampay.View.Gérant.PopUp.Plat
 {
     /// <summary>
     /// Logique d'interaction pour ModifPlatView.xaml
