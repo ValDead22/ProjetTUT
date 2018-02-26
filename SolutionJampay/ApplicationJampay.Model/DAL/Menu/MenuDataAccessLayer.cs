@@ -16,6 +16,7 @@ namespace ApplicationJampay.Model.DAL.Menu
         {
             var query = "INSERT INTO Menu VALUES(\"" + null + "\"" + ",\"" + menu.DateElaboration + "\"" + ",\"" + menu.Categorie + "\"" + ",\"" + menu.Nom + "\"" + ",\"" + menu.Observation + "\"" + ",\"" + menu.IdGerant+ "\"";
             MySqlDataReader mySqlDataReader = _sQLService.Load(query);
+            mySqlDataReader.Close();
         }
 
         public List<string> GetAllCategories()
@@ -56,7 +57,7 @@ namespace ApplicationJampay.Model.DAL.Menu
 
                 while (mySqlDataReader.Read())
                 {
-                    Entity.Menu produit = new Entity.Menu((int)mySqlDataReader["CodeMenu"], (int)mySqlDataReader["idGerant"], (DateTime)mySqlDataReader["DateElaboration"], mySqlDataReader["Categorie"] as string, mySqlDataReader["Nom"] as string, mySqlDataReader["Observation"] as string);
+                    Entity.Menu produit = new Entity.Menu((int)mySqlDataReader["idGerant"], (DateTime)mySqlDataReader["DateElaboration"], mySqlDataReader["Categorie"] as string, mySqlDataReader["Nom"] as string, mySqlDataReader["Observation"] as string, (int)mySqlDataReader["CodeMenu"]);
 
                     list.Add(produit);
                 }
