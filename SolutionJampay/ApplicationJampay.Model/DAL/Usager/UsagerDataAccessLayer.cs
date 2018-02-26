@@ -85,6 +85,46 @@ namespace ApplicationJampay.Model.DAL.Usager
             }
         }
 
+        public List<Entity.Usager> GetAllUsagersNonUtilisateur()
+        {
+            var query = "SELECT * FROM Usager WHERE Matricule NOT IN (SELECT idUtilisateur FROM Utilisateur)";
+            MySqlDataReader mySqlDataReader = _sQLService.Load(query);
+
+            try
+            {
+                List<Entity.Usager> list = new List<Entity.Usager>();
+
+                while (mySqlDataReader.Read())
+                {
+
+
+                    Entity.Usager usager = new Entity.Usager(
+                        (DateTime)mySqlDataReader["DateEntree"],
+                        (int)mySqlDataReader["Matricule"],
+                        (int)mySqlDataReader["CodeFonction"],
+                        (int)mySqlDataReader["Service"],
+                        mySqlDataReader["Nom"] as string,
+                        mySqlDataReader["Prenom"] as string,
+                        mySqlDataReader["Titre"] as string,
+                        mySqlDataReader["Paiement"] as string,
+                        mySqlDataReader["MatriculeCarte"] as int?,
+                        mySqlDataReader["DateFinC"] as DateTime?
+                        );
+
+                    list.Add(usager);
+                }
+                return list;
+            }
+            catch (MySqlException)
+            {
+                throw new Exception("Problème(s) lors du chargement des usagers !");
+            }
+            finally
+            {
+                mySqlDataReader.Close();
+            }
+        }
+
         public Entity.Usager GetUsager(string matricule, string nom)
         {
             throw new NotImplementedException();

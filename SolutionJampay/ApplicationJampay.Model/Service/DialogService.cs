@@ -19,6 +19,14 @@ namespace ApplicationJampay.Model.Service
             windows.ShowDialog();
         }
 
+        public static void ShowAjoutUtilisateurView()
+        {
+            var createType = Type.GetType("ApplicationJampay.View.Gérant.AjoutUtilisateurView, ApplicationJampay");
+            var windows = (System.Windows.Window)Activator.CreateInstance(createType);
+
+            windows.ShowDialog();
+        }
+
         public static void ShowCuisinierWindow()
         {
             var createType = Type.GetType("ApplicationJampay.View.Cuisinier.CuisinierMainView, ApplicationJampay");

@@ -195,11 +195,11 @@
 
                     <StackPanel Orientation="Horizontal" Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Bottom">
 
-                        <Button Content="Ajouter utilisateur" Padding="10"/>
+                        <Button Content="Ajouter utilisateur" Padding="10" Command="{Binding OpenAddingUtilisateurWindow}"/>
 
                         <Separator Width="15" Visibility="Hidden"/>
 
-                        <Button Content="Supprimer utilisateur" Padding="10" IsEnabled="{Binding SelectedUtilisateur, Converter={StaticResource selected2isEnable}}"/>
+                        <Button Command="{Binding OpenDeletingUtilisateurWindow}" Content="Supprimer utilisateur" Padding="10" IsEnabled="{Binding SelectedUtilisateur, Converter={StaticResource selected2isEnable}}"/>
 
 
                     </StackPanel>

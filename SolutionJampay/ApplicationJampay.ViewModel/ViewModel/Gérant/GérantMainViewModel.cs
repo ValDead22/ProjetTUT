@@ -38,6 +38,12 @@ namespace ApplicationJampay.ViewModel.ViewModel.Gérant
         private readonly RelayCommand _openAddingPlatWindow;
         public ICommand OpenAddingPlatWindow => _openAddingPlatWindow;
 
+        private readonly RelayCommand _openAddingUtilisateurWindow;
+        public ICommand OpenAddingUtilisateurWindow => _openAddingUtilisateurWindow;
+
+        private readonly RelayCommand _openDeletingUtilisateurWindow;
+        public ICommand OpenDeletingUtilisateurWindow => _openDeletingUtilisateurWindow;
+
         private readonly RelayCommand _openAddingMenuWindow;
         public ICommand OpenAddingMenuWindow => _openAddingMenuWindow;
 
@@ -58,6 +64,7 @@ namespace ApplicationJampay.ViewModel.ViewModel.Gérant
 
         private readonly RelayCommand _openModifyingFonctionWindow;
         public ICommand OpenModifyingFonctionWindow => _openModifyingFonctionWindow;
+        
 
         #endregion
 
@@ -99,6 +106,8 @@ namespace ApplicationJampay.ViewModel.ViewModel.Gérant
             _utilisateurBusiness = new UtilisateurBusiness();
             _usagerBusiness = new UsagerBusiness();
 
+            _openAddingUtilisateurWindow = new RelayCommand(() => DialogService.ShowAjoutUtilisateurView(), o => true);
+            _openDeletingUtilisateurWindow = new RelayCommand(() => DialogService.ShowYesNoWindow("Etes-vous sûr de vouloir supprimer cet Utilisateur ?", DeleteUtilisateur), o => true);
 
             _openDeletingMenuWindow = new RelayCommand(() => DialogService.ShowYesNoWindow("Etes-vous sûr de vouloir supprimer ce menu ?", new Action(test1)), o => true);
             _openDeletingPlatWindow = new RelayCommand(() => DialogService.ShowYesNoWindow("Etes-vous sûr de vouloir supprimer ce plat ?", new Action(test1)), o => true);
@@ -175,6 +184,14 @@ namespace ApplicationJampay.ViewModel.ViewModel.Gérant
         private void ModifyFonction()
         {
             _utilisateurBusiness.ModifyFonction(SelectedUtilisateur.Matricule, SelectedFonction);
+            _collectionUtilisateur.Clear();
+            _utilisateurBusiness.GetAllUtilisateurs().ForEach(u => _collectionUtilisateur.Add(u));
+
+        }
+
+        private void DeleteUtilisateur()
+        {
+            _utilisateurBusiness.DeleteUtilisateur(SelectedUtilisateur.Matricule);
             _collectionUtilisateur.Clear();
             _utilisateurBusiness.GetAllUtilisateurs().ForEach(u => _collectionUtilisateur.Add(u));
 

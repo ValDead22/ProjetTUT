@@ -15,5 +15,9 @@ namespace ApplicationJampay.Model.DAL.Utilisateur
         List<string> GetAllFonctions();
 
         void ModifyFonction(int matricule, string fonction);
+
+        void AddUtilisateur(int matricule, string fonction, string motDePasse);
+
+        void DeleteUtilisateur(int matricule);
     }
 }

@@ -10,6 +10,8 @@ namespace ApplicationJampay.Model.DAL.Usager
     {
         List<Entity.Usager> GetAllUsagers();
 
+        List<Entity.Usager> GetAllUsagersNonUtilisateur();
+
         Entity.Usager GetUsager(string matricule, string nom);
 
         List<string> GetAllMoyenDePaiements();
