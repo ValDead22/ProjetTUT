@@ -17,289 +17,36 @@
         <converter:MultipleSelectedItemToIsEnable x:Key="multiSelected2isEnable"/>
     </Window.Resources>
 
-    <TabControl TabStripPlacement="Left">
-
-        <TabItem Header="Gestion - Cafétéria">
-            <Grid>
-
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="5*"/>
-                    <RowDefinition Height="5*"/>
-                    <RowDefinition Height="1*"/>
-                </Grid.RowDefinitions>
-
-                <Grid Grid.Row="0" Margin="10">
-
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="2.2*"/>
-                        <ColumnDefinition Width="10"/>
-                        <ColumnDefinition/>
-                    </Grid.ColumnDefinitions>
-
-                    <ListView Grid.Column="0" ItemsSource="{Binding CollectionMenus}" SelectedItem="{Binding SelectedMenu}">
-                        <ListView.View>
-                            <GridView>
-                                <GridViewColumn Header="Menu" DisplayMemberBinding="{Binding Nom}"/>
-                                <GridViewColumn Header="Date" DisplayMemberBinding="{Binding DateElaboration, Converter={StaticResource date2string}}"  />
-                            </GridView>
-                        </ListView.View>
-                    </ListView>
-
-                    <ListView Grid.Column="2" ItemsSource="{Binding CollectionPlatOfSelectedMenu}" >
-                        <ListView.View>
-                            <GridView>
-                                <GridViewColumn Header="Plat" DisplayMemberBinding="{Binding Nom}"/>
-                                <GridViewColumn Header="Date" DisplayMemberBinding="{Binding DateEffet ,Converter={StaticResource date2string}}"  />
-                            </GridView>
-                        </ListView.View>
-                    </ListView>
-
-                </Grid>
-
-                <Grid Grid.Row="1" Grid.ColumnSpan="2">
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="1*"/>
-                        <ColumnDefinition Width="2*"/>
-                    </Grid.ColumnDefinitions>
-
-                    <Grid Grid.Row="0" Margin="10">
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="1*"/>
-                            <RowDefinition Height="5" />
-                            <RowDefinition Height="1*"/>
-                        </Grid.RowDefinitions>
-
-                        <Grid Grid.Row="0">
-                            <Grid.RowDefinitions>
-                                <RowDefinition/>
-                                <RowDefinition/>
-                            </Grid.RowDefinitions>
-                            <TextBlock Text="Menu" VerticalAlignment="Bottom" FontWeight="Bold" FontSize="48" />
-                            <StackPanel Grid.Row="1" Orientation="Horizontal" HorizontalAlignment="Left">
-                                <Button Grid.Row ="0" Content="Ajouter" HorizontalContentAlignment="Center" Padding="10" Command="{Binding OpenAddingMenuWindow}" />
-                                <Separator Grid.Row="1" Background="Transparent" Width="2"/>
-                                <Button Grid.Row ="0"  Content="Modifier" HorizontalContentAlignment="Center" Padding="10" Command="{Binding OpenModifyingMenuWindow}" IsEnabled="{Binding SelectedMenu, Converter={StaticResource selected2isEnable}}" />
-                                <Separator Grid.Row="1" Background="Transparent" Width="2"/>
-                                <Button Grid.Row ="0" Content="Supprimer" HorizontalContentAlignment="Center" Padding="10" Command="{Binding OpenDeletingMenuWindow}" IsEnabled="{Binding SelectedMenu, Converter={StaticResource selected2isEnable}}" />
-
-                            </StackPanel>
-                        </Grid>
-
-                        <Grid Grid.Row="2">
-                            <Grid.RowDefinitions>
-                                <RowDefinition/>
-                                <RowDefinition/>
-                            </Grid.RowDefinitions>
-                            <TextBlock Text="Plat" VerticalAlignment="Bottom" FontWeight="Bold" FontSize="48" />
-                            <StackPanel Grid.Row="1" Orientation="Horizontal" HorizontalAlignment="Left">
-                                <Button Grid.Row ="0" Content="Ajouter" HorizontalContentAlignment="Center" Padding="10" Command="{Binding OpenAddingPlatWindow}"/>
-                                <Separator Grid.Row="1" Background="Transparent" Width="2"/>
-                                <Button Grid.Row ="0"  Content="Modifier" HorizontalContentAlignment="Center" Padding="10" Command="{Binding OpenModifyingMenuWindow}" IsEnabled="{Binding SelectedPlat, Converter={StaticResource selected2isEnable}}"/>
-                                <Separator Grid.Row="1" Background="Transparent" Width="2"/>
-                                <Button Grid.Row ="0" Content="Supprimer" HorizontalContentAlignment="Center" Padding="10" Command="{Binding OpenDeletingPlatWindow}" IsEnabled="{Binding SelectedPlat, Converter={StaticResource selected2isEnable}}"/>
-
-                            </StackPanel>
-                        </Grid>
+    <Grid>
 
-                    </Grid>
+        <TabControl TabStripPlacement="Left">
 
-                    <ListView Grid.Row="1" Grid.Column="1" Margin="10" ItemsSource="{Binding CollectionPlats}" SelectedItem="{Binding SelectedPlat}">
-                        <ListView.View>
-                            <GridView>
-                                <GridViewColumn Header="Plat" DisplayMemberBinding="{Binding Nom}" />
-                            </GridView>
-                        </ListView.View>
-                    </ListView>
-                </Grid>
-                <Grid Grid.Row="3" Grid.ColumnSpan="2">
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="5*"/>
-                        <ColumnDefinition/>
-                    </Grid.ColumnDefinitions>
+                <TabItem Header="Gestion - Cafétéria">
 
-                    <Label Grid.Column="0" Content="Connecté en tant que :" HorizontalAlignment="Left" VerticalAlignment="Center"/>
-                    <Button Grid.Column="1" Content="Déconnexion" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
-                </Grid>
+                    <usercontrol:UserControlCafeteria/>
 
-            </Grid>
+                </TabItem>
 
-        </TabItem>
 
-        <TabItem Header="Gestion - Utilisateurs" >
+                <TabItem Header="Gestion - Usagers" >
 
-            <Grid Margin="10">
+                    <usercontrol:UserControlUsager/>
 
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="2*"/>
-                    <RowDefinition/>
-                </Grid.RowDefinitions>
+                </TabItem>
 
-                <ListView Grid.Row="0" ItemsSource="{Binding CollectionUtilisateur}" SelectedItem="{Binding SelectedUtilisateur}">
-                    <ListView.View>
-                        <GridView>
+                <TabItem Header="Gestion - Utilisateurs">
 
-                            <GridViewColumn Header="Matricule" DisplayMemberBinding="{Binding Matricule}"/>
-                            <GridViewColumn Header="Nom" DisplayMemberBinding="{Binding Nom}"/>
-                            <GridViewColumn Header="Prenom" DisplayMemberBinding="{Binding Prenom}"/>
-                            <GridViewColumn Header="Fonction" DisplayMemberBinding="{Binding Fonction}"/>
+                    <usercontrol:UserControlUtilisateur/>
 
-                        </GridView>
-                    </ListView.View>
-                </ListView>
+                </TabItem>
 
-                <Grid Grid.Row="1" Margin="15" VerticalAlignment="Center">
+            </TabControl>
 
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="1.3*"/>
-                        <ColumnDefinition/>
-                    </Grid.ColumnDefinitions>
+        
 
-                    <StackPanel Orientation="Vertical" Grid.Column="0">
+    </Grid>
+    
 
-                        <TextBlock FontWeight="Bold" FontSize="48" Text="{Binding SelectedUtilisateur.Nom}"/>
-                        <TextBlock FontWeight="Bold" FontSize="48" Text="{Binding SelectedUtilisateur.Prenom}"/>
 
-                    </StackPanel>
-
-                    <StackPanel Orientation="Vertical" Grid.Column="1">
-
-                        <TextBlock FontSize="25" Text="Nouvelle fonction :"/>
-                        <StackPanel Orientation="Horizontal">
-
-
-                            <ComboBox Width="100"
-                                IsSynchronizedWithCurrentItem="False" 
-                                ItemsSource="{Binding AvailableFonction}" 
-                                SelectedValue ="{Binding SelectedFonction, Mode=TwoWay}" />
-
-                            <Separator Width="15" Visibility="Hidden"/>
-
-                            <Button Content="Valider" Padding="10" Command="{Binding OpenModifyingFonctionWindow}">
-
-                                <Button.IsEnabled>
-                                    <MultiBinding Converter="{StaticResource multiSelected2isEnable}">
-                                        <Binding Path="SelectedUtilisateur"/>
-                                        <Binding Path="SelectedFonction"/>
-                                    </MultiBinding>
-
-                                </Button.IsEnabled>
-
-                            </Button>
-
-
-                        </StackPanel>
-                        
-                        
-
-
-                    </StackPanel>
-
-                    <StackPanel Orientation="Horizontal" Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Bottom">
-
-                        <Button Content="Ajouter utilisateur" Padding="10" Command="{Binding OpenAddingUtilisateurWindow}"/>
-
-                        <Separator Width="15" Visibility="Hidden"/>
-
-                        <Button Command="{Binding OpenDeletingUtilisateurWindow}" Content="Supprimer utilisateur" Padding="10" IsEnabled="{Binding SelectedUtilisateur, Converter={StaticResource selected2isEnable}}"/>
-
-
-                    </StackPanel>
-
-
-                </Grid>
-
-
-
-            </Grid>
-
-        </TabItem>
-
-        <TabItem Header="Gestion - Usagers" >
-
-            <Grid Margin="10">
-
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="2*"/>
-                    <RowDefinition/>
-                </Grid.RowDefinitions>
-
-                <ListView Grid.Row="0" ItemsSource="{Binding CollectionUsager}" SelectedItem="{Binding SelectedUsager}">
-                    <ListView.View>
-                        <GridView>
-
-                            <GridViewColumn Header="Matricule" DisplayMemberBinding="{Binding Matricule}"/>
-                            <GridViewColumn Header="Titre" DisplayMemberBinding="{Binding Titre}"/>
-                            <GridViewColumn Header="Nom" DisplayMemberBinding="{Binding Nom}"/>
-                            <GridViewColumn Header="Prenom" DisplayMemberBinding="{Binding Prenom}"/>
-                            <GridViewColumn Header="Paiement" DisplayMemberBinding="{Binding Paiement}"/>
-                            <GridViewColumn Header="Date d'entree" DisplayMemberBinding="{Binding DateEntree, Converter={StaticResource date2string}}"/>
-                            <GridViewColumn Header="Date de sortie" DisplayMemberBinding="{Binding DateFinContrat ,Converter={StaticResource date2string}}"/>
-                            <GridViewColumn Header="Matricule de la carte" DisplayMemberBinding="{Binding MatriculeCarte}"/>
-
-                        </GridView>
-                    </ListView.View>
-                </ListView>
-
-                <Grid Grid.Row="1" Margin="15" VerticalAlignment="Center">
-
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="1.3*"/>
-                        <ColumnDefinition/>
-                    </Grid.ColumnDefinitions>
-
-                    <StackPanel Orientation="Vertical" Grid.Column="0">
-
-                        <TextBlock FontWeight="Bold" FontSize="48" Text="{Binding SelectedUsager.Nom}"/>
-                        <TextBlock FontWeight="Bold" FontSize="48" Text="{Binding SelectedUsager.Prenom}"/>
-
-                    </StackPanel>
-
-                    <StackPanel Orientation="Vertical" Grid.Column="1">
-
-                        <TextBlock FontSize="20" Text="Nouveau moyen de paiement :"/>
-
-                        <StackPanel Orientation="Horizontal">
-
-
-                            <ComboBox Width="100"
-                                IsSynchronizedWithCurrentItem="False" 
-                                ItemsSource="{Binding AvailableMoyenDePaiement}" 
-                                SelectedValue ="{Binding SelectedMoyenDePaiement, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" />
-
-                            <Separator Width="15" Visibility="Hidden"/>
-
-                            <Button Content="Valider" Padding="10" Command="{Binding OpenModifyingMoyenDePaiementWindow}">
-                                
-                                <Button.IsEnabled>                                            
-                                    <MultiBinding Converter="{StaticResource multiSelected2isEnable}">                                                
-                                        <Binding Path="SelectedUsager"/>
-                                        <Binding Path="SelectedMoyenDePaiement"/>                                            
-                                    </MultiBinding>                                   
-                                        
-                                </Button.IsEnabled>
-                                
-                            </Button>
-
-
-                        </StackPanel>
-
-
-                    </StackPanel>
-
-
-                </Grid>
-
-
-
-            </Grid>
-
-        </TabItem>
-
-        <TabItem Header="testusercontrol">
-
-            <usercontrol:UserControlCafeteria/>
-
-        </TabItem>
-
-    </TabControl>
+    
 </Window>
