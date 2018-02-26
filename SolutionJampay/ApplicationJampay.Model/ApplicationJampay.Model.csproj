@@ -88,6 +88,7 @@
     <Compile Include="Entity\Utilisateur.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Service\DialogService.cs" />
+    <Compile Include="Service\ModsWinCard64.cs" />
     <Compile Include="Service\SQLService.cs" />
   </ItemGroup>
   <ItemGroup>
