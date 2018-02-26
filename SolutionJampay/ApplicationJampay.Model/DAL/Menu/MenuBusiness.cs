@@ -23,7 +23,7 @@ namespace ApplicationJampay.Model.DAL.Menu
 
                 foreach (Entity.Menu m in list)
                 {
-                    m.SetListPlats(_platDAL.GetPlatByMenuID(m.CodeMenu));
+                    m.SetListPlats(_platDAL.GetPlatByMenuID(m.CodeMenu ?? default(int)));
                 }
 
                 return list;
