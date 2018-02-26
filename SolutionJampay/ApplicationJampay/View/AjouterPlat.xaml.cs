@@ -25,10 +25,5 @@ namespace ApplicationJampay.View
             InitializeComponent();
             DataContext = new AjouterPlatViewModel();
         }
-
-        private void listView_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-
-        }
     }
 }

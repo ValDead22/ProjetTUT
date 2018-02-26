@@ -140,5 +140,12 @@ namespace ApplicationJampay.Model.DAL.Plat
                 mySqlDataReader.Close();
             }
         }
+
+        public void ModifyPlat(Entity.Plat plat)
+        {
+            var query = " UPDATE Plat SET DateEffet="+ "\""+plat.DateEffet +"\"" + ", DateFin="+ "\"" + plat.DateFin + "\"" +", Categorie=" + "\"" + plat.Categorie+", Nom="+ "\"" + plat.Nom+ "\""+ "idTarif =" + "\"" + plat.Tarif + "\"" + " WHERE CodePlat= " + "\"" + plat.CodePlat + "\"";
+            MySqlDataReader mySqlDataReader = _sQLService.Load(query);
+
+        }
     }
 }
