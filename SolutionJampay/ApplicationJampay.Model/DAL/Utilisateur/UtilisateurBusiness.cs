@@ -35,5 +35,15 @@ namespace ApplicationJampay.Model.DAL.Utilisateur
         {
             _utilisateurDAL.ModifyFonction(matricule, fonction);
         }
+
+        public void AddUtilisateur(int matricule, string fonction, string motDePasse)
+        {
+            _utilisateurDAL.AddUtilisateur(matricule, fonction, motDePasse);
+        }
+
+        public void DeleteUtilisateur(int matricule)
+        {
+            _utilisateurDAL.DeleteUtilisateur(matricule);
+        }
     }
 }

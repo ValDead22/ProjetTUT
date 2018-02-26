@@ -19,6 +19,24 @@ namespace ApplicationJampay.Model.DAL.Utilisateur
             _sQLService = SQLService.Instance;
         }
 
+        public void AddUtilisateur(int matricule, string fonction, string motDePasse)
+        {
+            var query = "INSERT INTO Utilisateur values("+"\""+matricule+"\",\""+fonction+"\",\""+motDePasse+"\")";
+
+            MySqlDataReader mySqlDataReader = _sQLService.Load(query);
+
+            mySqlDataReader.Close();
+        }
+
+        public void DeleteUtilisateur(int matricule)
+        {
+            var query = "DELETE FROM Utilisateur Where idUtilisateur="+"\"" + matricule + "\"";
+
+            MySqlDataReader mySqlDataReader = _sQLService.Load(query);
+
+            mySqlDataReader.Close();
+        }
+
         public List<string> GetAllFonctions()
         {
             var query = "SELECT * FROM CategorieRole";
