@@ -66,6 +66,7 @@
     <Compile Include="ViewModel\Gérant\AjoutPlatViewModel.cs" />
     <Compile Include="ViewModel\AjouterPlatViewModelcs.cs" />
     <Compile Include="ViewModel\ErrorViewModel.cs" />
+    <Compile Include="ViewModel\Gérant\ModifPlatViewModel.cs" />
     <Compile Include="ViewModel\LoginViewModel.cs" />
     <Compile Include="ViewModel\Gérant\GérantMainViewModel.cs" />
     <Compile Include="ViewModel\CaissierViewModel.cs" />
