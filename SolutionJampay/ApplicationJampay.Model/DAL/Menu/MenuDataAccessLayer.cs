@@ -75,5 +75,12 @@ namespace ApplicationJampay.Model.DAL.Menu
                 mySqlDataReader.Close();
             }
         }
+
+        public void ModifyMenu(Entity.Menu menu)
+        {
+            var query = "UPDATE Menu SET DateElaboration=" + "\"" + menu.DateElaboration + "\"" + ", Categorie=" + "\"" + menu.Categorie + "\"" + ", nom=" + "\"" + menu.Nom + ", Observation=" + "\"" + menu.Observation + "\"" + "idGerant =" + "\"" + menu.IdGerant + "\"" + " WHERE CodeMenu= " + "\"" + menu.CodeMenu + "\"";
+            MySqlDataReader mySqlDataReader = _sQLService.Load(query); 
+
+        }
     }
 }

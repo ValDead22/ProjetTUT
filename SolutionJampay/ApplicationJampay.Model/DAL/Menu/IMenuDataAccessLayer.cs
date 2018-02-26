@@ -25,5 +25,7 @@ namespace ApplicationJampay.Model.DAL.Menu
         /// </summary>
         /// <returns></returns>
         List<string> GetAllCategories();
+
+        void ModifyMenu(Entity.Menu menu);
     }
 }

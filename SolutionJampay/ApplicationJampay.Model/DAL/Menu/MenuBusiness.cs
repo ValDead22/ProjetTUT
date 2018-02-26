@@ -39,5 +39,18 @@ namespace ApplicationJampay.Model.DAL.Menu
         {
             return _menuDAL.GetAllCategories();
         }
+
+        public void ModifyMenu(Entity.Menu menu)
+        {
+            try
+            {
+                _menuDAL.ModifyMenu(menu);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+
+        }
     }
 }
