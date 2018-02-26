@@ -68,6 +68,9 @@
     <Compile Include="ViewModel\ErrorViewModel.cs" />
     <Compile Include="ViewModel\Gérant\AjoutUtilisateurViewModel.cs" />
     <Compile Include="ViewModel\Gérant\ModifPlatViewModel.cs" />
+    <Compile Include="ViewModel\Gérant\UserControlTab\UserControlCafeteriaViewModel.cs" />
+    <Compile Include="ViewModel\Gérant\UserControlTab\UserControlUsagerViewModel.cs" />
+    <Compile Include="ViewModel\Gérant\UserControlTab\UserControlUtilisateurViewModel.cs" />
     <Compile Include="ViewModel\LoginViewModel.cs" />
     <Compile Include="ViewModel\Gérant\GérantMainViewModel.cs" />
     <Compile Include="ViewModel\CaissierViewModel.cs" />
