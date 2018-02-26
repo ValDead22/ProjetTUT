@@ -25,6 +25,11 @@ namespace ApplicationJampay.Model.DAL.Usager
             return _usagerDAL.GetAllUsagers();
         }
 
+        public List<Entity.Usager> GetAllUsagersNonUtilisateur()
+        {
+            return _usagerDAL.GetAllUsagersNonUtilisateur();
+        }
+
         public List<string> GetAllMoyenDePaiements()
         {
             return _usagerDAL.GetAllMoyenDePaiements();
