@@ -61,9 +61,9 @@
     <Compile Include="DAL\Plat\IPlatDataAccessLayer.cs" />
     <Compile Include="DAL\Plat\PlatDataAccessLayer.cs" />
     <Compile Include="DAL\Plat\PlatBusiness.cs" />
-    <Compile Include="DAL\Produit\IProductDataAccessLayer.cs" />
-    <Compile Include="DAL\Produit\ProductBusiness.cs" />
-    <Compile Include="DAL\Produit\ProductDataAccessLayer.cs" />
+    <Compile Include="DAL\Produit\IProduitDataAccessLayer.cs" />
+    <Compile Include="DAL\Produit\ProduitBusiness.cs" />
+    <Compile Include="DAL\Produit\ProduitDataAccessLayer.cs" />
     <Compile Include="DAL\Usager\IUsagerDataAccessLayer.cs" />
     <Compile Include="DAL\Usager\UsagerBusiness.cs" />
     <Compile Include="DAL\Usager\UsagerDataAccessLayer.cs" />

@@ -17,27 +17,66 @@ namespace ApplicationJampay.Model.DAL.Plat
 
         public List<Entity.Plat> GetAllPlat()
         {
-            return _platDAL.GetAllPlat();
+            try
+            {
+                return _platDAL.GetAllPlat();
+            }
+            catch(Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+            
         }
 
         public List<Entity.Plat> GetPlatByMenuId(int menuId)
         {
-            return _platDAL.GetPlatByMenuID(menuId);
+            try
+            {
+                return _platDAL.GetPlatByMenuID(menuId);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+
         }
 
         public void AddPlat(Entity.Plat plat)
         {
-            _platDAL.AddPlat(plat);
+            try
+            {
+                _platDAL.AddPlat(plat);
+            }
+            
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
         }
 
         public List<string> GetAllCategories()
         {
-            return _platDAL.GetAllCategories();
+            
+            try
+            {
+                return _platDAL.GetAllCategories();
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
         }
 
         public List<Entity.Plat> GetPlatbyCateg(string Categorie)
-        {
-            return _platDAL.GetPlatbyCateg(Categorie);
+        {            
+            try
+            {
+                return _platDAL.GetPlatbyCateg(Categorie);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
         }
     }
 }

@@ -142,6 +142,11 @@ namespace ApplicationJampay.ViewModel.ViewModel
                         DialogService.ShowCaissierWindow();
                         Close();
                         break;
+
+                    case "Cuisinier":
+                        DialogService.ShowCuisinierWindow();
+                        Close();
+                        break;
                 }
 
                 

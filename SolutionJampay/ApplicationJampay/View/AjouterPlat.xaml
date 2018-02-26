@@ -10,7 +10,7 @@
         <Grid.RowDefinitions>
             <RowDefinition Height="4*"/>
             <RowDefinition Height="4*"/>
-
+            <RowDefinition Height="1.5*"/>
             <RowDefinition Height="1*"/>
 
         </Grid.RowDefinitions>
@@ -25,20 +25,30 @@
 
         <Button Grid.Row="0" Grid.Column="0"  FontSize="20" Opacity="0.5" Command="{Binding DisplayPlatViewCommand}" Margin="0,0,127,0">
         </Button>
-        <Label Grid.Row="0" Grid.Column="0" HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="24" Content="Plats" Margin="34,66,0,62"/>
+        <Label Grid.Row="0" Grid.Column="0" HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="24" Content="Plats" Margin="34,66,0,49" Height="47"/>
 
 
         <Button Grid.Row="0"  FontSize="20" Opacity="0.5" Command="{Binding DisplayEntreeViewCommand}" HorizontalAlignment="Right" Width="127" />
-        <Label Grid.Row="0" HorizontalAlignment="Right" FontSize="24" Content="Entrées" Margin="0,64.075,24.327,64.073" d:LayoutOverrides="Height"/>
+        <Label Grid.Row="0" HorizontalAlignment="Right" FontSize="24" Content="Entrées" Margin="0,58,24,41"/>
 
 
         <Button Grid.Row="1" Grid.Column="0"  FontSize="20" Opacity="0.5"  Command="{Binding DisplayDessertViewCommand}" Margin="0,0,127,0">
         </Button>
-        <Label Grid.Row="1" Grid.Column="0" VerticalAlignment="Center" FontSize="24" Margin="16,66,0,62" Content="Desserts" HorizontalAlignment="Left" Width="99"/>
+        <Label Grid.Row="1" Grid.Column="0" VerticalAlignment="Center" FontSize="24" Margin="16,66,0,49" Content="Desserts" HorizontalAlignment="Left" Width="99" Height="47"/>
 
 
         <Button Grid.Row="1"  FontSize="20" Opacity="0.5"  Command="{Binding DisplaySnackViewCommand}" HorizontalAlignment="Right" Width="127"/>
-        <Label Grid.Row="1" HorizontalAlignment="Right" FontSize="24" Margin="0,65,24,63" Content="Snacks"/>
+        <Label Grid.Row="1" HorizontalAlignment="Right" FontSize="24" Margin="0,58,24,48" Content="Snacks"/>
+
+        <Button Grid.Row="2" FontSize="20" Opacity="0.5"  Command="{Binding CancelCommand}" HorizontalAlignment="Right" Width="256"/>
+        <Label Grid.Row="2" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="24"  Content="Annuler"  RenderTransformOrigin="0.5,0.5"/>
+
+
+        <Button Grid.Row="2"  Grid.Column="1" Opacity="0.5"  Command="{Binding AddPlatCommand}" HorizontalAlignment="Right" Width="255"/>
+        <Label Grid.Row="2" Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="24"  Content="Ajouter" RenderTransformOrigin="0.5,0.5"/>
+
+
+
 
         <Grid Grid.Row="3" Grid.ColumnSpan="2">
             <Grid.ColumnDefinitions>
@@ -49,7 +59,7 @@
             <Label Grid.Column="0" Content="Connecté en tant que :" HorizontalAlignment="Left" VerticalAlignment="Center"/>
             <Button Grid.Column="1" Content="Déconnexion" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
         </Grid>
-        <ListView x:Name="listView" ItemsSource="{Binding CollectionOfSelectedCateg}" Grid.Column="1" HorizontalAlignment="Left" Height="340" Grid.RowSpan="2" VerticalAlignment="Top" Width="255">
+        <ListView x:Name="listView" ItemsSource="{Binding CollectionOfSelectedCateg}" Grid.Column="1" HorizontalAlignment="Left" Height="292" Grid.RowSpan="2" VerticalAlignment="Top" Width="255">
             <ListView.View>
                 <GridView>
                     <GridViewColumn Header="Nom" DisplayMemberBinding="{Binding Nom}"/>

@@ -3,7 +3,7 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:ApplicationJampay.View"
+        xmlns:local="clr-namespace:ApplicationJampay.View.Gérant"
         xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
         xmlns:converter="clr-namespace:ApplicationJampay.Converter"
         mc:Ignorable="d"
@@ -77,9 +77,9 @@
                             <StackPanel Grid.Row="1" Orientation="Horizontal" HorizontalAlignment="Left">
                                 <Button Grid.Row ="0" Content="Ajouter" HorizontalContentAlignment="Center" Padding="10" Command="{Binding OpenAddingMenuWindow}" />
                                 <Separator Grid.Row="1" Background="Transparent" Width="2"/>
-                                <Button Grid.Row ="0"  Content="Modifier" HorizontalContentAlignment="Center" Padding="10" Command="{Binding OpenModifyingMenuWindow}"  />
+                                <Button Grid.Row ="0"  Content="Modifier" HorizontalContentAlignment="Center" Padding="10" Command="{Binding OpenModifyingMenuWindow}" IsEnabled="{Binding SelectedMenu, Converter={StaticResource selected2isEnable}}" />
                                 <Separator Grid.Row="1" Background="Transparent" Width="2"/>
-                                <Button Grid.Row ="0" Content="Supprimer" HorizontalContentAlignment="Center" Padding="10" Command="{Binding OpenDeletingMenuWindow}" />
+                                <Button Grid.Row ="0" Content="Supprimer" HorizontalContentAlignment="Center" Padding="10" Command="{Binding OpenDeletingMenuWindow}" IsEnabled="{Binding SelectedMenu, Converter={StaticResource selected2isEnable}}" />
 
                             </StackPanel>
                         </Grid>
@@ -93,9 +93,9 @@
                             <StackPanel Grid.Row="1" Orientation="Horizontal" HorizontalAlignment="Left">
                                 <Button Grid.Row ="0" Content="Ajouter" HorizontalContentAlignment="Center" Padding="10" Command="{Binding OpenAddingPlatWindow}"/>
                                 <Separator Grid.Row="1" Background="Transparent" Width="2"/>
-                                <Button Grid.Row ="0"  Content="Modifier" HorizontalContentAlignment="Center" Padding="10" Command="{Binding OpenModifyingMenuWindow}"/>
+                                <Button Grid.Row ="0"  Content="Modifier" HorizontalContentAlignment="Center" Padding="10" Command="{Binding OpenModifyingMenuWindow}" IsEnabled="{Binding SelectedPlat, Converter={StaticResource selected2isEnable}}"/>
                                 <Separator Grid.Row="1" Background="Transparent" Width="2"/>
-                                <Button Grid.Row ="0" Content="Supprimer" HorizontalContentAlignment="Center" Padding="10" Command="{Binding OpenDeletingPlatWindow}" />
+                                <Button Grid.Row ="0" Content="Supprimer" HorizontalContentAlignment="Center" Padding="10" Command="{Binding OpenDeletingPlatWindow}" IsEnabled="{Binding SelectedPlat, Converter={StaticResource selected2isEnable}}"/>
 
                             </StackPanel>
                         </Grid>
@@ -199,7 +199,7 @@
 
                         <Separator Width="15" Visibility="Hidden"/>
 
-                        <Button Content="Supprimer utilisateur" Padding="10"/>
+                        <Button Content="Supprimer utilisateur" Padding="10" IsEnabled="{Binding SelectedUtilisateur, Converter={StaticResource selected2isEnable}}"/>
 
 
                     </StackPanel>
@@ -291,6 +291,12 @@
 
 
             </Grid>
+
+        </TabItem>
+
+        <TabItem Header="testusercontrol">
+
+            <local:UserControltest/>
 
         </TabItem>
 

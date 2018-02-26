@@ -10,20 +10,19 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
+using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace ApplicationJampay.View
+namespace ApplicationJampay.View.Gérant
 {
     /// <summary>
-    /// Logique d'interaction pour ErrorView.xaml
+    /// Logique d'interaction pour UserControltest.xaml
     /// </summary>
-    public partial class ErrorView : Window
+    public partial class UserControltest : UserControl
     {
-        public ErrorView(string message)
+        public UserControltest()
         {
-            
             InitializeComponent();
-            MsgLabel.Text = message;
         }
     }
 }

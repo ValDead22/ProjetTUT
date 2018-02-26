@@ -1,0 +1,78 @@
+﻿<Window x:Class="ApplicationJampay.View.Cuisinier.CuisinierMainView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ApplicationJampay.View.Cuisinier"
+        xmlns:converter="clr-namespace:ApplicationJampay.Converter"
+        mc:Ignorable="d"
+        Title="CuisinierMainView" Height="508.94" Width="851.53">
+
+    <Window.Resources>
+        <converter:DateToStringConverter x:Key="date2string"/>
+    </Window.Resources>
+    
+    
+    <Grid>
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="5*"/>
+            <RowDefinition Height="5*"/>
+            <RowDefinition Height="1*"/>
+        </Grid.RowDefinitions>
+
+        <Grid Grid.Row="0" Margin="10">
+
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="2.2*"/>
+                <ColumnDefinition Width="10"/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+
+            <ListView Grid.Column="0" ItemsSource="{Binding CollectionMenus}" SelectedItem="{Binding SelectedMenu}">
+                <ListView.View>
+                    <GridView>
+                        <GridViewColumn Header="Menu" DisplayMemberBinding="{Binding Nom}"/>
+                        <GridViewColumn Header="Date" DisplayMemberBinding="{Binding DateElaboration, Converter={StaticResource date2string}}"  />
+                    </GridView>
+                </ListView.View>
+            </ListView>
+
+            <ListView Grid.Column="2" ItemsSource="{Binding CollectionPlatOfSelectedMenu}" SelectedItem="{Binding SelectedPlat}" >
+                <ListView.View>
+                    <GridView>
+                        <GridViewColumn Header="Plat" DisplayMemberBinding="{Binding Nom}"/>
+                        <GridViewColumn Header="Date" DisplayMemberBinding="{Binding DateEffet ,Converter={StaticResource date2string}}"  />
+                    </GridView>
+                </ListView.View>
+            </ListView>
+
+        </Grid>
+
+        <Grid Grid.Row="1" Grid.ColumnSpan="2">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="2*"/>
+            </Grid.ColumnDefinitions>
+
+
+            <ListView Grid.Row="1" Grid.Column="1" Margin="10" ItemsSource="{Binding CollectionProduitOfSelectedPlat}" SelectedItem="{Binding SelectedProduit}">
+                <ListView.View>
+                    <GridView>
+                        <GridViewColumn Header="Produit" DisplayMemberBinding="{Binding Nom}" />
+                    </GridView>
+                </ListView.View>
+            </ListView>
+        </Grid>
+        <Grid Grid.Row="3" Grid.ColumnSpan="2">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="5*"/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+
+            <Label Grid.Column="0" Content="Connecté en tant que :" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+            <Button Grid.Column="1" Content="Déconnexion" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+        </Grid>
+
+    </Grid>
+</Window>

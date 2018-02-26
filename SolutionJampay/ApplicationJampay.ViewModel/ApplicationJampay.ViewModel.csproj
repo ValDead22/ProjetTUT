@@ -61,6 +61,7 @@
     <Compile Include="Behavior\PasswordBehavior.cs" />
     <Compile Include="Command\RelayCommand.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ViewModel\Cuisinier\CuisinierMainViewModel.cs" />
     <Compile Include="ViewModel\Gérant\AjoutMenuViewModel.cs" />
     <Compile Include="ViewModel\Gérant\AjoutPlatViewModel.cs" />
     <Compile Include="ViewModel\AjouterPlatViewModelcs.cs" />

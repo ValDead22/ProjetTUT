@@ -69,6 +69,9 @@
     <Compile Include="Converter\DateToStringConverter.cs" />
     <Compile Include="Converter\MultipleSelectedItemToIsEnable.cs" />
     <Compile Include="Converter\SelectedItemToIsEnable.cs" />
+    <Compile Include="View\Cuisinier\CuisinierMainView.xaml.cs">
+      <DependentUpon>CuisinierMainView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\Gérant\AjoutMenuView.xaml.cs">
       <DependentUpon>AjoutMenuView.xaml</DependentUpon>
     </Compile>
@@ -102,6 +105,9 @@
     <Compile Include="View\Gérant\ModifPlatView.xaml.cs">
       <DependentUpon>ModifPlatView.xaml</DependentUpon>
     </Compile>
+    <Compile Include="View\Gérant\UserControltest.xaml.cs">
+      <DependentUpon>UserControltest.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\LoginView.xaml.cs">
       <DependentUpon>LoginView.xaml</DependentUpon>
     </Compile>
@@ -131,6 +137,10 @@
     <Page Include="Themes\Metro\Theme.Colors.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+    </Page>
+    <Page Include="View\Cuisinier\CuisinierMainView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\Gérant\AjoutMenuView.xaml">
       <SubType>Designer</SubType>
@@ -173,6 +183,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\Gérant\ModifPlatView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Gérant\UserControltest.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

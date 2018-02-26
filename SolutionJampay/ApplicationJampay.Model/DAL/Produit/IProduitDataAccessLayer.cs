@@ -6,13 +6,15 @@ using System.Threading.Tasks;
 
 namespace ApplicationJampay.Model.DAL.Produit
 {
-    interface IProductDataAccessLayer
+    interface IProduitDataAccessLayer
     {
         /// <summary>
         /// Get a product
         /// </summary>
         /// <returns>The Product</returns>
         List<Entity.Produit> GetAllProduits();
+
+        List<Entity.Produit> GetProduitsByPlatId(int idPlat);
 
         /// <summary>
         /// Add a new Product

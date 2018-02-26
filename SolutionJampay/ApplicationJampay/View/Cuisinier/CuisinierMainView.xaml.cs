@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ApplicationJampay.ViewModel.ViewModel.Cuisinier;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -12,18 +13,18 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 
-namespace ApplicationJampay.View
+namespace ApplicationJampay.View.Cuisinier
 {
     /// <summary>
-    /// Logique d'interaction pour ErrorView.xaml
+    /// Logique d'interaction pour CuisinierMainView.xaml
     /// </summary>
-    public partial class ErrorView : Window
+    public partial class CuisinierMainView : Window
     {
-        public ErrorView(string message)
+        public CuisinierMainView()
         {
-            
-            InitializeComponent();
-            MsgLabel.Text = message;
+            DataContext = new CuisinierMainViewModel();
+
+            InitializeComponent();            
         }
     }
 }

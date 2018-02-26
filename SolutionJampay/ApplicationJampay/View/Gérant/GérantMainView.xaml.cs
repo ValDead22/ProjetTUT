@@ -16,6 +16,8 @@ namespace ApplicationJampay.View.Gérant
             };
 
             InitializeComponent();
-        }        
+        }
+                
+
     }
 }
