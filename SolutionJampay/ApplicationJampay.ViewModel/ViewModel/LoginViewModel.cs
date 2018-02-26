@@ -9,6 +9,7 @@ using System.Windows.Input;
 using ApplicationJampay.Model.DAL.Utilisateur;
 using ApplicationJampay.Model.Entity;
 using ApplicationJampay.Model.Service;
+using ApplicationJampay.Model.Service.Dialog;
 using ApplicationJampay.ViewModel.Command;
 
 namespace ApplicationJampay.ViewModel.ViewModel
@@ -134,17 +135,17 @@ namespace ApplicationJampay.ViewModel.ViewModel
                 switch (utilisateur.Fonction)
                 {
                     case "Gérant":
-                        DialogService.ShowGérantMainView();
+                        DialogGerant.ShowGerantMainView();
                         Close();
                         break;
 
                     case "Caissier":
-                        DialogService.ShowCaissierWindow();
+                        DialogCaissier.ShowCaissierMainWindow();
                         Close();
                         break;
 
                     case "Cuisinier":
-                        DialogService.ShowCuisinierWindow();
+                        DialogCuisinier.ShowCuisinierWindow();
                         Close();
                         break;
                 }

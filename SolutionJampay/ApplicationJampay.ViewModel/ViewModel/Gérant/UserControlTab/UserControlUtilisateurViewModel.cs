@@ -1,6 +1,7 @@
 ﻿using ApplicationJampay.Model.DAL.Utilisateur;
 using ApplicationJampay.Model.Entity;
 using ApplicationJampay.Model.Service;
+using ApplicationJampay.Model.Service.Dialog;
 using ApplicationJampay.ViewModel.Command;
 using System;
 using System.Collections.Generic;
@@ -51,7 +52,7 @@ namespace ApplicationJampay.ViewModel.ViewModel.Gérant.UserControlTab
 
             _avalaibleFonction = _utilisateurBusiness.GetAllFonctions();
 
-            _openAddingUtilisateurWindow = new RelayCommand(() => DialogService.ShowAjoutUtilisateurView(), o => true);
+            _openAddingUtilisateurWindow = new RelayCommand(() => DialogGerant.ShowAjoutUtilisateurView(), o => true);
             _openModifyingFonctionWindow = new RelayCommand(() => DialogService.ShowYesNoWindow("Etes vous sût de vouloir changer la fonction de " + SelectedUtilisateur.Titre + " " + SelectedUtilisateur.Nom + "\n" + SelectedUtilisateur.Fonction + " => " + SelectedFonction, new Action(ModifyFonction)), o => true);
             _openDeletingUtilisateurWindow = new RelayCommand(() => DialogService.ShowYesNoWindow("Etes-vous sûr de vouloir supprimer cet Utilisateur ?", DeleteUtilisateur), o => true);
 

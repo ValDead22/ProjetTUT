@@ -1,6 +1,7 @@
 ﻿using ApplicationJampay.Model.DAL.Utilisateur;
 using ApplicationJampay.Model.Entity;
 using ApplicationJampay.Model.Service;
+using ApplicationJampay.Model.Service.Dialog;
 using ApplicationJampay.ViewModel.Command;
 using System;
 using System.Collections.Generic;
@@ -103,7 +104,7 @@ namespace ApplicationJampay.ViewModel.ViewModel
         public void AddPlat()
         {
 
-            DialogService.ShowAjouterPlatWindow();
+            DialogCaissier.ShowAjouterPlatWindow();
 
         }
     }

@@ -1,6 +1,7 @@
 ﻿using ApplicationJampay.Model.DAL.Usager;
 using ApplicationJampay.Model.Entity;
 using ApplicationJampay.Model.Service;
+using ApplicationJampay.Model.Service.Dialog;
 using ApplicationJampay.ViewModel.Command;
 using System;
 using System.Collections.Generic;

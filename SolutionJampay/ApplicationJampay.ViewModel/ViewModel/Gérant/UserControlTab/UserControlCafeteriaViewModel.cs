@@ -2,6 +2,7 @@
 using ApplicationJampay.Model.DAL.Plat;
 using ApplicationJampay.Model.Entity;
 using ApplicationJampay.Model.Service;
+using ApplicationJampay.Model.Service.Dialog;
 using ApplicationJampay.ViewModel.Command;
 using System;
 using System.Collections.Generic;
@@ -72,11 +73,11 @@ namespace ApplicationJampay.ViewModel.ViewModel.Gérant.UserControlTab
             _openDeletingMenuWindow = new RelayCommand(() => DialogService.ShowYesNoWindow("Etes-vous sûr de vouloir supprimer ce menu ?", new Action(DeleteMenu)), o => true);
             _openDeletingPlatWindow = new RelayCommand(() => DialogService.ShowYesNoWindow("Etes-vous sûr de vouloir supprimer ce plat ?", new Action(DeletePlat)), o => true);
 
-            _openAddingPlatWindow = new RelayCommand(() => DialogService.ShowAjoutMenuView(), o => true);
-            _openAddingMenuWindow = new RelayCommand(() => DialogService.ShowAjoutPlatView(), o => true);
+            _openAddingPlatWindow = new RelayCommand(() => DialogGerant.ShowAjoutMenuView(), o => true);
+            _openAddingMenuWindow = new RelayCommand(() => DialogGerant.ShowAjoutPlatView(), o => true);
 
-            _openModifyingMenuWindow = new RelayCommand(() => DialogService.ShowModifMenuView(), o => true);
-            _openModifyingPlatWindow = new RelayCommand(() => DialogService.ShowModifPlatView(), o => true);
+            _openModifyingMenuWindow = new RelayCommand(() => DialogGerant.ShowModifMenuView(), o => true);
+            _openModifyingPlatWindow = new RelayCommand(() => DialogGerant.ShowModifPlatView(), o => true);
 
             try
             {

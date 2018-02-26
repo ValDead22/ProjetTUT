@@ -3,6 +3,7 @@ using ApplicationJampay.Model.DAL.Plat;
 using ApplicationJampay.Model.DAL.Produit;
 using ApplicationJampay.Model.Entity;
 using ApplicationJampay.Model.Service;
+using ApplicationJampay.Model.Service.Dialog;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
