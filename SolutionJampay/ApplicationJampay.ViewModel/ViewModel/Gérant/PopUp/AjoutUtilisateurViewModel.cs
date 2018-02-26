@@ -65,7 +65,15 @@ namespace ApplicationJampay.ViewModel.ViewModel.Gérant
 
         private void AddingUtilisateur()
         {
-            _utilisateurBusiness.AddUtilisateur(SelectedUsager.Matricule, SelectedFonction, SecureStringToSHA256(Password));
+            try
+            {
+                _utilisateurBusiness.AddUtilisateur(SelectedUsager.Matricule, SelectedFonction, SecureStringToSHA256(Password));
+            }
+            catch (Exception ex)
+            {
+                DialogService.ShowErrorWindow(ex.Message);
+            }
+
             Close();
         }
 

@@ -1,4 +1,5 @@
 ﻿using ApplicationJampay.Model.DAL.Menu;
+using ApplicationJampay.Model.Service.Dialog;
 using ApplicationJampay.ViewModel.Command;
 using System;
 using System.Collections.Generic;
@@ -41,7 +42,14 @@ namespace ApplicationJampay.ViewModel.ViewModel.Gérant
         {
             Model.Entity.Menu menu = new Model.Entity.Menu(_idGérant, _dateElaboration, _selectedCategory, _nom, _observation);
 
-            _menuBusiness.AddMenu(menu);
+            try
+            {
+                _menuBusiness.AddMenu(menu);
+            }
+            catch (Exception ex)
+            {
+                DialogService.ShowErrorWindow(ex.Message);
+            }
         }
 
 

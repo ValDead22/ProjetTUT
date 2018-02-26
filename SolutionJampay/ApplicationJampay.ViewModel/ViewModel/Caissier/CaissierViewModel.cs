@@ -29,9 +29,6 @@ namespace ApplicationJampay.ViewModel.ViewModel.Caissier
         public IEnumerable<Plat> CollectionPlat { get { return _collectionPlat; } }
 
 
-
-
-
         public CaissierViewModel()
         {
 

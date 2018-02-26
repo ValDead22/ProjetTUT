@@ -5,9 +5,7 @@ namespace ApplicationJampay.ViewModel.ViewModel.Gérant
 
 
     public class GérantMainViewModel : IViewModelBase
-    {
-
-        
+    {        
 
         #region Property stuff
         public event PropertyChangedEventHandler PropertyChanged;
@@ -17,9 +15,7 @@ namespace ApplicationJampay.ViewModel.ViewModel.Gérant
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
-        #endregion        
-
-       
+        #endregion               
 
         public GérantMainViewModel()
         {

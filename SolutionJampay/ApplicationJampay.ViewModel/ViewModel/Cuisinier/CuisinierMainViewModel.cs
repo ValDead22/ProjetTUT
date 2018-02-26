@@ -89,7 +89,14 @@ namespace ApplicationJampay.ViewModel.ViewModel.Cuisinier
         {
             _collectionProduitOfSelectedPlat.Clear();
             _collectionPlatOfSelectedMenu.Clear();
-            _platBusiness.GetPlatByMenuId(SelectedMenu.CodeMenu).ForEach(p => _collectionPlatOfSelectedMenu.Add(p));
+            try
+            {
+                _platBusiness.GetPlatByMenuId(SelectedMenu.CodeMenu ?? default(int)).ForEach(p => _collectionPlatOfSelectedMenu.Add(p));
+            }
+            catch (Exception ex)
+            {
+                DialogService.ShowErrorWindow(ex.Message);
+            }
         }
 
         private void UpdateProduitCollection()

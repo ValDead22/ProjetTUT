@@ -13,6 +13,7 @@ using GalaSoft.MvvmLight.Messaging;
 using System.Diagnostics;
 using ApplicationJampay.ViewModel.Command;
 using System.Windows.Input;
+using ApplicationJampay.Model.Service.Dialog;
 
 namespace ApplicationJampay.ViewModel.ViewModel.Gérant
 {
@@ -49,7 +50,14 @@ namespace ApplicationJampay.ViewModel.ViewModel.Gérant
         {
             Plat plat = new Plat(_tarif, _dateEffet, _dateFin, _selectedCategory, _nom);
 
-            _platBusiness.AddPlat(plat);
+            try
+            {
+                _platBusiness.AddPlat(plat);
+            }
+            catch (Exception ex)
+            {
+                DialogService.ShowErrorWindow(ex.Message);
+            }
         }
 
 

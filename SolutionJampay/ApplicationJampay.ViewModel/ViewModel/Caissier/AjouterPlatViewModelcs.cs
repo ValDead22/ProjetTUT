@@ -11,6 +11,7 @@ using System.Windows.Input;
 using ApplicationJampay.Model.Entity;
 using ApplicationJampay.Model.DAL;
 using ApplicationJampay.Model.DAL.Plat;
+using ApplicationJampay.Model.Service.Dialog;
 
 namespace ApplicationJampay.ViewModel.ViewModel.Caissier
 {
@@ -63,7 +64,15 @@ namespace ApplicationJampay.ViewModel.ViewModel.Caissier
             _coollectionOfSelectedCateg.Clear();
 
             List<Plat> listPlats = new List<Plat>();
-            listPlats = _platBusiness.GetPlatbyCateg("Plat");
+            try
+            {
+                listPlats = _platBusiness.GetPlatbyCateg("Plat");
+            }
+            catch (Exception ex)
+            {
+
+                DialogService.ShowErrorWindow(ex.Message);
+            }
 
             foreach(Plat plat in listPlats)
             {

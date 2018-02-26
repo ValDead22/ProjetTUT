@@ -96,9 +96,16 @@ namespace ApplicationJampay.ViewModel.ViewModel.Gérant.UserControlTab
 
         private void ModifyMoyenDePaiement()
         {
-            _usagerBusiness.ModifyMoyenDePaiement(SelectedUsager.Matricule, SelectedMoyenDePaiement);
-            _collectionUsager.Clear();
-            _usagerBusiness.GetAllUsagers().ForEach(u => _collectionUsager.Add(u));
+            try
+            {
+                _usagerBusiness.ModifyMoyenDePaiement(SelectedUsager.Matricule, SelectedMoyenDePaiement);
+                _collectionUsager.Clear();
+                _usagerBusiness.GetAllUsagers().ForEach(u => _collectionUsager.Add(u));
+            }
+            catch (Exception ex)
+            {
+                DialogService.ShowErrorWindow(ex.Message);
+            }
 
         }
 

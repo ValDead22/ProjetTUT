@@ -107,17 +107,31 @@ namespace ApplicationJampay.ViewModel.ViewModel.Gérant.UserControlTab
 
         private void ModifyFonction()
         {
-            _utilisateurBusiness.ModifyFonction(SelectedUtilisateur.Matricule, SelectedFonction);
-            _collectionUtilisateur.Clear();
-            _utilisateurBusiness.GetAllUtilisateurs().ForEach(u => _collectionUtilisateur.Add(u));
+            try
+            {
+                _utilisateurBusiness.ModifyFonction(SelectedUtilisateur.Matricule, SelectedFonction);
+                _collectionUtilisateur.Clear();
+                _utilisateurBusiness.GetAllUtilisateurs().ForEach(u => _collectionUtilisateur.Add(u));
+            }
+            catch (Exception ex)
+            {
+                DialogService.ShowErrorWindow(ex.Message);
+            }
 
         }
 
         private void DeleteUtilisateur()
         {
-            _utilisateurBusiness.DeleteUtilisateur(SelectedUtilisateur.Matricule);
-            _collectionUtilisateur.Clear();
-            _utilisateurBusiness.GetAllUtilisateurs().ForEach(u => _collectionUtilisateur.Add(u));
+            try
+            {
+                _utilisateurBusiness.DeleteUtilisateur(SelectedUtilisateur.Matricule);
+                _collectionUtilisateur.Clear();
+                _utilisateurBusiness.GetAllUtilisateurs().ForEach(u => _collectionUtilisateur.Add(u));
+            }
+            catch (Exception ex)
+            {
+                DialogService.ShowErrorWindow(ex.Message);
+            }
 
         }
     }

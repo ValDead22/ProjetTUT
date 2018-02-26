@@ -1,5 +1,6 @@
 ﻿using ApplicationJampay.Model.DAL.Plat;
 using ApplicationJampay.Model.Entity;
+using ApplicationJampay.Model.Service.Dialog;
 using ApplicationJampay.ViewModel.Command;
 using System;
 using System.Collections.Generic;
@@ -45,7 +46,14 @@ namespace ApplicationJampay.ViewModel.ViewModel.Gérant
         {
             Plat plat = new Plat(_tarif, _dateEffet, _dateFin, _selectedCategory, _nom);
 
-            _platBusiness.AddPlat(plat);
+            try
+            {
+                _platBusiness.AddPlat(plat);
+            }
+            catch (Exception ex)
+            {
+                DialogService.ShowErrorWindow(ex.Message);
+            }
         }
 
 
