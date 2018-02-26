@@ -12,7 +12,7 @@ using ApplicationJampay.Model.Entity;
 using ApplicationJampay.Model.DAL;
 using ApplicationJampay.Model.DAL.Plat;
 
-namespace ApplicationJampay.ViewModel.ViewModel
+namespace ApplicationJampay.ViewModel.ViewModel.Caissier
 {
     public class AjouterPlatViewModel : IViewModelBase
     {

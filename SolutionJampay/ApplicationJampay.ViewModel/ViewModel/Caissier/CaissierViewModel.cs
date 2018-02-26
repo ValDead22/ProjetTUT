@@ -12,7 +12,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
 
-namespace ApplicationJampay.ViewModel.ViewModel
+namespace ApplicationJampay.ViewModel.ViewModel.Caissier
 {
     public class CaissierViewModel : IViewModelBase
     {
