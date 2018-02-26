@@ -78,5 +78,18 @@ namespace ApplicationJampay.Model.DAL.Plat
                 throw new Exception(ex.Message);
             }
         }
+
+        public void ModifyPlat(Entity.Plat plat)
+        {
+            try
+            {
+                _platDAL.ModifyPlat(plat);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+            
+        }
     }
 }

@@ -17,5 +17,7 @@ namespace ApplicationJampay.Model.DAL.Plat
         List<string> GetAllCategories();
 
         List<Entity.Plat> GetPlatbyCateg(string Categorie);
+
+        void ModifyPlat(Entity.Plat plat);
     }
 }
