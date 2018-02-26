@@ -72,5 +72,10 @@ namespace ApplicationJampay.Model.DAL.Menu
             }
 
         }
+
+        public void DeleteMenu(Entity.Menu menu)
+        {
+            _menuDAL.DeleteMenu(menu);
+        }
     }
 }

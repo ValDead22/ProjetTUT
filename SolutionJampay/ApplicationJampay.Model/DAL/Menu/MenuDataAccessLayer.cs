@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
+using ApplicationJampay.Model.Entity;
 using ApplicationJampay.Model.Service;
 using MySql.Data.MySqlClient;
 
@@ -14,7 +16,15 @@ namespace ApplicationJampay.Model.DAL.Menu
 
         public void AddMenu(Entity.Menu menu)
         {
-            var query = "INSERT INTO Menu VALUES(\"" + null + "\"" + ",\"" + menu.DateElaboration + "\"" + ",\"" + menu.Categorie + "\"" + ",\"" + menu.Nom + "\"" + ",\"" + menu.Observation + "\"" + ",\"" + menu.IdGerant+ "\"";
+            var query = "INSERT INTO Menu VALUES(\"" + null + "\"" + ",\"" + menu.DateElaboration + "\"" + ",\"" + menu.Categorie + "\"" + ",\"" + menu.Nom + "\"" + ",\"" + menu.Observation + "\"" + ",\"" + menu.IdGerant+ "\""+")";
+            MySqlDataReader mySqlDataReader = _sQLService.Load(query);
+            mySqlDataReader.Close();
+        }
+
+        public void DeleteMenu(Entity.Menu menu)
+        {
+            
+            var query = "DELETE FROM Menu WHERE CodeMenu = " + "\"" + menu.CodeMenu + "\"";
             MySqlDataReader mySqlDataReader = _sQLService.Load(query);
             mySqlDataReader.Close();
         }
