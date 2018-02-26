@@ -13,7 +13,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 
-namespace ApplicationJampay.View.Gérant
+namespace ApplicationJampay.View.Gérant.PopUp
 {
     /// <summary>
     /// Logique d'interaction pour AjoutUtilisateurView.xaml
