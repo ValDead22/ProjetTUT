@@ -56,7 +56,7 @@
 
         </Grid>
 
-        <Button Grid.Row="1" Content="Confirmer" Grid.ColumnSpan="2"/>
+        <Button Command="{Binding CreateMenuCommand}" Grid.Row="1" Content="Confirmer" Grid.ColumnSpan="2"/>
 
 
 
