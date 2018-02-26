@@ -110,7 +110,11 @@ namespace ApplicationJampay.ViewModel.ViewModel.Gérant.UserControlTab
             {
                 _selectedMenu = value;
                 OnPropertyChanged(nameof(SelectedMenu));
-                UpdatePlatCollection();
+                if (_selectedMenu != null)
+                {
+                    UpdatePlatCollection();
+                }
+                
             }
         }
 
@@ -143,12 +147,34 @@ namespace ApplicationJampay.ViewModel.ViewModel.Gérant.UserControlTab
         }
 
         private void DeleteMenu()
-        {
+        {        
+            try
+            {
+                _menuBusiness.DeleteMenu(SelectedMenu);
+                _collectionMenu.Clear();
+                _menuBusiness.GetAllMenus().ForEach(m => _collectionMenu.Add(m));
+
+            }
+            catch (Exception ex)
+            {
+                DialogService.ShowErrorWindow(ex.Message);
+            }
 
         }
 
         private void DeletePlat()
         {
+            try
+            {
+                _platBusiness.DeletePlat(SelectedPlat);
+                _collectionPlat.Clear();
+                _platBusiness.GetAllPlat().ForEach(p => _collectionPlat.Add(p));
+
+            }
+            catch (Exception ex)
+            {
+                DialogService.ShowErrorWindow(ex.Message);
+            }
 
         }
 
