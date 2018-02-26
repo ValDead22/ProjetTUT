@@ -48,6 +48,7 @@ namespace ApplicationJampay.ViewModel.ViewModel
         public LoginViewModel()
         {
             _loginCommand = new RelayCommand(() => Login(), o => true);
+            _cardLoginCommand = new RelayCommand(() => InitCardReader(), o => true);
 
             _userBusiness = new UtilisateurBusiness();            
         }
@@ -155,6 +156,10 @@ namespace ApplicationJampay.ViewModel.ViewModel
             
         }
 
-        
+        private void InitCardReader()
+        {
+
+        }
+                    
     }
 }
