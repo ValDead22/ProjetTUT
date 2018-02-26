@@ -87,5 +87,18 @@ namespace ApplicationJampay.Model.DAL.Plat
             }
             
         }
+
+        public void DeletePlat(Entity.Plat plat)
+        {
+            try
+            {
+                _platDAL.DeletePlat(plat);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+
+        }
     }
 }

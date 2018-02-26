@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using ApplicationJampay.Model.Entity;
 using ApplicationJampay.Model.Service;
 using MySql.Data.MySqlClient;
 
@@ -11,6 +12,9 @@ namespace ApplicationJampay.Model.DAL.Plat
 
         public void AddPlat(Entity.Plat plat)
         {
+            var query = "INSERT INTO Plat VALUES(\"" + null + "\"" + ",\"" + plat.DateEffet + "\"" + ",\"" + plat.DateFin + "\"" + ",\"" + plat.Categorie + "\"" + ",\"" + plat.Nom + "\"" + ",\"" + plat.Tarif + "\"" + ")";
+            MySqlDataReader mySqlDataReader = _sQLService.Load(query);
+            mySqlDataReader.Close();
         }
 
         public List<string> GetAllCategories()
@@ -142,6 +146,13 @@ namespace ApplicationJampay.Model.DAL.Plat
             var query = " UPDATE Plat SET DateEffet="+ "\""+plat.DateEffet +"\"" + ", DateFin="+ "\"" + plat.DateFin + "\"" +", Categorie=" + "\"" + plat.Categorie+", Nom="+ "\"" + plat.Nom+ "\""+ "idTarif =" + "\"" + plat.Tarif + "\"" + " WHERE CodePlat= " + "\"" + plat.CodePlat + "\"";
             MySqlDataReader mySqlDataReader = _sQLService.Load(query);
 
+        }
+
+        public void DeletePlat(Entity.Plat plat)
+        {
+            var query = "DELETE FROM Plat WHERE CodePlat = " + "\"" + plat.CodePlat + "\"";
+            MySqlDataReader mySqlDataReader = _sQLService.Load(query);
+            mySqlDataReader.Close();
         }
     }
 }
