@@ -1,9 +1,6 @@
 ﻿using ApplicationJampay.Model.DAL.Plat;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace ApplicationJampay.Model.DAL.Menu
 {
@@ -20,24 +17,47 @@ namespace ApplicationJampay.Model.DAL.Menu
 
         public List<Entity.Menu> GetAllMenus()
         {
-            List<Entity.Menu> list = _menuDAL.GetAllMenus();
-
-            foreach(Entity.Menu m in list)
+            try
             {
-                m.SetListPlats(_platDAL.GetPlatByMenuID(m.CodeMenu));
-            }         
+                List<Entity.Menu> list = _menuDAL.GetAllMenus();
 
-            return list;
+                foreach (Entity.Menu m in list)
+                {
+                    m.SetListPlats(_platDAL.GetPlatByMenuID(m.CodeMenu));
+                }
+
+                return list;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
         }
 
         public void AddMenu(Entity.Menu menu)
         {
-            _menuDAL.AddMenu(menu);
+            try
+            {
+                _menuDAL.AddMenu(menu);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
         }
 
         public List<string> GetAllCategories()
         {
-            return _menuDAL.GetAllCategories();
+
+            try
+            {
+                return _menuDAL.GetAllCategories();
+
+            }
+            catch(Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
         }
 
         public void ModifyMenu(Entity.Menu menu)

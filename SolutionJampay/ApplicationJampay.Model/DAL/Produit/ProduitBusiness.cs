@@ -1,8 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace ApplicationJampay.Model.DAL.Produit
 {
@@ -17,7 +14,14 @@ namespace ApplicationJampay.Model.DAL.Produit
         
         public List<Entity.Produit> GetAllProduits()
         {
-            return _productDAL.GetAllProduits();
+            try
+            {
+                return _productDAL.GetAllProduits();
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
         }
 
         public List<Entity.Produit> GetProduitsByPlatId(int idPlat)
@@ -35,7 +39,14 @@ namespace ApplicationJampay.Model.DAL.Produit
 
         public void AddProduit(Entity.Produit produit)
         {
-            _productDAL.AddProduit(produit);
+            try
+            {
+                _productDAL.AddProduit(produit);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
         }
     }
 }

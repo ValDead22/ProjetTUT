@@ -1,8 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace ApplicationJampay.Model.DAL.Plat
 {
@@ -55,8 +52,7 @@ namespace ApplicationJampay.Model.DAL.Plat
         }
 
         public List<string> GetAllCategories()
-        {
-            
+        {            
             try
             {
                 return _platDAL.GetAllCategories();

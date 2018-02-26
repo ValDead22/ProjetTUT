@@ -1,8 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace ApplicationJampay.Model.DAL.Usager
 {
@@ -17,27 +14,62 @@ namespace ApplicationJampay.Model.DAL.Usager
 
         public Entity.Usager GetUsager(string matricule, string password)
         {
-            return _usagerDAL.GetUsager(matricule, password);
+            try
+            {
+                return _usagerDAL.GetUsager(matricule, password);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
         }
 
         public List<Entity.Usager> GetAllUsagers()
         {
-            return _usagerDAL.GetAllUsagers();
+            try
+            {
+                return _usagerDAL.GetAllUsagers();
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
         }
 
         public List<Entity.Usager> GetAllUsagersNonUtilisateur()
         {
-            return _usagerDAL.GetAllUsagersNonUtilisateur();
+            try
+            {
+                return _usagerDAL.GetAllUsagersNonUtilisateur();
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
         }
 
         public List<string> GetAllMoyenDePaiements()
         {
-            return _usagerDAL.GetAllMoyenDePaiements();
+            try
+            {
+                return _usagerDAL.GetAllMoyenDePaiements();
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
         }
 
         public void ModifyMoyenDePaiement(int matricule, string moyenDePaiement)
         {
-            _usagerDAL.ModifyMoyenDePaiement(matricule, moyenDePaiement);
+            try
+            {
+                _usagerDAL.ModifyMoyenDePaiement(matricule, moyenDePaiement);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
         }
     }
 }
