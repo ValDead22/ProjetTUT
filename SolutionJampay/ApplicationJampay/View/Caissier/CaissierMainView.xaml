@@ -35,7 +35,7 @@
             </StackPanel>
 
 
-            <ListView Grid.Row="1" Grid.Column="0"  HorizontalAlignment="Stretch" Margin="10">
+            <ListView SelectedItem="{Binding SelectedPlat}" ItemsSource="{Binding ChoosenPlat}"  Grid.Row="1" Grid.Column="0"  HorizontalAlignment="Stretch" Margin="10">
                 <ListView.View>
                     <GridView>
                         <GridViewColumn Header="Plat"/>
