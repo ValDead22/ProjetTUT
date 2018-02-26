@@ -10,8 +10,12 @@ namespace ApplicationJampay.View.Caissier.PopUp
     {
         public AjouterPlat()
         {
+            DataContext = new AjouterPlatViewModel()
+            {
+                Close = () => Close()
+            };
             InitializeComponent();
-            DataContext = new AjouterPlatViewModel();
+            
         }
     }
 }

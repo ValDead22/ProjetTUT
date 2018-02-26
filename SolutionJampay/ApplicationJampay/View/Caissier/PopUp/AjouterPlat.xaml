@@ -8,11 +8,7 @@
         Title="Caissier1" Height="413.665" Width="519.255">
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="4*"/>
-            <RowDefinition Height="4*"/>
-            <RowDefinition Height="1.5*"/>
-            <RowDefinition Height="1*"/>
-
+            <RowDefinition Height="10*"/>
         </Grid.RowDefinitions>
 
         <Grid.ColumnDefinitions>
@@ -22,50 +18,58 @@
 
         </Grid.ColumnDefinitions>
 
+        <Grid Grid.Column="0">
 
-        <Button Grid.Row="0" Grid.Column="0"  FontSize="20" Opacity="0.5" Command="{Binding DisplayPlatViewCommand}" Margin="0,0,127,0">
-        </Button>
-        <Label Grid.Row="0" Grid.Column="0" HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="24" Content="Plats" Margin="34,66,0,49" Height="47"/>
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
 
-
-        <Button Grid.Row="0"  FontSize="20" Opacity="0.5" Command="{Binding DisplayEntreeViewCommand}" HorizontalAlignment="Right" Width="127"/>
-        <Label Grid.Row="0" HorizontalAlignment="Right" FontSize="24" Content="Entrées" Margin="0,58,24,41"/>
-
-
-        <Button Grid.Row="1" Grid.Column="0"  FontSize="20" Opacity="0.5"  Command="{Binding DisplayDessertViewCommand}" Margin="0,0,127,0">
-        </Button>
-        <Label Grid.Row="1" Grid.Column="0" VerticalAlignment="Center" FontSize="24" Margin="16,66,0,49" Content="Desserts" HorizontalAlignment="Left" Width="99" Height="47"/>
-
-
-        <Button Grid.Row="1"  FontSize="20" Opacity="0.5"  Command="{Binding DisplaySnackViewCommand}" HorizontalAlignment="Right" Width="127"/>
-        <Label Grid.Row="1" HorizontalAlignment="Right" FontSize="24" Margin="0,58,24,48" Content="Snacks"/>
-
-        <Button Grid.Row="2" FontSize="20" Opacity="0.5"  Command="{Binding CancelCommand}" HorizontalAlignment="Right" Width="256" />
-        <Label Grid.Row="2" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="24"  Content="Annuler"  RenderTransformOrigin="0.5,0.5"/>
-
-
-        <Button Grid.Row="2"  Grid.Column="1" Opacity="0.5"  Command="{Binding AddPlatCommand}" HorizontalAlignment="Right" Width="255"/>
-        <Label Grid.Row="2" Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="24"  Content="Ajouter" RenderTransformOrigin="0.5,0.5"/>
-
-
-
-
-        <Grid Grid.Row="3" Grid.ColumnSpan="2">
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="5*"/>
+                <ColumnDefinition/>
                 <ColumnDefinition/>
             </Grid.ColumnDefinitions>
+            
+            <Button Grid.Row="0" Content="PLAT" Grid.Column="0"  FontSize="20"  Command="{Binding DisplayPlatViewCommand}" />
 
-            <Label Grid.Column="0" Content="Connecté en tant que :" HorizontalAlignment="Left" VerticalAlignment="Center"/>
-            <Button Grid.Column="1" Content="Déconnexion" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+            <Button Grid.Row="0" Content="ENTREE" Grid.Column="1"  FontSize="20"  Command="{Binding DisplayEntreeViewCommand}" />
+
+            <Button Grid.Row="1" Content="DESSERT" Grid.Column="0"  FontSize="20"   Command="{Binding DisplayDessertViewCommand}" />
+
+            <Button Grid.Row="1" Content="SNACK" Grid.Column="1"  FontSize="20"   Command="{Binding DisplaySnackViewCommand}" />
+
+            
+            
+
         </Grid>
-        <ListView x:Name="listView" ItemsSource="{Binding CollectionOfSelectedCateg}" Grid.Column="1" HorizontalAlignment="Left" Height="292" Grid.RowSpan="2" VerticalAlignment="Top" Width="255">
+
+        <Grid Grid.Column="1">
+
+            <Grid.RowDefinitions>
+                <RowDefinition Height="10*"/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+
+            <Button Grid.Row="2" Content="Valider"  Grid.Column="1"  Command="{Binding ValidateCommand}"  />
+
+        </Grid>
+
+        
+
+
+
+
+        <ListView FontSize="30" x:Name="listView" ItemsSource="{Binding CollectionOfSelectedCateg}" Grid.Column="1"   Grid.RowSpan="2" VerticalAlignment="Top">
             <ListView.View>
                 <GridView>
                     <GridViewColumn Header="Nom" DisplayMemberBinding="{Binding Nom}"/>
                 </GridView>
             </ListView.View>
         </ListView>
+
+
+
+
 
     </Grid>
 </Window>
