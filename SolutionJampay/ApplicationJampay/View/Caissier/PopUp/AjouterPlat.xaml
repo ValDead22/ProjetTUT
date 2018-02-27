@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ApplicationJampay.View"
         mc:Ignorable="d"
-        Title="Caissier1" Height="413.665" Width="519.255">
+        Title="Caissier1" Height="361.665" Width="744.255">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="10*"/>
@@ -13,7 +13,7 @@
 
         <Grid.ColumnDefinitions>
 
-            <ColumnDefinition Width="2*"/>
+            <ColumnDefinition Width="1.2*"/>
             <ColumnDefinition Width="2*"/>
 
         </Grid.ColumnDefinitions>
@@ -23,23 +23,22 @@
             <Grid.RowDefinitions>
                 <RowDefinition/>
                 <RowDefinition/>
+                <RowDefinition Height="0.4*"/>
             </Grid.RowDefinitions>
 
             <Grid.ColumnDefinitions>
                 <ColumnDefinition/>
                 <ColumnDefinition/>
             </Grid.ColumnDefinitions>
-            
+
             <Button Grid.Row="0" Content="PLAT" Grid.Column="0"  FontSize="20"  Command="{Binding DisplayPlatViewCommand}" />
-
             <Button Grid.Row="0" Content="ENTREE" Grid.Column="1"  FontSize="20"  Command="{Binding DisplayEntreeViewCommand}" />
-
             <Button Grid.Row="1" Content="DESSERT" Grid.Column="0"  FontSize="20"   Command="{Binding DisplayDessertViewCommand}" />
-
             <Button Grid.Row="1" Content="SNACK" Grid.Column="1"  FontSize="20"   Command="{Binding DisplaySnackViewCommand}" />
+            <Button Grid.Row="3" Content="AUTRE" Grid.Column="0" Grid.ColumnSpan="2"  FontSize="20"   Command="{Binding DisplaySnackViewCommand}" />
 
-            
-            
+
+
 
         </Grid>
 
@@ -50,16 +49,21 @@
                 <RowDefinition/>
             </Grid.RowDefinitions>
 
-            <Button Grid.Row="2" Content="Valider"  Grid.Column="1"  Command="{Binding ValidateCommand}"  />
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+
+            <Button Grid.Row="2" Content="Ajouter" FontWeight="Black"  Grid.Column="1"  Command="{Binding ValidateCommand}"/>
+            <Button Grid.Row="2" Content="Fermer" FontWeight="Black"  Grid.Column="0"  Command="{Binding CloseWindow}"/>
 
         </Grid>
 
-        
 
 
 
 
-        <ListView FontSize="30" x:Name="listView" ItemsSource="{Binding CollectionOfSelectedCateg}" Grid.Column="1"   Grid.RowSpan="2" VerticalAlignment="Top">
+        <ListView FontSize="20" SelectedItem="{Binding SelectedPlat}" ItemsSource="{Binding CollectionOfSelectedCateg}" Grid.Column="1"   Grid.RowSpan="2" VerticalAlignment="Top">
             <ListView.View>
                 <GridView>
                     <GridViewColumn Header="Nom" DisplayMemberBinding="{Binding Nom}"/>
