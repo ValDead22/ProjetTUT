@@ -17,6 +17,10 @@ namespace ApplicationJampay.Model.DAL.Plat
             mySqlDataReader.Close();
         }
 
+        /// <summary>
+        /// Get all categories of Plat
+        /// </summary>
+        /// <returns></returns>
         public List<string> GetAllCategories()
         {
             var query = "SELECT * FROM CategoriePlat";
@@ -44,6 +48,12 @@ namespace ApplicationJampay.Model.DAL.Plat
             }
         }
 
+
+        /// <summary>
+        /// Get a Plat List by Category
+        /// </summary>
+        /// <param name="Categorie"></param>
+        /// <returns></returns>
         public List<Entity.Plat> GetPlatbyCateg(string Categorie)
         {
             var query = "SELECT * FROM Plat WHERE Categorie=\"" + Categorie + "\"";
@@ -75,6 +85,11 @@ namespace ApplicationJampay.Model.DAL.Plat
                 mySqlDataReader.Close();
             }
         }
+
+        /// <summary>
+        /// Get all avalaible Plat
+        /// </summary>
+        /// <returns></returns>
         public List<Entity.Plat> GetAllPlat()
         {
             var query = "SELECT * FROM Plat";
@@ -107,6 +122,11 @@ namespace ApplicationJampay.Model.DAL.Plat
             }
         }
 
+        /// <summary>
+        /// Get List of Plat by Menu ID
+        /// </summary>
+        /// <param name="menuID"></param>
+        /// <returns></returns>
         public List<Entity.Plat> GetPlatByMenuID(int menuID)
         {
             var query = "SELECT pl.CodePlat, pl.IdTarif, pl.DateEffet, pl.DateFin, pl.Categorie, pl.Nom " +
@@ -141,6 +161,10 @@ namespace ApplicationJampay.Model.DAL.Plat
             }
         }
 
+        /// <summary>
+        /// Modify an existing Plat
+        /// </summary>
+        /// <param name="plat"></param>
         public void ModifyPlat(Entity.Plat plat)
         {
             var query = " UPDATE Plat SET DateEffet="+ "\""+plat.DateEffet +"\"" + ", DateFin="+ "\"" + plat.DateFin + "\"" +", Categorie=" + "\"" + plat.Categorie+", Nom="+ "\"" + plat.Nom+ "\""+ "idTarif =" + "\"" + plat.Tarif + "\"" + " WHERE CodePlat= " + "\"" + plat.CodePlat + "\"";
@@ -148,9 +172,13 @@ namespace ApplicationJampay.Model.DAL.Plat
 
         }
 
+        /// <summary>
+        /// Delete an existing Plat
+        /// </summary>
+        /// <param name="plat"></param>
         public void DeletePlat(Entity.Plat plat)
         {
-            var query = "DELETE FROM Plat WHERE CodePlat = " + "\"" + plat.CodePlat + "\"";
+            var query = "DELETE FROM CompositionPlat WHERE CodePlat = " + "\"" + plat.CodePlat + "\"; DELETE FROM CompositionMenu WHERE CodePlat = " + "\"" + plat.CodePlat + "\"; DELETE FROM Plat WHERE CodePlat = " + "\"" + plat.CodePlat + "\"; ";
             MySqlDataReader mySqlDataReader = _sQLService.Load(query);
             mySqlDataReader.Close();
         }
