@@ -28,15 +28,16 @@ namespace ApplicationJampay.ViewModel.ViewModel.Caissier
         #endregion
         
 
-        private ObservableCollection<Plat> _collectionPlat = new ObservableCollection<Plat>();
-        public IEnumerable<Plat> CollectionPlat { get { return _collectionPlat; } }
+        private ObservableCollection<PlatWithQuantité> _choosenPlat = new ObservableCollection<PlatWithQuantité>();
+        public IEnumerable<PlatWithQuantité> ChoosenPlat { get { return _choosenPlat; } }
 
+        private float _prixTotal = 0;
         
         public CaissierViewModel()
         {
             _openAddPlatViewCommand = new RelayCommand(() => AddPlat(), o => true);
 
-            Messenger.Default.Register<Plat>(this, HandleMessage);
+            Messenger.Default.Register<Plat>(this, (plat) => HandleMessage(plat));
         }
 
         private Plat _selectedPlat;
@@ -53,9 +54,36 @@ namespace ApplicationJampay.ViewModel.ViewModel.Caissier
             }
         }
 
+        private string _prix;
+        public string Prix
+        {
+            get
+            {
+                return _prix;
+            }
+            set
+            {
+                _prix = value;
+                OnPropertyChanged(nameof(Prix));
+            }
+        }
+
         private void HandleMessage(Plat plat)
         {
-            //Debug.WriteLine(plat.ToString());
+            foreach(PlatWithQuantité platWQ in _choosenPlat)
+            {
+                if(plat.CodePlat == platWQ.CodePlat)
+                {
+                    platWQ.Quantite++;
+                    _prixTotal += plat.Prix ?? default(float);
+                    Prix = _prixTotal.ToString() + " €";
+                    return;
+                }
+            }
+            _choosenPlat.Add(new PlatWithQuantité(plat.CodePlat, plat.DateEffet, plat.DateFin, plat.Categorie, plat.Nom, 1));
+            _prixTotal += plat.Prix ?? default(float);
+            Prix = _prixTotal.ToString() + " €";
+
         }
 
         private readonly RelayCommand _openAddPlatViewCommand;
