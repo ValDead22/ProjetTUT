@@ -13,7 +13,10 @@ namespace ApplicationJampay.Model.DAL.Menu
         private SQLService _sQLService = SQLService.Instance;
 
 
-
+        /// <summary>
+        /// Create a new Menu
+        /// </summary>
+        /// <param name="menu"></param>
         public void AddMenu(Entity.Menu menu)
         {
             var query = "INSERT INTO Menu VALUES(\"" + null + "\"" + ",\"" + menu.DateElaboration + "\"" + ",\"" + menu.Categorie + "\"" + ",\"" + menu.Nom + "\"" + ",\"" + menu.Observation + "\"" + ",\"" + menu.IdGerant+ "\""+")";
@@ -21,14 +24,22 @@ namespace ApplicationJampay.Model.DAL.Menu
             mySqlDataReader.Close();
         }
 
+        /// <summary>
+        /// Delete an existing Menu
+        /// </summary>
+        /// <param name="menu"></param>
         public void DeleteMenu(Entity.Menu menu)
         {
             
-            var query = "DELETE FROM Menu WHERE CodeMenu = " + "\"" + menu.CodeMenu + "\"";
+            var query = "DELETE FROM Menu WHERE CodeMenu = " + "\"" + menu.CodeMenu + "\"; DELETE FROM CompositionMenu WHERE CodeMenu = " + "\"" + menu.CodeMenu + "\"";
             MySqlDataReader mySqlDataReader = _sQLService.Load(query);
             mySqlDataReader.Close();
         }
 
+        /// <summary>
+        /// Get all categories of Menu
+        /// </summary>
+        /// <returns></returns>
         public List<string> GetAllCategories()
         {
             var query = "SELECT * FROM CategorieMenu ";
@@ -55,6 +66,10 @@ namespace ApplicationJampay.Model.DAL.Menu
             }
         }
 
+        /// <summary>
+        /// Get all avalaible Menu
+        /// </summary>
+        /// <returns></returns>
         public List<Entity.Menu> GetAllMenus()
         {
             var query = "SELECT * FROM Menu";
@@ -83,6 +98,10 @@ namespace ApplicationJampay.Model.DAL.Menu
             }
         }
 
+        /// <summary>
+        /// Modify an existing Menu
+        /// </summary>
+        /// <param name="menu"></param>
         public void ModifyMenu(Entity.Menu menu)
         {
             var query = "UPDATE Menu SET DateElaboration=" + "\"" + menu.DateElaboration + "\"" + ", Categorie=" + "\"" + menu.Categorie + "\"" + ", nom=" + "\"" + menu.Nom + ", Observation=" + "\"" + menu.Observation + "\"" + "idGerant =" + "\"" + menu.IdGerant + "\"" + " WHERE CodeMenu= " + "\"" + menu.CodeMenu + "\"";
