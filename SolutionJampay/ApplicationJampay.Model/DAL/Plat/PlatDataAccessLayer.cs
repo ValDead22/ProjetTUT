@@ -12,7 +12,7 @@ namespace ApplicationJampay.Model.DAL.Plat
 
         public void AddPlat(Entity.Plat plat)
         {
-            var query = "INSERT INTO Plat VALUES(\"" + null + "\"" + ",\"" + plat.DateEffet + "\"" + ",\"" + plat.DateFin + "\"" + ",\"" + plat.Categorie + "\"" + ",\"" + plat.Nom + "\"" + ",\"" + plat.Tarif + "\"" + ")";
+            var query = "INSERT INTO Plat VALUES(\"" + null + "\"" + ",\"" + plat.DateEffet + "\"" + ",\"" + plat.DateFin + "\"" + ",\"" + plat.Categorie + "\"" + ",\"" + plat.Nom + "\"" + ",\"" + plat.Prix + "\"" + ")";
             MySqlDataReader mySqlDataReader = _sQLService.Load(query);
             mySqlDataReader.Close();
         }
@@ -65,12 +65,12 @@ namespace ApplicationJampay.Model.DAL.Plat
 
                 while (mySqlDataReader.Read())
                 {
-                    Entity.Plat plat = new Entity.Plat((int)mySqlDataReader["CodePlat"],
-                        (int)mySqlDataReader["idTarif"],
+                    Entity.Plat plat = new Entity.Plat((int)mySqlDataReader["CodePlat"],                        
                         (DateTime)mySqlDataReader["DateEffet"],
                         (DateTime)mySqlDataReader["DateFin"],
                         mySqlDataReader["Categorie"] as string,
-                        mySqlDataReader["Nom"] as string);
+                        mySqlDataReader["Nom"] as string,
+                        (float)mySqlDataReader["Prix"]);
 
                     list.Add(plat);
                 }
@@ -102,11 +102,11 @@ namespace ApplicationJampay.Model.DAL.Plat
                 while (mySqlDataReader.Read())
                 {
                     Entity.Plat plat = new Entity.Plat((int)mySqlDataReader["CodePlat"],
-                        (int)mySqlDataReader["idTarif"],
                         (DateTime)mySqlDataReader["DateEffet"],
                         (DateTime)mySqlDataReader["DateFin"],
                         mySqlDataReader["Categorie"] as string,
-                        mySqlDataReader["Nom"] as string);
+                        mySqlDataReader["Nom"] as string,
+                        (float)mySqlDataReader["Prix"]);
 
                     list.Add(plat);
                 }
@@ -129,7 +129,7 @@ namespace ApplicationJampay.Model.DAL.Plat
         /// <returns></returns>
         public List<Entity.Plat> GetPlatByMenuID(int menuID)
         {
-            var query = "SELECT pl.CodePlat, pl.IdTarif, pl.DateEffet, pl.DateFin, pl.Categorie, pl.Nom " +
+            var query = "SELECT pl.CodePlat, pl.Prix, pl.DateEffet, pl.DateFin, pl.Categorie, pl.Nom " +
                 "FROM Plat pl, Menu m, CompositionMenu cpm " +
                 "WHERE m.CodeMenu =" + "\"" + menuID + "\"" + "and pl.CodePlat = cpm.CodePlat and m.CodeMenu = cpm.CodeMenu";
             MySqlDataReader mySqlDataReader = _sQLService.Load(query);
@@ -141,17 +141,17 @@ namespace ApplicationJampay.Model.DAL.Plat
                 while (mySqlDataReader.Read())
                 {
                     Entity.Plat plat = new Entity.Plat((int)mySqlDataReader["CodePlat"], 
-                        (int)mySqlDataReader["idTarif"], 
                         (DateTime)mySqlDataReader["DateEffet"], 
                         (DateTime)mySqlDataReader["DateFin"], 
                         mySqlDataReader["Categorie"] as string,
-                        mySqlDataReader["Nom"] as string);
+                        mySqlDataReader["Nom"] as string,
+                        (float)mySqlDataReader["Prix"]);
 
                     list.Add(plat);
                 }
                 return list;
             }
-            catch
+            catch 
             {
                 throw new Exception("Pas de plats !");
             }
@@ -167,7 +167,7 @@ namespace ApplicationJampay.Model.DAL.Plat
         /// <param name="plat"></param>
         public void ModifyPlat(Entity.Plat plat)
         {
-            var query = " UPDATE Plat SET DateEffet="+ "\""+plat.DateEffet +"\"" + ", DateFin="+ "\"" + plat.DateFin + "\"" +", Categorie=" + "\"" + plat.Categorie+", Nom="+ "\"" + plat.Nom+ "\""+ "idTarif =" + "\"" + plat.Tarif + "\"" + " WHERE CodePlat= " + "\"" + plat.CodePlat + "\"";
+            var query = " UPDATE Plat SET DateEffet="+ "\""+plat.DateEffet +"\"" + ", DateFin="+ "\"" + plat.DateFin + "\"" +", Categorie=" + "\"" + plat.Categorie+", Nom="+ "\"" + plat.Nom+ "\""+ "Prix =" + "\"" + plat.Prix + "\"" + " WHERE CodePlat= " + "\"" + plat.CodePlat + "\"";
             MySqlDataReader mySqlDataReader = _sQLService.Load(query);
 
         }
