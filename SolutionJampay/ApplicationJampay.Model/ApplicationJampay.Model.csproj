@@ -82,6 +82,7 @@
     <Compile Include="Entity\Plat.cs" />
     <Compile Include="Entity\PlatCommandé.cs" />
     <Compile Include="Entity\PlatCuisiné.cs" />
+    <Compile Include="Entity\PlatWithQuantité.cs" />
     <Compile Include="Entity\Produit.cs" />
     <Compile Include="Entity\Tarif.cs" />
     <Compile Include="Entity\Usager.cs" />
