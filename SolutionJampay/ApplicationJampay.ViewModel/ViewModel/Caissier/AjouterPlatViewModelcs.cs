@@ -13,6 +13,7 @@ using ApplicationJampay.Model.DAL;
 using ApplicationJampay.Model.DAL.Plat;
 using ApplicationJampay.Model.Service.Dialog;
 using GalaSoft.MvvmLight.Messaging;
+using System.Diagnostics;
 
 namespace ApplicationJampay.ViewModel.ViewModel.Caissier
 {
@@ -45,9 +46,13 @@ namespace ApplicationJampay.ViewModel.ViewModel.Caissier
 
         private readonly RelayCommand _validateCommand;
         public ICommand ValidateCommand => _validateCommand;
+
+        private readonly RelayCommand _closeWindow;
+        public ICommand CloseWindow => _closeWindow;
         #endregion
 
         private PlatBusiness _platBusiness;
+        
 
         public Action Close;
 
@@ -64,6 +69,7 @@ namespace ApplicationJampay.ViewModel.ViewModel.Caissier
             _displaySnackCommand = new RelayCommand(() => Snacks(), o => true);
 
             _validateCommand = new RelayCommand(() => AddPLatToCommande(), o => true);
+            _closeWindow = new RelayCommand(() => Close(), o => true);
 
         }
 
@@ -85,8 +91,6 @@ namespace ApplicationJampay.ViewModel.ViewModel.Caissier
         private void AddPLatToCommande()
         {
             Messenger.Default.Send<Plat>(SelectedPlat);
-            Close();
-
         }
 
         private void Plats()
