@@ -1,4 +1,4 @@
-﻿using ApplicationJampay.CardReaderAPI.Windows;
+﻿using ApplicationJampay.CardReaderAPI.Interop.Windows;
 using System;
 using System.Runtime.InteropServices;
 using System.Text;

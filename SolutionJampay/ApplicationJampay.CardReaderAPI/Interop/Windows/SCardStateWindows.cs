@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel;
 
-namespace ApplicationJampay.CardReaderAPI
+namespace ApplicationJampay.CardReaderAPI.Interop.Windows
 {
     public enum SCardStateWindows
     {

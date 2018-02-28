@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace ApplicationJampay.CardReaderAPI
+namespace ApplicationJampay.CardReaderAPI.Interop.Windows.Extensions
 {
     internal static class IntExt
     {
