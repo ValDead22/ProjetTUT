@@ -83,6 +83,10 @@
     </None>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\ApplicationJampay.CardReaderAPI\ApplicationJampay.CardReaderAPI.csproj">
+      <Project>{4f3d4a68-1341-4bc9-8a8f-9579886d3c10}</Project>
+      <Name>ApplicationJampay.CardReaderAPI</Name>
+    </ProjectReference>
     <ProjectReference Include="..\ApplicationJampay.Model\ApplicationJampay.Model.csproj">
       <Project>{78483b3b-342e-4648-a058-d9c0c6865a2d}</Project>
       <Name>ApplicationJampay.Model</Name>

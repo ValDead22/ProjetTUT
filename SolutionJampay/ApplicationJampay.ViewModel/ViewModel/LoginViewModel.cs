@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.ComponentModel;
 using System.Diagnostics;
 using System.Runtime.InteropServices;
@@ -6,6 +7,8 @@ using System.Security;
 using System.Security.Cryptography;
 using System.Text;
 using System.Windows.Input;
+using ApplicationJampay.CardReaderAPI;
+using ApplicationJampay.CardReaderAPI.ISO;
 using ApplicationJampay.Model.DAL.Utilisateur;
 using ApplicationJampay.Model.Entity;
 using ApplicationJampay.Model.Service;
@@ -128,10 +131,8 @@ namespace ApplicationJampay.ViewModel.ViewModel
         {
             try
             {
-                Utilisateur utilisateur = _userBusiness.GetUtilisateur(Matricule, SecureStringToSHA256(Password));
+                Utilisateur utilisateur = _userBusiness.GetUtilisateur(Matricule, SecureStringToSHA256(Password));            
                 
-                
-
                 switch (utilisateur.Fonction)
                 {
                     case "Gérant":
@@ -149,9 +150,7 @@ namespace ApplicationJampay.ViewModel.ViewModel
                         Close();
                         break;
                 }
-
                 
-
             }
             catch (Exception ex)
             {
@@ -162,8 +161,83 @@ namespace ApplicationJampay.ViewModel.ViewModel
             
         }
 
+
+        private static string ChooseRfidReader(IList<string> readerNames)
+        {
+            // Show available readers.
+            Debug.WriteLine("Available readers: ");
+            for (var i = 0; i < readerNames.Count; i++)
+            {
+                Debug.WriteLine($"[{i}] {readerNames[i]}");
+            }
+                return readerNames[0];
+            
+        }
+
+        private static bool NoReaderFound(ICollection<string> readerNames) =>
+            readerNames == null || readerNames.Count < 1;
+
+
+
+
         private void InitCardReader()
         {
+            var contextFactory = ContextFactory.Instance;
+            using (var context = contextFactory.Establish(SCardScope.System))
+            {
+                var readerNames = context.GetReaders();
+                if (NoReaderFound(readerNames))
+                {
+                    Debug.WriteLine("You need at least one reader in order to run this example.");
+                    return;
+                }
+
+                var readerName = ChooseRfidReader(readerNames);
+                if (readerName == null)
+                {
+                    return;
+                }
+
+                // 'using' statement to make sure the reader will be disposed (disconnected) on exit
+                using (var rfidReader = context.ConnectReader(readerName, SCardShareMode.Shared, SCardProtocol.Any))
+                {
+                    var apdu = new CommandApdu(IsoCase.Case2Short, rfidReader.Protocol)
+                    {
+                        CLA = 0xFF,
+                        Instruction = InstructionCode.ReadBinary,
+                        P1 = 0x00,
+                        P2 = 0x08,
+                        Le = 0x08 // We don't know the ID tag size
+                    };
+
+                    using (rfidReader.Transaction(SCardReaderDisposition.Leave))
+                    {
+                        Debug.WriteLine("Retrieving the UID .... ");
+
+                        var sendPci = SCardPCI.GetPci(rfidReader.Protocol);
+                        var receivePci = new SCardPCI(); // IO returned protocol control information.
+
+                        var receiveBuffer = new byte[256];
+                        var command = apdu.ToArray();
+
+                        var bytesReceived = rfidReader.Transmit(
+                            sendPci, // Protocol Control Information (T0, T1 or Raw)
+                            command, // command APDU
+                            command.Length,
+                            receivePci, // returning Protocol Control Information
+                            receiveBuffer,
+                            receiveBuffer.Length); // data buffer
+
+                        var responseApdu =
+                            new ResponseApdu(receiveBuffer, bytesReceived, IsoCase.Case2Short, rfidReader.Protocol);
+                        Debug.WriteLine("SW1: {0:X2}, SW2: {1:X2}\nUid: {2}",
+                            responseApdu.SW1,
+                            responseApdu.SW2,
+                            responseApdu.HasData ? BitConverter.ToString(responseApdu.GetData()) : "No uid received");
+                    }
+                    
+                }
+            }
 
         }
                     
