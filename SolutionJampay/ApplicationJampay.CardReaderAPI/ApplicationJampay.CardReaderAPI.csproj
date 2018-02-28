@@ -40,11 +40,21 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Apdu.cs" />
     <Compile Include="Card\CardErrorExt.cs" />
     <Compile Include="Card\CardHandle.cs" />
     <Compile Include="Card\CardReader.cs" />
+    <Compile Include="InvalidApduException.cs" />
+    <Compile Include="ISO\ClaHighPart.cs" />
+    <Compile Include="ISO\ClassByte.cs" />
+    <Compile Include="CommandApdu.cs" />
     <Compile Include="Exceptions\CommunicationErrorException.cs" />
     <Compile Include="ContextFactory.cs" />
+    <Compile Include="ISO\InstructionByte.cs" />
+    <Compile Include="ISO\InstructionCode.cs" />
+    <Compile Include="ISO\IsoCase.cs" />
+    <Compile Include="ISO\SecureMessagingFormat.cs" />
+    <Compile Include="ResponseApdu.cs" />
     <Compile Include="Utils\DisposeAction.cs" />
     <Compile Include="Card\ICardHandle.cs" />
     <Compile Include="Card\ICardReader.cs" />

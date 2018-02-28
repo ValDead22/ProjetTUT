@@ -37,4 +37,3 @@ namespace ApplicationJampay.CardReaderAPI.Exceptions
         protected SuccessException(SerializationInfo info, StreamingContext context) : base(info, context) { }
     }
 }
-}

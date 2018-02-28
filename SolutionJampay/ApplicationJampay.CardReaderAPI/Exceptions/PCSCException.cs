@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ApplicationJampay.CardReaderAPI.Utils;
+using System;
 using System.Runtime.Serialization;
 
 namespace ApplicationJampay.CardReaderAPI.Exceptions

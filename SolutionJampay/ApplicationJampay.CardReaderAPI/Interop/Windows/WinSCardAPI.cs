@@ -1,4 +1,5 @@
 ﻿using ApplicationJampay.CardReaderAPI.Interop.Windows;
+using ApplicationJampay.CardReaderAPI.Interop.Windows.Extensions;
 using ApplicationJampay.CardReaderAPI.Utils;
 using System;
 using System.Runtime.InteropServices;

@@ -1,5 +1,4 @@
-﻿using ApplicationJampay.CardReaderAPI.Enum;
-using System;
+﻿using System;
 
 namespace ApplicationJampay.CardReaderAPI.Card
 {
