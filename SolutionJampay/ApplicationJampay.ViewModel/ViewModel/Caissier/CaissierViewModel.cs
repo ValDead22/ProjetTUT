@@ -24,33 +24,43 @@ namespace ApplicationJampay.ViewModel.ViewModel.Caissier
         void OnPropertyChanged(string propertyName)
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
-        } 
+        }
         #endregion
-        
 
-        private ObservableCollection<PlatWithQuantité> _choosenPlat = new ObservableCollection<PlatWithQuantité>();
-        public IEnumerable<PlatWithQuantité> ChoosenPlat { get { return _choosenPlat; } }
+
+        #region Commands
+
+        private readonly RelayCommand _openAddPlatViewCommand;
+        public ICommand OpenAddPlatViewCommand => _openAddPlatViewCommand;
+
+        private readonly RelayCommand _deleteSelectedChoosenPlat;
+        public ICommand DeleteSelectedChoosenPlat => _deleteSelectedChoosenPlat; 
+        #endregion
+
+        private ObservableCollection<PlatWithQuantité> _collectionChoosenPlat = new ObservableCollection<PlatWithQuantité>();
+        public IEnumerable<PlatWithQuantité> CollectionChoosenPlat { get { return _collectionChoosenPlat; } }
 
         private float _prixTotal = 0;
         
         public CaissierViewModel()
         {
             _openAddPlatViewCommand = new RelayCommand(() => AddPlat(), o => true);
+            _deleteSelectedChoosenPlat = new RelayCommand(() => DeletePlat(), o => true);
 
             Messenger.Default.Register<Plat>(this, (plat) => HandleMessage(plat));
         }
 
-        private Plat _selectedPlat;
-        public Plat SelectedPlat
+        private PlatWithQuantité _selectedChoosenPlat;
+        public PlatWithQuantité SelectedChoosenPlat
         {
             get
             {
-                return _selectedPlat;
+                return _selectedChoosenPlat;
             }
             set
             {
-                _selectedPlat = value;
-                OnPropertyChanged(nameof(SelectedPlat));
+                _selectedChoosenPlat = value;
+                OnPropertyChanged(nameof(SelectedChoosenPlat));
             }
         }
 
@@ -70,7 +80,7 @@ namespace ApplicationJampay.ViewModel.ViewModel.Caissier
 
         private void HandleMessage(Plat plat)
         {
-            foreach(PlatWithQuantité platWQ in _choosenPlat)
+            foreach(PlatWithQuantité platWQ in _collectionChoosenPlat)
             {
                 if(plat.CodePlat == platWQ.CodePlat)
                 {
@@ -80,15 +90,28 @@ namespace ApplicationJampay.ViewModel.ViewModel.Caissier
                     return;
                 }
             }
-            _choosenPlat.Add(new PlatWithQuantité(plat.CodePlat, plat.DateEffet, plat.DateFin, plat.Categorie, plat.Nom, 1));
+            _collectionChoosenPlat.Add(new PlatWithQuantité(plat.CodePlat, plat.DateEffet, plat.DateFin, plat.Categorie, plat.Nom, 1, plat.Prix));
             _prixTotal += plat.Prix ?? default(float);
             Prix = _prixTotal.ToString() + " €";
 
         }
 
-        private readonly RelayCommand _openAddPlatViewCommand;
-        public ICommand OpenAddPlatViewCommand => _openAddPlatViewCommand;
-        
+        private void DeletePlat()
+        {
+            Debug.WriteLine(SelectedChoosenPlat.Prix);
+            _prixTotal = _prixTotal - (SelectedChoosenPlat.Prix ?? default(float));
+            Prix = _prixTotal.ToString() + " €";
+
+            if (SelectedChoosenPlat.Quantite != 1)
+            {
+                SelectedChoosenPlat.Quantite--;
+            }
+            else
+            {
+                _collectionChoosenPlat.Remove(SelectedChoosenPlat);
+            }
+            
+        }
 
         public void AddPlat()
         {

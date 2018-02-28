@@ -3,9 +3,16 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:converter="clr-namespace:ApplicationJampay.Converter"
         xmlns:local="clr-namespace:ApplicationJampay.View"
         mc:Ignorable="d"
         Title="Caissier" Height="484" Width="568.5">
+
+    <Window.Resources>
+        <converter:SelectedItemToIsEnable x:Key="selected2isEnable"/>
+    </Window.Resources>
+    
+    
     <Grid>
 
         
@@ -23,7 +30,7 @@
                 <Separator Width="20" Height="25" Background="Transparent"/>
                 <Button Grid.Column="2" Content="Ajouter un plat" Padding="15" Command="{Binding OpenAddPlatViewCommand}"/>
                 <Separator Width="20" Height="25" Background="Transparent"/>
-                <Button Grid.Column="2" Content="Supprimer un plat" Command="{Binding OpenRemovePlatCommand}" Padding="15" />
+                <Button Grid.Column="2" Content="Supprimer un plat" Command="{Binding DeleteSelectedChoosenPlat}" IsEnabled="{Binding SelectedChoosenPlat, Converter={StaticResource selected2isEnable}}"  Padding="15" />
                 <Separator Width="20" Height="25" Background="Transparent"/>
                 <Label Grid.Column="0" Content="{Binding Prix}" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="36" />
                 
@@ -31,7 +38,7 @@
             </StackPanel>
 
 
-            <ListView FontSize="20" SelectedItem="{Binding SelectedPlat}" ItemsSource="{Binding ChoosenPlat}"  Grid.Row="1" Grid.Column="0"  HorizontalAlignment="Stretch" Margin="10">
+            <ListView FontSize="20" SelectedItem="{Binding SelectedChoosenPlat}" ItemsSource="{Binding CollectionChoosenPlat}"  Grid.Row="1" Grid.Column="0"  HorizontalAlignment="Stretch" Margin="10">
                 <ListView.View>
                     <GridView>
                         <GridViewColumn Width="300" Header="Nom" DisplayMemberBinding="{Binding Nom}"/>
