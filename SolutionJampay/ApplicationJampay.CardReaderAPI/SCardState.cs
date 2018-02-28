@@ -1,6 +1,5 @@
 ﻿using System;
 using System.ComponentModel;
-
 namespace ApplicationJampay.CardReaderAPI
 {
     [Flags]

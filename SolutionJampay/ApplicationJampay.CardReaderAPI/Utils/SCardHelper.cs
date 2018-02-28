@@ -4,7 +4,7 @@ using System.ComponentModel;
 using System.Linq;
 using System.Text;
 
-namespace ApplicationJampay.CardReaderAPI
+namespace ApplicationJampay.CardReaderAPI.Utils
 {
     public static class SCardHelper
     {

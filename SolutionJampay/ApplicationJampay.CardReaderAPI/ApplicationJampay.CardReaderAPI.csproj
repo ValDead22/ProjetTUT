@@ -1,0 +1,102 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{4F3D4A68-1341-4BC9-8A8F-9579886D3C10}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>ApplicationJampay.CardReaderAPI</RootNamespace>
+    <AssemblyName>ApplicationJampay.CardReaderAPI</AssemblyName>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Card\CardErrorExt.cs" />
+    <Compile Include="Card\CardHandle.cs" />
+    <Compile Include="Card\CardReader.cs" />
+    <Compile Include="Exceptions\CommunicationErrorException.cs" />
+    <Compile Include="ContextFactory.cs" />
+    <Compile Include="Utils\DisposeAction.cs" />
+    <Compile Include="Card\ICardHandle.cs" />
+    <Compile Include="Card\ICardReader.cs" />
+    <Compile Include="IContextFactory.cs" />
+    <Compile Include="Exceptions\InsufficientBufferException.cs" />
+    <Compile Include="Exceptions\InternalErrorException.cs" />
+    <Compile Include="Interop\Unix\DLOPEN_FLAGS.cs" />
+    <Compile Include="Interop\Unix\ExtensionMethods\IntPtrExt.cs" />
+    <Compile Include="Interop\Unix\PCSCliteAPI.cs" />
+    <Compile Include="Interop\Unix\SCARD_IO_REQUEST.cs" />
+    <Compile Include="Interop\Unix\SCARD_READERSTATE.cs" />
+    <Compile Include="Interop\Windows\Extensions\IntExt.cs" />
+    <Compile Include="Interop\ISCardApi.cs" />
+    <Compile Include="Exceptions\InvalidContextException.cs" />
+    <Compile Include="Exceptions\InvalidProtocolException.cs" />
+    <Compile Include="Exceptions\InvalidScopeTypeException.cs" />
+    <Compile Include="Exceptions\InvalidValueException.cs" />
+    <Compile Include="ISCardContext.cs" />
+    <Compile Include="Interop\Platform.cs" />
+    <Compile Include="Exceptions\NoReadersAvailableException.cs" />
+    <Compile Include="Exceptions\NoServiceException.cs" />
+    <Compile Include="Exceptions\NoSmartcardException.cs" />
+    <Compile Include="Exceptions\NotReadyException.cs" />
+    <Compile Include="Exceptions\PCSCException.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ReaderStatus.cs" />
+    <Compile Include="Exceptions\ReaderUnavailableException.cs" />
+    <Compile Include="Exceptions\RemovedCardException.cs" />
+    <Compile Include="SCardAttribute.cs" />
+    <Compile Include="SCardClass.cs" />
+    <Compile Include="SCardContext.cs" />
+    <Compile Include="SCardError.cs" />
+    <Compile Include="Utils\SCardHelper.cs" />
+    <Compile Include="SCardPCI.cs" />
+    <Compile Include="SCardProtocol.cs" />
+    <Compile Include="SCardReaderDisposition.cs" />
+    <Compile Include="SCardReaderState.cs" />
+    <Compile Include="SCardScope.cs" />
+    <Compile Include="SCardShareMode.cs" />
+    <Compile Include="SCardState.cs" />
+    <Compile Include="Interop\Windows\SCardStateWindows.cs" />
+    <Compile Include="SCRState.cs" />
+    <Compile Include="Interop\Windows\SCARD_IO_REQUEST.cs" />
+    <Compile Include="Interop\Windows\SCARD_READERSTATE.cs" />
+    <Compile Include="Interop\Windows\WinSCardAPI.cs" />
+    <Compile Include="Exceptions\SharingViolationException.cs" />
+    <Compile Include="Exceptions\SuccessException.cs" />
+    <Compile Include="Exceptions\UnknownReaderException.cs" />
+    <Compile Include="Exceptions\UnpoweredCardException.cs" />
+    <Compile Include="Exceptions\UnresponsiveCardException.cs" />
+    <Compile Include="Exceptions\UnsupportedFeatureException.cs" />
+    <Compile Include="Exceptions\WinErrorInsufficientBufferException.cs" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>

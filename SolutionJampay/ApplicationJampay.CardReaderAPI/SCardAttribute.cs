@@ -1,4 +1,6 @@
-﻿namespace ApplicationJampay.CardReaderAPI
+﻿
+
+namespace ApplicationJampay.CardReaderAPI
 {
     public enum SCardAttribute
     {

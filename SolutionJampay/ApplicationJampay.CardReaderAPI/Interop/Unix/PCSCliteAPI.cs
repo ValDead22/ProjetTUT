@@ -1,4 +1,5 @@
 ﻿using ApplicationJampay.CardReaderAPI.Interop.Unix.ExtensionMethods;
+using ApplicationJampay.CardReaderAPI.Utils;
 using System;
 using System.Collections.Generic;
 using System.Linq;

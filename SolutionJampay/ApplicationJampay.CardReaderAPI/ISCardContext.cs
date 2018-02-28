@@ -1,4 +1,6 @@
-﻿using System;
+﻿using ApplicationJampay.CardReaderAPI.Card;
+
+using System;
 
 namespace ApplicationJampay.CardReaderAPI
 {

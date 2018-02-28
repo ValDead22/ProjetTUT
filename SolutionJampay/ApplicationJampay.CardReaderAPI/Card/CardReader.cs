@@ -1,4 +1,5 @@
-﻿using ApplicationJampay.CardReaderAPI.Utils;
+﻿using ApplicationJampay.CardReaderAPI.Enum;
+using ApplicationJampay.CardReaderAPI.Utils;
 using System;
 
 namespace ApplicationJampay.CardReaderAPI.Card

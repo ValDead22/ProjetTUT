@@ -1,4 +1,5 @@
-﻿using ApplicationJampay.CardReaderAPI.Exceptions;
+﻿using ApplicationJampay.CardReaderAPI.Enum;
+using ApplicationJampay.CardReaderAPI.Exceptions;
 
 namespace ApplicationJampay.CardReaderAPI.Card
 {
