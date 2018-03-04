@@ -63,5 +63,16 @@ namespace ApplicationJampay.Model.Service.Dialog
 
             return usercontrol;
         }
+
+        /// <summary>
+        /// Show the the ticket editor manager into the main view of the Caissier
+        /// </summary>
+        public static FrameworkElement GetEditTicketUserControl()
+        {
+            var createType = Type.GetType("ApplicationJampay.View.Caissier.UserControlFolder.EditTicketUserControl, ApplicationJampay");
+            var usercontrol = (System.Windows.Controls.UserControl)Activator.CreateInstance(createType);
+
+            return usercontrol;
+        }
     }
 }
