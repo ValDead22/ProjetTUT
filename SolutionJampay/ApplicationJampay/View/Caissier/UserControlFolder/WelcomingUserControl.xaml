@@ -1,0 +1,21 @@
+﻿<UserControl x:Class="ApplicationJampay.View.Caissier.UserControlFolder.WelcomingUserControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             mc:Ignorable="d" 
+             d:DesignHeight="300" d:DesignWidth="300">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        
+        <TextBlock VerticalAlignment="Center" Grid.Row="0" HorizontalAlignment="Center" Text="Bienvenue sur la caisse de l'application Jampay"/>
+
+        <Button Grid.Row="1" Content="Caisse" Command="{Binding ShowCaisseUserControl}" />
+        <Button Grid.Row="2" Content="Gestion des factures" Command="{Binding ShowFactureUserControl}" />
+
+    </Grid>
+</UserControl>

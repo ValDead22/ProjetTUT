@@ -1,0 +1,51 @@
+﻿<UserControl x:Class="ApplicationJampay.View.Caissier.UserControlFolder.CaisseUserControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:ApplicationJampay.View.Caissier.UserControlFolder"
+             xmlns:converter="clr-namespace:ApplicationJampay.Converter"
+             mc:Ignorable="d" 
+             d:DesignHeight="400" d:DesignWidth="500">
+    
+    <UserControl.Resources>
+        <converter:SelectedItemToIsEnable x:Key="selected2isEnable"/>
+    </UserControl.Resources>
+
+    
+    <Grid>
+
+        <Grid Grid.Row="0">
+
+            <Grid.RowDefinitions>
+                <RowDefinition Height="0.7*"/>
+                <RowDefinition Height="2*"/>
+            </Grid.RowDefinitions>
+
+            <StackPanel Grid.Row="0" Orientation="Horizontal" Grid.Column="0" Grid.ColumnSpan="2" DockPanel.Dock="Bottom" Margin="10pt">
+
+                <Button Grid.Column="1"  Content="Réglement" Padding="15"/>
+                <Separator Width="20" Height="25" Background="Transparent"/>
+                <Button Grid.Column="2" Content="Ajouter un plat" Padding="15" Command="{Binding OpenAddPlatViewCommand}"/>
+                <Separator Width="20" Height="25" Background="Transparent"/>
+                <Button Grid.Column="2" Content="Supprimer un plat" Command="{Binding DeleteSelectedChoosenPlat}" IsEnabled="{Binding SelectedChoosenPlat, Converter={StaticResource selected2isEnable}}"  Padding="15" />
+                <Separator Width="20" Height="25" Background="Transparent"/>
+                <Label Grid.Column="0" Content="{Binding Prix}" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="36" />
+
+
+            </StackPanel>
+
+
+            <ListView FontSize="20" SelectedItem="{Binding SelectedChoosenPlat}" ItemsSource="{Binding CollectionChoosenPlat}"  Grid.Row="1" Grid.Column="0"  HorizontalAlignment="Stretch" Margin="10">
+                <ListView.View>
+                    <GridView>
+                        <GridViewColumn Width="300" Header="Nom" DisplayMemberBinding="{Binding Nom}"/>
+                        <GridViewColumn Width="125" Header="Quantité" DisplayMemberBinding="{Binding Quantite}"/>
+                    </GridView>
+                </ListView.View>
+            </ListView>
+
+        </Grid>
+
+    </Grid>
+</UserControl>
