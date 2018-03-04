@@ -90,6 +90,9 @@
     <Compile Include="View\Caissier\UserControlFolder\CaisseUserControl.xaml.cs">
       <DependentUpon>CaisseUserControl.xaml</DependentUpon>
     </Compile>
+    <Compile Include="View\Caissier\UserControlFolder\EditTicketUserControl.xaml.cs">
+      <DependentUpon>EditTicketUserControl.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\Caissier\UserControlFolder\FactureUserControl.xaml.cs">
       <DependentUpon>FactureUserControl.xaml</DependentUpon>
     </Compile>
@@ -146,6 +149,10 @@
       <SubType>Code</SubType>
     </Compile>
     <Page Include="View\Caissier\UserControlFolder\CaisseUserControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Caissier\UserControlFolder\EditTicketUserControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
