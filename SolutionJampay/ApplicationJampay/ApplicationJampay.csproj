@@ -49,10 +49,22 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="CommonServiceLocator, Version=2.0.2.0, Culture=neutral, PublicKeyToken=489b6accfaf20ef0, processorArchitecture=MSIL">
+      <HintPath>..\packages\CommonServiceLocator.2.0.2\lib\net45\CommonServiceLocator.dll</HintPath>
+    </Reference>
+    <Reference Include="GalaSoft.MvvmLight, Version=5.4.1.0, Culture=neutral, PublicKeyToken=e7570ab207bcb616, processorArchitecture=MSIL">
+      <HintPath>..\packages\MvvmLightLibs.5.4.1\lib\net45\GalaSoft.MvvmLight.dll</HintPath>
+    </Reference>
+    <Reference Include="GalaSoft.MvvmLight.Extras, Version=5.4.1.0, Culture=neutral, PublicKeyToken=669f0b5e8f868abf, processorArchitecture=MSIL">
+      <HintPath>..\packages\MvvmLightLibs.5.4.1\lib\net45\GalaSoft.MvvmLight.Extras.dll</HintPath>
+    </Reference>
+    <Reference Include="GalaSoft.MvvmLight.Platform, Version=5.4.1.0, Culture=neutral, PublicKeyToken=5f873c45e98af8a1, processorArchitecture=MSIL">
+      <HintPath>..\packages\MvvmLightLibs.5.4.1\lib\net45\GalaSoft.MvvmLight.Platform.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Windows.Interactivity, Version=4.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\packages\Expression.Blend.Sdk.1.0.2\lib\net45\System.Windows.Interactivity.dll</HintPath>
+      <HintPath>..\packages\MvvmLightLibs.5.4.1\lib\net45\System.Windows.Interactivity.dll</HintPath>
     </Reference>
     <Reference Include="System.Xml" />
     <Reference Include="Microsoft.CSharp" />
@@ -75,8 +87,17 @@
     <Compile Include="Converter\DateToStringConverter.cs" />
     <Compile Include="Converter\MultipleSelectedItemToIsEnable.cs" />
     <Compile Include="Converter\SelectedItemToIsEnable.cs" />
+    <Compile Include="View\Caissier\UserControlFolder\CaisseUserControl.xaml.cs">
+      <DependentUpon>CaisseUserControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Caissier\UserControlFolder\FactureUserControl.xaml.cs">
+      <DependentUpon>FactureUserControl.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\Cuisinier\CuisinierMainView.xaml.cs">
       <DependentUpon>CuisinierMainView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Caissier\UserControlFolder\WelcomingUserControl.xaml.cs">
+      <DependentUpon>WelcomingUserControl.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\Gérant\PopUp\Menu\AjoutMenuView.xaml.cs">
       <DependentUpon>AjoutMenuView.xaml</DependentUpon>
@@ -124,7 +145,19 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="View\Caissier\UserControlFolder\CaisseUserControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Caissier\UserControlFolder\FactureUserControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="View\Cuisinier\CuisinierMainView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Caissier\UserControlFolder\WelcomingUserControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
