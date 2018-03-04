@@ -21,26 +21,32 @@
 
         <TabControl TabStripPlacement="Left">
 
-                <TabItem Header="Gestion - Cafétéria">
+            <TabItem Header="Gestion - Cafétéria">
 
-                    <usercontrol:UserControlCafeteria/>
+                <usercontrol:UserControlCafeteria/>
 
-                </TabItem>
+            </TabItem>
 
 
-                <TabItem Header="Gestion - Usagers" >
+            <TabItem Header="Gestion - Usagers" >
 
-                    <usercontrol:UserControlUsager/>
+                <usercontrol:UserControlUsager/>
 
-                </TabItem>
+            </TabItem>
 
-                <TabItem Header="Gestion - Utilisateurs">
+            <TabItem Header="Gestion - Utilisateurs">
 
-                    <usercontrol:UserControlUtilisateur/>
+                <usercontrol:UserControlUtilisateur/>
 
-                </TabItem>
+            </TabItem>
 
-            </TabControl>
+            <TabItem Header="Gestion - Statistiques">
+
+                <TextBlock FontSize="50" Text="Pas encore implémenté" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+
+            </TabItem>
+
+        </TabControl>
 
         
 
