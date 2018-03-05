@@ -71,5 +71,17 @@ namespace ApplicationJampay.Model.DAL.Usager
                 throw new Exception(ex.Message);
             }
         }
+
+        public void Pay(int matricule, float price)
+        {
+            try
+            {
+                _usagerDAL.Pay(matricule, price);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
     }
 }

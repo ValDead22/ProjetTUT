@@ -24,7 +24,7 @@
 
             <StackPanel Grid.Row="0" Orientation="Horizontal" Grid.Column="0" Grid.ColumnSpan="2" DockPanel.Dock="Bottom" Margin="10pt">
 
-                <Button Grid.Column="1"  Content="Réglement" Padding="15"/>
+                <Button Grid.Column="1"  Content="Réglement" Padding="15"  Command="{Binding CardPayCommand}"/>
                 <Separator Width="20" Height="25" Background="Transparent"/>
                 <Button Grid.Column="2" Content="Ajouter un plat" Padding="15" Command="{Binding OpenAddPlatViewCommand}"/>
                 <Separator Width="20" Height="25" Background="Transparent"/>

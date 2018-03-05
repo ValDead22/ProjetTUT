@@ -132,5 +132,54 @@ namespace ApplicationJampay.Model.DAL.Usager
 
             mySqlDataReader.Close();
         }
+
+        public int getCredit(int matricule)
+        {
+
+            int credit = 0;
+
+            var query = "SELECT Credit WHERE MatriculeCarte =\"" + matricule + "\"";
+            
+            MySqlDataReader mySqlDataReader = _sQLService.Load(query);
+
+            try
+            {
+
+                while (mySqlDataReader.Read())
+                {
+                    credit = (int)mySqlDataReader["Credit"];
+                    
+                }
+                
+            }
+            catch
+            {
+                throw new Exception("Problème(s) lors de l'accès au crédit de l'usager !");
+            }
+            
+            mySqlDataReader.Close();
+            return credit;
+
+        }
+
+
+        public void Pay(int matricule, float prix)
+        {
+            int solde = getCredit(matricule);
+            if(solde < prix)
+
+            {
+                throw new Exception("Prix supérieur au solde présent sur la carte");
+            }
+
+            float credit = solde - prix;
+
+            var query = "UPDATE Carte SET Credit=\"" + credit + "\" WHERE MatriculeCarte=\"" + matricule + "\"";
+            MySqlDataReader mySqlDataReader = _sQLService.Load(query);
+
+            mySqlDataReader.Close();
+
+
+        }
     }
 }

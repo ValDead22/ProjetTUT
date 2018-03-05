@@ -15,5 +15,12 @@ namespace ApplicationJampay.Model.Service.SmartCardReader
 
             return byteArray[0];
         }
+
+        public static int GetCodeUser()
+        {
+            var byteArray = SmartCardReaderService.GetDataFromTheCard();
+
+            return byteArray[0];
+        }
     }
 }

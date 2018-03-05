@@ -1,4 +1,6 @@
 ﻿using ApplicationJampay.Model.Entity;
+using ApplicationJampay.Model.DAL.Usager;
+
 using ApplicationJampay.Model.Service.Dialog;
 using ApplicationJampay.ViewModel.Command;
 using GalaSoft.MvvmLight.Messaging;
@@ -11,6 +13,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
+using ApplicationJampay.Model.Service.SmartCardReader;
+using ApplicationJampay.Model.DAL.Utilisateur;
 
 namespace ApplicationJampay.ViewModel.ViewModel.Caissier.UserControlFolder
 {
@@ -35,6 +39,12 @@ namespace ApplicationJampay.ViewModel.ViewModel.Caissier.UserControlFolder
         public ICommand DeleteSelectedChoosenPlat => _deleteSelectedChoosenPlat;
         #endregion
 
+        private readonly RelayCommand _cardPayCommand;
+        public ICommand CardPayCommand => _cardPayCommand;
+
+
+
+
         private ObservableCollection<PlatWithQuantité> _collectionChoosenPlat = new ObservableCollection<PlatWithQuantité>();
         public IEnumerable<PlatWithQuantité> CollectionChoosenPlat { get { return _collectionChoosenPlat; } }
 
@@ -44,6 +54,8 @@ namespace ApplicationJampay.ViewModel.ViewModel.Caissier.UserControlFolder
         {
             _openAddPlatViewCommand = new RelayCommand(() => AddPlat(), o => true);
             _deleteSelectedChoosenPlat = new RelayCommand(() => DeletePlat(), o => true);
+            _cardPayCommand = new RelayCommand(() => PayCardReader(), o => true);
+
 
             Messenger.Default.Register<Plat>(this, (plat) => GetPlats(plat));
         }
@@ -114,6 +126,18 @@ namespace ApplicationJampay.ViewModel.ViewModel.Caissier.UserControlFolder
         public void AddPlat()
         {
             DialogCaissier.ShowAjouterPlatWindow();
+        }
+
+        private void PayCardReader()
+        {
+
+            UsagerBusiness _usagerBusiness = new UsagerBusiness();
+            int idUser = ManageDataCardService.GetCodeUser();
+
+            _usagerBusiness.Pay(idUser, _prixTotal);
+
+
+
         }
     }
 }
