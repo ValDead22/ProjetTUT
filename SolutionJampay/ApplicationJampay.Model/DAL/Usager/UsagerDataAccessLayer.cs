@@ -166,6 +166,12 @@ namespace ApplicationJampay.Model.DAL.Usager
         public void Pay(int matricule, float prix)
         {
             int solde = getCredit(matricule);
+            if(solde < prix)
+
+            {
+                throw new Exception("Prix supérieur au solde présent sur la carte");
+            }
+
             float credit = solde - prix;
 
             var query = "UPDATE Carte SET Credit=\"" + credit + "\" WHERE MatriculeCarte=\"" + matricule + "\"";
