@@ -59,6 +59,10 @@ namespace ApplicationJampay.ViewModel.ViewModel.Caissier
                 case "FactureUserControl":
                     ContentControlView = DialogCaissier.GetFactureUserControl();
                     break;
+
+                case "EditTicketUserControl":
+                    ContentControlView = DialogCaissier.GetEditTicketUserControl();
+                    break;
             }
         }
 

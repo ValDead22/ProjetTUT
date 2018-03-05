@@ -136,6 +136,8 @@ namespace ApplicationJampay.ViewModel.ViewModel.Caissier.UserControlFolder
 
             _usagerBusiness.Pay(idUser, _prixTotal);
 
+            Messenger.Default.Send<string>("EditTicketUserControl");
+
 
 
         }
