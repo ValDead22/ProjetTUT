@@ -44,7 +44,8 @@
             <StackPanel Orientation="Vertical" Grid.Column="0">
 
                 <TextBlock FontWeight="Bold" FontSize="48" Text="{Binding SelectedUtilisateur.Nom}"/>
-                <TextBlock FontWeight="Bold" FontSize="48" Text="{Binding SelectedUtilisateur.Prenom}"/>
+                <TextBlock FontWeight="Bold" FontSize="30" Text="{Binding SelectedUtilisateur.Prenom}"/>
+                <TextBlock FontWeight="Bold" FontSize="20" Text="{Binding SelectedUtilisateur.Fonction}"/>
 
             </StackPanel>
 
