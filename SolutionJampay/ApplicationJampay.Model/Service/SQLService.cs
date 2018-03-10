@@ -32,7 +32,15 @@ namespace ApplicationJampay.Model.Service
         //Constructor
         private SQLService()
         {
-            Initialize();
+            try
+            {
+                Initialize();
+            }
+            catch (Exception ex)
+            {
+
+                throw new Exception(ex.Message);
+            }
         }
 
         //Initialize values
@@ -50,33 +58,16 @@ namespace ApplicationJampay.Model.Service
             OpenConnection();
         }
 
-        //open connection to database
-        private bool OpenConnection()
+
+        private void OpenConnection()
         {
             try
             {
                 connection.Open();
-                Console.WriteLine("Connecté à la base de données");
-                return true;
             }
             catch (MySqlException ex)
             {
-                //When handling errors, you can your application's response based 
-                //on the error number.
-                //The two most common error numbers when connecting are as follows:
-                //0: Cannot connect to server.
-                //1045: Invalid user name and/or password.
-                switch (ex.Number)
-                {
-                    case 0:
-                        Console.WriteLine("Cannot connect to server.  Contact administrator");
-                        break;
-
-                    case 1045:
-                        Console.WriteLine("Invalid username/password, please try again");
-                        break;
-                }
-                return false;
+                throw new Exception("Impossible de se connecter à la base de donnée.\n" + ex.Message);
             }
         }
 
@@ -108,7 +99,7 @@ namespace ApplicationJampay.Model.Service
 
             catch (MySqlException ex)
             {
-                throw new Exception(ex.Message);
+                throw new Exception("Problème lors de l'accès aux données." + "\n" + ex.Message);
                 
             }
         }

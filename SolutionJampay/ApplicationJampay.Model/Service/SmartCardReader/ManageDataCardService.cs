@@ -11,16 +11,32 @@ namespace ApplicationJampay.Model.Service.SmartCardReader
     {
         public static int GetCodeFonction()
         {
-            var byteArray = SmartCardReaderService.GetDataFromTheCard();
+            try
+            {
+                var byteArray = SmartCardReaderService.GetDataFromTheCard();
 
-            return byteArray[0];
+                return byteArray[0];
+            }
+            catch (Exception ex) 
+            {
+
+                throw new Exception("Problème avec le l'obtention du code de fonction depuis la carte" + "\n" + ex.Message);
+            }
         }
 
         public static int GetCodeUser()
         {
-            var byteArray = SmartCardReaderService.GetDataFromTheCard();
+            try
+            {
+                var byteArray = SmartCardReaderService.GetDataFromTheCard();
 
-            return byteArray[0];
+                return byteArray[0];
+            }
+            catch(Exception ex)
+            {
+                throw new Exception("Problème avec l'obtention du code de l'utilisateur depuis la carte" + "\n" + ex.Message);
+            }
+           
         }
     }
 }

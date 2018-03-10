@@ -53,7 +53,15 @@ namespace ApplicationJampay.ViewModel.ViewModel
             _loginCommand = new RelayCommand(() => Login(), o => true);
             _cardLoginCommand = new RelayCommand(() => InitCardReader(), o => true);
 
-            _userBusiness = new UtilisateurBusiness();            
+            try
+            {
+                _userBusiness = new UtilisateurBusiness();
+            }
+            catch (Exception ex)
+            {
+
+                DialogService.ShowErrorWindow(ex.Message);
+            }          
         }
         
         #region Properties
@@ -165,24 +173,33 @@ namespace ApplicationJampay.ViewModel.ViewModel
 
         private void InitCardReader()
         {
-            switch (ManageDataCardService.GetCodeFonction())
+
+            try
             {
-                case 1:
-                    DialogGerant.ShowGerantMainView();
-                    Close();
-                    break;
+                switch (ManageDataCardService.GetCodeFonction())
+                {
+                    case 1:
+                        DialogGerant.ShowGerantMainView();
+                        Close();
+                        break;
 
-                case 0:
-                    DialogCaissier.ShowCaissierMainWindow();
-                    Close();
-                    break;
+                    case 0:
+                        DialogCaissier.ShowCaissierMainWindow();
+                        Close();
+                        break;
 
-                case 2:
-                    DialogCuisinier.ShowCuisinierWindow();
-                    Close();
-                    break;
+                    case 2:
+                        DialogCuisinier.ShowCuisinierWindow();
+                        Close();
+                        break;
+                }
+
             }
+            catch (Exception ex)
+            {
 
+                DialogService.ShowErrorWindow(ex.Message);
+            }
         }
                     
     }
