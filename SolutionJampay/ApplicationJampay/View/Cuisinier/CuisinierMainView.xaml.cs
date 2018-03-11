@@ -22,7 +22,10 @@ namespace ApplicationJampay.View.Cuisinier
     {
         public CuisinierMainView()
         {
-            DataContext = new CuisinierMainViewModel();
+            DataContext = new CuisinierMainViewModel()
+            {
+                Close = () => Close()
+            };
 
             InitializeComponent();            
         }

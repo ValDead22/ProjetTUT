@@ -82,7 +82,7 @@
             </Grid>
 
             <StackPanel HorizontalAlignment="Center" Orientation="Horizontal" VerticalAlignment="Top">
-                <Button Content="Déconnexion" VerticalAlignment="Center"/>
+                <Button Content="Déconnexion" VerticalAlignment="Center" Command="{Binding LogOut}"/>
                 <Label HorizontalAlignment="Center" VerticalAlignment="Top" Margin="10">
                     <Label Content="Cuisinier"/>
                 </Label>                

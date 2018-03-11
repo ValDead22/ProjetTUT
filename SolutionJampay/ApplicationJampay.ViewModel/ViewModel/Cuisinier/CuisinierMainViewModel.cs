@@ -4,6 +4,7 @@ using ApplicationJampay.Model.DAL.Produit;
 using ApplicationJampay.Model.Entity;
 using ApplicationJampay.Model.Service;
 using ApplicationJampay.Model.Service.Dialog;
+using ApplicationJampay.ViewModel.Command;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -11,6 +12,7 @@ using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Input;
 
 namespace ApplicationJampay.ViewModel.ViewModel.Cuisinier
 {
@@ -48,6 +50,40 @@ namespace ApplicationJampay.ViewModel.ViewModel.Cuisinier
         public IEnumerable<Produit> CollectionProduitOfSelectedPlat { get { return _collectionProduitOfSelectedPlat; } }
 
         #endregion
+
+        public Action Close;
+
+        private readonly RelayCommand _logOut;
+        public ICommand LogOut => _logOut;
+
+        public CuisinierMainViewModel()
+        {
+            _menuBusiness = new MenuBusiness();
+            _platBusiness = new PlatBusiness();
+            _produitBusiness = new ProduitBusiness();
+
+            _logOut = new RelayCommand(() => Quit(), o => true);
+
+            try
+            {
+                foreach (Menu menu in _menuBusiness.GetAllMenus())
+                {
+                    _collectionMenu.Add(menu);
+                }
+            }
+            catch (Exception ex)
+            {
+                DialogService.ShowErrorWindow(ex.Message);
+            }
+
+        }
+
+        private void Quit()
+        {
+            DialogService.ShowLoginWindow();
+            Close();
+
+        }
 
         private Menu _selectedMenu;
         public Menu SelectedMenu
@@ -113,25 +149,7 @@ namespace ApplicationJampay.ViewModel.ViewModel.Cuisinier
             
         }
 
-        public CuisinierMainViewModel()
-        {
-            _menuBusiness = new MenuBusiness();
-            _platBusiness = new PlatBusiness();
-            _produitBusiness = new ProduitBusiness();
-
-            try
-            {
-                foreach (Menu menu in _menuBusiness.GetAllMenus())
-                {
-                    _collectionMenu.Add(menu);
-                }
-            }
-            catch (Exception ex)
-            {
-                DialogService.ShowErrorWindow(ex.Message);
-            }
-
-        }
+        
 
     }
 }
