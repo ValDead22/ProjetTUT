@@ -1,4 +1,6 @@
 ﻿using ApplicationJampay.Model.DAL.Menu;
+using ApplicationJampay.Model.DAL.Utilisateur;
+using ApplicationJampay.Model.Entity;
 using ApplicationJampay.Model.Service.Dialog;
 using ApplicationJampay.ViewModel.Command;
 using System;
@@ -21,17 +23,30 @@ namespace ApplicationJampay.ViewModel.ViewModel.Gérant
 
        
         private MenuBusiness _menuBusiness;
+        private UtilisateurBusiness _utilisateurBusiness;
 
         public Action Close;
 
         private readonly RelayCommand _createMenuCommand;
         public ICommand CreateMenuCommand => _createMenuCommand;
 
+        
+
         public AjoutMenuViewModel()
         {
             _menuBusiness = new MenuBusiness();
+            _utilisateurBusiness = new UtilisateurBusiness();
 
-            _availableCategories = _menuBusiness.GetAllCategories();
+            try
+            {
+                _availableCategories = _menuBusiness.GetAllCategories();
+                _avalaibleGerant = _utilisateurBusiness.GetUtilisateursByFonction("Gérant");
+            }
+            catch (Exception ex)
+            {
+
+                DialogService.ShowErrorWindow(ex.Message);
+            }
 
             _createMenuCommand = new RelayCommand(() => { CreateNewMenu(); Close(); }, o => true);
 
@@ -108,6 +123,25 @@ namespace ApplicationJampay.ViewModel.ViewModel.Gérant
                 OnPropertyChanged(nameof(AvailableCategories));
             }
         }
+
+        private List<Utilisateur> _avalaibleGerant;
+        public List<Utilisateur> AvalaibleGerant
+        {
+            get { return _avalaibleGerant; }
+            set { _avalaibleGerant = value;
+                OnPropertyChanged(nameof(AvalaibleGerant)); }
+        }
+
+        private Utilisateur _selectedGerant;
+
+        public Utilisateur SelectedGerant
+        {
+            get { return _selectedGerant; }
+            set { _selectedGerant = value;
+                OnPropertyChanged(nameof(SelectedGerant));
+            }
+        }
+
 
         private string _selectedCategory;
         public string SelectedCategory
