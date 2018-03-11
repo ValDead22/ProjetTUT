@@ -8,51 +8,79 @@
         xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
         xmlns:converter="clr-namespace:ApplicationJampay.Converter"
         mc:Ignorable="d"
+        WindowState="Maximized"
         
-        Title="Gestionnaire de la cafétéria" Height="568.754" Width="848.823" >
+        Title="Gestionnaire" Height="1080" Width="1920" >
 
     <Window.Resources>
         <converter:DateToStringConverter x:Key="date2string"/>
         <converter:SelectedItemToIsEnable x:Key="selected2isEnable"/>
         <converter:MultipleSelectedItemToIsEnable x:Key="multiSelected2isEnable"/>
     </Window.Resources>
+    <Window.Background>
+        <ImageBrush ImageSource="pexels-photo-260922.jpeg"/>
+    </Window.Background>
 
-    <Grid>
+    <Border Margin="150, 100" Background="White" BorderBrush="Black" BorderThickness="1,1,1,1" CornerRadius="30,30,30,30">
 
-        <TabControl TabStripPlacement="Left">
+        <Grid>
 
-            <TabItem Header="Gestion - Cafétéria">
-
-                <usercontrol:UserControlCafeteria/>
-
-            </TabItem>
-
-
-            <TabItem Header="Gestion - Usagers" >
-
-                <usercontrol:UserControlUsager/>
-
-            </TabItem>
-
-            <TabItem Header="Gestion - Utilisateurs">
-
-                <usercontrol:UserControlUtilisateur/>
-
-            </TabItem>
-
-            <TabItem Header="Gestion - Statistiques">
-
-                <TextBlock FontSize="50" Text="Pas encore implémenté" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-
-            </TabItem>
-
-        </TabControl>
-
-        
-
-    </Grid>
-    
+            <TabControl Margin="20,100,20,20" TabStripPlacement="Left" BorderThickness="0">
 
 
-    
+                <TabItem>
+                    <TabItem.Header>
+                        <TextBlock Text="Cafétéria" Style="{StaticResource myTextBlock}"/>
+                    </TabItem.Header>
+
+                    <usercontrol:UserControlCafeteria/>
+
+                </TabItem>
+
+
+                <TabItem>
+                    <TabItem.Header>
+                        <TextBlock Text="Usagers" Style="{StaticResource myTextBlock}"/>
+                    </TabItem.Header>
+
+                    <usercontrol:UserControlUsager/>
+
+                </TabItem>
+
+                <TabItem>
+                    <TabItem.Header>
+                        <TextBlock Text="Utilisateurs" Style="{StaticResource myTextBlock}"/>
+                    </TabItem.Header>
+
+                    <usercontrol:UserControlUtilisateur/>
+
+                </TabItem>
+
+                <TabItem >
+
+                    <TabItem.Header>
+                        <TextBlock Text="Statistiques" Style="{StaticResource myTextBlock}"/>
+                    </TabItem.Header>
+
+                    <TextBlock Text="Pas encore implémenté" Style="{StaticResource myTextBlock}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+
+                </TabItem>
+
+            </TabControl>
+            
+            <StackPanel HorizontalAlignment="Center" Orientation="Horizontal" VerticalAlignment="Top">
+                <Button Content="Déconnexion" VerticalAlignment="Center"/>
+                <Label HorizontalAlignment="Center" VerticalAlignment="Top" Margin="10">
+                    <Label Content="Gerant"/>
+                </Label>
+            </StackPanel>
+
+
+
+        </Grid>
+    </Border>
+
+
+
+
 </Window>

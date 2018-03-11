@@ -3,6 +3,7 @@ using ApplicationJampay.Model.Service;
 using MySql.Data.MySqlClient;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Reflection;
 using System.Text;
@@ -61,6 +62,23 @@ namespace ApplicationJampay.Model.DAL.Utilisateur
             {
                 mySqlDataReader.Close();
             }
+        }
+
+        public List<Entity.Utilisateur> GetUtilisateursByFonction(string fonction)
+        {
+            List<Entity.Utilisateur> list = new List<Entity.Utilisateur>();
+            List<Entity.Utilisateur> listUtilisateurs = GetAllUtilisateurs();
+
+            foreach(Entity.Utilisateur ut in GetAllUtilisateurs())
+            {
+                if(ut.Fonction == fonction)
+                {
+                    Debug.Write(ut);
+                    list.Add(ut);
+                }
+            }
+
+            return list;
         }
 
         public List<Entity.Utilisateur> GetAllUtilisateurs()

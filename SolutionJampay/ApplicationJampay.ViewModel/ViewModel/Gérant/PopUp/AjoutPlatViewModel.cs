@@ -41,7 +41,9 @@ namespace ApplicationJampay.ViewModel.ViewModel.Gérant
 
             _availableCategories = _platBusiness.GetAllCategories();
 
-            _createPlatCommand = new RelayCommand(() => { CreateNewPlat(); Close(); }, o => true);
+            DateEffet = DateTime.Now;
+
+            _createPlatCommand = new RelayCommand(() => { CreateNewPlat(); Messenger.Default.Send<string>("UpdatePlat"); Close(); }, o => true);
             
         }
 

@@ -45,7 +45,7 @@ namespace ApplicationJampay.ViewModel.ViewModel.Caissier.UserControlFolder
 
 
 
-        private ObservableCollection<PlatWithQuantité> _collectionChoosenPlat;
+        private ObservableCollection<PlatWithQuantité> _collectionChoosenPlat = new ObservableCollection<PlatWithQuantité>();
         public IEnumerable<PlatWithQuantité> CollectionChoosenPlat { get { return _collectionChoosenPlat; } }
 
         private float _prixTotal = 0;
@@ -90,12 +90,6 @@ namespace ApplicationJampay.ViewModel.ViewModel.Caissier.UserControlFolder
 
         private void GetPlats(Plat plat)
         {
-            if (_collectionChoosenPlat == null)
-            {
-                Debug.Write("slt");
-                _collectionChoosenPlat = new ObservableCollection<PlatWithQuantité>();
-            }
-
             foreach (PlatWithQuantité platWQ in _collectionChoosenPlat)
             {
                 if (plat.CodePlat == platWQ.CodePlat)
@@ -106,9 +100,6 @@ namespace ApplicationJampay.ViewModel.ViewModel.Caissier.UserControlFolder
                     return;
                 }
             }
-
-            
-
             _collectionChoosenPlat.Add(new PlatWithQuantité(plat.CodePlat, plat.DateEffet, plat.DateFin, plat.Categorie, plat.Nom, 1, plat.Prix));
             _prixTotal += plat.Prix ?? default(float);
             Prix = _prixTotal.ToString() + " €";
@@ -117,7 +108,6 @@ namespace ApplicationJampay.ViewModel.ViewModel.Caissier.UserControlFolder
 
         private void DeletePlat()
         {
-            Debug.WriteLine(SelectedChoosenPlat.Prix);
             _prixTotal = _prixTotal - (SelectedChoosenPlat.Prix ?? default(float));
             Prix = _prixTotal.ToString() + " €";
 

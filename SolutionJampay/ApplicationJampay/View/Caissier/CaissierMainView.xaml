@@ -6,17 +6,25 @@
         xmlns:converter="clr-namespace:ApplicationJampay.Converter"
         xmlns:local="clr-namespace:ApplicationJampay.View"
         mc:Ignorable="d"
-        Title="Caissier" Height="484" Width="568.5">
+        WindowState="Maximized"
+        Title="Caissier" Height="1080" Width="1920">
 
     <Window.Resources>
         <converter:SelectedItemToIsEnable x:Key="selected2isEnable"/>
     </Window.Resources>
-    
-    
-    <Grid>
+
+    <Window.Background>
+        <ImageBrush ImageSource="pexels-photo-260922.jpeg"/>
+    </Window.Background>
 
 
-        <ContentControl  Grid.Row="1" Grid.ColumnSpan="2" Content="{Binding ContentControlView}"/>
+    <Border Margin="150, 100" Background="White" BorderBrush="Black" BorderThickness="1,1,1,1" CornerRadius="30,30,30,30">
 
-    </Grid>
+        <Grid>
+            <ContentControl  Grid.Row="1" Grid.ColumnSpan="2" Content="{Binding ContentControlView}"/>
+        </Grid>
+
+    </Border>
+
+
 </Window>

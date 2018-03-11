@@ -18,7 +18,7 @@
 
         <Grid.RowDefinitions>
             <RowDefinition Height="2*"/>
-            <RowDefinition/>
+            <RowDefinition Height="1*"/>
         </Grid.RowDefinitions>
 
         <ListView Grid.Row="0" ItemsSource="{Binding CollectionUtilisateur}" SelectedItem="{Binding SelectedUtilisateur}">
@@ -36,22 +36,22 @@
 
         <Grid Grid.Row="1" Margin="15" VerticalAlignment="Center">
 
-            <Grid.ColumnDefinitions>
+            <Grid.ColumnDefinitions> 
                 <ColumnDefinition Width="1.3*"/>
                 <ColumnDefinition/>
             </Grid.ColumnDefinitions>
 
-            <StackPanel Orientation="Vertical" Grid.Column="0">
+            <StackPanel Height="150" Orientation="Vertical" Grid.Column="0">
 
-                <TextBlock FontWeight="Bold" FontSize="48" Text="{Binding SelectedUtilisateur.Nom}"/>
-                <TextBlock FontWeight="Bold" FontSize="30" Text="{Binding SelectedUtilisateur.Prenom}"/>
-                <TextBlock FontWeight="Bold" FontSize="20" Text="{Binding SelectedUtilisateur.Fonction}"/>
+                <Label Content="{Binding SelectedUtilisateur.Nom}"/>
+                <Label  FontSize="30" Content="{Binding SelectedUtilisateur.Prenom}"/>
+                <TextBlock Text="{Binding SelectedUtilisateur.Fonction}" Style="{StaticResource myTextBlock}"/>
 
             </StackPanel>
 
             <StackPanel Orientation="Vertical" Grid.Column="1">
 
-                <TextBlock FontSize="25" Text="Nouvelle fonction :"/>
+                <TextBlock Margin="15" Style="{StaticResource myTextBlock}" Text="Nouvelle fonction :"/>
                 <StackPanel Orientation="Horizontal">
 
 
@@ -81,7 +81,7 @@
 
                 <Button Content="Ajouter utilisateur" Padding="10" Command="{Binding OpenAddingUtilisateurWindow}"/>
                 <Separator Width="15" Visibility="Hidden"/>
-                <Button Command="{Binding OpenDeletingUtilisateurWindow}" Content="Supprimer utilisateur" Padding="10" IsEnabled="{Binding SelectedUtilisateur, Converter={StaticResource selected2isEnable}}"/>
+                <Button VerticalAlignment="Bottom" HorizontalAlignment="Right" Command="{Binding OpenDeletingUtilisateurWindow}" Content="Supprimer utilisateur" Padding="10" IsEnabled="{Binding SelectedUtilisateur, Converter={StaticResource selected2isEnable}}"/>
 
             </StackPanel>
 

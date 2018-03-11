@@ -3,6 +3,7 @@ using ApplicationJampay.Model.DAL.Utilisateur;
 using ApplicationJampay.Model.Entity;
 using ApplicationJampay.Model.Service.Dialog;
 using ApplicationJampay.ViewModel.Command;
+using GalaSoft.MvvmLight.Messaging;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -37,6 +38,8 @@ namespace ApplicationJampay.ViewModel.ViewModel.Gérant
             _menuBusiness = new MenuBusiness();
             _utilisateurBusiness = new UtilisateurBusiness();
 
+            DateElaboration = DateTime.Now;
+
             try
             {
                 _availableCategories = _menuBusiness.GetAllCategories();
@@ -48,14 +51,14 @@ namespace ApplicationJampay.ViewModel.ViewModel.Gérant
                 DialogService.ShowErrorWindow(ex.Message);
             }
 
-            _createMenuCommand = new RelayCommand(() => { CreateNewMenu(); Close(); }, o => true);
+            _createMenuCommand = new RelayCommand(() => { CreateNewMenu(); Messenger.Default.Send<string>("UpdateMenu"); Close(); }, o => true);
 
         }
 
 
         private void CreateNewMenu()
         {
-            Model.Entity.Menu menu = new Model.Entity.Menu(_idGérant, _dateElaboration, _selectedCategory, _nom, _observation);
+            Model.Entity.Menu menu = new Model.Entity.Menu(SelectedGerant.Matricule, DateElaboration, SelectedCategory, Nom, Observation);
 
             try
             {
@@ -76,17 +79,6 @@ namespace ApplicationJampay.ViewModel.ViewModel.Gérant
             {
                 _nom = value;
                 OnPropertyChanged(nameof(Nom));
-            }
-        }
-
-        private int _idGérant;
-        public int IDGérant
-        {
-            get { return _idGérant; }
-            set
-            {
-                _idGérant = value;
-                OnPropertyChanged(nameof(IDGérant));
             }
         }
 

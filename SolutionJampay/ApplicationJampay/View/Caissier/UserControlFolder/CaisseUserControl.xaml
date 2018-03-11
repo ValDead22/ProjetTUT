@@ -6,7 +6,7 @@
              xmlns:local="clr-namespace:ApplicationJampay.View.Caissier.UserControlFolder"
              xmlns:converter="clr-namespace:ApplicationJampay.Converter"
              mc:Ignorable="d" 
-             d:DesignHeight="400" d:DesignWidth="500">
+             d:DesignHeight="1080" d:DesignWidth="1920">
     
     <UserControl.Resources>
         <converter:SelectedItemToIsEnable x:Key="selected2isEnable"/>
@@ -22,7 +22,16 @@
                 <RowDefinition Height="2*"/>
             </Grid.RowDefinitions>
 
-            <StackPanel Grid.Row="0" Orientation="Horizontal" Grid.Column="0" Grid.ColumnSpan="2" DockPanel.Dock="Bottom" Margin="10pt">
+            <Grid Grid.Row="0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+            
+            
+
+            <StackPanel Grid.Row="0" Orientation="Horizontal" HorizontalAlignment="Center" Grid.Column="0" DockPanel.Dock="Bottom" Margin="10">
 
                 <Button Grid.Column="1"  Content="Réglement" Padding="15"  Command="{Binding CardPayCommand}" IsEnabled="{Binding CollectionChoosenPlat, Converter={StaticResource selected2isEnable}}"/>
                 <Separator Width="20" Height="25" Background="Transparent"/>
@@ -30,10 +39,24 @@
                 <Separator Width="20" Height="25" Background="Transparent"/>
                 <Button Grid.Column="2" Content="Supprimer un plat" Command="{Binding DeleteSelectedChoosenPlat}" IsEnabled="{Binding SelectedChoosenPlat, Converter={StaticResource selected2isEnable}}"  Padding="15" />
                 <Separator Width="20" Height="25" Background="Transparent"/>
-                <Label Grid.Column="0" Content="{Binding Prix}" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="36" />
 
+                
+                
+                   
 
-            </StackPanel>
+                </StackPanel>
+
+                <Label Grid.Column="1" Content="{Binding Prix}" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="50" FontStyle="Italic"/>
+
+                <StackPanel Grid.Column="2" HorizontalAlignment="Center" Orientation="Horizontal" VerticalAlignment="Center">
+
+                    <Button Content="Retour" VerticalAlignment="Center"/>
+                    <Label HorizontalAlignment="Center" VerticalAlignment="Top" Margin="10">
+                        <Label Content="Caisse"/>
+                    </Label>
+                </StackPanel>
+
+            </Grid>
 
 
             <ListView FontSize="20" SelectedItem="{Binding SelectedChoosenPlat}" ItemsSource="{Binding CollectionChoosenPlat}"  Grid.Row="1" Grid.Column="0"  HorizontalAlignment="Stretch" Margin="10">

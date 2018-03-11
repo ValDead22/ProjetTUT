@@ -19,5 +19,7 @@ namespace ApplicationJampay.Model.DAL.Utilisateur
         void AddUtilisateur(int matricule, string fonction, string motDePasse);
 
         void DeleteUtilisateur(int matricule);
+
+        List<Entity.Utilisateur> GetUtilisateursByFonction(string fonction);
     }
 }

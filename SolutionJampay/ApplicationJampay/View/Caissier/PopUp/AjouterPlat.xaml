@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ApplicationJampay.View"
         mc:Ignorable="d"
-        Title="Caissier1" Height="361.665" Width="744.255">
+        Title="Nouveau plat" Height="519.665" Width="744.255">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="10*"/>

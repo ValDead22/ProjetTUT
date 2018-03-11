@@ -48,6 +48,9 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>Sans titre.ico</ApplicationIcon>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="CommonServiceLocator, Version=2.0.2.0, Culture=neutral, PublicKeyToken=489b6accfaf20ef0, processorArchitecture=MSIL">
       <HintPath>..\packages\CommonServiceLocator.2.0.2\lib\net45\CommonServiceLocator.dll</HintPath>
@@ -87,6 +90,9 @@
     <Compile Include="Converter\DateToStringConverter.cs" />
     <Compile Include="Converter\MultipleSelectedItemToIsEnable.cs" />
     <Compile Include="Converter\SelectedItemToIsEnable.cs" />
+    <Compile Include="Validation\ValidateDate.cs" />
+    <Compile Include="Validation\ValidateFloat.cs" />
+    <Compile Include="Validation\ValidateString.cs" />
     <Compile Include="View\Caissier\UserControlFolder\CaisseUserControl.xaml.cs">
       <DependentUpon>CaisseUserControl.xaml</DependentUpon>
     </Compile>
@@ -243,14 +249,18 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <None Include="packages.config" />
+    <None Include="packages.config">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
   </ItemGroup>
   <ItemGroup>
-    <None Include="App.config" />
+    <None Include="App.config">
+      <SubType>Designer</SubType>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\ApplicationJampay.ViewModel\ApplicationJampay.ViewModel.csproj">
@@ -269,6 +279,27 @@
       <ProductName>.NET Framework 3.5 SP1</ProductName>
       <Install>false</Install>
     </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="View\pexels-photo-260922.jpeg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="View\Gérant\pexels-photo-260922.jpeg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Sans titre.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="View\Caissier\pexels-photo-260922.jpeg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="View\Cuisinier\pexels-photo-260922.jpeg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="View\error.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="View\warning-icon.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

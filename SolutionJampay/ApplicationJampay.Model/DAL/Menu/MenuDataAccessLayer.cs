@@ -24,6 +24,13 @@ namespace ApplicationJampay.Model.DAL.Menu
             mySqlDataReader.Close();
         }
 
+        public void AddPlatToMenu(Entity.Plat plat, Entity.Menu menu)
+        {
+            var query = "INSERT INTO CompositionMenu VALUES(\"" + plat.CodePlat + "\"" + ",\"" + menu.CodeMenu + "\"" + ",\"" + menu.DateElaboration +  "\"" + ")";
+            MySqlDataReader mySqlDataReader = _sQLService.Load(query);
+            mySqlDataReader.Close();
+        }
+
         /// <summary>
         /// Delete an existing Menu
         /// </summary>

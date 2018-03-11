@@ -7,39 +7,47 @@
         xmlns:behavior="clr-namespace:ApplicationJampay.ViewModel.Behavior;assembly=ApplicationJampay.ViewModel"
         xmlns:local="clr-namespace:ApplicationJampay.View"
         mc:Ignorable="d"
-        Title="LoginView" Height="406.832" Width="343.478">
+        WindowState="Maximized"
+        Title="Bienvenue" Height="602.832" Width="777.478">
+    <Window.Background>
+        <ImageBrush ImageSource="pexels-photo-260922.jpeg"/>
+    </Window.Background>
 
-    <Grid>
-        <Grid.RowDefinitions>
-            <RowDefinition/>
-            <RowDefinition Height="2*"/>
-            <RowDefinition Height="0.6*"/>
+    <Border VerticalAlignment="Center" HorizontalAlignment="Center" Background="White" BorderBrush="Black" BorderThickness="1,1,1,1" CornerRadius="30,30,30,30">
+        <Grid Margin="40,30" Background="White">
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+                <RowDefinition Height="2*"/>
+                <RowDefinition Height="0.4*"/>
 
-        </Grid.RowDefinitions>
+            </Grid.RowDefinitions>
 
-        <Label  Grid.Row="0" Content="Jampay" HorizontalAlignment="Left" Margin="15" VerticalAlignment="Center" FontSize="45"/>
+            <Label Margin="20"  Grid.Row="0" Content="Jampay" HorizontalAlignment="Center"  VerticalAlignment="Center" />
 
-        <StackPanel Grid.Row="1" Orientation="Vertical" Margin="15">
-            <Label Content="Votre matricule"/>
-            <TextBox TextWrapping="Wrap" Text="{Binding Matricule}"/>
+            <StackPanel  Grid.Row="1" Orientation="Vertical" Margin="15">
+                <TextBlock Margin="0,10" Style="{StaticResource myTextBlock}" Text="Votre matricule" />
+                <TextBox Style="{StaticResource myTextBox}" Text="{Binding Matricule}" />
 
-            <Label Content="Votre mot de passe"/>
-            <PasswordBox>
-                <i:Interaction.Behaviors>
-                    <behavior:PasswordBehavior Password="{Binding Password}"/>
-                </i:Interaction.Behaviors>
-                <PasswordBox.InputBindings>
-                    <KeyBinding 
+                <TextBlock Margin="0,10" Style="{StaticResource myTextBlock}" Text="Votre mot de passe" />
+                <PasswordBox FontSize="18" FontFamily="Trebuchet MS" Foreground="#FF212121">
+                    <i:Interaction.Behaviors>
+                        <behavior:PasswordBehavior Password="{Binding Password}"/>
+                    </i:Interaction.Behaviors>
+                    <PasswordBox.InputBindings>
+                        <KeyBinding 
                             Key="Enter" 
                             Command="{Binding LoginCommand}"/>
-                </PasswordBox.InputBindings>
-            </PasswordBox>
+                    </PasswordBox.InputBindings>
+                </PasswordBox>
+                <Separator Height="20" Visibility="Hidden"/>
 
-            <Button Content="Connexion" Grid.Row="2" HorizontalAlignment="Right"  VerticalAlignment="Bottom" Margin="15" Command="{Binding LoginCommand}"/>
+                <Button  Content="Connexion" Grid.Row="2" HorizontalAlignment="Right"  VerticalAlignment="Bottom" Margin="15" Command="{Binding LoginCommand}" />
 
+                <Separator Height="20" Background="#FF212121" Margin="0, 10"/>
+            </StackPanel>
+                <Button  Content="Connexion via badge" Grid.Row="2" HorizontalAlignment="Right"  VerticalAlignment="Bottom"  Command="{Binding CardLoginCommand}"/>
+           
 
-        </StackPanel>
-        <Button Content="Connexion via badge à puce" Grid.Row="2" HorizontalAlignment="Right"  VerticalAlignment="Bottom" Margin="15" Command="{Binding CardLoginCommand}"/>
-
-    </Grid>
+        </Grid>
+    </Border>
 </Window>

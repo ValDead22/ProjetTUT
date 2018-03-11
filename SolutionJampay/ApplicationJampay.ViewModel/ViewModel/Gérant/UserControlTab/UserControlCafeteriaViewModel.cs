@@ -4,10 +4,12 @@ using ApplicationJampay.Model.Entity;
 using ApplicationJampay.Model.Service;
 using ApplicationJampay.Model.Service.Dialog;
 using ApplicationJampay.ViewModel.Command;
+using GalaSoft.MvvmLight.Messaging;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -59,6 +61,9 @@ namespace ApplicationJampay.ViewModel.ViewModel.Gérant.UserControlTab
         private readonly RelayCommand _openModifyingPlatWindow;
         public ICommand OpenModifyingPlatWindow => _openModifyingPlatWindow;
 
+        private readonly RelayCommand _duplicateMenuCommand;
+        public ICommand DuplicateMenuCommand => _duplicateMenuCommand;
+
         #endregion
 
         private PlatBusiness _platBusiness;
@@ -79,6 +84,10 @@ namespace ApplicationJampay.ViewModel.ViewModel.Gérant.UserControlTab
             _openModifyingMenuWindow = new RelayCommand(() => DialogGerant.ShowModifMenuView(), o => true);
             _openModifyingPlatWindow = new RelayCommand(() => DialogGerant.ShowModifPlatView(), o => true);
 
+            _duplicateMenuCommand = new RelayCommand(() => DialogService.ShowYesNoWindow("Etes-vous sûr de vouloir dupliquer ce menu ?", new Action(DuplicateMenu)), o => true);
+
+            Messenger.Default.Register<string>(this, (msg) => HandleMessage(msg));
+
             try
             {
                 foreach (Plat plat in _platBusiness.GetAllPlat())
@@ -97,6 +106,53 @@ namespace ApplicationJampay.ViewModel.ViewModel.Gérant.UserControlTab
                 DialogService.ShowErrorWindow(ex.Message);
             }
 
+        }
+
+        private void UpdateMenu()
+        {
+            _collectionMenu.Clear();
+
+            try
+            {
+                _menuBusiness.GetAllMenus().ForEach(m => _collectionMenu.Add(m));
+            }
+            catch (Exception ex)
+            {
+                DialogService.ShowErrorWindow(ex.Message);
+            }
+        }
+
+        private void UpdatePlat()
+        {
+            _collectionPlat.Clear();
+
+            try
+            {
+                _platBusiness.GetAllPlat().ForEach(p => _collectionPlat.Add(p));
+            }
+            catch (Exception ex)
+            {
+                DialogService.ShowErrorWindow(ex.Message);
+            }
+        }
+
+
+        private void HandleMessage(string msg)
+        {
+            switch (msg)
+            {
+                case "UpdateMenu":
+                    UpdateMenu();
+                    break;
+
+                case "UpdatePlat":
+                    UpdatePlat();
+                    break;
+
+                case "RequestSelectedMenu":
+                    Messenger.Default.Send<Menu>(SelectedMenu);
+                    break;
+            }
         }
 
         private Menu _selectedMenu;
@@ -144,6 +200,11 @@ namespace ApplicationJampay.ViewModel.ViewModel.Gérant.UserControlTab
             {
                 DialogService.ShowErrorWindow(ex.Message);
             }
+        }
+
+        private void DuplicateMenu()
+        {
+            DialogService.ShowErrorWindow("Pas encore implémenté");
         }
 
         private void DeleteMenu()

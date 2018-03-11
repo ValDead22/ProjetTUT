@@ -4,9 +4,11 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ApplicationJampay.View"
+        xmlns:validation="clr-namespace:ApplicationJampay.Validation"
+        xmlns:converter="clr-namespace:ApplicationJampay.Converter"
         mc:Ignorable="d"
-        Title="AjouterPlatGerantView" Height="445.784" Width="338.298">
-    <Grid>
+        Title="Création plat" Height="513.668" Width="491.219">
+    <Grid Margin="10">
         <Grid.RowDefinitions>
             <RowDefinition Height="10*"/>
             <RowDefinition Height="1*"/>
@@ -20,43 +22,124 @@
 
             <StackPanel Grid.Column="2" Orientation="Vertical" Margin="5" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
 
-                <TextBlock Text="Création - Plat" TextAlignment="Left" FontSize="45" />
+                <Label Content="Creation - Plat"  HorizontalAlignment="Center" />
 
                 <Separator Visibility="Hidden" Height="20"/>
 
-                <Label Content="Le nom" />
-                <TextBox TextWrapping="Wrap" Text="{Binding Nom}"/>
+                <TextBlock Text="Le nom" Style="{StaticResource myTextBlock}" />
+                <TextBox x:Name="TextBoxNom" Style="{StaticResource myTextBox}" >
+                    <TextBox.Text>
+                            <Binding Path="Nom" UpdateSourceTrigger="PropertyChanged">
+                                <Binding.ValidationRules>
+                                    <validation:ValidateString ValidatesOnTargetUpdated="True" />
+                                </Binding.ValidationRules>
+                            </Binding>
+                        </TextBox.Text>
+                    </TextBox>
+                <Separator Visibility="Hidden" Height="10"/>
 
-                <Separator Visibility="Hidden" Height="5"/>
+                <TextBlock Text="La date de création" Style="{StaticResource myTextBlock}" />
+                <TextBox  x:Name="TextBoxDateEffet" Style="{StaticResource myTextBox}" TextWrapping="Wrap">
+                    <TextBox.Text>
+                        <Binding Path="DateEffet" UpdateSourceTrigger="PropertyChanged">
+                            <Binding.Converter>
+                                <converter:DateToStringConverter/>
+                            </Binding.Converter>
+                            <Binding.ValidationRules>
+                                <validation:ValidateDate ValidatesOnTargetUpdated="True"/>
+                            </Binding.ValidationRules>
+                        </Binding>
+                    </TextBox.Text>
+                </TextBox>
 
-                <Label Content="La date de création" />
-                <TextBox TextWrapping="Wrap" Text="{Binding DateEffet}" />
+                <Separator Visibility="Hidden" Height="10"/>
 
-                <Separator Visibility="Hidden" Height="5"/>
+                <TextBlock Text="La date de fin" Style="{StaticResource myTextBlock}"/>
+                <TextBox x:Name="TextBoxDateFin" Style="{StaticResource myTextBox}" TextWrapping="Wrap">
+                    <TextBox.Text>
+                        <Binding Path="DateFin" UpdateSourceTrigger="PropertyChanged">
+                            <Binding.Converter>
+                                <converter:DateToStringConverter/>
+                            </Binding.Converter>
+                            <Binding.ValidationRules>
+                                <validation:ValidateDate ValidatesOnTargetUpdated="True"/>
+                            </Binding.ValidationRules>
+                        </Binding>
+                    </TextBox.Text>
+                </TextBox>
 
-                <Label Content="La date de fin" />
-                <TextBox TextWrapping="Wrap" Text="{Binding DateFin}" />
+                <Separator Visibility="Hidden" Height="10"/>
 
-                <Separator Visibility="Hidden" Height="5"/>
+                <TextBlock Text="La catégorie" Style="{StaticResource myTextBlock}"/>
+                <ComboBox ItemsSource="{Binding AvailableCategories}" SelectedIndex="0" SelectedItem="{Binding SelectedCategory}">
+                </ComboBox>
 
-                <Label Content="La catégorie" />
-                <ComboBox ItemsSource="{Binding AvailableCategories}" SelectedItem="{Binding SelectedCategory}"/>
+                <Separator Visibility="Hidden" Height="10"/>
 
-                <Separator Visibility="Hidden" Height="5"/>
+                <TextBlock Text="Le tarif" Style="{StaticResource myTextBlock}"/>
+                <TextBox x:Name="TextBoxPrix" Style="{StaticResource myTextBox}">
+                    <Binding Path="Tarif" UpdateSourceTrigger="PropertyChanged">
+                        <Binding.ValidationRules>
+                            <validation:ValidateFloat ValidatesOnTargetUpdated="True"/>
+                        </Binding.ValidationRules>
+                    </Binding>
+                </TextBox>
 
-                <Label Content="Le tarif" />
-                <TextBox TextWrapping="Wrap" Text="{Binding Tarif}"/>
 
-
-
+                <Separator Height="20" Background="#FF212121" Margin="5, 10"/>
 
             </StackPanel>
+            
+
 
 
 
         </Grid>
 
-        <Button Command="{Binding CreatePlatCommand}" Grid.Row="1" Content="Confirmer" Grid.ColumnSpan="2"/>
+
+        <Button Command="{Binding CreatePlatCommand}" Grid.Row="1" Content="Confirmer" Grid.ColumnSpan="2">
+            <Button.Style>
+                <Style TargetType="{x:Type Button}">
+                    <Setter Property="Foreground" Value="White"/>
+                    <Setter Property="Background" Value="#FF212121" />
+                    <Setter Property="FontSize" Value="16" />
+                    <Setter Property="FontFamily" Value="Trebuchet MS" />
+                    <Setter Property="BorderThickness" Value="0"/>
+                    <Setter Property="Cursor" Value="Hand"/>
+                    <Setter Property="IsEnabled" Value="false" />
+                    <Setter Property="Template">
+                        <Setter.Value>
+                            <ControlTemplate TargetType="{x:Type Button}">
+                                <Border Background="{TemplateBinding Background}" CornerRadius="15" Padding="10" BorderThickness="2">
+                                    <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                </Border>
+                            </ControlTemplate>
+                        </Setter.Value>
+                    </Setter>
+                    <Style.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter Property="Background" Value="#FF212121"/>
+                        </Trigger>
+                        <Trigger Property="IsEnabled" Value="False">
+                            <Setter Property="Background" Value="White"/>
+                            <Setter Property="Foreground" Value="#FF212121"/>
+                            <Setter Property="BorderBrush" Value="#FF212121"/>
+                        </Trigger>
+
+                        <MultiDataTrigger>
+                            <MultiDataTrigger.Conditions>
+                                <Condition Binding="{Binding ElementName=TextBoxNom, Path=(Validation.HasError)}" Value="false" />
+                                <Condition Binding="{Binding ElementName=TextBoxDateEffet, Path=(Validation.HasError)}" Value="false" />
+                                <Condition Binding="{Binding ElementName=TextBoxDateFin, Path=(Validation.HasError)}" Value="false" />
+                                <Condition Binding="{Binding ElementName=TextBoxPrix, Path=(Validation.HasError)}" Value="false" />
+                            </MultiDataTrigger.Conditions>
+                            <Setter Property="IsEnabled" Value="true" />
+                        </MultiDataTrigger>
+                    </Style.Triggers>
+                </Style>
+            </Button.Style>
+
+        </Button>
 
 
 

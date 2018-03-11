@@ -4,18 +4,24 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              mc:Ignorable="d" 
-             d:DesignHeight="300" d:DesignWidth="300">
+             d:DesignHeight="300"
+             Height="400" Width="435">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition/>
             <RowDefinition/>
             <RowDefinition/>
         </Grid.RowDefinitions>
-        
-        <TextBlock VerticalAlignment="Center" Grid.Row="0" HorizontalAlignment="Center" Text="Bienvenue sur la caisse de l'application Jampay"/>
 
-        <Button Grid.Row="1" Content="Caisse" Command="{Binding ShowCaisseUserControl}" />
-        <Button Grid.Row="2" Content="Gestion des factures" Command="{Binding ShowFactureUserControl}" />
+        <StackPanel Grid.Row="0" HorizontalAlignment="Center" Orientation="Horizontal" VerticalAlignment="Top">
+            <Button Content="Déconnexion" VerticalAlignment="Center"/>
+            <Label HorizontalAlignment="Center" VerticalAlignment="Top" Margin="10">
+                <Label Content="Caisse"/>
+            </Label>
+        </StackPanel>
+
+        <Button Height="50" Grid.Row="1" Content="Encaisser" Command="{Binding ShowCaisseUserControl}" />
+        <Button Height="50" Grid.Row="2" VerticalAlignment="Top" Content="Gestion des factures" Command="{Binding ShowFactureUserControl}" />
 
     </Grid>
 </UserControl>

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ApplicationJampay.ViewModel.ViewModel.Gérant.PopUp;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -21,6 +22,7 @@ namespace ApplicationJampay.View.Gérant.PopUp.Menu
     {
         public ModifMenuView()
         {
+            DataContext = new ModifMenuViewModel();
             InitializeComponent();
         }
     }

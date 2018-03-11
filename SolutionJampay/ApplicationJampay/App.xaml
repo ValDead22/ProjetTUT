@@ -4,7 +4,77 @@
              xmlns:local="clr-namespace:ApplicationJampay"
              StartupUri="View/LoginView.xaml">
     <Application.Resources>
+        
+        <Style TargetType="TextBox" x:Key="myTextBox">
+            <Setter Property="FontFamily" Value="Trebuchet MS"/>
+            <Setter Property="FontSize" Value="18px"/>
+            <Setter Property="FontWeight" Value="Bold"/>
+            <Setter Property="Foreground" Value="#FF212121"/>
+            <Setter Property="TextWrapping" Value="Wrap"/>
+        </Style>
+
+        <Style TargetType="Label">
+            <Setter Property="FontFamily" Value="Fluid Lighter"/>
+            <Setter Property="FontSize" Value="62px"/>
+            <Setter Property="Foreground" Value="#FF212121"/>
+        </Style>
+
+        <Style TargetType="TextBlock" x:Key="myTextBlock">
+            <Setter Property="FontFamily" Value="Trebuchet MS"/>
+            <Setter Property="FontSize" Value="18px"/>
+            <Setter Property="Foreground" Value="#FF212121"/>
+            <Setter Property="TextWrapping" Value="WrapWithOverflow"/>
+            <Setter Property="FontWeight" Value="Bold"/>
+        </Style>
+
+
+        <Style TargetType="Button">
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="Background" Value="#FF212121" />
+            <Setter Property="FontSize" Value="16" />
+            <Setter Property="FontFamily" Value="Trebuchet MS" />
+            <Setter Property="BorderThickness" Value="0"/>
+            <Setter Property="Cursor" Value="Hand"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type Button}">
+                        <Border Background="{TemplateBinding Background}" CornerRadius="15" Padding="10" BorderThickness="2">
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="Background" Value="#FF212121"/>
+                </Trigger>
+                <Trigger Property="IsEnabled" Value="False">
+                    <Setter Property="Background" Value="White"/>
+                    <Setter Property="Foreground" Value="#FF212121"/>
+                    <Setter Property="BorderBrush" Value="#FF212121"/>
+                </Trigger>                
+            </Style.Triggers>
+        </Style>
+
+        <Style TargetType="ComboBox">
+            <Setter Property="VerticalContentAlignment" Value="Center"/>
+            <Setter Property="HorizontalContentAlignment" Value="Center"/>
+            <Setter Property="FontFamily" Value="Trebuchet MS"/>
+            <Setter Property="FontSize" Value="18px"/>
+            <Setter Property="Foreground" Value="#FF212121"/>
+            <Setter Property="FontWeight" Value="Bold"/>
+        </Style>
+
+        <Style TargetType="ListView">
+            <Setter Property="FontFamily" Value="Trebuchet MS"/>
+            <Setter Property="FontSize" Value="20"/>
+            <Setter Property="Foreground" Value="#FF212121"/>
+            <Setter Property="Background" Value="White"/>
+
+        </Style>
 
 
     </Application.Resources>
+    
+    
 </Application>

@@ -47,21 +47,23 @@
 
             <StackPanel Orientation="Vertical" Grid.Column="0">
 
-                <TextBlock FontWeight="Bold" FontSize="48" Text="{Binding SelectedUsager.Nom}"/>
-                <TextBlock FontWeight="Bold" FontSize="30" Text="{Binding SelectedUsager.Prenom}"/>
-                <TextBlock FontWeight="Bold" FontSize="20" Text="{Binding SelectedUsager.Paiement}"/>
+                <Label Content="{Binding SelectedUsager.Nom}"/>
+                <Label FontWeight="Bold" FontSize="30" Content="{Binding SelectedUsager.Prenom}"/>
+                <TextBlock  Text="{Binding SelectedUsager.Paiement}" Style="{StaticResource myTextBlock}"/>
 
             </StackPanel>
 
             <StackPanel Orientation="Vertical" Grid.Column="1">
                 
-                <TextBlock FontSize="20" Text="Nouveau moyen de paiement :"/>
+                <TextBlock Margin="15" Style="{StaticResource myTextBlock}" Text="Nouveau moyen de paiement :"/>
 
-                <StackPanel Orientation="Horizontal">
+                <StackPanel HorizontalAlignment="Center" Orientation="Horizontal">
                     <ComboBox Width="100"
                                 IsSynchronizedWithCurrentItem="False" 
                                 ItemsSource="{Binding AvailableMoyenDePaiement}" 
-                                SelectedValue ="{Binding SelectedMoyenDePaiement, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" />
+                                SelectedValue ="{Binding SelectedMoyenDePaiement, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" >
+
+                    </ComboBox>
 
                     <Separator Width="15" Visibility="Hidden"/>
 

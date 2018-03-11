@@ -77,5 +77,10 @@ namespace ApplicationJampay.Model.DAL.Menu
         {
             _menuDAL.DeleteMenu(menu);
         }
+
+        public void AddPlatToMenu(Entity.Plat plat, Entity.Menu menu)
+        {
+            _menuDAL.AddPlatToMenu(plat, menu);
+        }
     }
 }

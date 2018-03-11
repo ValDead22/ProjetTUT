@@ -33,5 +33,7 @@ namespace ApplicationJampay.Model.DAL.Menu
         /// </summary>
         /// <param name="menu"></param>
         void DeleteMenu(Entity.Menu menu);
+
+        void AddPlatToMenu(Entity.Plat plat, Entity.Menu menu);
     }
 }

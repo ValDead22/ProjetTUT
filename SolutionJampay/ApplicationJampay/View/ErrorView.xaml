@@ -5,9 +5,32 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ApplicationJampay.View"
         mc:Ignorable="d"
-        Title="ErrorView" Height="171.429" Width="344.72">
+        Title="Erreur" Height="267.754" Width="473.659">
     <Grid>
-        <TextBlock x:Name="MsgLabel" Text="Label" HorizontalAlignment="Center" VerticalAlignment="Center" FontWeight="Bold" FontSize="20" TextAlignment="Center"/>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="0.3*"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+
+        <Grid Grid.Column="0" Margin="20">
+            <Grid.Background>
+                <ImageBrush ImageSource="error.png" Stretch="Uniform"/>
+            </Grid.Background>
+
+        </Grid>
+
+        <StackPanel Grid.Column="1" Orientation="Vertical">
+            <Label Content="Erreur" Margin="0,10"/>
+            <TextBlock Style="{StaticResource myTextBlock}" x:Name="MsgLabel" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+
+        </StackPanel>
+        
+        
+
+
+        
+        
+        
 
     </Grid>
 </Window>

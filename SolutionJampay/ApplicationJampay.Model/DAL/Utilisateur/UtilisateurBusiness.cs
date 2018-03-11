@@ -45,5 +45,10 @@ namespace ApplicationJampay.Model.DAL.Utilisateur
         {
             _utilisateurDAL.DeleteUtilisateur(matricule);
         }
+
+        public List<Entity.Utilisateur> GetUtilisateursByFonction(string fonction)
+        {
+            return _utilisateurDAL.GetUtilisateursByFonction(fonction);
+        }
     }
 }
