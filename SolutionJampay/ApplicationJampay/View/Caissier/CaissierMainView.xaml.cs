@@ -10,7 +10,10 @@ namespace ApplicationJampay.View.Caissier
     {
         public CaissierMainView()
         {
-            DataContext = new CaissierViewModel();
+            DataContext = new CaissierViewModel()
+            {
+                Close = () => Close()
+            };
 
             InitializeComponent();            
         }

@@ -18,8 +18,18 @@
 
 
     <Border Margin="150, 100" Background="White" BorderBrush="Black" BorderThickness="1,1,1,1" CornerRadius="30,30,30,30">
+        
+        
 
         <Grid>
+            <StackPanel Grid.Column="2" HorizontalAlignment="Center" Orientation="Horizontal" VerticalAlignment="Top" Margin="10">
+
+                <Button Content="Deconnexion" VerticalAlignment="Center" Command="{Binding LogOut}"/>
+                <Label HorizontalAlignment="Center" VerticalAlignment="Top" Margin="10">
+                    <Label Content="Caisse"/>
+                </Label>
+            </StackPanel>
+            
             <ContentControl  Grid.Row="1" Grid.ColumnSpan="2" Content="{Binding ContentControlView}"/>
         </Grid>
 

@@ -46,15 +46,9 @@
 
                 </StackPanel>
 
-                <Label Grid.Column="1" Content="{Binding Prix}" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="50" FontStyle="Italic"/>
+                <Label Grid.Column="3" Content="{Binding Prix}" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="50" FontStyle="Italic"/>
 
-                <StackPanel Grid.Column="2" HorizontalAlignment="Center" Orientation="Horizontal" VerticalAlignment="Center">
-
-                    <Button Content="Retour" VerticalAlignment="Center"/>
-                    <Label HorizontalAlignment="Center" VerticalAlignment="Top" Margin="10">
-                        <Label Content="Caisse"/>
-                    </Label>
-                </StackPanel>
+                
 
             </Grid>
 

@@ -40,11 +40,25 @@ namespace ApplicationJampay.ViewModel.ViewModel.Caissier
             }
         }
 
+        public Action Close;
+
+        private readonly RelayCommand _logOut;
+        public ICommand LogOut => _logOut;
+
         public CaissierViewModel()
         {
             ContentControlView = DialogCaissier.GetWelcomingUserControl();
 
             Messenger.Default.Register<string>(this, (msg) => SwitchView(msg));
+
+            _logOut = new RelayCommand(() => Quit(), o => true);
+
+        }
+
+        private void Quit()
+        {
+            DialogService.ShowLoginWindow();
+            Close();
 
         }
 
