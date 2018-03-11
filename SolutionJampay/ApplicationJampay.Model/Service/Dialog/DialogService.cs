@@ -35,7 +35,16 @@ namespace ApplicationJampay.Model.Service.Dialog
             var windows = (System.Windows.Window)Activator.CreateInstance(createType, msg, yes);
 
             windows.ShowDialog();
-        }     
-   
+        }
+
+
+        public static void ShowLoginWindow()
+        {
+            var createType = Type.GetType("ApplicationJampay.View.LoginView, ApplicationJampay");
+            var windows = (System.Windows.Window)Activator.CreateInstance(createType);
+
+            windows.Show();
+        }
+
     }
 }
