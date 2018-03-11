@@ -1,4 +1,8 @@
-﻿using System.ComponentModel;
+﻿using ApplicationJampay.Model.Service.Dialog;
+using ApplicationJampay.ViewModel.Command;
+using System;
+using System.ComponentModel;
+using System.Windows.Input;
 
 namespace ApplicationJampay.ViewModel.ViewModel.Gérant
 {
@@ -17,9 +21,21 @@ namespace ApplicationJampay.ViewModel.ViewModel.Gérant
         }
         #endregion               
 
+        public Action Close;
+
+        private readonly RelayCommand _logOut;
+        public ICommand LogOut => _logOut;
+
         public GérantMainViewModel()
         {
-            
+            _logOut = new RelayCommand(() => Quit(), o => true);
+        }
+
+        private void Quit()
+        {
+            DialogService.ShowLoginWindow();
+            Close();
+           
         }
 
         

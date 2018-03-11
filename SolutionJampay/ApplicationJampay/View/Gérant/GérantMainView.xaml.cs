@@ -10,7 +10,10 @@ namespace ApplicationJampay.View.Gérant
     {
         public GérantMainView()
         {
-            DataContext = new GérantMainViewModel();
+            DataContext = new GérantMainViewModel()
+            {
+                Close = () => Close()
+            };
 
             InitializeComponent();
         }
