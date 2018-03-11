@@ -5,7 +5,7 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:converter="clr-namespace:ApplicationJampay.Converter"
              mc:Ignorable="d" 
-             d:DesignHeight="500" d:DesignWidth="700">
+             d:DesignHeight="1080" d:DesignWidth="1920">
 
     <UserControl.Resources>
         <converter:DateToStringConverter x:Key="date2string"/>
@@ -49,35 +49,37 @@
 
             </StackPanel>
 
-            <StackPanel Orientation="Vertical" Grid.Column="1">
+            <Border Grid.Column="1" Padding="20" HorizontalAlignment="Left" BorderBrush="#FF212121" BorderThickness="10" CornerRadius="30,30,30,30">
+                <StackPanel Orientation="Vertical" HorizontalAlignment="Center" Grid.Column="1">
 
-                <TextBlock Margin="15" Style="{StaticResource myTextBlock}" Text="Nouvelle fonction :"/>
-                <StackPanel Orientation="Horizontal">
+                    <TextBlock Margin="15" Style="{StaticResource myTextBlock}" Text="Nouvelle fonction"/>
+                    <StackPanel Orientation="Horizontal">
 
 
-                    <ComboBox Width="100"
+                        <ComboBox Width="100"
                                 IsSynchronizedWithCurrentItem="False" 
                                 ItemsSource="{Binding AvalaibleFonction}" 
-                                SelectedValue ="{Binding SelectedFonction, Mode=TwoWay}" />
+                                SelectedValue ="{Binding SelectedFonction, Mode=TwoWay}" FontFamily="Trebuchet MS" FontSize="18" Foreground="White" />
 
-                    <Separator Width="15" Visibility="Hidden"/>
+                        <Separator Width="15" Visibility="Hidden"/>
 
-                    <Button Content="Valider" Padding="10" Command="{Binding OpenModifyingFonctionWindow}">
+                        <Button Content="Valider" Padding="10" Command="{Binding OpenModifyingFonctionWindow}">
 
-                        <Button.IsEnabled>
-                            <MultiBinding Converter="{StaticResource multiSelected2isEnable}">
-                                <Binding Path="SelectedUtilisateur"/>
-                                <Binding Path="SelectedFonction"/>
-                            </MultiBinding>
+                            <Button.IsEnabled>
+                                <MultiBinding Converter="{StaticResource multiSelected2isEnable}">
+                                    <Binding Path="SelectedUtilisateur"/>
+                                    <Binding Path="SelectedFonction"/>
+                                </MultiBinding>
 
-                        </Button.IsEnabled>
-                        
-                    </Button>
+                            </Button.IsEnabled>
+
+                        </Button>
+                    </StackPanel>
+
                 </StackPanel>
-                
-            </StackPanel>
+            </Border>
 
-            <StackPanel Orientation="Horizontal" Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Bottom">
+            <StackPanel Orientation="Vertical" Grid.Row="1" Grid.Column="1" HorizontalAlignment="Right" VerticalAlignment="Bottom">
 
                 <Button Content="Ajouter utilisateur" Padding="10" Command="{Binding OpenAddingUtilisateurWindow}"/>
                 <Separator Width="15" Visibility="Hidden"/>
@@ -85,7 +87,11 @@
 
             </StackPanel>
 
+
+
         </Grid>
+
+        
 
     </Grid>
 </UserControl>
