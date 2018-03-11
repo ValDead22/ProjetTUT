@@ -18,7 +18,7 @@
         <Grid Grid.Row="0">
 
             <Grid.RowDefinitions>
-                <RowDefinition Height="0.7*"/>
+                <RowDefinition Height="0.4*"/>
                 <RowDefinition Height="2*"/>
             </Grid.RowDefinitions>
 
@@ -28,25 +28,24 @@
                     <ColumnDefinition/>
                     <ColumnDefinition/>
                 </Grid.ColumnDefinitions>
-            
-            
 
-            <StackPanel Grid.Row="0" Orientation="Horizontal" HorizontalAlignment="Center" Grid.Column="0" DockPanel.Dock="Bottom" Margin="10">
 
-                <Button Grid.Column="1"  Content="Réglement" Padding="15"  Command="{Binding CardPayCommand}" IsEnabled="{Binding CollectionChoosenPlat, Converter={StaticResource selected2isEnable}}"/>
-                <Separator Width="20" Height="25" Background="Transparent"/>
-                <Button Grid.Column="2" Content="Ajouter un plat" Padding="15" Command="{Binding OpenAddPlatViewCommand}"/>
-                <Separator Width="20" Height="25" Background="Transparent"/>
-                <Button Grid.Column="2" Content="Supprimer un plat" Command="{Binding DeleteSelectedChoosenPlat}" IsEnabled="{Binding SelectedChoosenPlat, Converter={StaticResource selected2isEnable}}"  Padding="15" />
-                <Separator Width="20" Height="25" Background="Transparent"/>
+                <Border Grid.Row="0" Grid.ColumnSpan="2" VerticalAlignment="Center" HorizontalAlignment="Center" BorderBrush="#FF212121" BorderThickness="10" CornerRadius="30,30,30,30">
 
-                
-                
-                   
+                    <StackPanel VerticalAlignment="Center" Height="75" Grid.Row="0" Grid.ColumnSpan="2" Orientation="Horizontal" HorizontalAlignment="Center" Grid.Column="0" DockPanel.Dock="Bottom" Margin="10">
 
-                </StackPanel>
+                        <Button Grid.Column="1"  Content="Réglement"   Command="{Binding CardPayCommand}" IsEnabled="{Binding CollectionChoosenPlat, Converter={StaticResource selected2isEnable}}"/>
+                        <Separator Width="20" Height="25" Background="Transparent"/>
+                        <Button Grid.Column="2" Content="Ajouter un plat" Command="{Binding OpenAddPlatViewCommand}"/>
+                        <Separator Width="20" Height="25" Background="Transparent"/>
+                        <Button Grid.Column="2" Content="Supprimer un plat" Command="{Binding DeleteSelectedChoosenPlat}" IsEnabled="{Binding SelectedChoosenPlat, Converter={StaticResource selected2isEnable}}" />
 
-                <Label Grid.Column="3" Content="{Binding Prix}" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="50" FontStyle="Italic"/>
+                    </StackPanel>
+
+                </Border>
+
+
+                <Label Grid.Column="3" Content="{Binding Prix}" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="50"/>
 
                 
 

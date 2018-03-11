@@ -130,10 +130,10 @@ namespace ApplicationJampay.ViewModel.ViewModel.Caissier.UserControlFolder
         private void PayCardReader()
         {
 
-            UsagerBusiness _usagerBusiness = new UsagerBusiness();
-            int idUser = ManageDataCardService.GetCodeUser();
+            //UsagerBusiness _usagerBusiness = new UsagerBusiness();
+            //int idUser = ManageDataCardService.GetCodeUser();
 
-            _usagerBusiness.Pay(idUser, _prixTotal);
+            //_usagerBusiness.Pay(idUser, _prixTotal);
 
             Messenger.Default.Send<string>("EditTicketUserControl");
 
