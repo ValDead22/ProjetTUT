@@ -4,7 +4,6 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:converter="clr-namespace:ApplicationJampay.Converter"
-        xmlns:local="clr-namespace:ApplicationJampay.View"
         mc:Ignorable="d"
         WindowState="Maximized"
         Title="Caissier" Height="1080" Width="1920">
@@ -14,7 +13,7 @@
     </Window.Resources>
 
     <Window.Background>
-        <ImageBrush ImageSource="pexels-photo-260922.jpeg"/>
+        <ImageBrush ImageSource="/Asset/background.jpeg"/>
     </Window.Background>
 
 

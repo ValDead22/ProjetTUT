@@ -14,7 +14,7 @@
 
         <Grid Grid.Column="0" Margin="20">
             <Grid.Background>
-                <ImageBrush ImageSource="error.png" Stretch="Uniform"/>
+                <ImageBrush ImageSource="/Asset/error.png" Stretch="Uniform"/>
             </Grid.Background>
 
         </Grid>

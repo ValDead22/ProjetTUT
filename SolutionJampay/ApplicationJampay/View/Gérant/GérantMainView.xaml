@@ -18,7 +18,7 @@
         <converter:MultipleSelectedItemToIsEnable x:Key="multiSelected2isEnable"/>
     </Window.Resources>
     <Window.Background>
-        <ImageBrush ImageSource="pexels-photo-260922.jpeg"/>
+        <ImageBrush ImageSource="/Asset/background.jpeg"/>
     </Window.Background>
 
     <Border Margin="150, 100" Background="White" BorderBrush="Black" BorderThickness="1,1,1,1" CornerRadius="30,30,30,30">

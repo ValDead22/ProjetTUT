@@ -49,7 +49,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup>
-    <ApplicationIcon>Sans titre.ico</ApplicationIcon>
+    <ApplicationIcon>Asset\icon.ico</ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="CommonServiceLocator, Version=2.0.2.0, Culture=neutral, PublicKeyToken=489b6accfaf20ef0, processorArchitecture=MSIL">
@@ -281,25 +281,16 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="View\pexels-photo-260922.jpeg" />
+    <Resource Include="Asset\icon.ico" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="View\Gérant\pexels-photo-260922.jpeg" />
+    <Resource Include="Asset\error.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Sans titre.ico" />
+    <Resource Include="Asset\warning.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="View\Caissier\pexels-photo-260922.jpeg" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="View\Cuisinier\pexels-photo-260922.jpeg" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="View\error.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="View\warning-icon.png" />
+    <Resource Include="Asset\background.jpeg" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

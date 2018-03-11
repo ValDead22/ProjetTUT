@@ -28,7 +28,7 @@
 
             <Grid Grid.Column="0" Margin="20">
                 <Grid.Background>
-                    <ImageBrush ImageSource="warning-icon.png" Stretch="Uniform"/>
+                    <ImageBrush ImageSource="/Asset/warning.png" Stretch="Uniform"/>
                 </Grid.Background>
 
             </Grid>
