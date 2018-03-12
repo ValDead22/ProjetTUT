@@ -19,7 +19,7 @@ namespace ApplicationJampay.Model.DAL.Menu
         /// <param name="menu"></param>
         public void AddMenu(Entity.Menu menu)
         {
-            var query = "INSERT INTO Menu VALUES(\"" + null + "\"" + ",\"" + menu.DateElaboration + "\"" + ",\"" + menu.Categorie + "\"" + ",\"" + menu.Nom + "\"" + ",\"" + menu.Observation + "\"" + ",\"" + menu.IdGerant+ "\""+")";
+            var query = "INSERT INTO Menu VALUES(\"" + null + "\"" + ",\"" + menu.DateElaboration.ToString("yyyy-MM-dd") + "\"" + ",\"" + menu.Categorie + "\"" + ",\"" + menu.Nom + "\"" + ",\"" + menu.Observation + "\"" + ",\"" + menu.IdGerant+ "\""+")";
             MySqlDataReader mySqlDataReader = _sQLService.Load(query);
             mySqlDataReader.Close();
         }
@@ -130,6 +130,7 @@ namespace ApplicationJampay.Model.DAL.Menu
         {
             var query = "DELETE FROM CompositionMenu WHERE CodePlat="+ "\"" + plat.CodePlat + "\"" + ", AND CodeMenu=" + "\"" + menu.CodeMenu;
             MySqlDataReader mySqlDataReader = _sQLService.Load(query);
+            mySqlDataReader.Close();
 
         }
 
