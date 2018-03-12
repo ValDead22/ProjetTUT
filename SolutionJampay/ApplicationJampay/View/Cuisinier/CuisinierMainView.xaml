@@ -17,84 +17,104 @@
     <Window.Background>
         <ImageBrush ImageSource="/Asset/background.jpeg"/>
     </Window.Background>
+    
+    
 
-    <Border Margin="150, 100" BorderBrush="Black" BorderThickness="1,1,1,1" CornerRadius="30,30,30,30" Background="White">
+    <Border Margin="300, 220" BorderBrush="Black" BorderThickness="1,1,1,1" CornerRadius="30,30,30,30" Background="White">
 
         <Grid>
-
-        <Grid Margin="20,100,20,20">
-
-            <Grid.RowDefinitions>
-                <RowDefinition Height="5*"/>
-                <RowDefinition Height="5*"/>
-            </Grid.RowDefinitions>
-
-            <Grid Grid.Row="0" Margin="10">
-
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="2.2*"/>
-                    <ColumnDefinition Width="10"/>
-                    <ColumnDefinition/>
-                </Grid.ColumnDefinitions>
-
-                <ListView Grid.Column="0" ItemsSource="{Binding CollectionMenus}" SelectedItem="{Binding SelectedMenu}">
-                    <ListView.View>
-                        <GridView>
-                            <GridViewColumn Header="Menu" DisplayMemberBinding="{Binding Nom}"/>
-                            <GridViewColumn Header="Date" DisplayMemberBinding="{Binding DateElaboration, Converter={StaticResource date2string}}"  />
-                        </GridView>
-                    </ListView.View>
-                </ListView>
-
-                <ListView Grid.Column="2" ItemsSource="{Binding CollectionPlatOfSelectedMenu}" SelectedItem="{Binding SelectedPlat}" >
-                    <ListView.View>
-                        <GridView>
-                            <GridViewColumn Header="Plat" DisplayMemberBinding="{Binding Nom}"/>
-                            <GridViewColumn Header="Date" DisplayMemberBinding="{Binding DateEffet ,Converter={StaticResource date2string}}"  />
-                        </GridView>
-                    </ListView.View>
-                </ListView>
-
-            </Grid>
-
-            <Grid Grid.Row="1" Grid.ColumnSpan="2">
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="1*"/>
-                        <ColumnDefinition Width="2*"/>
-                    </Grid.ColumnDefinitions>
-
-                    <StackPanel  Grid.Row="1" Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Center">
-                        <Button Content="Supprimer plat" HorizontalContentAlignment="Center"  Command="{Binding OpenDeletePlatWindow}" IsEnabled="{Binding SelectedPlat, Converter={StaticResource selected2isEnable}}"/>
-                        <Separator Background="Transparent" Height="10"/>
-                        <Separator Background="Transparent" Height="10" />
-                        <GroupBox x:Name="groupBox" Header="Observation" Padding="10">
-                            <StackPanel Orientation="Vertical" VerticalAlignment="Center">
-                                <TextBox HorizontalAlignment="Stretch" Style="{StaticResource myTextBox}" TextWrapping="Wrap" Text="{Binding ProductObs}"  VerticalAlignment="Top" />
-                                <Separator Background="Transparent" Height="10"/>
-                                <Button Content="Changer l'observation" HorizontalContentAlignment="Center" Command="{Binding OpenAddObsWindow}" IsEnabled="{Binding SelectedProduit, Converter={StaticResource selected2isEnable}}" />
-                            </StackPanel>
-                        </GroupBox>
-                   </StackPanel>
-
-
-                    <ListView Grid.Row="1" Grid.Column="1" Margin="10" ItemsSource="{Binding CollectionProduitOfSelectedPlat}" SelectedItem="{Binding SelectedProduit}">
-                    <ListView.View>
-                        <GridView>
-                            <GridViewColumn Header="Produit" DisplayMemberBinding="{Binding Nom}" />
-                        </GridView>
-                    </ListView.View>
-                </ListView>
-                </Grid>
-
-            </Grid>
 
             <StackPanel HorizontalAlignment="Center" Orientation="Horizontal" VerticalAlignment="Top">
                 <Button Content="Déconnexion" VerticalAlignment="Center" Command="{Binding LogOut}"/>
                 <Label HorizontalAlignment="Center" VerticalAlignment="Top" Margin="10">
                     <Label Content="Cuisinier"/>
-                </Label>                
+                </Label>
             </StackPanel>
-            
+
+            <Grid Margin="20,100,20,20">
+
+
+                <Grid Grid.Row="0" Margin="10">
+
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="0.7*"/>
+                        <ColumnDefinition Width="0.8*"/>
+                        <ColumnDefinition Width="0.7*"/>
+                    </Grid.ColumnDefinitions>
+
+
+                    <GroupBox Grid.Column="0">
+                        <GroupBox.Header>
+                            <TextBlock Text="Menus du jour" Style="{StaticResource myTextBlock}"/>
+                        </GroupBox.Header>
+                        <ListView  ItemsSource="{Binding CollectionMenus}" SelectedItem="{Binding SelectedMenu}">
+                            <ListView.View>
+                                <GridView>
+                                    <GridViewColumn Width="120" Header="Nom" DisplayMemberBinding="{Binding Nom}"/>
+                                    <GridViewColumn Width="120"  Header="Categorie" DisplayMemberBinding="{Binding Categorie}"/>
+                                    <GridViewColumn Width="120"  Header="Date" DisplayMemberBinding="{Binding DateElaboration, Converter={StaticResource date2string}}"  />
+                                </GridView>
+                            </ListView.View>
+                        </ListView>
+                    </GroupBox>
+
+
+                    <GroupBox Grid.Column="1">
+                        <GroupBox.Header>
+                            <TextBlock Text="Plats qui le compose" Style="{StaticResource myTextBlock}"/>
+                        </GroupBox.Header>
+                        <StackPanel Orientation="Vertical">
+
+                            <ListView  ItemsSource="{Binding CollectionPlatOfSelectedMenu}" SelectedItem="{Binding SelectedPlat}" >
+                                <ListView.View>
+                                    <GridView>
+                                        <GridViewColumn Width="120" Header="Nom" DisplayMemberBinding="{Binding Nom}"/>
+                                        <GridViewColumn Width="120" Header="Categorie" DisplayMemberBinding="{Binding Categorie}"/>
+                                        <GridViewColumn Width="120" Header="Date" DisplayMemberBinding="{Binding DateEffet ,Converter={StaticResource date2string}}"  />
+                                        
+                                    </GridView>
+                                </ListView.View>
+                            </ListView>
+
+                            <Button Margin="10" Content="Supprimer plat"  Command="{Binding OpenDeletePlatWindow}" IsEnabled="{Binding SelectedPlat, Converter={StaticResource selected2isEnable}}" VerticalAlignment="Bottom" />
+                        </StackPanel>
+                    </GroupBox>
+
+                    <GroupBox Grid.Column="2">
+                        <GroupBox.Header>
+                            <TextBlock Text="Produits du plat sélectionné" Style="{StaticResource myTextBlock}"/>
+                        </GroupBox.Header>
+                        <StackPanel Orientation="Vertical">
+                            <ListView Grid.Row="1" Grid.Column="1" Margin="10" ItemsSource="{Binding CollectionProduitOfSelectedPlat}" SelectedItem="{Binding SelectedProduit}">
+                                <ListView.View>
+                                    <GridView>
+                                        <GridViewColumn Width="100" Header="Nom" DisplayMemberBinding="{Binding Nom}"/>
+                                        <GridViewColumn Width="100" Header="Categorie" DisplayMemberBinding="{Binding Categorie}"/>
+                                        <GridViewColumn Width="100" Header="Date" DisplayMemberBinding="{Binding DateEffet ,Converter={StaticResource date2string}}"  />
+                                        
+                                    </GridView>
+                                </ListView.View>
+                            </ListView>
+                            <StackPanel  Grid.Row="1" Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Bottom">
+                                <Separator Background="Transparent" Height="10"/>
+                                <Separator Background="Transparent" Height="10" />
+                                <GroupBox>
+                                    <GroupBox.Header>
+                                        <TextBlock Text="Observation" Style="{StaticResource myTextBlock}"/>
+                                    </GroupBox.Header>
+                                    <StackPanel Orientation="Vertical" VerticalAlignment="Center">
+                                        <TextBox HorizontalAlignment="Stretch" Style="{StaticResource myTextBox}" TextWrapping="Wrap" Text="{Binding ProductObs}"  VerticalAlignment="Top" />
+                                        <Separator Background="Transparent" Height="10"/>
+                                        <Button Content="Changer l'observation" HorizontalContentAlignment="Center" Command="{Binding OpenAddObsWindow}" IsEnabled="{Binding SelectedProduit, Converter={StaticResource selected2isEnable}}" />
+                                    </StackPanel>
+                                </GroupBox>
+                            </StackPanel>
+                        </StackPanel>
+                    </GroupBox>
+
+                </Grid>
+
+            </Grid>           
 
         </Grid>
 
