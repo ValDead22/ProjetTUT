@@ -48,5 +48,17 @@ namespace ApplicationJampay.Model.DAL.Produit
                 throw new Exception(ex.Message);
             }
         }
+
+        public void AddObs(Entity.Produit produit, String Obs)
+        {
+            try
+            {
+                _productDAL.AddObs(produit,Obs);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
     }
 }

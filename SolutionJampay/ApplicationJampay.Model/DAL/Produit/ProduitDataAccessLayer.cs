@@ -53,6 +53,13 @@ namespace ApplicationJampay.Model.DAL.Produit
             {
                 mySqlDataReader.Close();
             }
+
+            public void AddObs(Entity.Menu menu, string obs)
+        {
+            var query = "UPDATE Produit SET Observation=" + "\"" + obs + "\"";
+            MySqlDataReader mySqlDataReader = _sQLService.Load(query);
+
         }
+    }
     }
 }
