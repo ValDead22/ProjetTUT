@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using ApplicationJampay.Model.Entity;
 using ApplicationJampay.Model.Service;
 using MySql.Data.MySqlClient;
 
@@ -53,13 +54,13 @@ namespace ApplicationJampay.Model.DAL.Produit
             {
                 mySqlDataReader.Close();
             }
-
-            public void AddObs(Entity.Menu menu, string obs)
-        {
-            var query = "UPDATE Produit SET Observation=" + "\"" + obs + "\"";
-            MySqlDataReader mySqlDataReader = _sQLService.Load(query);
-
+            
         }
-    }
+
+        public void AddObs(Entity.Produit produit, string Obs)
+        {
+            var query = "UPDATE Produit SET Observation=" + "\"" + Obs + "\"";
+            MySqlDataReader mySqlDataReader = _sQLService.Load(query);
+        }
     }
 }
