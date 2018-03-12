@@ -29,7 +29,7 @@ namespace ApplicationJampay.Model.Entity
         }
 
         
-        public PlatWithQuantité(int codePlat, DateTime dateEffet, DateTime dateFin, string categorie, string nom, int quantite, float? prix = 0) : base(codePlat, dateEffet, dateFin, categorie, nom, prix)
+        public PlatWithQuantité(int codePlat, DateTime dateEffet, DateTime dateFin, string categorie, string nom, int quantite, float prix) : base(codePlat, dateEffet, dateFin, categorie, nom, prix)
         {
             Quantite = quantite;
         }

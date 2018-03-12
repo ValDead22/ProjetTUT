@@ -95,20 +95,20 @@ namespace ApplicationJampay.ViewModel.ViewModel.Caissier.UserControlFolder
                 if (plat.CodePlat == platWQ.CodePlat)
                 {
                     platWQ.Quantite++;
-                    _prixTotal += plat.Prix ?? default(float);
+                    _prixTotal += plat.Prix;
                     Prix = _prixTotal.ToString() + " €";
                     return;
                 }
             }
             _collectionChoosenPlat.Add(new PlatWithQuantité(plat.CodePlat, plat.DateEffet, plat.DateFin, plat.Categorie, plat.Nom, 1, plat.Prix));
-            _prixTotal += plat.Prix ?? default(float);
+            _prixTotal += plat.Prix;
             Prix = _prixTotal.ToString() + " €";
 
         }
 
         private void DeletePlat()
         {
-            _prixTotal = _prixTotal - (SelectedChoosenPlat.Prix ?? default(float));
+            _prixTotal = _prixTotal - (SelectedChoosenPlat.Prix);
             Prix = _prixTotal.ToString() + " €";
 
             if (SelectedChoosenPlat.Quantite != 1)
