@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using ApplicationJampay.Model.Entity;
 using ApplicationJampay.Model.Service;
 using MySql.Data.MySqlClient;
@@ -12,7 +13,7 @@ namespace ApplicationJampay.Model.DAL.Plat
 
         public void AddPlat(Entity.Plat plat)
         {
-            var query = "INSERT INTO Plat VALUES(\"" + null + "\"" + ",\"" + plat.DateEffet + "\"" + ",\"" + plat.DateFin + "\"" + ",\"" + plat.Categorie + "\"" + ",\"" + plat.Nom + "\"" + ",\"" + plat.Prix + "\"" + ")";
+            var query = "INSERT INTO Plat VALUES(\"" + null + "\"" + ",\"" + plat.DateEffet.ToString("yyyy-MM-dd") + "\"" + ",\"" + plat.DateFin + "\"" + ",\"" + plat.Categorie + "\"" + ",\"" + plat.Nom + "\"" + ",\"" + plat.Prix + "\"" + ")";
             MySqlDataReader mySqlDataReader = _sQLService.Load(query);
             mySqlDataReader.Close();
         }
@@ -167,8 +168,10 @@ namespace ApplicationJampay.Model.DAL.Plat
         /// <param name="plat"></param>
         public void ModifyPlat(Entity.Plat plat)
         {
-            var query = " UPDATE Plat SET DateEffet="+ "\""+plat.DateEffet +"\"" + ", DateFin="+ "\"" + plat.DateFin + "\"" +", Categorie=" + "\"" + plat.Categorie+", Nom="+ "\"" + plat.Nom+ "\""+ "Prix =" + "\"" + plat.Prix + "\"" + " WHERE CodePlat= " + "\"" + plat.CodePlat + "\"";
+            var query = " UPDATE Plat SET DateEffet="+ "\""+plat.DateEffet.ToString("yyyy-MM-dd") + "\"" + ", DateFin="+ "\"" + plat.DateFin.ToString("yyyy-MM-dd") + "\"" +", Categorie=" + "\"" + plat.Categorie + "\"" + ", Nom="+ "\"" + plat.Nom+ "\""+ ", Prix =" + "\"" + plat.Prix + "\"" + " WHERE CodePlat= " + "\"" + plat.CodePlat + "\"";
+            Debug.Write(query);
             MySqlDataReader mySqlDataReader = _sQLService.Load(query);
+            mySqlDataReader.Close();
 
         }
 
@@ -179,6 +182,20 @@ namespace ApplicationJampay.Model.DAL.Plat
         public void DeletePlat(Entity.Plat plat)
         {
             var query = "DELETE FROM CompositionPlat WHERE CodePlat = " + "\"" + plat.CodePlat + "\"; DELETE FROM CompositionMenu WHERE CodePlat = " + "\"" + plat.CodePlat + "\"; DELETE FROM Plat WHERE CodePlat = " + "\"" + plat.CodePlat + "\"; ";
+            MySqlDataReader mySqlDataReader = _sQLService.Load(query);
+            mySqlDataReader.Close();
+        }
+
+        public void DeleteAllProduitOfPlat(Entity.Plat plat)
+        {
+            var query = "DELETE FROM CompositionPlat WHERE CodePlat=" + "\"" + plat.CodePlat + "\"";
+            MySqlDataReader mySqlDataReader = _sQLService.Load(query);
+            mySqlDataReader.Close();
+        }
+
+        public void AddProduitToPlat(Entity.Plat plat, Entity.Produit produit)
+        {
+            var query = "INSERT INTO CompositionPlat VALUES(\"" + plat.CodePlat + "\"" + ",\"" + produit.CodeProduit + "\"" + ")";
             MySqlDataReader mySqlDataReader = _sQLService.Load(query);
             mySqlDataReader.Close();
         }

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ApplicationJampay.Model.DAL.Produit;
+using System;
 using System.Collections.Generic;
 
 namespace ApplicationJampay.Model.DAL.Plat
@@ -6,23 +7,32 @@ namespace ApplicationJampay.Model.DAL.Plat
     public class PlatBusiness
     {
         private IPlatDataAccessLayer _platDAL;
+        private IProduitDataAccessLayer _produitDAL;
 
         public PlatBusiness()
         {
             _platDAL = new PlatDataAccessLayer();
+            _produitDAL = new ProduitDataAccessLayer();
         }
 
         public List<Entity.Plat> GetAllPlat()
         {
             try
             {
-                return _platDAL.GetAllPlat();
+                List<Entity.Plat> list = _platDAL.GetAllPlat();
+
+                foreach (Entity.Plat p in list)
+                {
+                    p.SetListProduits(_produitDAL.GetProduitsByPlat(p));
+                }
+
+                return list;
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 throw new Exception(ex.Message);
             }
-            
+
         }
 
         public List<Entity.Plat> GetPlatByMenuId(int menuId)
@@ -99,6 +109,32 @@ namespace ApplicationJampay.Model.DAL.Plat
                 throw new Exception(ex.Message);
             }
 
+        }
+
+        public void DeleteProduitOfPlat(Entity.Plat plat)
+        {
+            try
+            {
+                _platDAL.DeleteAllProduitOfPlat(plat);
+            }
+            catch (Exception ex)
+            {
+
+                throw new Exception(ex.Message);
+            }
+        }
+
+        public void AddProduitToPlat(Entity.Plat plat, Entity.Produit produit)
+        {
+            try
+            {
+                _platDAL.AddProduitToPlat(plat, produit);
+            }
+            catch (Exception ex)
+            {
+
+                throw new Exception(ex.Message);
+            }
         }
     }
 }

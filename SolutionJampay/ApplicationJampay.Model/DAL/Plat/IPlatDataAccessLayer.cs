@@ -17,5 +17,9 @@ namespace ApplicationJampay.Model.DAL.Plat
         void ModifyPlat(Entity.Plat plat);
 
         void DeletePlat(Entity.Plat plat);
+
+        void DeleteAllProduitOfPlat(Entity.Plat plat);
+
+        void AddProduitToPlat(Entity.Plat plat, Entity.Produit produit);
     }
 }
