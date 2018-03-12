@@ -143,6 +143,7 @@ namespace ApplicationJampay.ViewModel.ViewModel.Gérant.UserControlTab
             {
                 case "UpdateMenu":
                     UpdateMenu();
+                    _collectionPlatOfSelectedMenu.Clear();
                     break;
 
                 case "UpdatePlat":
