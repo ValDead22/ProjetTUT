@@ -180,7 +180,7 @@ namespace ApplicationJampay.ViewModel.ViewModel.Cuisinier
             _collectionProduitOfSelectedPlat.Clear();
             try
             {
-                _produitBusiness.GetProduitsByPlatId(SelectedPlat.CodePlat).ForEach(p => _collectionProduitOfSelectedPlat.Add(p));
+                _produitBusiness.GetProduitsByPlatId(SelectedPlat).ForEach(p => _collectionProduitOfSelectedPlat.Add(p));
             }
             catch (Exception ex)
             {

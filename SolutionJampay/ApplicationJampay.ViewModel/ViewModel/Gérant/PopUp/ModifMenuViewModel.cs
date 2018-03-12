@@ -73,6 +73,10 @@ namespace ApplicationJampay.ViewModel.ViewModel.Gérant.PopUp
 
             try {
 
+                foreach (Plat p in ModifyedMenu.ListPLats)
+                {
+                    _collectionSelectedPat.Add(p);
+                }
 
                 List<Plat> list = new List<Plat>();
                 list.AddRange(_platBusiness.GetAllPlat().Except(ModifyedMenu.ListPLats));
@@ -91,10 +95,7 @@ namespace ApplicationJampay.ViewModel.ViewModel.Gérant.PopUp
                 DialogService.ShowErrorWindow(ex.Message);
             }
 
-            foreach (Plat p in ModifyedMenu.ListPLats)
-            {
-                _collectionSelectedPat.Add(p);
-            }
+            
 
         }
 
