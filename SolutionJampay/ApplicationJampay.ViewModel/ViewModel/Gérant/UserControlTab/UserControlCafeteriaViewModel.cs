@@ -199,7 +199,7 @@ namespace ApplicationJampay.ViewModel.ViewModel.Gérant.UserControlTab
 
             try
             {
-                _platBusiness.GetPlatByMenuId(SelectedMenu.CodeMenu ?? default(int)).ForEach(p => _collectionPlatOfSelectedMenu.Add(p));
+                _platBusiness.GetPlatByMenu(SelectedMenu).ForEach(p => _collectionPlatOfSelectedMenu.Add(p));
             }
             catch (Exception ex)
             {

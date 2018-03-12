@@ -128,7 +128,8 @@ namespace ApplicationJampay.Model.DAL.Menu
 
         public void DeletePlatfromMenu(Entity.Menu menu, Entity.Plat plat)
         {
-            var query = "DELETE FROM CompositionMenu WHERE CodePlat="+ "\"" + plat.CodePlat + "\"" + ", AND CodeMenu=" + "\"" + menu.CodeMenu;
+            var query = "DELETE FROM CompositionMenu WHERE CodePlat="+ "\"" + plat.CodePlat + "\"" + " AND CodeMenu=" + "\"" + menu.CodeMenu + "\"";
+            Debug.Write(query);
             MySqlDataReader mySqlDataReader = _sQLService.Load(query);
             mySqlDataReader.Close();
 

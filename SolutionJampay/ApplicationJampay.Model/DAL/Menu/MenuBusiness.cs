@@ -23,7 +23,7 @@ namespace ApplicationJampay.Model.DAL.Menu
 
                 foreach (Entity.Menu m in list)
                 {
-                    m.SetListPlats(_platDAL.GetPlatByMenuID(m.CodeMenu ?? default(int)));
+                    m.SetListPlats(_platDAL.GetPlatByMenu(m));
                 }
 
                 return list;
@@ -73,7 +73,7 @@ namespace ApplicationJampay.Model.DAL.Menu
 
         }
 
-        public void DeletPlatfromMenu(Entity.Menu menu, Entity.Plat plat)
+        public void DeletePlatfromMenu(Entity.Menu menu, Entity.Plat plat)
         {
             try
             {

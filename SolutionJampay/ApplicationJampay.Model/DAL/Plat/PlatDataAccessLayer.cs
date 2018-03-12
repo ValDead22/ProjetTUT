@@ -128,11 +128,11 @@ namespace ApplicationJampay.Model.DAL.Plat
         /// </summary>
         /// <param name="menuID"></param>
         /// <returns></returns>
-        public List<Entity.Plat> GetPlatByMenuID(int menuID)
+        public List<Entity.Plat> GetPlatByMenu(Entity.Menu menu)
         {
             var query = "SELECT pl.CodePlat, pl.Prix, pl.DateEffet, pl.DateFin, pl.Categorie, pl.Nom " +
                 "FROM Plat pl, Menu m, CompositionMenu cpm " +
-                "WHERE m.CodeMenu =" + "\"" + menuID + "\"" + "and pl.CodePlat = cpm.CodePlat and m.CodeMenu = cpm.CodeMenu";
+                "WHERE m.CodeMenu =" + "\"" + menu.CodeMenu + "\"" + "and pl.CodePlat = cpm.CodePlat and m.CodeMenu = cpm.CodeMenu";
             MySqlDataReader mySqlDataReader = _sQLService.Load(query);
 
             try

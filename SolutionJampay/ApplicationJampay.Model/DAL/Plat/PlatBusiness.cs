@@ -35,11 +35,11 @@ namespace ApplicationJampay.Model.DAL.Plat
 
         }
 
-        public List<Entity.Plat> GetPlatByMenuId(int menuId)
+        public List<Entity.Plat> GetPlatByMenu(Entity.Menu menu)
         {
             try
             {
-                return _platDAL.GetPlatByMenuID(menuId);
+                return _platDAL.GetPlatByMenu(menu);
             }
             catch (Exception ex)
             {

@@ -4,7 +4,7 @@ namespace ApplicationJampay.Model.DAL.Plat
 {
     public interface IPlatDataAccessLayer
     {
-        List<Entity.Plat> GetPlatByMenuID(int menuID);
+        List<Entity.Plat> GetPlatByMenu(Entity.Menu menu);
 
         List<Entity.Plat> GetAllPlat();
 

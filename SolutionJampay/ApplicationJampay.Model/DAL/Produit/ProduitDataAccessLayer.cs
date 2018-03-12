@@ -86,8 +86,9 @@ namespace ApplicationJampay.Model.DAL.Produit
 
         public void AddObs(Entity.Produit produit, string Obs)
         {
-            var query = "UPDATE Produit SET Observation=" + "\"" + Obs + "\"";
+            var query = "UPDATE Produit SET Observation=" + "\"" + Obs + "\"" + " WHERE CodeProduit=" + "\"" + produit.CodeProduit + "\"";
             MySqlDataReader mySqlDataReader = _sQLService.Load(query);
+            mySqlDataReader.Close();
         }
     }
 }
