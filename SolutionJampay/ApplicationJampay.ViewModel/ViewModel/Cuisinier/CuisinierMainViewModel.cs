@@ -2,16 +2,13 @@
 using ApplicationJampay.Model.DAL.Plat;
 using ApplicationJampay.Model.DAL.Produit;
 using ApplicationJampay.Model.Entity;
-using ApplicationJampay.Model.Service;
 using ApplicationJampay.Model.Service.Dialog;
 using ApplicationJampay.ViewModel.Command;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Diagnostics;
 using System.Windows.Input;
 
 namespace ApplicationJampay.ViewModel.ViewModel.Cuisinier
@@ -20,7 +17,6 @@ namespace ApplicationJampay.ViewModel.ViewModel.Cuisinier
     {
         #region Property stuff
         public event PropertyChangedEventHandler PropertyChanged;
-
 
         void OnPropertyChanged(string propertyName)
         {
@@ -57,12 +53,10 @@ namespace ApplicationJampay.ViewModel.ViewModel.Cuisinier
         public ICommand LogOut => _logOut;
 
         private readonly RelayCommand _openDeletePlatWindow;
-
-        public ICommand openDeletePlatWindow => _openDeletePlatWindow;
+        public ICommand OpenDeletePlatWindow => _openDeletePlatWindow;
 
         private readonly RelayCommand _openAddObsWindow;
-
-        public ICommand openAddObsPlatWindow => _openAddObsWindow;
+        public ICommand OpenAddObsWindow => _openAddObsWindow;
 
 
         public CuisinierMainViewModel()
@@ -135,8 +129,14 @@ namespace ApplicationJampay.ViewModel.ViewModel.Cuisinier
             {
                 _selectedProduit = value;
                 OnPropertyChanged(nameof(SelectedProduit));
-                ProductObs = _selectedProduit.Observation;
-                UpdatePlatCollection();
+                if (_selectedProduit != null)
+                {
+                    ProductObs = _selectedProduit.Observation; 
+                }
+                else
+                {
+                    ProductObs = ""; 
+                }
             }
         }
 
@@ -167,7 +167,7 @@ namespace ApplicationJampay.ViewModel.ViewModel.Cuisinier
             _collectionPlatOfSelectedMenu.Clear();
             try
             {
-                _platBusiness.GetPlatByMenuId(SelectedMenu.CodeMenu ?? default(int)).ForEach(p => _collectionPlatOfSelectedMenu.Add(p));
+                _platBusiness.GetPlatByMenu(SelectedMenu).ForEach(p => _collectionPlatOfSelectedMenu.Add(p));
             }
             catch (Exception ex)
             {
@@ -193,9 +193,19 @@ namespace ApplicationJampay.ViewModel.ViewModel.Cuisinier
         {
             try
             {
-                _menuBusiness.DeletPlatfromMenu(SelectedMenu,SelectedPlat);
-                _collectionMenu.Clear();
-                _menuBusiness.GetAllMenus().ForEach(m => _collectionMenu.Add(m));
+                Debug.WriteLine("1");
+                _menuBusiness.DeletePlatfromMenu(SelectedMenu,SelectedPlat);
+                Debug.WriteLine("3");
+                _collectionPlatOfSelectedMenu.Clear();
+                Debug.WriteLine("4");
+                _collectionProduitOfSelectedPlat.Clear();
+                Debug.WriteLine("5");
+
+                foreach (Plat plat in _platBusiness.GetPlatByMenu(SelectedMenu))
+                {
+                    _collectionPlatOfSelectedMenu.Add(plat);
+                }
+                Debug.WriteLine("6");
 
             }
             catch (Exception ex)

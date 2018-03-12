@@ -11,6 +11,8 @@
 
     <Window.Resources>
         <converter:DateToStringConverter x:Key="date2string"/>
+        <converter:SelectedItemToIsEnable x:Key="selected2isEnable"/>
+        <converter:MultipleSelectedItemToIsEnable x:Key="multiSelected2isEnable"/>
     </Window.Resources>
     <Window.Background>
         <ImageBrush ImageSource="/Asset/background.jpeg"/>
@@ -61,16 +63,15 @@
                         <ColumnDefinition Width="2*"/>
                     </Grid.ColumnDefinitions>
 
-                    <StackPanel Width="210" Grid.Row="1" Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Center">
-                        <Button Content="Supprimer plat" HorizontalContentAlignment="Center"  Command="{Binding openDeletePlatWindow}" />
+                    <StackPanel  Grid.Row="1" Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Center">
+                        <Button Content="Supprimer plat" HorizontalContentAlignment="Center"  Command="{Binding OpenDeletePlatWindow}" IsEnabled="{Binding SelectedPlat, Converter={StaticResource selected2isEnable}}"/>
                         <Separator Background="Transparent" Height="10"/>
                         <Separator Background="Transparent" Height="10" />
                         <GroupBox x:Name="groupBox" Header="Observation" Padding="10">
                             <StackPanel Orientation="Vertical" VerticalAlignment="Center">
                                 <TextBox HorizontalAlignment="Stretch" Style="{StaticResource myTextBox}" TextWrapping="Wrap" Text="{Binding ProductObs}"  VerticalAlignment="Top" />
                                 <Separator Background="Transparent" Height="10"/>
-
-                                <Button Content="Observation produit" HorizontalContentAlignment="Center" Command="{Binding openAddObsWindow}"  />
+                                <Button Content="Changer l'observation" HorizontalContentAlignment="Center" Command="{Binding OpenAddObsWindow}" IsEnabled="{Binding SelectedProduit, Converter={StaticResource selected2isEnable}}" />
                             </StackPanel>
                         </GroupBox>
                    </StackPanel>
