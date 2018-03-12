@@ -92,10 +92,10 @@ namespace ApplicationJampay.Model.DAL.Menu
             {
                 _menuDAL.DeleteMenu(menu);
             }
-            catch (Exception ex)
+            catch (Exception)
             {
 
-                throw new Exception(ex.Message);
+                throw new Exception("Impossible de supprimer ce Menu. Veuillez à ce qu'il ne comporte plus de plats");
             }
         }
 
