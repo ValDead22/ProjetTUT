@@ -34,6 +34,12 @@ namespace ApplicationJampay.Model.DAL.Menu
         /// <param name="menu"></param>
         void DeleteMenu(Entity.Menu menu);
 
+        /// <summary>
+        /// Delete a Plat from a Menu
+        /// </summary>
+        /// <param name="menu"></param>
+        void DeletePlatfromMenu(Entity.Menu menu, Entity.Plat plat);
+
         void AddPlatToMenu(Entity.Plat plat, Entity.Menu menu);
 
         void DeleteAllPlatOfMenu(Entity.Menu menu);

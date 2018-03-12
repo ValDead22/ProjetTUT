@@ -9,9 +9,9 @@
         WindowState="Maximized"
         Title="Cuisinier" Height="1080" Width="1920">
 
-    <Window.Resources>
+    <!--<Window.Resources>
         <converter:DateToStringConverter x:Key="date2string"/>
-    </Window.Resources>
+    </Window.Resources>-->
     <Window.Background>
         <ImageBrush ImageSource="/Asset/background.jpeg"/>
     </Window.Background>
@@ -62,12 +62,18 @@
                     </Grid.ColumnDefinitions>
 
                     <StackPanel Width="210" Grid.Row="1" Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Center">
-                        <Button Content="Supprimer plat" HorizontalContentAlignment="Center"  Command="{Binding OpenAddingMenuWindow}" />
+                        <Button Content="Supprimer plat" HorizontalContentAlignment="Center"  Command="{Binding openDeletePlatWindow}" />
                         <Separator Background="Transparent" Height="10"/>
-                        <Button Content="Observation produit" HorizontalContentAlignment="Center" Command="{Binding OpenModifyingMenuWindow}"  />
+                        <Separator Background="Transparent" Height="10" />
+                        <GroupBox x:Name="groupBox" Header="Observation" Padding="10">
+                            <StackPanel Orientation="Vertical" VerticalAlignment="Center">
+                                <TextBox HorizontalAlignment="Stretch" Style="{StaticResource myTextBox}" TextWrapping="Wrap" Text="{Binding ProductObs}"  VerticalAlignment="Top" />
+                                <Separator Background="Transparent" Height="10"/>
 
-
-                    </StackPanel>
+                                <Button Content="Observation produit" HorizontalContentAlignment="Center" Command="{Binding openAddObsWindow}"  />
+                            </StackPanel>
+                        </GroupBox>
+                   </StackPanel>
 
 
                     <ListView Grid.Row="1" Grid.Column="1" Margin="10" ItemsSource="{Binding CollectionProduitOfSelectedPlat}" SelectedItem="{Binding SelectedProduit}">
@@ -77,7 +83,7 @@
                         </GridView>
                     </ListView.View>
                 </ListView>
-            </Grid>
+                </Grid>
 
             </Grid>
 

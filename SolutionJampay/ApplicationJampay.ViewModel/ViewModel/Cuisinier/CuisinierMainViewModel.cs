@@ -56,6 +56,15 @@ namespace ApplicationJampay.ViewModel.ViewModel.Cuisinier
         private readonly RelayCommand _logOut;
         public ICommand LogOut => _logOut;
 
+        private readonly RelayCommand _openDeletePlatWindow;
+
+        public ICommand openDeletePlatWindow => _openDeletePlatWindow;
+
+        private readonly RelayCommand _openAddObsWindow;
+
+        public ICommand openAddObsPlatWindow => _openAddObsWindow;
+
+
         public CuisinierMainViewModel()
         {
             _menuBusiness = new MenuBusiness();
@@ -63,6 +72,9 @@ namespace ApplicationJampay.ViewModel.ViewModel.Cuisinier
             _produitBusiness = new ProduitBusiness();
 
             _logOut = new RelayCommand(() => Quit(), o => true);
+
+            _openDeletePlatWindow = new RelayCommand(() => DialogService.ShowYesNoWindow("Etes-vous sûr de vouloir supprimer ce plat du menu ?", new Action(DeletePlat)), o => true);
+            _openAddObsWindow = new RelayCommand(() => DialogService.ShowYesNoWindow("Etes-vous sûr de vouloir ajouter une observation à ce produit ?", new Action(AddObs)), o => true);
 
             try
             {
@@ -85,6 +97,17 @@ namespace ApplicationJampay.ViewModel.ViewModel.Cuisinier
 
         }
 
+        private String _productObs;
+
+        public String ProductObs
+        {
+            get { return ProductObs; }
+            set { ProductObs = value;
+                OnPropertyChanged(nameof(ProductObs));
+            }
+        }
+
+
         private Menu _selectedMenu;
         public Menu SelectedMenu
         {
@@ -96,6 +119,22 @@ namespace ApplicationJampay.ViewModel.ViewModel.Cuisinier
             {
                 _selectedMenu = value;
                 OnPropertyChanged(nameof(SelectedMenu));
+                UpdatePlatCollection();
+            }
+        }
+
+        private Produit _selectedProduit;
+        public Produit SelectedProduit
+        {
+            get
+            {
+                return _selectedProduit;
+            }
+            set
+            {
+                _selectedProduit = value;
+                OnPropertyChanged(nameof(SelectedProduit));
+                ProductObs = SelectedProduit.Observation;
                 UpdatePlatCollection();
             }
         }
@@ -149,7 +188,36 @@ namespace ApplicationJampay.ViewModel.ViewModel.Cuisinier
             
         }
 
-        
+        private void DeletePlat()
+        {
+            try
+            {
+                _menuBusiness.DeletPlatfromMenu(SelectedMenu,SelectedPlat);
+                _collectionMenu.Clear();
+                _menuBusiness.GetAllMenus().ForEach(m => _collectionMenu.Add(m));
+
+            }
+            catch (Exception ex)
+            {
+                DialogService.ShowErrorWindow(ex.Message);
+            }
+
+        }
+
+        private void AddObs()
+        {
+            try
+            {
+                _produitBusiness.AddObs(SelectedProduit,ProductObs);
+             
+            }
+            catch (Exception ex)
+            {
+                DialogService.ShowErrorWindow(ex.Message);
+            }
+
+        }
+
 
     }
 }

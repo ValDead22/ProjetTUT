@@ -125,5 +125,14 @@ namespace ApplicationJampay.Model.DAL.Menu
             mySqlDataReader.Close();
 
         }
+
+        public void DeletePlatfromMenu(Entity.Menu menu, Entity.Plat plat)
+        {
+            var query = "DELETE FROM CompositionMenu WHERE CodePlat="+ "\"" + plat.CodePlat + "\"" + ", AND CodeMenu=" + "\"" + menu.CodeMenu;
+            MySqlDataReader mySqlDataReader = _sQLService.Load(query);
+
+        }
+
+
     }
 }

@@ -16,5 +16,10 @@ namespace ApplicationJampay.Model.DAL.Produit
         /// Add a new Product
         /// </summary>
         void AddProduit(Entity.Produit produit);
+
+        /// <summary>
+        /// Add an Observation to a Product
+        /// </summary>
+        void AddObs(Entity.Produit produit,string Obs);
     }
 }
