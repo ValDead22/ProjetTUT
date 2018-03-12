@@ -25,5 +25,28 @@ namespace ApplicationJampay.Model.Entity
             Nom = nom;
         }
 
+        public bool Equals(Plat other)
+        {
+            return null != other && CodePlat == other.CodePlat;
+        }
+
+        public override bool Equals(object obj)
+        {
+            var item = obj as Plat;
+
+            if (item == null)
+            {
+                return false;
+            }
+
+            return this.CodePlat.Equals(item.CodePlat);
+        }
+
+        public override int GetHashCode()
+        {
+            return this.CodePlat.GetHashCode();
+        }
     }
+
 }
+
