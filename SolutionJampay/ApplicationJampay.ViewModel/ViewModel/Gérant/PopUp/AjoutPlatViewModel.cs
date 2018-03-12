@@ -50,7 +50,7 @@ namespace ApplicationJampay.ViewModel.ViewModel.Gérant
 
         private void CreateNewPlat()
         {
-            Plat plat = new Plat(_tarif, _dateEffet, _dateFin, _selectedCategory, _nom);
+            Plat plat = new Plat(0, _dateEffet, _dateFin, _selectedCategory, _nom, _tarif);
 
             try
             {
@@ -96,8 +96,8 @@ namespace ApplicationJampay.ViewModel.ViewModel.Gérant
             }
         }
 
-        private int _tarif;
-        public int Tarif
+        private float _tarif;
+        public float Tarif
         {
             get { return _tarif; }
             set
