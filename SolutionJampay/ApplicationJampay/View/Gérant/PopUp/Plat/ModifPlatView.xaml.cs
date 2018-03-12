@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ApplicationJampay.ViewModel.ViewModel.Gérant;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -21,6 +22,10 @@ namespace ApplicationJampay.View.Gérant.PopUp.Plat
     {
         public ModifPlatView()
         {
+            DataContext = new ModifPlatViewModel()
+            {
+                Close = () => Close()
+            };
             InitializeComponent();
         }
     }
