@@ -41,17 +41,17 @@
                 <Separator Visibility="Hidden" Height="10"/>
 
                 <TextBlock Style="{StaticResource myTextBlock}" Text="ID du gérant" />
-                <ComboBox ItemsSource="{Binding AvalaibleGerant}" SelectedIndex="0" SelectedItem="{Binding SelectedGerant}">
+                <ComboBox ItemsSource="{Binding AvalaibleGerant}" SelectedIndex="0" SelectedItem="{Binding SelectedGerant}"  FontFamily="Trebuchet MS" FontSize="18" Foreground="White">
                     <ComboBox.ItemTemplate>
                         <DataTemplate>
                             <StackPanel Orientation="Horizontal">
-                                <TextBlock Style="{StaticResource myTextBlock}" Text="{Binding Matricule}" />
+                                <TextBlock Style="{StaticResource myTextBlock}" Text="{Binding Matricule}" Foreground="White" />
                                 <Separator Width="5" Visibility="Hidden"/>
-                                <Separator Width="5"/>
+                                <Separator Width="5" Foreground="White"/>
                                 <Separator Width="5" Visibility="Hidden"/>
-                                <TextBlock Style="{StaticResource myTextBlock}" Text="{Binding Nom}" />
+                                <TextBlock Style="{StaticResource myTextBlock}" Text="{Binding Nom}" Foreground="White" />
                                 <Separator Width="5" Visibility="Hidden"/>
-                                <TextBlock Style="{StaticResource myTextBlock}" Text="{Binding Prenom}" />
+                                <TextBlock Style="{StaticResource myTextBlock}" Text="{Binding Prenom}" Foreground="White" />
                             </StackPanel>
                         </DataTemplate>
                     </ComboBox.ItemTemplate>
@@ -82,7 +82,7 @@
                 <Separator Visibility="Hidden" Height="10"/>
 
                 <TextBlock Style="{StaticResource myTextBlock}" Text="La catégorie" />
-                <ComboBox ItemsSource="{Binding AvailableCategories}" SelectedIndex="0" SelectedItem="{Binding SelectedCategory}"/>
+                <ComboBox ItemsSource="{Binding AvailableCategories}" SelectedIndex="0" SelectedItem="{Binding SelectedCategory}"  FontFamily="Trebuchet MS" FontSize="18" Foreground="White"/>
 
                 <Separator Height="20" Background="#FF212121" Margin="5, 10"/>
 
