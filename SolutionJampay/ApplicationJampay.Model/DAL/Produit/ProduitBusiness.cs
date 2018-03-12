@@ -24,11 +24,11 @@ namespace ApplicationJampay.Model.DAL.Produit
             }
         }
 
-        public List<Entity.Produit> GetProduitsByPlatId(int idPlat)
+        public List<Entity.Produit> GetProduitsByPlatId(Entity.Plat plat)
         {            
             try
             {
-                return _productDAL.GetProduitsByPlatId(idPlat);
+                return _productDAL.GetProduitsByPlat(plat);
             }
             catch(Exception ex)
             {

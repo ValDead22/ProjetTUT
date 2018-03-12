@@ -18,14 +18,41 @@ namespace ApplicationJampay.Model.DAL.Produit
 
         public List<Entity.Produit> GetAllProduits()
         {
-            throw new NotImplementedException();
+            var query = "SELECT * FROM Produit";
+            MySqlDataReader mySqlDataReader = _sQLService.Load(query);
+
+            try
+            {
+                List<Entity.Produit> list = new List<Entity.Produit>();
+
+                while (mySqlDataReader.Read())
+                {
+                    Entity.Produit produit = new Entity.Produit((int)mySqlDataReader["CodeProduit"],
+                        (DateTime)mySqlDataReader["DateEffet"],
+                        (DateTime)mySqlDataReader["DateFin"],
+                        mySqlDataReader["Categorie"] as string,
+                        mySqlDataReader["Nom"] as string,
+                        mySqlDataReader["Observation"] as string);
+
+                    list.Add(produit);
+                }
+                return list;
+            }
+            catch
+            {
+                throw new Exception("Pas de produits !");
+            }
+            finally
+            {
+                mySqlDataReader.Close();
+            }
         }
 
-        public List<Entity.Produit> GetProduitsByPlatId(int idPlat)
+        public List<Entity.Produit> GetProduitsByPlat(Entity.Plat plat)
         {
             var query = "SELECT pr.CodeProduit, pr.DateEffet, pr.DateFin, pr.Categorie, pr.Nom, pr.Observation " +
                 "FROM Produit pr, Plat pl, CompositionPlat cpp " +
-                "WHERE pl.CodePlat =" + "\"" + idPlat + "\"" + "and pl.CodePlat = cpp.CodePlat and pr.CodeProduit = cpp.CodeProduit";
+                "WHERE pl.CodePlat =" + "\"" + plat.CodePlat + "\"" + "and pl.CodePlat = cpp.CodePlat and pr.CodeProduit = cpp.CodeProduit";
             MySqlDataReader mySqlDataReader = _sQLService.Load(query);
 
             try
@@ -34,7 +61,7 @@ namespace ApplicationJampay.Model.DAL.Produit
                 
                 while (mySqlDataReader.Read())
                 {
-                    Entity.Produit plat = new Entity.Produit(
+                    Entity.Produit produit = new Entity.Produit(
                         (int)mySqlDataReader["CodeProduit"],
                         (DateTime)mySqlDataReader["DateEffet"],
                         (DateTime)mySqlDataReader["DateFin"],
@@ -42,7 +69,7 @@ namespace ApplicationJampay.Model.DAL.Produit
                         mySqlDataReader["Nom"] as string,
                         mySqlDataReader["Observation"] as string);
 
-                    list.Add(plat);
+                    list.Add(produit);
                 }
                 return list;
             }

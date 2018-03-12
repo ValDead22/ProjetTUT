@@ -10,7 +10,7 @@ namespace ApplicationJampay.Model.DAL.Produit
         /// <returns>The Product</returns>
         List<Entity.Produit> GetAllProduits();
 
-        List<Entity.Produit> GetProduitsByPlatId(int idPlat);
+        List<Entity.Produit> GetProduitsByPlat(Entity.Plat plat);
 
         /// <summary>
         /// Add a new Product
