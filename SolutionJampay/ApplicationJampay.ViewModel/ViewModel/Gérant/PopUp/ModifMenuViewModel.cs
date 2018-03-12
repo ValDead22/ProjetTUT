@@ -3,6 +3,7 @@ using ApplicationJampay.Model.DAL.Plat;
 using ApplicationJampay.Model.DAL.Utilisateur;
 using ApplicationJampay.Model.Entity;
 using ApplicationJampay.Model.Service.Dialog;
+using ApplicationJampay.ViewModel.Command;
 using GalaSoft.MvvmLight.Messaging;
 using System;
 using System.Collections.Generic;
@@ -12,6 +13,7 @@ using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Input;
 
 namespace ApplicationJampay.ViewModel.ViewModel.Gérant.PopUp
 {
@@ -40,6 +42,17 @@ namespace ApplicationJampay.ViewModel.ViewModel.Gérant.PopUp
         private UtilisateurBusiness _utilisateurBusiness;
         private PlatBusiness _platBusiness;
 
+        public Action Close;
+
+        private readonly RelayCommand _addPlat;
+        public ICommand AddPlat => _addPlat;
+
+        private readonly RelayCommand _removePlat;
+        public ICommand RemovePlat => _removePlat;
+
+        private readonly RelayCommand _apply;
+        public ICommand Apply => _apply;
+
         public ModifMenuViewModel()
         {
             Messenger.Default.Register<Menu>(this, (menu) => HandleMessage(menu));
@@ -53,6 +66,9 @@ namespace ApplicationJampay.ViewModel.ViewModel.Gérant.PopUp
             _utilisateurBusiness = new UtilisateurBusiness();
             _platBusiness = new PlatBusiness();
 
+            _addPlat = new RelayCommand(() => AddNewPlatToMenu(), o => true);
+            _removePlat = new RelayCommand(() => DeletePlatFromMenu(), o => true);
+            _apply = new RelayCommand(() => { Modify(); Close(); }, o => true);
 
 
             try {
@@ -80,6 +96,42 @@ namespace ApplicationJampay.ViewModel.ViewModel.Gérant.PopUp
                 _collectionSelectedPat.Add(p);
             }
 
+        }
+
+        private void AddNewPlatToMenu()
+        {           
+            _collectionSelectedPat.Add(_selectedFromAvalaiblePlat);
+            _collectionAvalaiblePat.Remove(_selectedFromAvalaiblePlat);            
+        }
+
+        private void DeletePlatFromMenu()
+        {
+            _collectionAvalaiblePat.Add(_selectedFromSelectedPlat);
+            _collectionSelectedPat.Remove(_selectedFromSelectedPlat);
+        }
+
+
+        private void Modify()
+        {
+            Menu menu = new Menu(SelectedGerant.Matricule, DateElaboration, SelectedCategory, Nom, Observation, ModifyedMenu.CodeMenu);
+            try
+            {
+                _menuBusiness.ModifyMenu(menu);
+                _menuBusiness.DeleteAllPlatOfMenu(menu);
+
+                foreach(Plat p in _collectionSelectedPat)
+                {
+                    _menuBusiness.AddPlatToMenu(p, menu);
+                }
+
+            }
+            catch (Exception ex)
+            {
+
+                DialogService.ShowErrorWindow(ex.Message);
+            }
+
+            Messenger.Default.Send<string>("UpdateMenu");
         }
 
 

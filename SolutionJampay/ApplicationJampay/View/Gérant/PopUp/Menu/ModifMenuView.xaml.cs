@@ -22,7 +22,10 @@ namespace ApplicationJampay.View.Gérant.PopUp.Menu
     {
         public ModifMenuView()
         {
-            DataContext = new ModifMenuViewModel();
+            DataContext = new ModifMenuViewModel()
+            {
+                Close = () => Close()
+            };
             InitializeComponent();
         }
     }

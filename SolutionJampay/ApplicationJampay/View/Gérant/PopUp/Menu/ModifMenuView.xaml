@@ -51,13 +51,13 @@
                     <ComboBox.ItemTemplate>
                         <DataTemplate>
                             <StackPanel Orientation="Horizontal">
-                                <TextBlock Style="{StaticResource myTextBlock}" Text="{Binding Matricule}" />
+                                <TextBlock Style="{StaticResource myTextBlock}" Text="{Binding Matricule}" Foreground="White"/>
                                 <Separator Width="5" Visibility="Hidden"/>
-                                <Separator Width="5"/>
+                                <Separator Width="5" Foreground="White"/>
                                 <Separator Width="5" Visibility="Hidden"/>
-                                <TextBlock Style="{StaticResource myTextBlock}" Text="{Binding Nom}" />
+                                <TextBlock Style="{StaticResource myTextBlock}" Text="{Binding Nom}" Foreground="White"/>
                                 <Separator Width="5" Visibility="Hidden"/>
-                                <TextBlock Style="{StaticResource myTextBlock}" Text="{Binding Prenom}" />
+                                <TextBlock Style="{StaticResource myTextBlock}" Text="{Binding Prenom}" Foreground="White"/>
                             </StackPanel>
                         </DataTemplate>
                     </ComboBox.ItemTemplate>
@@ -103,21 +103,20 @@
                         <ListView Grid.Column="0" ItemsSource="{Binding CollectionAvalaiblePat}" SelectedItem="{Binding SelectedFromAvalaiblePlat}" >
                             <ListView.View>
                                 <GridView>
-                                    <GridViewColumn Header="Nouveaux plats" DisplayMemberBinding="{Binding Nom}"/>
+                                    <GridViewColumn Header="Plats existant" DisplayMemberBinding="{Binding Nom}"/>
                                 </GridView>
                             </ListView.View>
                         </ListView>
 
-                        <StackPanel Grid.Column="1" Orientation="Vertical" VerticalAlignment="Center" Margin="10">
-                            <Button HorizontalAlignment="Center" Grid.Row="1" Content="+" IsEnabled="{Binding SelectedFromAvalaiblePlat, Converter={StaticResource selected2isEnable}}"/>
-                        <Button HorizontalAlignment="Center" Grid.Row="1" Content='-' IsEnabled="{Binding SelectedFromSelectedPlat, Converter={StaticResource selected2isEnable}}" />
-
+                        <StackPanel Grid.Column="1" Orientation="Vertical" VerticalAlignment="Center" Margin="10">                        
+                            <Button Command="{Binding AddPlat}" HorizontalAlignment="Center" Grid.Row="1" Content="+" IsEnabled="{Binding SelectedFromAvalaiblePlat, Converter={StaticResource selected2isEnable}}"/>                        
+                            <Button Command="{Binding RemovePlat}" HorizontalAlignment="Center" Grid.Row="1" Content='-' IsEnabled="{Binding SelectedFromSelectedPlat, Converter={StaticResource selected2isEnable}}" />
                         </StackPanel>
 
                         <ListView Grid.Column="2" ItemsSource="{Binding CollectionSelectedPat}" SelectedItem="{Binding SelectedFromSelectedPlat}" HorizontalAlignment="Stretch">
                             <ListView.View>
                                 <GridView>
-                                    <GridViewColumn Header="Plats déjà présents" DisplayMemberBinding="{Binding Nom}"/>
+                                    <GridViewColumn Header="Plats du menu" DisplayMemberBinding="{Binding Nom}"/>
                                 </GridView>
                             </ListView.View>
                         </ListView>
@@ -132,7 +131,7 @@
             </StackPanel>
         </Grid>
 
-        <Button Grid.Row="1" Content="Confirmer" Grid.ColumnSpan="2">
+        <Button Grid.Row="1" Content="Confirmer" Grid.ColumnSpan="2" Command="{Binding Apply}">
             <Button.Style>
                 <Style TargetType="{x:Type Button}">
                     <Setter Property="Foreground" Value="White"/>
