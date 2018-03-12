@@ -2,6 +2,7 @@
 using ApplicationJampay.Model.Entity;
 using ApplicationJampay.Model.Service.Dialog;
 using ApplicationJampay.ViewModel.Command;
+using GalaSoft.MvvmLight.Messaging;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -27,33 +28,46 @@ namespace ApplicationJampay.ViewModel.ViewModel.Gérant
 
         public Action Close;
 
+        private Plat ModifyedPlat;
+
         private readonly RelayCommand _createplatCommand;
         public ICommand CreateplatCommand => _createplatCommand;
 
         public ModifPlatViewModel()
         {
+            Messenger.Default.Register<Plat>(this, (plat) => HandleMessage(plat));
+            Messenger.Default.Send<string>("RequestSelectedPlat");
+
             _platBusiness = new PlatBusiness();
-
-            _availableCategories = _platBusiness.GetAllCategories();
-
             _createplatCommand = new RelayCommand(() => { CreateNewplat(); Close(); }, o => true);
 
-        }
+            Nom = ModifyedPlat.Nom;
+            DateEffet = ModifyedPlat.DateEffet;
+            DateFin = ModifyedPlat.DateFin;
+            Tarif = ModifyedPlat.Prix ?? default(float);
 
-        
-
-        private void CreateNewplat()
-        {
-            Plat plat = new Plat(_tarif, _dateEffet, _dateFin, _selectedCategory, _nom);
 
             try
             {
-                _platBusiness.AddPlat(plat);
+                _availableCategories = _platBusiness.GetAllCategories();
             }
             catch (Exception ex)
             {
+
                 DialogService.ShowErrorWindow(ex.Message);
             }
+
+        }
+
+        private void HandleMessage(Plat plat)
+        {
+            ModifyedPlat = plat;
+        }
+
+
+
+        private void CreateNewplat()
+        {
         }
 
 
@@ -90,8 +104,8 @@ namespace ApplicationJampay.ViewModel.ViewModel.Gérant
             }
         }
 
-        private int _tarif;
-        public int Tarif
+        private float _tarif;
+        public float Tarif
         {
             get { return _tarif; }
             set
@@ -122,12 +136,6 @@ namespace ApplicationJampay.ViewModel.ViewModel.Gérant
                 _selectedCategory = value;
                 OnPropertyChanged(nameof(SelectedCategory));
             }
-        }
-
-
-        public void ModifBdd()
-        {
-
         }
 
        
