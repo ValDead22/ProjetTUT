@@ -150,6 +150,10 @@ namespace ApplicationJampay.ViewModel.ViewModel.Gérant.UserControlTab
                     UpdatePlat();
                     break;
 
+                case "RequestSelectedPlat":
+                    Messenger.Default.Send<Plat>(SelectedPlat);
+                    break;
+
                 case "RequestSelectedMenu":
                     Messenger.Default.Send<Menu>(SelectedMenu);
                     break;
