@@ -75,12 +75,41 @@ namespace ApplicationJampay.Model.DAL.Menu
 
         public void DeleteMenu(Entity.Menu menu)
         {
-            _menuDAL.DeleteMenu(menu);
+            try
+            {
+                _menuDAL.DeleteMenu(menu);
+            }
+            catch (Exception ex)
+            {
+
+                throw new Exception(ex.Message);
+            }
         }
 
         public void AddPlatToMenu(Entity.Plat plat, Entity.Menu menu)
         {
-            _menuDAL.AddPlatToMenu(plat, menu);
+            try
+            {
+                _menuDAL.AddPlatToMenu(plat, menu);
+            }
+            catch (Exception ex)
+            {
+
+                throw new Exception(ex.Message);
+            }
+        }
+
+        public void DeleteAllPlatOfMenu(Entity.Menu menu)
+        {
+            try
+            {
+                _menuDAL.DeleteAllPlatOfMenu(menu);
+            }
+            catch (Exception ex)
+            {
+
+                throw new Exception(ex.Message);
+            }
         }
     }
 }

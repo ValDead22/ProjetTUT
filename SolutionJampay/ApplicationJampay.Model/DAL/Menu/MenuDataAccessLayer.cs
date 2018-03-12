@@ -31,6 +31,13 @@ namespace ApplicationJampay.Model.DAL.Menu
             mySqlDataReader.Close();
         }
 
+        public void DeleteAllPlatOfMenu(Entity.Menu menu)
+        {
+            var query = "DELETE FROM CompositionMenu WHERE CodeMenu = " + "\"" + menu.CodeMenu + "\"";
+            MySqlDataReader mySqlDataReader = _sQLService.Load(query);
+            mySqlDataReader.Close();
+        }
+
         /// <summary>
         /// Delete an existing Menu
         /// </summary>
@@ -111,8 +118,11 @@ namespace ApplicationJampay.Model.DAL.Menu
         /// <param name="menu"></param>
         public void ModifyMenu(Entity.Menu menu)
         {
-            var query = "UPDATE Menu SET DateElaboration=" + "\"" + menu.DateElaboration + "\"" + ", Categorie=" + "\"" + menu.Categorie + "\"" + ", nom=" + "\"" + menu.Nom + ", Observation=" + "\"" + menu.Observation + "\"" + "idGerant =" + "\"" + menu.IdGerant + "\"" + " WHERE CodeMenu= " + "\"" + menu.CodeMenu + "\"";
-            MySqlDataReader mySqlDataReader = _sQLService.Load(query); 
+
+            var query = "UPDATE Menu SET DateElaboration=" + "\"" + menu.DateElaboration.ToString("yyyy-MM-dd") + "\"" + ", Categorie=" + "\"" + menu.Categorie + "\"" + ", Nom=" + "\"" + menu.Nom + "\"" + ", Observation=" + "\"" + menu.Observation + "\"" + ", idGerant=" + "\"" + menu.IdGerant + "\"" + " WHERE CodeMenu= " + "\"" + menu.CodeMenu + "\"";
+            Debug.WriteLine(query);
+            MySqlDataReader mySqlDataReader = _sQLService.Load(query);
+            mySqlDataReader.Close();
 
         }
     }
