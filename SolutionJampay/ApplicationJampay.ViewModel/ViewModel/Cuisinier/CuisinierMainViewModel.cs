@@ -98,11 +98,12 @@ namespace ApplicationJampay.ViewModel.ViewModel.Cuisinier
         }
 
         private String _productObs;
-
         public String ProductObs
         {
-            get { return ProductObs; }
-            set { ProductObs = value;
+            get { return _productObs; }
+            set
+            {
+                _productObs = value;
                 OnPropertyChanged(nameof(ProductObs));
             }
         }
@@ -134,7 +135,7 @@ namespace ApplicationJampay.ViewModel.ViewModel.Cuisinier
             {
                 _selectedProduit = value;
                 OnPropertyChanged(nameof(SelectedProduit));
-                ProductObs = SelectedProduit.Observation;
+                ProductObs = _selectedProduit.Observation;
                 UpdatePlatCollection();
             }
         }
