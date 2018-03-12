@@ -79,14 +79,14 @@
                 <Separator Visibility="Hidden" Height="10"/>
 
                 <TextBlock Text="La catégorie" Style="{StaticResource myTextBlock}"/>
-                <ComboBox  FontFamily="Trebuchet MS" FontSize="18" Foreground="White"  ItemsSource="{Binding AvailableCategories}" SelectedItem="{Binding SelectedCategory}"/>
+                <ComboBox  FontFamily="Trebuchet MS" FontSize="18" Foreground="White" SelectedIndex="0"  ItemsSource="{Binding AvailableCategories}" SelectedItem="{Binding SelectedCategory}"/>
 
                 <Separator Visibility="Hidden" Height="10"/>
 
                 <TextBlock Text="Le tarif" Style="{StaticResource myTextBlock}"/>
                 <TextBox x:Name="Tarif" Style="{StaticResource myTextBox}" TextWrapping="Wrap">
                     <TextBox.Text>
-                        <Binding Path="Tarif" UpdateSourceTrigger="PropertyChanged">
+                        <Binding Path="Tarif" UpdateSourceTrigger="LostFocus">
                             <Binding.ValidationRules>
                                 <validation:ValidateFloat ValidatesOnTargetUpdated="True" />
                             </Binding.ValidationRules>
@@ -96,7 +96,7 @@
 
                 <Separator Visibility="Hidden" Height="10"/>
 
-                <TextBlock Text="Les plats" Style="{StaticResource myTextBlock}"/>
+                <TextBlock Text="Les produits" Style="{StaticResource myTextBlock}"/>
 
                 <Grid HorizontalAlignment="Stretch" Height="150">
                     <Grid.ColumnDefinitions>
@@ -106,23 +106,23 @@
                     </Grid.ColumnDefinitions>
 
 
-                    <ListView Grid.Column="0" ItemsSource="{Binding CollectionAvalaiblePat}" SelectedItem="{Binding SelectedFromAvalaiblePlat}" >
+                    <ListView Grid.Column="0" ItemsSource="{Binding CollectionAvalaibleProduit}" SelectedItem="{Binding SelectedFromAvalaibleProduit}" >
                         <ListView.View>
                             <GridView>
-                                <GridViewColumn Header="Plats existant" DisplayMemberBinding="{Binding Nom}"/>
+                                <GridViewColumn Header="Produits existant" DisplayMemberBinding="{Binding Nom}"/>
                             </GridView>
                         </ListView.View>
                     </ListView>
 
                     <StackPanel Grid.Column="1" Orientation="Vertical" VerticalAlignment="Center" Margin="10">
-                        <Button Command="{Binding AddPlat}" HorizontalAlignment="Center" Grid.Row="1" Content="+" IsEnabled="{Binding SelectedFromAvalaiblePlat, Converter={StaticResource selected2isEnable}}"/>
-                        <Button Command="{Binding RemovePlat}" HorizontalAlignment="Center" Grid.Row="1" Content='-' IsEnabled="{Binding SelectedFromSelectedPlat, Converter={StaticResource selected2isEnable}}" />
+                        <Button Command="{Binding AddProduit}" HorizontalAlignment="Center" Grid.Row="1" Content="+" IsEnabled="{Binding SelectedFromAvalaibleProduit, Converter={StaticResource selected2isEnable}}"/>
+                        <Button Command="{Binding DeleteProduit}" HorizontalAlignment="Center" Grid.Row="1" Content='-' IsEnabled="{Binding SelectedFromSelectedProduit, Converter={StaticResource selected2isEnable}}" />
                     </StackPanel>
 
-                    <ListView Grid.Column="2" ItemsSource="{Binding CollectionSelectedPat}" SelectedItem="{Binding SelectedFromSelectedPlat}" HorizontalAlignment="Stretch">
+                    <ListView Grid.Column="2" ItemsSource="{Binding CollectionSelectedProduit}" SelectedItem="{Binding SelectedFromSelectedProduit}" HorizontalAlignment="Stretch">
                         <ListView.View>
                             <GridView>
-                                <GridViewColumn Header="Plats du menu" DisplayMemberBinding="{Binding Nom}"/>
+                                <GridViewColumn Header="Produits du plat" DisplayMemberBinding="{Binding Nom}"/>
                             </GridView>
                         </ListView.View>
                     </ListView>
@@ -136,7 +136,7 @@
         </Grid>
 
 
-        <Button Grid.Row="1" Content="Confirmer" Grid.ColumnSpan="2">
+        <Button Command="{Binding Apply}" Grid.Row="1" Content="Confirmer" Grid.ColumnSpan="2">
             <Button.Style>
                 <Style TargetType="{x:Type Button}">
                     <Setter Property="Foreground" Value="White"/>
