@@ -27,6 +27,22 @@
             <Setter Property="FontWeight" Value="Bold"/>
         </Style>
 
+        <Style TargetType="GroupBox">
+            <Setter Property="BorderThickness" Value="2"/>
+            <Setter Property="Margin" Value="5"/>
+            <Setter Property="Padding" Value="13"/>
+            <Setter Property="BorderBrush" Value="#FF212121"/>
+        </Style>
+
+
+        <Style TargetType="ListView">
+            <Setter Property="FontFamily" Value="Trebuchet MS"/>
+            <Setter Property="FontSize" Value="20"/>
+            <Setter Property="FontStyle" Value="Italic"/>
+            <Setter Property="Foreground" Value="#FF212121"/>
+            <Setter Property="Background" Value="White"/>
+        </Style>
+
 
         <Style TargetType="Button">
             <Setter Property="Foreground" Value="White"/>
@@ -210,27 +226,8 @@
                     </ControlTemplate>
                 </Setter.Value>
             </Setter>
-        </Style>
+        </Style>   
         
-        
-        
-        
-        
-        
-        
-        
-        
-        
-
-        <Style TargetType="ListView">
-            <Setter Property="FontFamily" Value="Trebuchet MS"/>
-            <Setter Property="FontSize" Value="20"/>
-            <Setter Property="Foreground" Value="#FF212121"/>
-            <Setter Property="Background" Value="White"/>
-
-        </Style>
-
-
     </Application.Resources>
     
     
