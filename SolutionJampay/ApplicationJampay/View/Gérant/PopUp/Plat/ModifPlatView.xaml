@@ -4,8 +4,16 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ApplicationJampay.View.Gérant"
+        xmlns:validation="clr-namespace:ApplicationJampay.Validation"
+        xmlns:converter="clr-namespace:ApplicationJampay.Converter"
         mc:Ignorable="d"
-        Title="Plat" Height="650.142" Width="564.381">
+        Title="Plat" Height="725.142" Width="564.381">
+
+    <Window.Resources>
+        <converter:DateToStringConverter x:Key="date2string"/>
+        <converter:SelectedItemToIsEnable x:Key="selected2isEnable"/>
+        <converter:MultipleSelectedItemToIsEnable x:Key="multiSelected2isEnable"/>
+    </Window.Resources>
 
 
     <Grid>
@@ -26,17 +34,41 @@
                 <Separator Visibility="Hidden" Height="20"/>
 
                 <TextBlock Text="Le nom" Style="{StaticResource myTextBlock}" />
-                <TextBox Style="{StaticResource myTextBox}" TextWrapping="Wrap" Text="{Binding Nom}"/>
+                <TextBox x:Name="Nom" Style="{StaticResource myTextBox}" TextWrapping="Wrap">
+                    <TextBox.Text>
+                        <Binding Path="Nom" UpdateSourceTrigger="PropertyChanged">
+                            <Binding.ValidationRules>
+                                <validation:ValidateString ValidatesOnTargetUpdated="True" />
+                            </Binding.ValidationRules>
+                        </Binding>
+                    </TextBox.Text>
+                </TextBox>
 
                 <Separator Visibility="Hidden" Height="10"/>
 
                 <TextBlock Text="La date de création" Style="{StaticResource myTextBlock}" />
-                <TextBox Style="{StaticResource myTextBox}" TextWrapping="Wrap" Text="{Binding DateEffet}" />
+                <TextBox x:Name="DataCreation" Style="{StaticResource myTextBox}" TextWrapping="Wrap">
+                    <TextBox.Text>
+                        <Binding Path="DateEffet" UpdateSourceTrigger="PropertyChanged">
+                            <Binding.ValidationRules>
+                                <validation:ValidateDate ValidatesOnTargetUpdated="True" />
+                            </Binding.ValidationRules>
+                        </Binding>
+                    </TextBox.Text>                    
+                </TextBox>
 
                 <Separator Visibility="Hidden" Height="10"/>
 
                 <TextBlock Text="La date de fin" Style="{StaticResource myTextBlock}" />
-                <TextBox Style="{StaticResource myTextBox}" TextWrapping="Wrap" Text="{Binding DateFin}" />
+                <TextBox x:Name="DateFin" Style="{StaticResource myTextBox}" TextWrapping="Wrap">
+                    <TextBox.Text>
+                        <Binding Path="DateFin" UpdateSourceTrigger="PropertyChanged">
+                            <Binding.ValidationRules>
+                                <validation:ValidateDate ValidatesOnTargetUpdated="True" />
+                            </Binding.ValidationRules>
+                        </Binding>
+                    </TextBox.Text>
+                </TextBox>
 
                 <Separator Visibility="Hidden" Height="10"/>
 
@@ -46,41 +78,48 @@
                 <Separator Visibility="Hidden" Height="10"/>
 
                 <TextBlock Text="Le tarif" Style="{StaticResource myTextBlock}"/>
-                <TextBox Style="{StaticResource myTextBox}" TextWrapping="Wrap" Text="{Binding Tarif}"/>
+                <TextBox x:Name="Tarif" Style="{StaticResource myTextBox}" TextWrapping="Wrap">
+                    <TextBox.Text>
+                        <Binding Path="Tarif" UpdateSourceTrigger="PropertyChanged">
+                            <Binding.ValidationRules>
+                                <validation:ValidateFloat ValidatesOnTargetUpdated="True" />
+                            </Binding.ValidationRules>
+                        </Binding>
+                    </TextBox.Text>
+                </TextBox>
 
                 <Separator Visibility="Hidden" Height="10"/>
 
                 <TextBlock Text="Les plats" Style="{StaticResource myTextBlock}"/>
-                <Grid HorizontalAlignment="Center">
 
-                    <StackPanel Orientation="Horizontal">
-                        <ListView>
-                            <ListView.View>
-                                <GridView>
-                                    <GridViewColumn Header="Produits déjà présents"/>
-                                </GridView>
-                            </ListView.View>
-                        </ListView>
-
-                        <StackPanel Orientation="Vertical" VerticalAlignment="Center">
-
-                            <Button Grid.Row="1" Content="=>" />
-                            <Button Grid.Row="1" Content='>=' />
+                <Grid HorizontalAlignment="Stretch" Height="150">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition/>
+                        <ColumnDefinition Width="0.2*"/>
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
 
 
-                        </StackPanel>
+                    <ListView Grid.Column="0" ItemsSource="{Binding CollectionAvalaiblePat}" SelectedItem="{Binding SelectedFromAvalaiblePlat}" >
+                        <ListView.View>
+                            <GridView>
+                                <GridViewColumn Header="Plats existant" DisplayMemberBinding="{Binding Nom}"/>
+                            </GridView>
+                        </ListView.View>
+                    </ListView>
 
-                        <ListView>
-                            <ListView.View>
-                                <GridView>
-                                    <GridViewColumn Header="Liste des produits disponibles"/>
-                                </GridView>
-                            </ListView.View>
-                        </ListView>
-
-
+                    <StackPanel Grid.Column="1" Orientation="Vertical" VerticalAlignment="Center" Margin="10">
+                        <Button Command="{Binding AddPlat}" HorizontalAlignment="Center" Grid.Row="1" Content="+" IsEnabled="{Binding SelectedFromAvalaiblePlat, Converter={StaticResource selected2isEnable}}"/>
+                        <Button Command="{Binding RemovePlat}" HorizontalAlignment="Center" Grid.Row="1" Content='-' IsEnabled="{Binding SelectedFromSelectedPlat, Converter={StaticResource selected2isEnable}}" />
                     </StackPanel>
 
+                    <ListView Grid.Column="2" ItemsSource="{Binding CollectionSelectedPat}" SelectedItem="{Binding SelectedFromSelectedPlat}" HorizontalAlignment="Stretch">
+                        <ListView.View>
+                            <GridView>
+                                <GridViewColumn Header="Plats du menu" DisplayMemberBinding="{Binding Nom}"/>
+                            </GridView>
+                        </ListView.View>
+                    </ListView>
 
                 </Grid>
 
