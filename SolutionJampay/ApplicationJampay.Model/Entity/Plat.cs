@@ -9,13 +9,14 @@ namespace ApplicationJampay.Model.Entity
     public class Plat
     {
         public int CodePlat { get; private set; }
-        public float? Prix { get; private set; }
+        public float Prix { get; private set; }
         public DateTime DateEffet { get; private set; }
         public DateTime DateFin { get; private set; }
         public string Categorie { get; private set; }
         public string Nom { get; private set; }
+        public List<Produit> ListProduits { get; private set; }
 
-        public Plat(int codePlat, DateTime dateEffet, DateTime dateFin, string categorie, string nom, float? prix = default(float))
+        public Plat(int codePlat, DateTime dateEffet, DateTime dateFin, string categorie, string nom, float prix)
         {
             CodePlat = codePlat;
             Prix = prix;
@@ -23,6 +24,11 @@ namespace ApplicationJampay.Model.Entity
             DateFin = dateFin;
             Categorie = categorie;
             Nom = nom;
+        }
+
+        public void SetListProduits(List<Produit> list)
+        {
+            ListProduits = list;
         }
 
         public bool Equals(Plat other)
