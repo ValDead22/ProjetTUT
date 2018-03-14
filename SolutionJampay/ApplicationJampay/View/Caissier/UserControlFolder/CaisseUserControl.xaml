@@ -22,44 +22,100 @@
                 <RowDefinition Height="2*"/>
             </Grid.RowDefinitions>
 
-            <Grid Grid.Row="0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="0.7*"/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+
+            <Grid Grid.Row="0" Margin="20,0">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition/>
                     <ColumnDefinition/>
                     <ColumnDefinition/>
                 </Grid.ColumnDefinitions>
 
+                
+                <Button Grid.Column="0" Content="Supprimer plat" Command="{Binding DeleteSelectedChoosenPlat}" IsEnabled="{Binding SelectedChoosenPlat, Converter={StaticResource selected2isEnable}}" />
 
-                <Border Grid.Row="0" Grid.ColumnSpan="2" VerticalAlignment="Center" HorizontalAlignment="Center" BorderBrush="#FF212121" BorderThickness="10" CornerRadius="30,30,30,30">
 
+                <Border Grid.Row="0" Grid.ColumnSpan="2" Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Center" BorderBrush="#FF212121" BorderThickness="5" CornerRadius="30,30,30,30">
                     <StackPanel VerticalAlignment="Center" Height="75" Grid.Row="0" Grid.ColumnSpan="2" Orientation="Horizontal" HorizontalAlignment="Center" Grid.Column="0" DockPanel.Dock="Bottom" Margin="10">
-
-                        <Button Grid.Column="1"  Content="Réglement"   Command="{Binding CardPayCommand}" IsEnabled="{Binding CollectionChoosenPlat, Converter={StaticResource selected2isEnable}}"/>
+                        <Button Grid.Column="1"  Content="REGLEMENT"   Command="{Binding CardPayCommand}" IsEnabled="{Binding CollectionChoosenPlat, Converter={StaticResource selected2isEnable}}"/>
                         <Separator Width="20" Height="25" Background="Transparent"/>
-                        <Button Grid.Column="2" Content="Ajouter un plat" Command="{Binding OpenAddPlatViewCommand}"/>
-                        <Separator Width="20" Height="25" Background="Transparent"/>
-                        <Button Grid.Column="2" Content="Supprimer un plat" Command="{Binding DeleteSelectedChoosenPlat}" IsEnabled="{Binding SelectedChoosenPlat, Converter={StaticResource selected2isEnable}}" />
-
+                        <Label Grid.Column="3" Content="{Binding Prix}" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="50"/>
                     </StackPanel>
-
                 </Border>
 
 
-                <Label Grid.Column="3" Content="{Binding Prix}" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="50"/>
-
-                
 
             </Grid>
-
-
-            <ListView FontSize="20" SelectedItem="{Binding SelectedChoosenPlat}" ItemsSource="{Binding CollectionChoosenPlat}"  Grid.Row="1" Grid.Column="0"  HorizontalAlignment="Stretch" Margin="10">
+            
+            <ListView FontSize="50" SelectedItem="{Binding SelectedChoosenPlat}" ItemsSource="{Binding CollectionChoosenPlat}"  Grid.RowSpan="2" Grid.Column="1"  Margin="20">
                 <ListView.View>
                     <GridView>
-                        <GridViewColumn Width="300" Header="Nom" DisplayMemberBinding="{Binding Nom}"/>
-                        <GridViewColumn Width="125" Header="Quantité" DisplayMemberBinding="{Binding Quantite}"/>
+                        <GridViewColumn Header="Nom" DisplayMemberBinding="{Binding Nom}"/>
+                        <GridViewColumn Header="Quantité" DisplayMemberBinding="{Binding Quantite}"/>
                     </GridView>
                 </ListView.View>
             </ListView>
+
+
+
+
+
+            <Grid Grid.Row="1" Margin="20">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="1.2*"/>
+                    <ColumnDefinition Width="2*"/>
+                </Grid.ColumnDefinitions>
+
+                <Grid Grid.Column="0">
+
+                    <Grid.RowDefinitions>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition Height="0.4*"/>
+                    </Grid.RowDefinitions>
+
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
+
+                    <Button Grid.Row="0" Content="PLAT" Grid.Column="0"  FontSize="20"  Command="{Binding DisplayPlatViewCommand}" />
+                    <Button Grid.Row="0" Content="ENTREE" Grid.Column="1"  FontSize="20"  Command="{Binding DisplayEntreeViewCommand}" />
+                    <Button Grid.Row="1" Content="DESSERT" Grid.Column="0"  FontSize="20"   Command="{Binding DisplayDessertViewCommand}" />
+                    <Button Grid.Row="1" Content="SNACK" Grid.Column="1"  FontSize="20"   Command="{Binding DisplaySnackViewCommand}" />
+                    <Button Grid.Row="3" Content="AUTRE" Grid.Column="0" Grid.ColumnSpan="2"  FontSize="20"   Command="{Binding DisplaySnackViewCommand}" />
+
+                </Grid>
+
+                <Grid Grid.Column="1">
+
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="10*"/>
+                        <RowDefinition Height="2*"/>
+                    </Grid.RowDefinitions>
+
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
+
+                    <Button Grid.Row="1" Grid.ColumnSpan="2" Content="Ajouter" FontWeight="Black"  Grid.Column="0"  Command="{Binding ValidateCommand}" IsEnabled="{Binding SelectedPlat, Converter={StaticResource selected2isEnable}}"/>
+
+                </Grid>
+
+                <ListView FontSize="40" SelectedItem="{Binding SelectedPlat}" ItemsSource="{Binding CollectionOfSelectedCateg}" Grid.Column="1" Margin="10,0,0,10" VerticalAlignment="Top">
+                    <ListView.View>
+                        <GridView>
+                            <GridViewColumn Header="Nom" DisplayMemberBinding="{Binding Nom}"/>
+                        </GridView>
+                    </ListView.View>
+                </ListView>
+
+            </Grid>
+
 
         </Grid>
 
