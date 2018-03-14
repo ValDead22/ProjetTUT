@@ -41,7 +41,7 @@
                 <Separator Visibility="Hidden" Height="10"/>
 
                 <TextBlock Style="{StaticResource myTextBlock}" Text="ID du gérant" />
-                <ComboBox ItemsSource="{Binding AvalaibleGerant}" SelectedIndex="0" SelectedItem="{Binding SelectedGerant}"  FontFamily="Trebuchet MS" FontSize="18" Foreground="White">
+                <ComboBox ItemsSource="{Binding AvalaibleGerant}" SelectedIndex="0" SelectedItem="{Binding SelectedGerant}">
                     <ComboBox.ItemTemplate>
                         <DataTemplate>
                             <StackPanel Orientation="Horizontal">
@@ -82,7 +82,7 @@
                 <Separator Visibility="Hidden" Height="10"/>
 
                 <TextBlock Style="{StaticResource myTextBlock}" Text="La catégorie" />
-                <ComboBox ItemsSource="{Binding AvailableCategories}" SelectedIndex="0" SelectedItem="{Binding SelectedCategory}"  FontFamily="Trebuchet MS" FontSize="18" Foreground="White"/>
+                <ComboBox ItemsSource="{Binding AvailableCategories}" SelectedIndex="0" SelectedItem="{Binding SelectedCategory}" />
 
                 <Separator Height="20" Background="#FF212121" Margin="5, 10"/>
 

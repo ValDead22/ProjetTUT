@@ -71,11 +71,10 @@
                 <Separator Visibility="Hidden" Height="10"/>
 
                 <TextBlock Text="La catégorie" Style="{StaticResource myTextBlock}"/>
-                <ComboBox  FontFamily="Trebuchet MS" FontSize="18" Foreground="White" ItemsSource="{Binding AvailableCategories}" SelectedIndex="0" SelectedItem="{Binding SelectedCategory}">
+                <ComboBox ItemsSource="{Binding AvailableCategories}" SelectedIndex="0" SelectedItem="{Binding SelectedCategory}">
                 </ComboBox>
-
+                
                 <Separator Visibility="Hidden" Height="10"/>
-
                 <TextBlock Text="Le tarif" Style="{StaticResource myTextBlock}"/>
                 <TextBox x:Name="TextBoxPrix" Style="{StaticResource myTextBox}">
                     <Binding Path="Tarif" UpdateSourceTrigger="LostFocus">

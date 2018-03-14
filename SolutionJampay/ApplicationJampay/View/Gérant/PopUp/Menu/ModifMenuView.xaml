@@ -7,7 +7,7 @@
         xmlns:validation="clr-namespace:ApplicationJampay.Validation"
         xmlns:converter="clr-namespace:ApplicationJampay.Converter"
         mc:Ignorable="d"
-        Title="Menu" Height="734.148" Width="620">
+        Title="Menu" Height="734.148" Width="675.5">
     
     <Window.Resources>
         <converter:DateToStringConverter x:Key="date2string"/>
@@ -47,7 +47,7 @@
                 <Separator Visibility="Hidden" Height="10"/>
 
                 <TextBlock Text="ID du gérant" Style="{StaticResource myTextBlock}" />
-                <ComboBox  FontFamily="Trebuchet MS" FontSize="18" Foreground="White" ItemsSource="{Binding AvalaibleGerant}" SelectedIndex="0" SelectedItem="{Binding SelectedGerant}">
+                <ComboBox ItemsSource="{Binding AvalaibleGerant}" SelectedIndex="0" SelectedItem="{Binding SelectedGerant}">
                     <ComboBox.ItemTemplate>
                         <DataTemplate>
                             <StackPanel Orientation="Horizontal">
@@ -87,7 +87,7 @@
                 <Separator Visibility="Hidden" Height="10"/>
 
                 <TextBlock Text="La catégorie" Style="{StaticResource myTextBlock}" />
-                <ComboBox  FontFamily="Trebuchet MS" FontSize="18" Foreground="White" ItemsSource="{Binding AvailableCategories}" SelectedIndex="0" SelectedItem="{Binding SelectedCategory}"/>
+                <ComboBox  ItemsSource="{Binding AvailableCategories}" SelectedIndex="0" SelectedItem="{Binding SelectedCategory}"/>
 
                 <Separator Visibility="Hidden" Height="10"/>
                 

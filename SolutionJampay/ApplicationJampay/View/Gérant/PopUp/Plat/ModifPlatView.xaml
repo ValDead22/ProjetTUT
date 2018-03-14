@@ -79,7 +79,7 @@
                 <Separator Visibility="Hidden" Height="10"/>
 
                 <TextBlock Text="La catégorie" Style="{StaticResource myTextBlock}"/>
-                <ComboBox  FontFamily="Trebuchet MS" FontSize="18" Foreground="White" SelectedIndex="0"  ItemsSource="{Binding AvailableCategories}" SelectedItem="{Binding SelectedCategory}"/>
+                <ComboBox  SelectedIndex="0"  ItemsSource="{Binding AvailableCategories}" SelectedItem="{Binding SelectedCategory}"/>
 
                 <Separator Visibility="Hidden" Height="10"/>
 
