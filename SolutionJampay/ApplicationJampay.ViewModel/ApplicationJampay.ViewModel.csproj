@@ -68,7 +68,6 @@
     <Compile Include="ViewModel\Caissier\UserControlFolder\UserControlWelcomingViewModel.cs" />
     <Compile Include="ViewModel\Gérant\PopUp\AjoutMenuViewModel.cs" />
     <Compile Include="ViewModel\Gérant\PopUp\AjoutPlatViewModel.cs" />
-    <Compile Include="ViewModel\Caissier\AjouterPlatViewModelcs.cs" />
     <Compile Include="ViewModel\ErrorViewModel.cs" />
     <Compile Include="ViewModel\Gérant\PopUp\AjoutUtilisateurViewModel.cs" />
     <Compile Include="ViewModel\Gérant\PopUp\ModifMenuViewModel.cs" />

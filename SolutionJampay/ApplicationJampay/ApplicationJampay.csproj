@@ -111,9 +111,6 @@
     <Compile Include="View\Gérant\PopUp\Menu\AjoutMenuView.xaml.cs">
       <DependentUpon>AjoutMenuView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="View\Caissier\PopUp\AjouterPlat.xaml.cs">
-      <DependentUpon>AjouterPlat.xaml</DependentUpon>
-    </Compile>
     <Compile Include="View\Gérant\PopUp\Plat\AjoutPlatView.xaml.cs">
       <DependentUpon>AjoutPlatView.xaml</DependentUpon>
     </Compile>
@@ -175,10 +172,6 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\Gérant\PopUp\Menu\AjoutMenuView.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="View\Caissier\PopUp\AjouterPlat.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
