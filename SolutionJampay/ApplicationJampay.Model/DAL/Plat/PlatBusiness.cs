@@ -136,5 +136,31 @@ namespace ApplicationJampay.Model.DAL.Plat
                 throw new Exception(ex.Message);
             }
         }
+
+        public List<Entity.Plat> GetPlatByCodeCommande(Entity.Commande commande)
+        {
+            try
+            {
+                return _platDAL.GetPlatByCodeCommande(commande);
+            }
+            catch (Exception ex)
+            {
+
+                throw new Exception(ex.Message);
+            }
+        }
+
+        public void DeletePlatFromCommande(Entity.Commande commande, Entity.Plat plat)
+        {
+            try
+            {
+                _platDAL.DeletePlatFromCommande(commande, plat);
+            }
+            catch (Exception ex)
+            {
+
+                throw new Exception(ex.Message);
+            }
+        }
     }
 }

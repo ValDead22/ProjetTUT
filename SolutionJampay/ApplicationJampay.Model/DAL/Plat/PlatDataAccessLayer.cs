@@ -199,5 +199,46 @@ namespace ApplicationJampay.Model.DAL.Plat
             MySqlDataReader mySqlDataReader = _sQLService.Load(query);
             mySqlDataReader.Close();
         }
+
+        public List<Entity.Plat> GetPlatByCodeCommande(Entity.Commande commande)
+        {
+            var query = "SELECT pl.CodePlat, pl.Prix, pl.DateEffet, pl.DateFin, pl.Categorie, pl.Nom " +
+                "FROM Plat pl, Commande c, PlatCommande pcm " +
+                "WHERE c.CodeCommande =" + "\"" + commande.CodeCommande + "\"" + "AND pl.CodePlat = pcm.CodePlat And c.CodeCommande = pcm.CodeCommande";
+            MySqlDataReader mySqlDataReader = _sQLService.Load(query);
+
+            try
+            {
+                List<Entity.Plat> list = new List<Entity.Plat>();
+
+                while (mySqlDataReader.Read())
+                {
+                    Entity.Plat plat = new Entity.Plat((int)mySqlDataReader["CodePlat"],
+                        (DateTime)mySqlDataReader["DateEffet"],
+                        (DateTime)mySqlDataReader["DateFin"],
+                        mySqlDataReader["Categorie"] as string,
+                        mySqlDataReader["Nom"] as string,
+                        (float)mySqlDataReader["Prix"]);
+
+                    list.Add(plat);
+                }
+                return list;
+            }
+            catch
+            {
+                throw new Exception("Pas de plats !");
+            }
+            finally
+            {
+                mySqlDataReader.Close();
+            }
+        }
+
+        public void DeletePlatFromCommande(Entity.Commande commande, Entity.Plat plat)
+        {
+            var query = "DELETE FROM PlatCommande WHERE CodePlat=" + "\"" + plat.CodePlat + "\"" + "AND CodeCommande=" + "\"" + commande.CodeCommande + "\"";
+            MySqlDataReader mySqlDataReader = _sQLService.Load(query);
+            mySqlDataReader.Close();
+        }
     }
 }

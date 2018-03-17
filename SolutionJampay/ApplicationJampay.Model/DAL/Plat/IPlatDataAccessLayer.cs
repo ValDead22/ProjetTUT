@@ -21,5 +21,9 @@ namespace ApplicationJampay.Model.DAL.Plat
         void DeleteAllProduitOfPlat(Entity.Plat plat);
 
         void AddProduitToPlat(Entity.Plat plat, Entity.Produit produit);
+
+        List<Entity.Plat> GetPlatByCodeCommande(Entity.Commande commande);
+
+        void DeletePlatFromCommande(Entity.Commande commande, Entity.Plat plat);
     }
 }
