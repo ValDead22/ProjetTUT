@@ -108,15 +108,6 @@ namespace ApplicationJampay.ViewModel.ViewModel.Caissier.UserControlFolder
                 int test = ManageDataCardService.GetCodeCarte();
                 UsagerWhoPay = _usagerBusiness.GetUsagerByMatriculeCarte(test);
                 CanPay = true;
-                if (_usagerBusiness.GetCardCredit(UsagerWhoPay) < Prix && UsagerWhoPay.Paiement == "Carte")
-                {
-                    throw new Exception("Solde Insuffisant !");
-                }
-                else
-                {
-                    Commande commande = new Commande(Caissier.Matricule, UsagerWhoPay.Paiement, DateTime.Today, UsagerWhoPay.Matricule);
-                    
-                }
 
                 
             }
@@ -140,7 +131,8 @@ namespace ApplicationJampay.ViewModel.ViewModel.Caissier.UserControlFolder
                 }
                 else
                 {
-                    Commande commande = new Commande(Caissier.Matricule, UsagerWhoPay.Paiement, DateTime.Today, UsagerWhoPay.Matricule);
+                    Thread.CurrentThread.CurrentCulture = CultureInfo.GetCultureInfo("en-US");
+                    Commande commande = new Commande(Caissier.Matricule, UsagerWhoPay.Paiement, DateTime.Today, UsagerWhoPay.Matricule, Prix);
                     _commandeBusiness.AddCommande(commande);
                     Commande lastCommande = _commandeBusiness.GetTheLastInsertedCommande();
 
@@ -148,7 +140,7 @@ namespace ApplicationJampay.ViewModel.ViewModel.Caissier.UserControlFolder
                     {
                         _commandeBusiness.AddPlatToCommande(p, lastCommande);
                     }
-                    Thread.CurrentThread.CurrentCulture = CultureInfo.GetCultureInfo("en-US");
+                    
                     float newCredit = currentCredit - Prix;
                     _usagerBusiness.SetCardCredit(UsagerWhoPay, newCredit);
 
