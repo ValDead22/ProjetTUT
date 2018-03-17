@@ -60,5 +60,42 @@ namespace ApplicationJampay.Model.DAL.Produit
                 throw new Exception(ex.Message);
             }
         }
+
+        public void DeleteProduit(Entity.Produit produit)
+        {
+            try
+            {
+                _productDAL.DeleteProduit(produit);
+            }
+            catch (Exception ex)
+            {
+
+                throw new Exception(ex.Message);
+            }
+        }
+
+        public void ModifyProduit(Entity.Produit produit)
+        {
+            try
+            {
+                _productDAL.ModifyProduit(produit);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
+
+        public List<string> GetAllCategories()
+        {
+            try
+            {
+                return _productDAL.GetAllCategories();
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
     }
 }

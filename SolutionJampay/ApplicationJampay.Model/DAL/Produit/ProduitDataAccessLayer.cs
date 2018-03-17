@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using ApplicationJampay.Model.Entity;
 using ApplicationJampay.Model.Service;
 using MySql.Data.MySqlClient;
@@ -13,7 +14,9 @@ namespace ApplicationJampay.Model.DAL.Produit
 
         public void AddProduit(Entity.Produit produit)
         {
-            throw new NotImplementedException();
+            var query = "INSERT INTO Produit VALUES("+ "\"" + null + "\"" + "," + "\"" + produit.DateEffet.ToString("yyyy-MM-dd") + "\"" + "," + "\"" + produit.DateFin.ToString("yyyy-MM-dd") + "\"" + "," + "\"" + produit.Categorie + "\"" + "," + "\"" + produit.Nom + "\"" + "," + "\"" + produit.Observation + "\"" + ")";
+            MySqlDataReader mySqlDataReader = _sQLService.Load(query);
+            mySqlDataReader.Close();
         }
 
         public List<Entity.Produit> GetAllProduits()
@@ -89,6 +92,48 @@ namespace ApplicationJampay.Model.DAL.Produit
             var query = "UPDATE Produit SET Observation=" + "\"" + Obs + "\"" + " WHERE CodeProduit=" + "\"" + produit.CodeProduit + "\"";
             MySqlDataReader mySqlDataReader = _sQLService.Load(query);
             mySqlDataReader.Close();
+        }
+
+        public void ModifyProduit(Entity.Produit produit)
+        {
+            var query = "UPDATE Produit SET DateEffet=" + "\"" + produit.DateEffet.ToString("yyyy-MM-dd") + "\"" + "," + " DateFin=" + "\"" + produit.DateFin.ToString("yyyy-MM-dd") + "\"" + "," + "Categorie=" + "\"" + produit.Categorie + "\"" + "," + "Nom=" + "\"" + produit.Nom + "\"" + "," + "Observation=" + "\"" + produit.Observation + "\"" +" WHERE CodeProduit=" + "\"" + produit.CodeProduit + "\"";
+            Debug.WriteLine(query);
+            MySqlDataReader mySqlDataReader = _sQLService.Load(query);
+            mySqlDataReader.Close();
+        }
+
+        public void DeleteProduit(Entity.Produit produit)
+        {
+            var query = "DELETE FROM CompositionPlat WHERE CodeProduit = " + "\"" + produit.CodeProduit  + "\"; DELETE FROM Produit WHERE CodeProduit = " + "\"" + produit.CodeProduit + "\"; ";
+            MySqlDataReader mySqlDataReader = _sQLService.Load(query);
+            mySqlDataReader.Close();
+        }
+
+        public List<string> GetAllCategories()
+        {
+            var query = "SELECT * FROM CategorieProduit";
+            MySqlDataReader mySqlDataReader = _sQLService.Load(query);
+
+            try
+            {
+                List<string> list = new List<string>();
+
+                while (mySqlDataReader.Read())
+                {
+                    string categ = (string)mySqlDataReader["Libelle"];
+                    list.Add(categ);
+
+                }
+                return list;
+            }
+            catch
+            {
+                throw new Exception("Aucune catégories !");
+            }
+            finally
+            {
+                mySqlDataReader.Close();
+            }
         }
     }
 }
