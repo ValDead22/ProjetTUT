@@ -72,7 +72,7 @@ namespace ApplicationJampay.ViewModel.ViewModel.Cuisinier
 
             try
             {
-                foreach (Menu menu in _menuBusiness.GetAllMenus())
+                foreach (Menu menu in _menuBusiness.GetMenusDuJour())
                 {
                     _collectionMenu.Add(menu);
                 }
