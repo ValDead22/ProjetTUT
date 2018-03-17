@@ -4,9 +4,99 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:ApplicationJampay.View.Caissier.UserControlFolder"
+             xmlns:converter="clr-namespace:ApplicationJampay.Converter"
              mc:Ignorable="d" 
-             d:DesignHeight="300" d:DesignWidth="300">
+             d:DesignHeight="720" d:DesignWidth="1280">
+    <UserControl.Resources>
+        <converter:DateToStringConverter x:Key="date2stringConverter"/>
+        <converter:SelectedItemToIsEnable x:Key="selectedItem2IsEnable"/>
+    </UserControl.Resources>
+    
     <Grid>
-            
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="1.2*"/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+
+        <GroupBox Margin="20" Grid.Column="0">
+            <GroupBox.Header>
+                <TextBlock Style="{StaticResource myTextBlock}" Text="Commandes effectuées"/>
+            </GroupBox.Header>
+
+            <ListView   BorderThickness="0" Margin="10" SelectedItem="{Binding SelectedCommande}" ItemsSource="{Binding CollectionCommande}">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <Border BorderBrush="Black" BorderThickness="2" CornerRadius="3" Margin="0,3" Grid.ColumnSpan="4" Background="White">
+                            <Grid Background="White" Margin="0,1">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition />
+                                    <ColumnDefinition />
+                                    <ColumnDefinition />
+                                    <ColumnDefinition />
+                                    <ColumnDefinition />
+                                    <ColumnDefinition />
+                                </Grid.ColumnDefinitions>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition/>
+                                </Grid.RowDefinitions>
+                                <StackPanel  Orientation="Vertical" Grid.Column="0"  HorizontalAlignment="Center" Margin="10,0,0,0">
+                                    <TextBlock FontStyle="Normal" Style="{StaticResource myTextBlock}" Text="Code" />
+                                    <TextBlock HorizontalAlignment="Center" Style="{StaticResource myTextBlock}" Text="{Binding CodeCommande}" FontSize="17" />
+                                </StackPanel>
+                                <StackPanel Orientation="Vertical" Grid.Column="1"  HorizontalAlignment="Center" Margin="10,0,0,0">
+                                    <TextBlock FontStyle="Normal" Style="{StaticResource myTextBlock}" Text="Moyen de paiement" />
+                                    <TextBlock HorizontalAlignment="Center" Style="{StaticResource myTextBlock}" Text="{Binding MoyenDePaiement}" FontSize="17" />
+                                </StackPanel>
+                                <StackPanel Orientation="Vertical" Grid.Column="2"  HorizontalAlignment="Center" Margin="10,0,0,0">
+                                    <TextBlock  FontStyle="Normal" Style="{StaticResource myTextBlock}" Text="Montant" />
+                                    <TextBlock HorizontalAlignment="Center" Style="{StaticResource myTextBlock}" Text="{Binding PrixTotal}" FontSize="17" />
+                                </StackPanel>
+                                <StackPanel Orientation="Vertical" Grid.Column="3"  HorizontalAlignment="Center" Margin="10,0,0,0">
+                                    <TextBlock  FontStyle="Normal" Style="{StaticResource myTextBlock}" Text="Matricule du client" />
+                                    <TextBlock HorizontalAlignment="Center" Style="{StaticResource myTextBlock}" Text="{Binding MatriculeClient}" FontSize="17" />
+                                </StackPanel>
+                                <StackPanel Orientation="Vertical" Grid.Column="4"  HorizontalAlignment="Center" Margin="10,0,0,0">
+                                    <TextBlock  FontStyle="Normal" Style="{StaticResource myTextBlock}" Text="Date de commande" />
+                                    <TextBlock HorizontalAlignment="Center" Style="{StaticResource myTextBlock}" Text="{Binding Date, Converter={StaticResource date2stringConverter}}" FontSize="17" />
+                                </StackPanel>
+                                <StackPanel Orientation="Vertical" Grid.Column="5" HorizontalAlignment="Center" Margin="10,0,0,0">
+                                    <TextBlock FontStyle="Normal" Style="{StaticResource myTextBlock}" Text="ID du caissier" />
+                                    <TextBlock HorizontalAlignment="Center" Style="{StaticResource myTextBlock}" Text="{Binding IDCaissier}" FontSize="17" />
+                                </StackPanel>
+                            </Grid>
+
+                        </Border>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+
+        </GroupBox>
+
+        <Grid Grid.Column="1">
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+
+            <GroupBox Grid.Row="0" Grid.RowSpan="2" Margin="20">
+                <GroupBox.Header>
+                    <TextBlock Style="{StaticResource myTextBlock}" Text="Plats présents dans la commande"/>
+                </GroupBox.Header>
+                <ListView BorderThickness="0" Margin="10" SelectedItem="{Binding SelectedPlat}" ItemsSource="{Binding CollectionPlatOfSelectedCommande}">
+                    <ListView.View>
+                        <GridView>
+                            <GridViewColumn Header="Code" DisplayMemberBinding="{Binding CodePlat}"/>
+                            <GridViewColumn Header="Nom" DisplayMemberBinding="{Binding Nom}"/>
+                            <GridViewColumn Header="Catégrorie" DisplayMemberBinding="{Binding Categorie}"/>
+                        </GridView>
+                    </ListView.View>
+                </ListView>
+            </GroupBox>
+
+            <Button Command="{Binding DeleteCommand}" Grid.Row="3" Content="Supprimer" VerticalAlignment="Center" HorizontalAlignment="Center" IsEnabled="{Binding SelectedPlat, Converter={StaticResource selectedItem2IsEnable}}"/>
+
+        </Grid>
+
     </Grid>
 </UserControl>
