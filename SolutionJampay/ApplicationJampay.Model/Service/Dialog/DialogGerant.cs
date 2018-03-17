@@ -74,5 +74,27 @@ namespace ApplicationJampay.Model.Service.Dialog
 
             windows.ShowDialog();
         }
+
+        /// <summary>
+        /// Create new Produit
+        /// </summary>
+        public static void ShowAjoutProduitView()
+        {
+            var createType = Type.GetType("ApplicationJampay.View.Gérant.PopUp.Produit.AjoutProduitView, ApplicationJampay");
+            var windows = (System.Windows.Window)Activator.CreateInstance(createType);
+
+            windows.ShowDialog();
+        }
+
+        /// <summary>
+        /// Modify a Produit
+        /// </summary>
+        public static void ShowModifProduitView()
+        {
+            var createType = Type.GetType("ApplicationJampay.View.Gérant.PopUp.Produit.ModifProduitView, ApplicationJampay");
+            var windows = (System.Windows.Window)Activator.CreateInstance(createType);
+
+            windows.ShowDialog();
+        }
     }
 }
