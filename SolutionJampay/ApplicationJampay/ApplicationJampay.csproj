@@ -151,6 +151,9 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="View\SuccessView.xaml.cs">
+      <DependentUpon>SuccessView.xaml</DependentUpon>
+    </Compile>
     <Page Include="View\Caissier\UserControlFolder\CaisseUserControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -223,6 +226,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="View\SuccessView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs">
@@ -284,6 +291,9 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Asset\background.jpeg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Asset\success.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

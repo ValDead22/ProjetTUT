@@ -37,6 +37,18 @@ namespace ApplicationJampay.Model.Service.Dialog
             windows.ShowDialog();
         }
 
+        /// <summary>
+        /// Show a Error window
+        /// </summary>
+        /// <param name="message"></param>
+        public static void ShowSuccessWindow(string message)
+        {
+            var createType = Type.GetType("ApplicationJampay.View.SuccessView, ApplicationJampay");
+            var windows = (System.Windows.Window)Activator.CreateInstance(createType, message);
+
+            windows.ShowDialog();
+        }
+
 
         public static void ShowLoginWindow()
         {
