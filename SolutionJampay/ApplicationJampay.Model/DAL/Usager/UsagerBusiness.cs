@@ -72,11 +72,37 @@ namespace ApplicationJampay.Model.DAL.Usager
             }
         }
 
-        public void Pay(int matricule, float price)
+        
+
+        public float GetCardCredit(Entity.Usager usager)
         {
             try
             {
-                _usagerDAL.Pay(matricule, price);
+                return _usagerDAL.GetCardCredit(usager);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
+
+        public Entity.Usager GetUsagerByMatriculeCarte(int matricule)
+        {
+            try
+            {
+                return _usagerDAL.GetUsagerByMatriculeCarte(matricule);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
+
+        public void SetCardCredit(Entity.Usager usager, float newCredit)
+        {
+            try
+            {
+                _usagerDAL.SetCardCredit(usager, newCredit);
             }
             catch (Exception ex)
             {

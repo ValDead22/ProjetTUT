@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
+using ApplicationJampay.Model.Entity;
 using ApplicationJampay.Model.Service;
 using MySql.Data.MySqlClient;
 
@@ -62,7 +64,7 @@ namespace ApplicationJampay.Model.DAL.Usager
                         mySqlDataReader["Prenom"] as string,
                         mySqlDataReader["Titre"] as string,
                         mySqlDataReader["Paiement"] as string,
-                        mySqlDataReader["MatriculeCarte"] as int?,
+                        (int)mySqlDataReader["MatriculeCarte"],
                         mySqlDataReader["DateFinC"] as DateTime?
                         );
 
@@ -102,7 +104,7 @@ namespace ApplicationJampay.Model.DAL.Usager
                         mySqlDataReader["Prenom"] as string,
                         mySqlDataReader["Titre"] as string,
                         mySqlDataReader["Paiement"] as string,
-                        mySqlDataReader["MatriculeCarte"] as int?,
+                        (int)mySqlDataReader["MatriculeCarte"],
                         mySqlDataReader["DateFinC"] as DateTime?
                         );
 
@@ -133,12 +135,12 @@ namespace ApplicationJampay.Model.DAL.Usager
             mySqlDataReader.Close();
         }
 
-        public int getCredit(int matricule)
+        public float GetCardCredit(Entity.Usager usager)
         {
 
-            int credit = 0;
+            float credit = 0;
 
-            var query = "SELECT Credit WHERE MatriculeCarte =\"" + matricule + "\"";
+            var query = "SELECT Credit FROM Carte WHERE MatriculeCarte=\"" + usager.MatriculeCarte + "\"";
             
             MySqlDataReader mySqlDataReader = _sQLService.Load(query);
 
@@ -147,7 +149,7 @@ namespace ApplicationJampay.Model.DAL.Usager
 
                 while (mySqlDataReader.Read())
                 {
-                    credit = (int)mySqlDataReader["Credit"];
+                    credit = (float)mySqlDataReader["Credit"];
                     
                 }
                 
@@ -161,25 +163,56 @@ namespace ApplicationJampay.Model.DAL.Usager
             return credit;
 
         }
+        
 
-
-        public void Pay(int matricule, float prix)
+        public Entity.Usager GetUsagerByMatriculeCarte(int matricule)
         {
-            int solde = getCredit(matricule);
-            if(solde < prix)
-
+            var query = "SELECT * FROM Usager WHERE MatriculeCarte="+"\""+matricule+"\"";
+            MySqlDataReader mySqlDataReader = _sQLService.Load(query);
+            try
             {
-                throw new Exception("Prix supérieur au solde présent sur la carte");
+                List<Entity.Usager> list = new List<Entity.Usager>();
+
+                while (mySqlDataReader.Read())
+                {
+
+
+                    Entity.Usager usager = new Entity.Usager(
+                        (DateTime)mySqlDataReader["DateEntree"],
+                        (int)mySqlDataReader["Matricule"],
+                        (int)mySqlDataReader["CodeFonction"],
+                        (int)mySqlDataReader["Service"],
+                        mySqlDataReader["Nom"] as string,
+                        mySqlDataReader["Prenom"] as string,
+                        mySqlDataReader["Titre"] as string,
+                        mySqlDataReader["Paiement"] as string,
+                        (int)mySqlDataReader["MatriculeCarte"],
+                        mySqlDataReader["DateFinC"] as DateTime?
+                        );
+
+                    list.Add(usager);
+                }
+                return list[0];
+            }
+            catch (MySqlException)
+            {
+                throw new Exception("Problème(s) lors l'obtention de l'usager !");
+            }
+            finally
+            {
+                mySqlDataReader.Close();
             }
 
-            float credit = solde - prix;
+        }
 
-            var query = "UPDATE Carte SET Credit=\"" + credit + "\" WHERE MatriculeCarte=\"" + matricule + "\"";
+        public void SetCardCredit(Entity.Usager usager, float newCredit)
+        {
+            
+            var query = "UPDATE Carte SET Credit=\"" + newCredit + "\"" + " WHERE MatriculeCarte=(SELECT MatriculeCarte FROM Usager WHERE Matricule=\"" + usager.Matricule + "\"" + ")";
+            Debug.WriteLine(query);
             MySqlDataReader mySqlDataReader = _sQLService.Load(query);
-
             mySqlDataReader.Close();
-
-
+            
         }
     }
 }

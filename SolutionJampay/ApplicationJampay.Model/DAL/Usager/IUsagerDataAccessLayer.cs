@@ -13,6 +13,12 @@ namespace ApplicationJampay.Model.DAL.Usager
         List<string> GetAllMoyenDePaiements();
 
         void ModifyMoyenDePaiement(int matricule, string moyenDePaiement);
-        void Pay(int matricule, float price);
+        
+
+        Entity.Usager GetUsagerByMatriculeCarte(int matricule);
+
+        float GetCardCredit(Entity.Usager usager);
+
+        void SetCardCredit(Entity.Usager usager, float newCredit);
     }
 }
