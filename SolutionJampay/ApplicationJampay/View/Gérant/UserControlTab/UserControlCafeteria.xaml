@@ -17,20 +17,44 @@
     <Grid>
 
         <Grid.RowDefinitions>
-            <RowDefinition Height="5*"/>
-            <RowDefinition Height="5*"/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition Height="0.4*"/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
         </Grid.RowDefinitions>
 
-        <Grid Grid.Row="0" Margin="10">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
 
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="2.2*"/>
-                <ColumnDefinition Width="10"/>
-                <ColumnDefinition/>
-            </Grid.ColumnDefinitions>
 
-            <ListView Grid.Column="0" ItemsSource="{Binding CollectionMenus}" SelectedItem="{Binding SelectedMenu}">
-  
+        <GroupBox Grid.Column="0" Grid.RowSpan="2"  Margin="10">
+            <GroupBox.Header>
+                <TextBlock Style="{StaticResource myTextBlock}" Text="Menus"/>
+            </GroupBox.Header>
+            <ListView  ItemsSource="{Binding CollectionMenus}" SelectedItem="{Binding SelectedMenu}">
+                <ListView.View>
+                    <GridView  AllowsColumnReorder="true">
+                        <GridViewColumn Header="Code" DisplayMemberBinding="{Binding CodeMenu}"/>
+                        <GridViewColumn Header="Nom" DisplayMemberBinding="{Binding Nom}"/>
+                        <GridViewColumn Header="Categorie" DisplayMemberBinding="{Binding Categorie}"/>
+                        <GridViewColumn Header="ID gérant" DisplayMemberBinding="{Binding IdGerant}"/>
+                        <GridViewColumn Header="Date de création" DisplayMemberBinding="{Binding DateElaboration, Converter={StaticResource date2string}}"  />
+                        <GridViewColumn Header="Observation" DisplayMemberBinding="{Binding Observation}"/>
+                    </GridView>
+                </ListView.View>
+            </ListView>
+        </GroupBox>
+
+        <GroupBox Grid.Column="0" Grid.Row="3" Grid.RowSpan="2"  Margin="10">
+            <GroupBox.Header>
+                <TextBlock Style="{StaticResource myTextBlock}" Text="Menus du jour"/>
+            </GroupBox.Header>
+            <ListView  ItemsSource="{Binding CollectionMenusDuJour}" SelectedItem="{Binding SelectedMenu}">
                 <ListView.View>
                     <GridView  AllowsColumnReorder="true">
                         <GridViewColumn Header="Menu" DisplayMemberBinding="{Binding Nom}"/>
@@ -38,76 +62,93 @@
                     </GridView>
                 </ListView.View>
             </ListView>
+        </GroupBox>
 
-            <ListView Grid.Column="2" ItemsSource="{Binding CollectionPlatOfSelectedMenu}" >
+        <GroupBox Grid.Row="0" Grid.Column="1" Grid.RowSpan="5" Margin="10">
+            <GroupBox.Header>
+                <TextBlock Style="{StaticResource myTextBlock}" Text="Plats"/>
+            </GroupBox.Header>
+            
+            <ListView  ItemsSource="{Binding CollectionPlats}" SelectedItem="{Binding SelectedPlat}">
                 <ListView.View>
                     <GridView>
-                        <GridViewColumn Header="Plat" DisplayMemberBinding="{Binding Nom}"/>
-                        <GridViewColumn Header="Date" DisplayMemberBinding="{Binding DateEffet ,Converter={StaticResource date2string}}"  />
+                        <GridViewColumn Header="Code" DisplayMemberBinding="{Binding CodePlat}" />
+                        <GridViewColumn Header="Nom" DisplayMemberBinding="{Binding Nom}" />
+                        <GridViewColumn Header="Categorie" DisplayMemberBinding="{Binding Categorie}" />
+                        <GridViewColumn Header="Prix" DisplayMemberBinding="{Binding Prix, StringFormat={}{0}€}" />
+                        <GridViewColumn Header="Date de création" DisplayMemberBinding="{Binding DateEffet, Converter={StaticResource date2string}}"  />
+                        <GridViewColumn Header="Date de fin" DisplayMemberBinding="{Binding DateFin, Converter={StaticResource date2string}}"  />
                     </GridView>
                 </ListView.View>
             </ListView>
+        </GroupBox>
 
-        </Grid>
+        <GroupBox Grid.Row="0" Grid.Column="2" Grid.RowSpan="5" Margin="10">
+            <GroupBox.Header>
+                <TextBlock Style="{StaticResource myTextBlock}" Text="Produits"/>
+            </GroupBox.Header>
 
-        <Grid Grid.Row="1" Grid.ColumnSpan="2">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="1*"/>
-                <ColumnDefinition Width="2*"/>
-            </Grid.ColumnDefinitions>
-
-            <Grid Grid.Row="0" Margin="10">
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="1*"/>
-                    <RowDefinition Height="5" />
-                    <RowDefinition Height="1*"/>
-                </Grid.RowDefinitions>
-
-                <Grid Grid.Row="0">
-                    <StackPanel VerticalAlignment="Center">
-                        <Label Content="Menu" VerticalAlignment="Bottom"/>
-                        <StackPanel Grid.Row="1" Orientation="Horizontal" HorizontalAlignment="Left">
-                            <Button VerticalAlignment="Center" Content="Ajouter" HorizontalContentAlignment="Center" Command="{Binding OpenAddingMenuWindow}" />
-                            <Separator  Background="Transparent" Width="5"/>
-                            <Button Grid.Row ="0" VerticalAlignment="Center"  Content="Modifier" HorizontalContentAlignment="Center" Command="{Binding OpenModifyingMenuWindow}" IsEnabled="{Binding SelectedMenu, Converter={StaticResource selected2isEnable}}" />
-                            <Separator Background="Transparent" Width="5"/>
-                            <Button VerticalAlignment="Center" Content="Dupliquer" HorizontalContentAlignment="Center" Command="{Binding DuplicateMenuCommand}" IsEnabled="{Binding SelectedMenu, Converter={StaticResource selected2isEnable}}" />
-                            <Separator Background="Transparent" Width="5"/>
-                            <Button VerticalAlignment="Center"  Content="Supprimer" HorizontalContentAlignment="Center" Command="{Binding OpenDeletingMenuWindow}" IsEnabled="{Binding SelectedMenu, Converter={StaticResource selected2isEnable}}" />
-
-                        </StackPanel>
-
-                    </StackPanel>
-                    
-                </Grid>
-
-                <Grid Grid.Row="2">
-                    <StackPanel VerticalAlignment="Center">
-                        <Label Content="Plat" VerticalAlignment="Bottom" />
-                        <StackPanel Orientation="Horizontal" HorizontalAlignment="Left">
-                            <Button VerticalAlignment="Center"  Content="Ajouter" HorizontalContentAlignment="Center" Command="{Binding OpenAddingPlatWindow}"/>
-                            <Separator Background="Transparent" Width="5"/>
-                            <Button  VerticalAlignment="Center" Grid.Row ="0"  Content="Modifier" HorizontalContentAlignment="Center" Command="{Binding OpenModifyingPlatWindow}" IsEnabled="{Binding SelectedPlat, Converter={StaticResource selected2isEnable}}"/>
-                            <Separator  Background="Transparent" Width="5"/>
-                            <Button VerticalAlignment="Center" Content="Supprimer" HorizontalContentAlignment="Center"  Command="{Binding OpenDeletingPlatWindow}" IsEnabled="{Binding SelectedPlat, Converter={StaticResource selected2isEnable}}"/>
-
-                        </StackPanel>
-
-                    </StackPanel>
-                    
-                </Grid>
-
-            </Grid>
-
-            <ListView Grid.Row="1" Grid.Column="1" Margin="10" ItemsSource="{Binding CollectionPlats}" SelectedItem="{Binding SelectedPlat}">
+            <ListView  ItemsSource="{Binding CollectionProduits}" SelectedItem="{Binding SelectedProduit}">
                 <ListView.View>
                     <GridView>
-                        <GridViewColumn Header="Plat" DisplayMemberBinding="{Binding Nom}" />
-                        <GridViewColumn Header="Plat" DisplayMemberBinding="{Binding Categorie}" />
+                        <GridViewColumn Header="Code" DisplayMemberBinding="{Binding CodeProduit}" />
+                        <GridViewColumn Header="Nom" DisplayMemberBinding="{Binding Nom}" />
+                        <GridViewColumn Header="Categorie" DisplayMemberBinding="{Binding Categorie}" />
+                        <GridViewColumn Header="Date de création" DisplayMemberBinding="{Binding DateEffet, Converter={StaticResource date2string}}"  />
+                        <GridViewColumn Header="Date de fin" DisplayMemberBinding="{Binding DateFin, Converter={StaticResource date2string}}"  />
+                        <GridViewColumn Header="Observation" DisplayMemberBinding="{Binding Observation}" />
                     </GridView>
                 </ListView.View>
             </ListView>
-        </Grid>
+        </GroupBox>
 
+        <StackPanel Grid.Row="2" Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
+            <Button Content="+" />
+            <Separator Width="20" Visibility="Hidden"/>
+            <Button Content="-"/>
+        </StackPanel>
+
+
+
+
+
+        <StackPanel Grid.Column="0" Grid.Row="6" VerticalAlignment="Center">
+            <Label Content="Menus" HorizontalAlignment="Center"/>
+            <StackPanel Grid.Row="1" Orientation="Horizontal" HorizontalAlignment="Center">
+                <Button VerticalAlignment="Center" Content="Ajouter" HorizontalContentAlignment="Center" Command="{Binding OpenAddingMenuWindow}" />
+                <Separator  Background="Transparent" Width="5"/>
+                <Button Grid.Row ="0" VerticalAlignment="Center"  Content="Modifier" HorizontalContentAlignment="Center" Command="{Binding OpenModifyingMenuWindow}" IsEnabled="{Binding SelectedMenu, Converter={StaticResource selected2isEnable}}" />
+                <Separator Background="Transparent" Width="5"/>
+                <Button VerticalAlignment="Center" Content="Dupliquer" HorizontalContentAlignment="Center" Command="{Binding DuplicateMenuCommand}" IsEnabled="{Binding SelectedMenu, Converter={StaticResource selected2isEnable}}" />
+                <Separator Background="Transparent" Width="5"/>
+                <Button VerticalAlignment="Center"  Content="Supprimer" HorizontalContentAlignment="Center" Command="{Binding OpenDeletingMenuWindow}" IsEnabled="{Binding SelectedMenu, Converter={StaticResource selected2isEnable}}" />
+
+            </StackPanel>
+        </StackPanel>
+                    
+
+        <StackPanel Grid.Row="5" Grid.Column="1" VerticalAlignment="Center">
+            <Label Content="Plats" HorizontalAlignment="Center" />
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                <Button VerticalAlignment="Center"  Content="Ajouter" HorizontalContentAlignment="Center" Command="{Binding OpenAddingPlatWindow}"/>
+                <Separator Background="Transparent" Width="5"/>
+                <Button  VerticalAlignment="Center" Grid.Row ="0"  Content="Modifier" HorizontalContentAlignment="Center" Command="{Binding OpenModifyingPlatWindow}" IsEnabled="{Binding SelectedPlat, Converter={StaticResource selected2isEnable}}"/>
+                <Separator  Background="Transparent" Width="5"/>
+                <Button VerticalAlignment="Center" Content="Supprimer" HorizontalContentAlignment="Center"  Command="{Binding OpenDeletingPlatWindow}" IsEnabled="{Binding SelectedPlat, Converter={StaticResource selected2isEnable}}"/>
+            </StackPanel>
+        </StackPanel>
+
+        <StackPanel Grid.Row="5" Grid.Column="2" VerticalAlignment="Center">
+            <Label Content="Produits" HorizontalAlignment="Center" />
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                <Button VerticalAlignment="Center"  Content="Ajouter" HorizontalContentAlignment="Center" Command="{Binding OpenAddingProduitWindow}"/>
+                <Separator Background="Transparent" Width="5"/>
+                <Button  VerticalAlignment="Center" Grid.Row ="0"  Content="Modifier" HorizontalContentAlignment="Center" Command="{Binding OpenModifyingProduitWindow}" IsEnabled="{Binding SelectedProduit, Converter={StaticResource selected2isEnable}}"/>
+                <Separator  Background="Transparent" Width="5"/>
+                <Button VerticalAlignment="Center" Content="Supprimer" HorizontalContentAlignment="Center"  Command="{Binding OpenDeletingProduitWindow}" IsEnabled="{Binding SelectedProduit, Converter={StaticResource selected2isEnable}}"/>
+            </StackPanel>
+        </StackPanel>
+    
     </Grid>
+
 </UserControl>
