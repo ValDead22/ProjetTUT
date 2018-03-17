@@ -1,28 +1,22 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace ApplicationJampay.Model.Entity
 {
-   public class Commande
+    public class Commande
     {
-        private int CodeCommande { get; set; }
+        public int? CodeCommande { get; private set; }
+        public int IDCaissier { get; private set; }
+        public string MoyenDePaiement { get; private set; }
+        public DateTime Date { get; private set; }
+        public int MatriculeClient { get; private set; }
 
-        private int idCaissier { get; set; }
-
-        private string MoyenDePaiement { get; set; }
-
-        private Caissier Caissier { get; set; }
-
-        private Carte Carte { get; set; }
-
-        public Commande(int CodeCommande, int idCaissier, string MoyenDePaiement)
+        public Commande(int idCaissier, string moyenDePaiement, DateTime date, int matriculeCLient, int? codeCommande = default(int))
         {
-            this.CodeCommande = CodeCommande;
-            this.idCaissier = idCaissier;
-            this.MoyenDePaiement = MoyenDePaiement;
+            Date = date;
+            CodeCommande = codeCommande;
+            IDCaissier = idCaissier;
+            MatriculeClient = matriculeCLient;
+            MoyenDePaiement = moyenDePaiement;
         }
     }
 }
