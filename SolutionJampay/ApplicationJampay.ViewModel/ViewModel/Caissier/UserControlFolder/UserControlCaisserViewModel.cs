@@ -38,10 +38,7 @@ namespace ApplicationJampay.ViewModel.ViewModel.Caissier.UserControlFolder
 
         private readonly RelayCommand _validateCommand;
         public ICommand ValidateCommand => _validateCommand;
-
-        private readonly RelayCommand _closeWindow;
-        public ICommand CloseWindow => _closeWindow;
-
+        
         private readonly RelayCommand _cardPayCommand;
         public ICommand CardPayCommand => _cardPayCommand;
 
@@ -67,7 +64,7 @@ namespace ApplicationJampay.ViewModel.ViewModel.Caissier.UserControlFolder
         {
             _openAddPlatViewCommand = new RelayCommand(() => AddPlat(), o => true);
             _deleteSelectedChoosenPlat = new RelayCommand(() => DeletePlat(), o => true);
-            _cardPayCommand = new RelayCommand(() => PayCardReader(), o => true);
+            _cardPayCommand = new RelayCommand(() => GoToTicketEdition(), o => true);
 
             _platBusiness = new PlatBusiness();
 
@@ -247,23 +244,15 @@ namespace ApplicationJampay.ViewModel.ViewModel.Caissier.UserControlFolder
             }
 
         }
+        
 
 
-
-
-
-        private void PayCardReader()
+        private void GoToTicketEdition()
         {
+            Tuple<float, List<Plat>> data = new Tuple<float, List<Plat>>(_prixTotal, new List<Plat>(_collectionChoosenPlat));
 
-            //UsagerBusiness _usagerBusiness = new UsagerBusiness();
-            //int idUser = ManageDataCardService.GetCodeUser();
-
-            //_usagerBusiness.Pay(idUser, _prixTotal);
-
+            Messenger.Default.Send<Tuple<float, List<Plat>>>(data);
             Messenger.Default.Send<string>("EditTicketUserControl");
-
-
-
         }
     }
 }
