@@ -7,12 +7,14 @@ using System.Security;
 using System.Security.Cryptography;
 using System.Text;
 using System.Windows.Input;
+using ApplicationJampay.Model.DAL.Usager;
 using ApplicationJampay.Model.DAL.Utilisateur;
 using ApplicationJampay.Model.Entity;
 using ApplicationJampay.Model.Service;
 using ApplicationJampay.Model.Service.Dialog;
 using ApplicationJampay.Model.Service.SmartCardReader;
 using ApplicationJampay.ViewModel.Command;
+using GalaSoft.MvvmLight.Messaging;
 
 namespace ApplicationJampay.ViewModel.ViewModel
 {
@@ -43,24 +45,23 @@ namespace ApplicationJampay.ViewModel.ViewModel
         /// <summary>
         /// Logic to access to the Users data
         /// </summary>
-        private UtilisateurBusiness _userBusiness;
-
+        private UtilisateurBusiness _utilisateurBusiness;
         /// <summary>
         /// Constructor
         /// </summary>
         public LoginViewModel()
         {
-            _loginCommand = new RelayCommand(() => Login(), o => true);
-            _cardLoginCommand = new RelayCommand(() => InitCardReader(), o => true);
+            _loginCommand = new RelayCommand(() => ConnectViaCredentials(), o => true);
+            _cardLoginCommand = new RelayCommand(() => ConnectViaCardReader(), o => true);
 
             try
             {
-                _userBusiness = new UtilisateurBusiness();
+                _utilisateurBusiness = new UtilisateurBusiness();
             }
             catch (Exception ex)
             {
-
                 DialogService.ShowErrorWindow(ex.Message);
+                Environment.Exit(1);
             }          
         }
         
@@ -134,11 +135,10 @@ namespace ApplicationJampay.ViewModel.ViewModel
             }
         }
 
-        private void Login()
+        private void Login(Utilisateur utilisateur)
         {
             try
-            {
-                Utilisateur utilisateur = _userBusiness.GetUtilisateur(Matricule, SecureStringToSHA256(Password));            
+            {        
                 
                 switch (utilisateur.Fonction)
                 {
@@ -149,6 +149,7 @@ namespace ApplicationJampay.ViewModel.ViewModel
 
                     case "Caissier":
                         DialogCaissier.ShowCaissierMainWindow();
+                        Messenger.Default.Send<Utilisateur>(utilisateur);
                         Close();
                         break;
 
@@ -168,32 +169,31 @@ namespace ApplicationJampay.ViewModel.ViewModel
             
         }
 
+        private void ConnectViaCredentials()
+        {
+            try
+            {
+                Utilisateur utilisateur = _utilisateurBusiness.GetUtilisateur(Matricule, SecureStringToSHA256(Password));
+                Login(utilisateur);
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+
+        }
 
 
 
-        private void InitCardReader()
+
+        private void ConnectViaCardReader()
         {
 
             try
             {
-                switch (ManageDataCardService.GetCodeFonction())
-                {
-                    case 1:
-                        DialogGerant.ShowGerantMainView();
-                        Close();
-                        break;
-
-                    case 0:
-                        DialogCaissier.ShowCaissierMainWindow();
-                        Close();
-                        break;
-
-                    case 2:
-                        DialogCuisinier.ShowCuisinierWindow();
-                        Close();
-                        break;
-                }
-
+                Utilisateur utilisateur = _utilisateurBusiness.GetUtilisateurByMatriculeCarte(ManageDataCardService.GetCodeCarte());
+                Login(utilisateur);
             }
             catch (Exception ex)
             {
