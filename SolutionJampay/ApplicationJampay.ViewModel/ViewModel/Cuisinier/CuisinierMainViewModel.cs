@@ -193,19 +193,14 @@ namespace ApplicationJampay.ViewModel.ViewModel.Cuisinier
         {
             try
             {
-                Debug.WriteLine("1");
                 _menuBusiness.DeletePlatfromMenu(SelectedMenu,SelectedPlat);
-                Debug.WriteLine("3");
                 _collectionPlatOfSelectedMenu.Clear();
-                Debug.WriteLine("4");
                 _collectionProduitOfSelectedPlat.Clear();
-                Debug.WriteLine("5");
 
                 foreach (Plat plat in _platBusiness.GetPlatByMenu(SelectedMenu))
                 {
                     _collectionPlatOfSelectedMenu.Add(plat);
                 }
-                Debug.WriteLine("6");
 
             }
             catch (Exception ex)
