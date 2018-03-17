@@ -14,6 +14,8 @@ using System.Diagnostics;
 using ApplicationJampay.ViewModel.Command;
 using System.Windows.Input;
 using ApplicationJampay.Model.Service.Dialog;
+using System.Threading;
+using System.Globalization;
 
 namespace ApplicationJampay.ViewModel.ViewModel.Gérant
 {
@@ -50,6 +52,7 @@ namespace ApplicationJampay.ViewModel.ViewModel.Gérant
 
         private void CreateNewPlat()
         {
+            Thread.CurrentThread.CurrentCulture = CultureInfo.GetCultureInfo("en-US");
             Plat plat = new Plat(0, _dateEffet, _dateFin, _selectedCategory, _nom, _tarif);
 
             try

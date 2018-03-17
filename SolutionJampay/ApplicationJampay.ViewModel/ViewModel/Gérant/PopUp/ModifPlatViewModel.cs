@@ -8,8 +8,10 @@ using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
+using System.Globalization;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Input;
 
@@ -96,6 +98,7 @@ namespace ApplicationJampay.ViewModel.ViewModel.Gérant
 
         private void Modify()
         {
+            Thread.CurrentThread.CurrentCulture = CultureInfo.GetCultureInfo("en-US");
             Plat plat = new Plat(ModifyedPlat.CodePlat, DateEffet, DateEffet, SelectedCategory, Nom, Tarif);
             try
             {
