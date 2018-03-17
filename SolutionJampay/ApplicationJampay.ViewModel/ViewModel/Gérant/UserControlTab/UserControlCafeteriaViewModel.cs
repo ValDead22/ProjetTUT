@@ -35,6 +35,9 @@ namespace ApplicationJampay.ViewModel.ViewModel.Gérant.UserControlTab
         private ObservableCollection<Menu> _collectionMenu = new ObservableCollection<Menu>();
         public IEnumerable<Menu> CollectionMenus { get { return _collectionMenu; } }
 
+        private ObservableCollection<Menu> _collectionMenuDuJour = new ObservableCollection<Menu>();
+        public IEnumerable<Menu> CollectionMenusDuJour { get { return _collectionMenuDuJour; } }
+
         private ObservableCollection<Plat> _collectionPlat = new ObservableCollection<Plat>();
         public IEnumerable<Plat> CollectionPlats { get { return _collectionPlat; } }
 
@@ -74,6 +77,10 @@ namespace ApplicationJampay.ViewModel.ViewModel.Gérant.UserControlTab
         private readonly RelayCommand _duplicateMenuCommand;
         public ICommand DuplicateMenuCommand => _duplicateMenuCommand;
 
+        private readonly RelayCommand _addToMenusDuJour;
+        public ICommand AddToMenusDuJour => _addToMenusDuJour;
+        
+
         #endregion
 
         private PlatBusiness _platBusiness;
@@ -100,6 +107,8 @@ namespace ApplicationJampay.ViewModel.ViewModel.Gérant.UserControlTab
 
             _duplicateMenuCommand = new RelayCommand(() => DialogService.ShowYesNoWindow("Etes-vous sûr de vouloir dupliquer ce menu ?", new Action(DuplicateMenu)), o => true);
 
+            _addToMenusDuJour = new RelayCommand(() => AddToMenuDuJour(), o => true);
+
             Messenger.Default.Register<string>(this, (msg) => HandleMessage(msg));
 
             try
@@ -119,6 +128,11 @@ namespace ApplicationJampay.ViewModel.ViewModel.Gérant.UserControlTab
                     _collectionProduit.Add(produit);
                 }
 
+                foreach (Menu menu in _menuBusiness.GetMenusDuJour())
+                {
+                    _collectionMenuDuJour.Add(menu);
+                }
+
             }
             catch (Exception ex)
             {
@@ -136,6 +150,34 @@ namespace ApplicationJampay.ViewModel.ViewModel.Gérant.UserControlTab
             try
             {
                 _menuBusiness.GetAllMenus().ForEach(m => _collectionMenu.Add(m));
+            }
+            catch (Exception ex)
+            {
+                DialogService.ShowErrorWindow(ex.Message);
+            }
+        }
+
+        private void UpdateMenuDuJour()
+        {
+
+            try
+            {
+                _menuBusiness.GetMenusDuJour().ForEach(m => _collectionMenuDuJour.Add(m));
+            }
+            catch (Exception ex)
+            {
+                DialogService.ShowErrorWindow(ex.Message);
+            }
+        }
+
+        private void AddToMenuDuJour()
+        {
+            try
+            {
+
+
+                _menuBusiness.SetMenuDuJour(SelectedMenu);
+                UpdateMenuDuJour();
             }
             catch (Exception ex)
             {
