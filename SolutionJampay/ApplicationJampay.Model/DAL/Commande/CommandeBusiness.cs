@@ -62,5 +62,17 @@ namespace ApplicationJampay.Model.DAL.Commande
                 throw new Exception(ex.Message);
             }
         }
+
+        public void SetMontantCommande(Entity.Commande commande, float montant)
+        {
+            try
+            {
+                _commandeDAL.SetMontantCommande(commande, montant);
+            }
+            catch (Exception ex )
+            {
+                throw new Exception(ex.Message);
+            }
+        }
     }
 }

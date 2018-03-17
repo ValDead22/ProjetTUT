@@ -16,5 +16,7 @@ namespace ApplicationJampay.Model.DAL.Commande
 
         void AddPlatToCommande(Entity.Plat plat, Entity.Commande commande);
 
+        void SetMontantCommande(Entity.Commande commande, float montant);
+
     }
 }

@@ -99,5 +99,12 @@ namespace ApplicationJampay.Model.DAL.Commande
             var mySqlDataReader = _sQLService.Load(query);
             mySqlDataReader.Close();
         }
+
+        public void SetMontantCommande(Entity.Commande commande, float montant)
+        {
+            var query = "UPDATE Commande SET PrixTotal=" + "\"" + montant + "\"" + " WHERE CodeCommande=" + "\"" + commande.CodeCommande + "\"";
+            var mySqlDataReader = _sQLService.Load(query);
+            mySqlDataReader.Close();
+        }
     }
 }
