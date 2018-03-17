@@ -24,13 +24,20 @@ namespace ApplicationJampay.Model.Service.SmartCardReader
             }
         }
 
-        public static int GetCodeUser()
+        public static int GetCodeCarte()
         {
             try
             {
                 var byteArray = SmartCardReaderService.GetDataFromTheCard();
+                var startPos = 3;
+                var endPos = 6;
+                var subset = new byte[endPos - startPos + 1];
+                Array.Copy(byteArray, startPos, subset, 0, endPos - startPos + 1);
+                Array.Reverse(subset);
+                ulong number = UInt32.Parse(BitConverter.ToString(subset, 3), System.Globalization.NumberStyles.HexNumber);
 
-                return byteArray[0];
+
+                return BitConverter.ToInt32(subset, 0);
             }
             catch(Exception ex)
             {
