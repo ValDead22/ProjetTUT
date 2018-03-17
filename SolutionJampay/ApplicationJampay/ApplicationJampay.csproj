@@ -135,6 +135,12 @@
     <Compile Include="View\Gérant\PopUp\Plat\ModifPlatView.xaml.cs">
       <DependentUpon>ModifPlatView.xaml</DependentUpon>
     </Compile>
+    <Compile Include="View\Gérant\PopUp\Produit\AjoutProduitView.xaml.cs">
+      <DependentUpon>AjoutProduitView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Gérant\PopUp\Produit\ModifProduitView.xaml.cs">
+      <DependentUpon>ModifProduitView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\Gérant\UserControlTab\UserControlCafeteria.xaml.cs">
       <DependentUpon>UserControlCafeteria.xaml</DependentUpon>
     </Compile>
@@ -207,6 +213,14 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\Gérant\PopUp\Plat\ModifPlatView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Gérant\PopUp\Produit\AjoutProduitView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Gérant\PopUp\Produit\ModifProduitView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
