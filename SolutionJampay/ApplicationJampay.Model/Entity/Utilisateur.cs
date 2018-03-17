@@ -19,7 +19,7 @@ namespace ApplicationJampay.Model.Entity
             string prenom,
             string titre,
             string paiement,
-            int? matriculeCarte = default(int),
+            int matriculeCarte,
             DateTime? dateFinContrat = default(DateTime?)) : base(dateEntree, matricule, codeFonction, service, nom, prenom, titre, paiement, matriculeCarte, dateFinContrat)
         {
             Fonction = fonction;
