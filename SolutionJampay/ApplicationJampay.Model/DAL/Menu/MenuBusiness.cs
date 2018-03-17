@@ -124,5 +124,29 @@ namespace ApplicationJampay.Model.DAL.Menu
                 throw new Exception(ex.Message);
             }
         }
+
+        public List<Entity.Menu> GetMenusDuJour()
+        {
+            try
+            {
+                return _menuDAL.GetMenusDuJour();
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
+
+        public void SetMenuDuJour(Entity.Menu menu)
+        {
+            try
+            {
+                _menuDAL.SetMenuDuJour(menu);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
     }
 }

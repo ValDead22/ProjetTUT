@@ -43,5 +43,9 @@ namespace ApplicationJampay.Model.DAL.Menu
         void AddPlatToMenu(Entity.Plat plat, Entity.Menu menu);
 
         void DeleteAllPlatOfMenu(Entity.Menu menu);
+
+        List<Entity.Menu> GetMenusDuJour();
+
+        void SetMenuDuJour(Entity.Menu menu);
     }
 }

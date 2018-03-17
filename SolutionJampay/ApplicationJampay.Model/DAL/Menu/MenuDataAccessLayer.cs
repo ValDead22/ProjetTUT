@@ -135,6 +135,54 @@ namespace ApplicationJampay.Model.DAL.Menu
 
         }
 
+        public List<Entity.Menu> GetMenusDuJour()
+        {
+            DateTime today = DateTime.Today;
 
+            var query = "SELECT m.CodeMenu, DateElaboration, Categorie, Nom, Observation, idGerant " +
+                "FROM Menu m, DateUtilisation du " +
+                "WHERE m.CodeMenu=du.CodeMenu AND du.DateUtilisation=" + "\"" + today.ToString("yyyy-MM-dd") + "\"";
+            
+
+            MySqlDataReader mySqlDataReader = _sQLService.Load(query);
+
+            try
+            {
+                List<Entity.Menu> list = new List<Entity.Menu>();
+
+                while (mySqlDataReader.Read())
+                {
+                    Entity.Menu produit = new Entity.Menu((int)mySqlDataReader["idGerant"], (DateTime)mySqlDataReader["DateElaboration"], mySqlDataReader["Categorie"] as string, mySqlDataReader["Nom"] as string, mySqlDataReader["Observation"] as string, (int)mySqlDataReader["CodeMenu"]);
+
+                    list.Add(produit);
+                }
+                return list;
+            }
+            catch
+            {
+                throw new Exception("Problème lors du chargement des menus du jour !");
+            }
+            finally
+            {
+                mySqlDataReader.Close();
+            }
+        }
+
+        public void SetMenuDuJour(Entity.Menu menu)
+        {
+            try
+            {
+                DateTime today = DateTime.Today;
+
+                var query = "INSERT INTO DateUtilisation VALUES(\"" + menu.CodeMenu + "\"" + ",\"" + today.ToString("yyyy-MM-dd") + "\"" + ")";
+                MySqlDataReader mySqlDataReader = _sQLService.Load(query);
+                mySqlDataReader.Close();
+            }
+            catch 
+            {
+
+                throw new Exception("Menu déjà présent en menu du jour");
+            }
+        }
     }
 }
