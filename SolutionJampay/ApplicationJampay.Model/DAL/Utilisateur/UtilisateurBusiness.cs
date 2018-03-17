@@ -18,37 +18,106 @@ namespace ApplicationJampay.Model.DAL.Utilisateur
 
         public Entity.Utilisateur GetUtilisateur(string matricule, string password)
         {
-            return _utilisateurDAL.GetUtilisateur(matricule, password);
+            try
+            {
+                return _utilisateurDAL.GetUtilisateur(matricule, password);
+            }
+            catch (Exception ex)
+            {
+
+                throw new Exception(ex.Message);
+            }
         }
 
         public List<Entity.Utilisateur> GetAllUtilisateurs()
         {
-            return _utilisateurDAL.GetAllUtilisateurs();
+            try
+            {
+                return _utilisateurDAL.GetAllUtilisateurs();
+            }
+            catch (Exception ex)
+            {
+
+                throw new Exception(ex.Message);
+            }
         }
 
         public List<string> GetAllFonctions()
         {
-            return _utilisateurDAL.GetAllFonctions();
+            try
+            {
+                return _utilisateurDAL.GetAllFonctions();
+            }
+            catch (Exception ex)
+            {
+
+                throw new Exception(ex.Message);
+            }
         }
 
         public void ModifyFonction(int matricule, string fonction)
         {
-            _utilisateurDAL.ModifyFonction(matricule, fonction);
+            try
+            {
+                _utilisateurDAL.ModifyFonction(matricule, fonction);
+            }
+            catch (Exception ex)
+            {
+
+                throw new Exception(ex.Message);
+            }
         }
 
         public void AddUtilisateur(int matricule, string fonction, string motDePasse)
         {
-            _utilisateurDAL.AddUtilisateur(matricule, fonction, motDePasse);
+            try
+            {
+                _utilisateurDAL.AddUtilisateur(matricule, fonction, motDePasse);
+            }
+            catch (Exception ex)
+            {
+
+                throw new Exception(ex.Message);
+            }
         }
 
         public void DeleteUtilisateur(int matricule)
         {
-            _utilisateurDAL.DeleteUtilisateur(matricule);
+            try
+            {
+                _utilisateurDAL.DeleteUtilisateur(matricule);
+            }
+            catch (Exception ex)
+            {
+
+                throw new Exception(ex.Message);
+            }
         }
 
         public List<Entity.Utilisateur> GetUtilisateursByFonction(string fonction)
         {
-            return _utilisateurDAL.GetUtilisateursByFonction(fonction);
+            try
+            {
+                return _utilisateurDAL.GetUtilisateursByFonction(fonction);
+            }
+            catch (Exception ex)
+            {
+
+                throw new Exception(ex.Message);
+            }
+        }
+
+        public Entity.Utilisateur GetUtilisateurByMatriculeCarte(int matrciculdeCarte)
+        {
+            try
+            {
+                return _utilisateurDAL.GetUtilisateurByMatriculeCarte(matrciculdeCarte);
+            }
+            catch (Exception ex)
+            {
+
+                throw new Exception(ex.Message);
+            }
         }
     }
 }

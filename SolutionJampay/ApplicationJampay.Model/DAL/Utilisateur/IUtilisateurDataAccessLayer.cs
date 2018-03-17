@@ -21,5 +21,7 @@ namespace ApplicationJampay.Model.DAL.Utilisateur
         void DeleteUtilisateur(int matricule);
 
         List<Entity.Utilisateur> GetUtilisateursByFonction(string fonction);
+
+        Entity.Utilisateur GetUtilisateurByMatriculeCarte(int matrculeCarte);
     }
 }

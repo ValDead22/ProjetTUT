@@ -102,7 +102,7 @@ namespace ApplicationJampay.Model.DAL.Utilisateur
                         mySqlDataReader["Prenom"] as string,
                         mySqlDataReader["Titre"] as string,
                         mySqlDataReader["Paiement"] as string,
-                        mySqlDataReader["MatriculeCarte"] as int?,
+                        (int)mySqlDataReader["MatriculeCarte"],
                         mySqlDataReader["DateFinC"] as DateTime?
                         );
 
@@ -139,7 +139,7 @@ namespace ApplicationJampay.Model.DAL.Utilisateur
                          mySqlDataReader["Prenom"] as string,
                          mySqlDataReader["Titre"] as string,
                          mySqlDataReader["Paiement"] as string,
-                         mySqlDataReader["MatriculeCarte"] as int?,
+                         (int)mySqlDataReader["MatriculeCarte"],
                          mySqlDataReader["DateFinC"] as DateTime?
                          );
 
@@ -162,6 +162,41 @@ namespace ApplicationJampay.Model.DAL.Utilisateur
             MySqlDataReader mySqlDataReader = _sQLService.Load(query);
 
             mySqlDataReader.Close();
+        }
+
+        public Entity.Utilisateur GetUtilisateurByMatriculeCarte(int matrciculdeCarte)
+        {
+            var query = "SELECT idUtilisateur, Fonction, Nom, Prenom, Matricule, DateEntree, DateFinC, Titre, CodeFonction, Service, Paiement, MatriculeCarte, Paiement FROM Utilisateur ut, Usager us WHERE ut.idUtilisateur = us.Matricule AND us.MatriculeCarte=\"" + matrciculdeCarte + "\"";
+            MySqlDataReader mySqlDataReader = _sQLService.Load(query);
+
+            try
+            {
+                mySqlDataReader.Read();
+
+                Entity.Utilisateur user = new Entity.Utilisateur(
+                         mySqlDataReader["Fonction"] as string,
+                         (DateTime)mySqlDataReader["DateEntree"],
+                         (int)mySqlDataReader["Matricule"],
+                         (int)mySqlDataReader["CodeFonction"],
+                         (int)mySqlDataReader["Service"],
+                         mySqlDataReader["Nom"] as string,
+                         mySqlDataReader["Prenom"] as string,
+                         mySqlDataReader["Titre"] as string,
+                         mySqlDataReader["Paiement"] as string,
+                         (int)mySqlDataReader["MatriculeCarte"],
+                         mySqlDataReader["DateFinC"] as DateTime?
+                         );
+
+                return user;
+            }
+            catch
+            {
+                throw new Exception("Utilisateur introuvable !");
+            }
+            finally
+            {
+                mySqlDataReader.Close();
+            }
         }
     }
 }
