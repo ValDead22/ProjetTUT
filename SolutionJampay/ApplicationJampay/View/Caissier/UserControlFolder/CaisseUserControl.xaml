@@ -35,13 +35,11 @@
                 </Grid.ColumnDefinitions>
 
                 
-                <Button Grid.Column="0" Content="Supprimer plat" Command="{Binding DeleteSelectedChoosenPlat}" IsEnabled="{Binding SelectedChoosenPlat, Converter={StaticResource selected2isEnable}}" />
 
-
-                <Border Grid.Row="0" Grid.ColumnSpan="2" Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Center" BorderBrush="#FF212121" BorderThickness="5" CornerRadius="30,30,30,30">
-                    <StackPanel VerticalAlignment="Center" Height="75" Grid.Row="0" Grid.ColumnSpan="2" Orientation="Horizontal" HorizontalAlignment="Center" Grid.Column="0" DockPanel.Dock="Bottom" Margin="10">
-                        <Button Grid.Column="1"  Content="REGLEMENT"   Command="{Binding CardPayCommand}" IsEnabled="{Binding CollectionChoosenPlat, Converter={StaticResource selected2isEnable}}"/>
-                        <Separator Width="20" Height="25" Background="Transparent"/>
+                <Border Grid.Row="0" Grid.ColumnSpan="3" Grid.Column="0" VerticalAlignment="Center" HorizontalAlignment="Center" BorderBrush="#FF212121" BorderThickness="5" CornerRadius="30,30,30,30">
+                    <StackPanel VerticalAlignment="Center" Grid.Row="0" Grid.ColumnSpan="2" Orientation="Horizontal" HorizontalAlignment="Center" Grid.Column="0" DockPanel.Dock="Bottom" Margin="10">
+                        <Button FontSize="50" Grid.Column="1"  Content="VALIDER" Foreground="Green"  Command="{Binding CardPayCommand}" IsEnabled="{Binding CollectionChoosenPlat, Converter={StaticResource selected2isEnable}}"/>
+                        <Separator Width="20"  Visibility="Hidden"/>
                         <Label Grid.Column="3" Content="{Binding Prix}" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="50"/>
                     </StackPanel>
                 </Border>
@@ -50,10 +48,10 @@
 
             </Grid>
             
-            <ListView FontSize="50" SelectedItem="{Binding SelectedChoosenPlat}" ItemsSource="{Binding CollectionChoosenPlat}"  Grid.RowSpan="2" Grid.Column="1"  Margin="20">
+            <ListView FontSize="25" SelectedItem="{Binding SelectedChoosenPlat}" ItemsSource="{Binding CollectionChoosenPlat}"  Grid.RowSpan="2" Grid.Column="1"  Margin="20">
                 <ListView.View>
                     <GridView>
-                        <GridViewColumn Header="Nom" DisplayMemberBinding="{Binding Nom}"/>
+                        <GridViewColumn Width="300" Header="Nom" DisplayMemberBinding="{Binding Nom}"/>
                         <GridViewColumn Header="Quantité" DisplayMemberBinding="{Binding Quantite}"/>
                     </GridView>
                 </ListView.View>
@@ -101,12 +99,16 @@
                         <ColumnDefinition/>
                         <ColumnDefinition/>
                     </Grid.ColumnDefinitions>
-
-                    <Button Grid.Row="1" Grid.ColumnSpan="2" Content="Ajouter" FontWeight="Black"  Grid.Column="0"  Command="{Binding ValidateCommand}" IsEnabled="{Binding SelectedPlat, Converter={StaticResource selected2isEnable}}"/>
-
+                    <StackPanel Grid.Row="1" Grid.ColumnSpan="2" HorizontalAlignment="Center" Orientation="Horizontal">
+                        
+                        <Button Content="Supprimer" Command="{Binding DeleteSelectedChoosenPlat}" IsEnabled="{Binding SelectedChoosenPlat, Converter={StaticResource selected2isEnable}}" />
+                        <Separator Width="50" Visibility="Hidden"/>
+                        <Button Content="Ajouter" Command="{Binding ValidateCommand}" IsEnabled="{Binding SelectedPlat, Converter={StaticResource selected2isEnable}}" Padding="1"/>
+                    </StackPanel>
+                    
                 </Grid>
 
-                <ListView FontSize="40" SelectedItem="{Binding SelectedPlat}" ItemsSource="{Binding CollectionOfSelectedCateg}" Grid.Column="1" Margin="10,0,0,10" VerticalAlignment="Top">
+                <ListView FontSize="25" SelectedItem="{Binding SelectedPlat}" ItemsSource="{Binding CollectionOfSelectedCateg}" Grid.Column="1" Margin="10,0,0,10" VerticalAlignment="Top">
                     <ListView.View>
                         <GridView>
                             <GridViewColumn Header="Nom" DisplayMemberBinding="{Binding Nom}"/>
