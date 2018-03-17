@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ApplicationJampay.ViewModel.ViewModel.Caissier.UserControlFolder;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -22,6 +23,7 @@ namespace ApplicationJampay.View.Caissier.UserControlFolder
     {
         public EditTicketUserControl()
         {
+            DataContext = new UserControlEditTicketViewModel();
             InitializeComponent();
         }
     }

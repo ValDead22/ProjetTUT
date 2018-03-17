@@ -3,9 +3,14 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:converter="clr-namespace:ApplicationJampay.Converter"
              xmlns:local="clr-namespace:ApplicationJampay.View.Caissier.UserControlFolder"
              mc:Ignorable="d" 
              d:DesignHeight="1080" d:DesignWidth="1920">
+
+    <UserControl.Resources>
+        <converter:DateToStringConverter x:Key="date2stringConveter"/>
+    </UserControl.Resources>
 
 
     <Grid>
@@ -22,48 +27,53 @@
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
 
-        <StackPanel VerticalAlignment="Center" Grid.Column="0" Grid.RowSpan="3">
-
+        <GroupBox VerticalAlignment="Center" Grid.Column="0" Grid.RowSpan="3">
+            <GroupBox.Header>
+                <TextBlock Text="Informations client" Style="{StaticResource myTextBlock}"/>
+            </GroupBox.Header>
             <StackPanel Orientation="Vertical">
-                <Label Grid.Row="1" Grid.Column="0" Content="Matricule : " />
-            </StackPanel>
-            <StackPanel Orientation="Vertical">
-                <Label Grid.Row="2" Grid.Column="0" Content="Nom : "/>
-            </StackPanel>
+                <StackPanel Orientation="Horizontal">
+                    <Label Content="{Binding UsagerWhoPay.Titre}" />
+                    <Label Content="{Binding UsagerWhoPay.Nom}" />
+                    <Label Content="{Binding UsagerWhoPay.Prenom}" />
+                </StackPanel>
+                <TextBlock Style="{StaticResource myTextBlock}" Text="{Binding UsagerWhoPay.DateEntree, Converter={StaticResource date2stringConveter}}" />
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock Style="{StaticResource myTextBlock}" Grid.Row="3" Grid.Column="1" Text="Type de paiemet : " />
+                    <TextBlock Style="{StaticResource myTextBlock}" Text="{Binding UsagerWhoPay.Paiement}" />
+                </StackPanel>
 
-            <StackPanel Orientation="Vertical">
-                <Label Grid.Row="2" Grid.Column="1" Content="Prenom : " />
             </StackPanel>
-
-            <StackPanel Orientation="Vertical">
-                <Label Grid.Row="3" Grid.Column="0" Content="Date : " />
-            </StackPanel>
-
-            <StackPanel Orientation="Vertical">
-                <Label Grid.Row="3" Grid.Column="1" Content="Type : " />
-            </StackPanel>
-
-            <StackPanel Orientation="Vertical">
-                <Label Grid.Row="5" Grid.ColumnSpan="2" Content="Prix : " />
-            </StackPanel>
-
-            <StackPanel Orientation="Vertical">
-                <Label Grid.Row="6" Grid.ColumnSpan="2" Content="Solde restant : " />
-            </StackPanel>
+        </GroupBox>
 
 
+        <GroupBox Grid.Row="0" Grid.RowSpan="3"  Grid.Column="1" VerticalAlignment="Center">
+            <GroupBox.Header>
+                <TextBlock Style="{StaticResource myTextBlock}" Text="Récapitulatif commande"/>
+            </GroupBox.Header>
+            <StackPanel>
+                <ListView IsEnabled="False" ItemsSource="{Binding CollectionChoosenPlat}">
+                    <ListView.View>
+                        <GridView>
+                            <GridViewColumn Header="Plat" DisplayMemberBinding="{Binding Nom}" />
+                            <GridViewColumn Header="Quantité" DisplayMemberBinding="{Binding Quantite}" />
+                        </GridView>
+                    </ListView.View>
+                </ListView>
+
+                <Label Content="{Binding Prix}" ContentStringFormat="Total : {0} €" Margin="30" HorizontalAlignment="Center"/>
+
+            </StackPanel>
+        </GroupBox>
+
+
+
+        <StackPanel Grid.Row="2" Grid.ColumnSpan="2" VerticalAlignment="Bottom" Orientation="Horizontal" HorizontalAlignment="Center">
+            <Button Grid.Row="4" Width="200" Height="70" Content="SCAN CARTE" HorizontalAlignment="Stretch" Command="{Binding ValidateCarte}"/>
+            <Separator Width="50" Visibility="Hidden"/>
+            <Button Grid.Row="4" Width="200" Height="70" Content="PAYER" HorizontalAlignment="Stretch" Command="{Binding ValidatePaiement}" IsEnabled="{Binding CanPay}"/>
         </StackPanel>
-        
-        <Button Grid.Row="4" Width="200" Height="70" Content="PAYER" HorizontalAlignment="Stretch"/>
 
-            <ListView Grid.Row="0" Grid.RowSpan="4" Grid.Column="1">
-            <ListView.View>
-                <GridView>
-                    <GridViewColumn Header="Plat : " />
-                </GridView>
-            </ListView.View>
-        </ListView>
-        
 
     </Grid>
     
