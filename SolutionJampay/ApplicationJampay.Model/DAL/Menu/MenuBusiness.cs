@@ -129,7 +129,14 @@ namespace ApplicationJampay.Model.DAL.Menu
         {
             try
             {
-                return _menuDAL.GetMenusDuJour();
+                List<Entity.Menu> list = _menuDAL.GetMenusDuJour();
+
+                foreach (Entity.Menu m in list)
+                {
+                    m.SetListPlats(_platDAL.GetPlatByMenu(m));
+                }
+
+                return list;
             }
             catch (Exception ex)
             {

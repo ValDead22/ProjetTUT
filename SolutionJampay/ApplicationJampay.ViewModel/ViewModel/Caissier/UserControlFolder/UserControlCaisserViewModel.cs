@@ -9,6 +9,7 @@ using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Windows.Input;
 using ApplicationJampay.Model.DAL.Plat;
+using ApplicationJampay.Model.DAL.Menu;
 
 namespace ApplicationJampay.ViewModel.ViewModel.Caissier.UserControlFolder
 {
@@ -36,6 +37,9 @@ namespace ApplicationJampay.ViewModel.ViewModel.Caissier.UserControlFolder
         private readonly RelayCommand _displaySnackCommand;
         public ICommand DisplaySnackViewCommand => _displaySnackCommand;
 
+        private readonly RelayCommand _displayAutreCommand;
+        public ICommand DisplayAutreCommand => _displayAutreCommand;
+
         private readonly RelayCommand _validateCommand;
         public ICommand ValidateCommand => _validateCommand;
         
@@ -52,6 +56,10 @@ namespace ApplicationJampay.ViewModel.ViewModel.Caissier.UserControlFolder
 
         private PlatBusiness _platBusiness;
 
+        private MenuBusiness _menuBusiness;
+
+        private List<Menu> _menusDuJour;
+
         private ObservableCollection<PlatWithQuantité> _collectionChoosenPlat = new ObservableCollection<PlatWithQuantité>();
         public IEnumerable<PlatWithQuantité> CollectionChoosenPlat { get { return _collectionChoosenPlat; } }
 
@@ -67,15 +75,43 @@ namespace ApplicationJampay.ViewModel.ViewModel.Caissier.UserControlFolder
             _cardPayCommand = new RelayCommand(() => GoToTicketEdition(), o => true);
 
             _platBusiness = new PlatBusiness();
+            _menuBusiness = new MenuBusiness();
+
+            try
+            {
+                _menusDuJour = _menuBusiness.GetMenusDuJour();
+            }
+            catch (Exception ex)
+            {
+                DialogService.ShowErrorWindow(ex.Message);
+            }
 
             _displayPlatCommand = new RelayCommand(() => Plats(), o => true);
-            _displayEntreeCommand = new RelayCommand(() => Entrees(), o => true);
-            _displayDessertCommand = new RelayCommand(() => Desserts(), o => true);
-            _displaySnackCommand = new RelayCommand(() => Snacks(), o => true);
+            _displayEntreeCommand = new RelayCommand(() => Entree(), o => true);
+            _displayDessertCommand = new RelayCommand(() => Dessert(), o => true);
+            _displaySnackCommand = new RelayCommand(() => Snack(), o => true);
+            _displayAutreCommand = new RelayCommand(() => Autre(), o => true);
 
             _validateCommand = new RelayCommand(() => GetPlats(_selectedPlat), o => true);
 
             
+        }
+
+        private List<Plat> GetPlatsByType(string type)
+        {
+            List<Plat> list = new List<Plat>();
+
+            foreach(Menu m in _menusDuJour)
+            {
+                foreach(Plat p in m.ListPLats)
+                {
+                    if(p.Categorie == type)
+                    {
+                        list.Add(p);
+                    }
+                }
+            }
+            return list;
         }
 
         private PlatWithQuantité _selectedChoosenPlat;
@@ -165,86 +201,56 @@ namespace ApplicationJampay.ViewModel.ViewModel.Caissier.UserControlFolder
         private void Plats()
         {
             _coollectionOfSelectedCateg.Clear();
+            
 
-            List<Plat> listPlats = new List<Plat>();
-            try
+            foreach (Plat plat in GetPlatsByType("Plat"))
             {
-                listPlats = _platBusiness.GetPlatbyCateg("Plat");
-
-                foreach (Plat plat in listPlats)
-                {
-                    _coollectionOfSelectedCateg.Add(plat);
-                }
-            }
-            catch (Exception ex)
-            {
-                DialogService.ShowErrorWindow(ex.Message);
+                _coollectionOfSelectedCateg.Add(plat);
             }
         }
 
-        private void Entrees()
+        private void Entree()
         {
             _coollectionOfSelectedCateg.Clear();
 
-            List<Plat> listEntrees = new List<Plat>();
-
-            try
+            foreach (Plat plat in GetPlatsByType("Entree"))
             {
-                listEntrees = _platBusiness.GetPlatbyCateg("Entree");
-
-                foreach (Plat entree in listEntrees)
-                {
-                    _coollectionOfSelectedCateg.Add(entree);
-                }
-            }
-            catch (Exception ex)
-            {
-                DialogService.ShowErrorWindow(ex.Message);
+                _coollectionOfSelectedCateg.Add(plat);
             }
         }
 
-        private void Desserts()
-        {
-            _coollectionOfSelectedCateg.Clear();
-            List<Plat> listDesserts = new List<Plat>();
-
-            try
-            {
-                listDesserts = _platBusiness.GetPlatbyCateg("Dessert");
-
-                foreach (Plat dessert in listDesserts)
-                {
-                    _coollectionOfSelectedCateg.Add(dessert);
-                }
-            }
-            catch (Exception ex)
-            {
-                DialogService.ShowErrorWindow(ex.Message);
-            }
-        }
-
-        private void Snacks()
+        private void Dessert()
         {
             _coollectionOfSelectedCateg.Clear();
 
-            List<Plat> listSnacks = new List<Plat>();
-
-            try
+            foreach (Plat plat in GetPlatsByType("Dessert"))
             {
-                listSnacks = _platBusiness.GetPlatbyCateg("Snack");
-
-                foreach (Plat snack in listSnacks)
-                {
-                    _coollectionOfSelectedCateg.Add(snack);
-                }
+                _coollectionOfSelectedCateg.Add(plat);
             }
-            catch (Exception ex)
+        }
+
+        private void Snack()
+        {
+            _coollectionOfSelectedCateg.Clear();
+
+            foreach (Plat plat in GetPlatsByType("Snack"))
             {
-                DialogService.ShowErrorWindow(ex.Message);
+                _coollectionOfSelectedCateg.Add(plat);
             }
 
         }
-        
+
+        private void Autre()
+        {
+            _coollectionOfSelectedCateg.Clear();
+
+            foreach (Plat plat in GetPlatsByType("Autre"))
+            {
+                _coollectionOfSelectedCateg.Add(plat);
+            }
+
+        }
+
 
 
         private void GoToTicketEdition()
