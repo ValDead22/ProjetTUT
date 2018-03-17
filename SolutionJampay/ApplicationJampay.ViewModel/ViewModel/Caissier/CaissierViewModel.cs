@@ -42,19 +42,29 @@ namespace ApplicationJampay.ViewModel.ViewModel.Caissier
 
         public Action Close;
 
+        private Tuple<List<Plat>, float> _choosenPlat;
+        private Utilisateur _currentCaissier;
+
         private readonly RelayCommand _logOut;
         public ICommand LogOut => _logOut;
 
         public CaissierViewModel()
         {
+
             ContentControlView = DialogCaissier.GetWelcomingUserControl();
 
+            Messenger.Default.Register<Utilisateur>(this, (utilisateur) => GetUtilisateur(utilisateur));
             Messenger.Default.Register<string>(this, (msg) => SwitchView(msg));
+            Messenger.Default.Register<Tuple<float, List<Plat>>>(this, (msg) => GetChoosenPlat(msg));
 
             _logOut = new RelayCommand(() => Quit(), o => true);
 
         }
 
+        private void GetUtilisateur(Utilisateur utilisateur)
+        {
+            _currentCaissier = utilisateur;
+        }
         private void Quit()
         {
             DialogService.ShowLoginWindow();
@@ -76,8 +86,14 @@ namespace ApplicationJampay.ViewModel.ViewModel.Caissier
 
                 case "EditTicketUserControl":
                     ContentControlView = DialogCaissier.GetEditTicketUserControl();
+                    Messenger.Default.Send(new Tuple<Utilisateur, Tuple<List<Plat>, float>>(_currentCaissier, _choosenPlat));
                     break;
             }
+        }
+
+        private void GetChoosenPlat(Tuple<float, List<Plat>> data)
+        {
+            _choosenPlat = new Tuple<List<Plat>, float>(data.Item2, data.Item1);
         }
 
         
