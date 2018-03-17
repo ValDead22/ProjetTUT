@@ -69,9 +69,11 @@
     <Compile Include="ViewModel\Gérant\PopUp\AjoutMenuViewModel.cs" />
     <Compile Include="ViewModel\Gérant\PopUp\AjoutPlatViewModel.cs" />
     <Compile Include="ViewModel\ErrorViewModel.cs" />
+    <Compile Include="ViewModel\Gérant\PopUp\AjoutProduitViewModel.cs" />
     <Compile Include="ViewModel\Gérant\PopUp\AjoutUtilisateurViewModel.cs" />
     <Compile Include="ViewModel\Gérant\PopUp\ModifMenuViewModel.cs" />
     <Compile Include="ViewModel\Gérant\PopUp\ModifPlatViewModel.cs" />
+    <Compile Include="ViewModel\Gérant\PopUp\ModifProduitViewModel.cs" />
     <Compile Include="ViewModel\Gérant\UserControlTab\UserControlCafeteriaViewModel.cs" />
     <Compile Include="ViewModel\Gérant\UserControlTab\UserControlUsagerViewModel.cs" />
     <Compile Include="ViewModel\Gérant\UserControlTab\UserControlUtilisateurViewModel.cs" />
