@@ -34,6 +34,7 @@ namespace ApplicationJampay.Model.DAL.Commande
                         mySqlDataReader["MoyenDePaiement"] as string,
                         (DateTime)mySqlDataReader["Date"],
                         (int)mySqlDataReader["MatriculeClient"],
+                        (float)mySqlDataReader["PrixTotal"],
                         (int)mySqlDataReader["CodeCommande"]
                         );
                 
@@ -52,7 +53,7 @@ namespace ApplicationJampay.Model.DAL.Commande
 
         public void AddCommande(Entity.Commande commande)
         {
-            var query = "INSERT INTO Commande VALUES(\"" + null + "\"" + ",\"" + commande.Date.ToString("yyyy-MM-dd") + "\"" + ",\"" + commande.MoyenDePaiement + "\"" + ",\"" + commande.MatriculeClient + "\"" + ",\"" + commande.IDCaissier + "\"" + ")";
+            var query = "INSERT INTO Commande VALUES(\"" + null + "\"" + ",\"" + commande.PrixTotal + "\"" + ",\"" + commande.Date.ToString("yyyy-MM-dd") + "\"" + ",\"" + commande.MoyenDePaiement + "\"" + ",\"" + commande.MatriculeClient + "\"" + ",\"" + commande.IDCaissier + "\"" + ")";
             var mySqlDataReader = _sQLService.Load(query);
             mySqlDataReader.Close();
         }
@@ -74,6 +75,7 @@ namespace ApplicationJampay.Model.DAL.Commande
                          mySqlDataReader["MoyenDePaiement"] as string,
                          (DateTime)mySqlDataReader["Date"],
                         (int)mySqlDataReader["MatriculeClient"],
+                        (float)mySqlDataReader["PrixTotal"],
                          (int)mySqlDataReader["CodeCommande"]
                          );
                     list.Add(commande);

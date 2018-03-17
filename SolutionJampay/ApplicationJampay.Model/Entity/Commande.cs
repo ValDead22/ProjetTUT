@@ -9,14 +9,16 @@ namespace ApplicationJampay.Model.Entity
         public string MoyenDePaiement { get; private set; }
         public DateTime Date { get; private set; }
         public int MatriculeClient { get; private set; }
+        public float PrixTotal { get; private set; }
 
-        public Commande(int idCaissier, string moyenDePaiement, DateTime date, int matriculeCLient, int? codeCommande = default(int))
+        public Commande(int idCaissier, string moyenDePaiement, DateTime date, int matriculeCLient, float prixTotal, int? codeCommande = default(int))
         {
             Date = date;
             CodeCommande = codeCommande;
             IDCaissier = idCaissier;
             MatriculeClient = matriculeCLient;
             MoyenDePaiement = moyenDePaiement;
+            PrixTotal = prixTotal;
         }
     }
 }
