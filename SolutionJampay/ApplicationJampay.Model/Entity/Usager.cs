@@ -17,7 +17,7 @@ namespace ApplicationJampay.Model.Entity
 
         public int CodeFonction { get; private set; }
         public int Service { get; private set; }
-        public int? MatriculeCarte { get; private set; }
+        public int MatriculeCarte { get; private set; }
 
         public DateTime DateEntree { get; private set; }
         public DateTime? DateFinContrat { get; private set; }
@@ -32,7 +32,7 @@ namespace ApplicationJampay.Model.Entity
             string prenom, 
             string titre, 
             string paiement,
-            int? matriculeCarte = default(int), 
+            int matriculeCarte, 
             DateTime? dateFinContrat = default(DateTime?))
         {
             Paiement = paiement;
@@ -45,6 +45,7 @@ namespace ApplicationJampay.Model.Entity
             CodeFonction = codeFonction;
             Titre = titre;
             DateFinContrat = dateFinContrat;
+            MatriculeCarte = matriculeCarte;
         }
     }
 }
