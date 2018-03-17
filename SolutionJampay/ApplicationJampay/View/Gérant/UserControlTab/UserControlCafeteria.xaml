@@ -54,11 +54,15 @@
             <GroupBox.Header>
                 <TextBlock Style="{StaticResource myTextBlock}" Text="Menus du jour"/>
             </GroupBox.Header>
-            <ListView  ItemsSource="{Binding CollectionMenusDuJour}" SelectedItem="{Binding SelectedMenu}">
+            <ListView  ItemsSource="{Binding CollectionMenusDuJour}" >
                 <ListView.View>
                     <GridView  AllowsColumnReorder="true">
-                        <GridViewColumn Header="Menu" DisplayMemberBinding="{Binding Nom}"/>
-                        <GridViewColumn Header="Date" DisplayMemberBinding="{Binding DateElaboration, Converter={StaticResource date2string}}"  />
+                        <GridViewColumn Header="Code" DisplayMemberBinding="{Binding CodeMenu}"/>
+                        <GridViewColumn Header="Nom" DisplayMemberBinding="{Binding Nom}"/>
+                        <GridViewColumn Header="Categorie" DisplayMemberBinding="{Binding Categorie}"/>
+                        <GridViewColumn Header="ID gérant" DisplayMemberBinding="{Binding IdGerant}"/>
+                        <GridViewColumn Header="Date de création" DisplayMemberBinding="{Binding DateElaboration, Converter={StaticResource date2string}}"  />
+                        <GridViewColumn Header="Observation" DisplayMemberBinding="{Binding Observation}"/>
                     </GridView>
                 </ListView.View>
             </ListView>
@@ -103,9 +107,7 @@
         </GroupBox>
 
         <StackPanel Grid.Row="2" Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
-            <Button Content="+" />
-            <Separator Width="20" Visibility="Hidden"/>
-            <Button Content="-"/>
+            <Button Content="+" Command="{Binding AddToMenusDuJour}" IsEnabled="{Binding SelectedMenu, Converter={StaticResource selected2isEnable}}"/>
         </StackPanel>
 
 
