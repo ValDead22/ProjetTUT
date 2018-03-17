@@ -55,6 +55,9 @@
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DAL\Commande\CommandeBusiness.cs" />
+    <Compile Include="DAL\Commande\CommandeDataAccessLayer.cs" />
+    <Compile Include="DAL\Commande\ICommandeDataAccessLayer.cs" />
     <Compile Include="DAL\Menu\IMenuDataAccessLayer.cs" />
     <Compile Include="DAL\Menu\MenuBusiness.cs" />
     <Compile Include="DAL\Menu\MenuDataAccessLayer.cs" />
