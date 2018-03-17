@@ -179,7 +179,7 @@ namespace ApplicationJampay.ViewModel.ViewModel
             catch (Exception)
             {
 
-                throw;
+                DialogService.ShowErrorWindow("Veuillez renseigner correctement les champs");
             }
 
         }
