@@ -28,6 +28,7 @@
                 <Label HorizontalAlignment="Center" VerticalAlignment="Top" Margin="10">
                     <Label Content="Caisse"/>
                 </Label>
+                <Button Content="Menu général" VerticalAlignment="Center" Command="{Binding GoToMenu}"/>
             </StackPanel>
 
             <ContentControl Margin="20,100,20,20" Grid.Row="1" Grid.ColumnSpan="2" Content="{Binding ContentControlView}"/>

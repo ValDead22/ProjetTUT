@@ -48,6 +48,11 @@ namespace ApplicationJampay.ViewModel.ViewModel.Caissier
         private readonly RelayCommand _logOut;
         public ICommand LogOut => _logOut;
 
+        private readonly RelayCommand _goToMenu;
+        public ICommand GoToMenu => _goToMenu;
+
+        
+
         public CaissierViewModel()
         {
 
@@ -58,6 +63,7 @@ namespace ApplicationJampay.ViewModel.ViewModel.Caissier
             Messenger.Default.Register<Tuple<float, List<Plat>>>(this, (msg) => GetChoosenPlat(msg));
 
             _logOut = new RelayCommand(() => Quit(), o => true);
+            _goToMenu = new RelayCommand(() => ContentControlView = DialogCaissier.GetWelcomingUserControl(), o => true);
 
         }
 
@@ -65,6 +71,10 @@ namespace ApplicationJampay.ViewModel.ViewModel.Caissier
         {
             _currentCaissier = utilisateur;
         }
+
+
+
+
         private void Quit()
         {
             DialogService.ShowLoginWindow();
