@@ -129,6 +129,10 @@ namespace ApplicationJampay.ViewModel.ViewModel.Caissier.UserControlFolder
                 {
                     throw new Exception("Solde Insuffisant !");
                 }
+                else if (UsagerWhoPay.DateFinContrat != null)
+                {
+                    throw new Exception("Cet utilisateur ne fait plus partie de l'entreprise");
+                }
                 else
                 {
                     Thread.CurrentThread.CurrentCulture = CultureInfo.GetCultureInfo("en-US");
