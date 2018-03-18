@@ -18,10 +18,15 @@
 
         <Grid.RowDefinitions>
             <RowDefinition Height="2*"/>
-            <RowDefinition Height="1*"/>
+            <RowDefinition/>
         </Grid.RowDefinitions>
 
-        <ListView Grid.Row="0" ItemsSource="{Binding CollectionUtilisateur}" SelectedItem="{Binding SelectedUtilisateur}">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="1.5*"/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+
+        <ListView Grid.Row="0" Grid.RowSpan="2" ItemsSource="{Binding CollectionUtilisateur}" SelectedItem="{Binding SelectedUtilisateur}">
             <ListView.View>
                 <GridView>
 
@@ -34,64 +39,54 @@
             </ListView.View>
         </ListView>
 
-        <Grid Grid.Row="1" Margin="15" VerticalAlignment="Center">
+        <StackPanel Height="150" Orientation="Vertical" Grid.Column="1" VerticalAlignment="Top" HorizontalAlignment="Center">
 
-            <Grid.ColumnDefinitions> 
-                <ColumnDefinition Width="1.3*"/>
-                <ColumnDefinition/>
-            </Grid.ColumnDefinitions>
+            <Label Content="{Binding SelectedUtilisateur.Nom}"/>
+            <Label  FontSize="30" Content="{Binding SelectedUtilisateur.Prenom}"/>
+            <TextBlock Text="{Binding SelectedUtilisateur.Fonction}" Style="{StaticResource myTextBlock}"/>
 
-            <StackPanel Height="150" Orientation="Vertical" Grid.Column="0">
+        </StackPanel>
 
-                <Label Content="{Binding SelectedUtilisateur.Nom}"/>
-                <Label  FontSize="30" Content="{Binding SelectedUtilisateur.Prenom}"/>
-                <TextBlock Text="{Binding SelectedUtilisateur.Fonction}" Style="{StaticResource myTextBlock}"/>
+        <GroupBox Grid.Column="1" Padding="20" HorizontalAlignment="Center" VerticalAlignment="Bottom">
+            <GroupBox.Header>
+                <TextBlock Style="{StaticResource myTextBlock}" Text="Changer de fonction"/>
+            </GroupBox.Header>
+            <StackPanel Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Column="1">
 
-            </StackPanel>
-
-            <Border Grid.Column="1" Padding="20" HorizontalAlignment="Left" BorderBrush="#FF212121" BorderThickness="10" CornerRadius="30,30,30,30">
-                <StackPanel Orientation="Vertical" HorizontalAlignment="Center" Grid.Column="1">
-
-                    <TextBlock Margin="15" Style="{StaticResource myTextBlock}" Text="Nouvelle fonction"/>
-                    <StackPanel Orientation="Horizontal">
+                <StackPanel Orientation="Horizontal">
 
 
-                        <ComboBox Width="100"
+                    <ComboBox Width="100"
                                 IsSynchronizedWithCurrentItem="False" 
                                 ItemsSource="{Binding AvalaibleFonction}" 
                                 SelectedValue ="{Binding SelectedFonction, Mode=TwoWay}" FontFamily="Trebuchet MS" FontSize="18" Foreground="White" />
 
-                        <Separator Width="15" Visibility="Hidden"/>
+                    <Separator Width="15" Visibility="Hidden"/>
 
-                        <Button Content="Valider" Padding="10" Command="{Binding OpenModifyingFonctionWindow}">
+                    <Button Content="Valider" Padding="10" Command="{Binding OpenModifyingFonctionWindow}">
 
-                            <Button.IsEnabled>
-                                <MultiBinding Converter="{StaticResource multiSelected2isEnable}">
-                                    <Binding Path="SelectedUtilisateur"/>
-                                    <Binding Path="SelectedFonction"/>
-                                </MultiBinding>
+                        <Button.IsEnabled>
+                            <MultiBinding Converter="{StaticResource multiSelected2isEnable}">
+                                <Binding Path="SelectedUtilisateur"/>
+                                <Binding Path="SelectedFonction"/>
+                            </MultiBinding>
 
-                            </Button.IsEnabled>
+                        </Button.IsEnabled>
 
-                        </Button>
-                    </StackPanel>
-
+                    </Button>
                 </StackPanel>
-            </Border>
-
-            <StackPanel Orientation="Vertical" Grid.Row="1" Grid.Column="1" HorizontalAlignment="Right" VerticalAlignment="Bottom">
-
-                <Button Content="Ajouter utilisateur" Padding="10" Command="{Binding OpenAddingUtilisateurWindow}"/>
-                <Separator Width="15" Visibility="Hidden"/>
-                <Button VerticalAlignment="Bottom" HorizontalAlignment="Right" Command="{Binding OpenDeletingUtilisateurWindow}" Content="Supprimer utilisateur" Padding="10" IsEnabled="{Binding SelectedUtilisateur, Converter={StaticResource selected2isEnable}}"/>
 
             </StackPanel>
+        </GroupBox>
 
+        <StackPanel Orientation="Horizontal" Grid.Row="1" Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center">
 
+            <Button Content="Ajouter utilisateur" Padding="10" Command="{Binding OpenAddingUtilisateurWindow}"/>
+            <Separator Width="15" Visibility="Hidden"/>
+            <Button VerticalAlignment="Bottom" HorizontalAlignment="Right" Command="{Binding OpenDeletingUtilisateurWindow}" Content="Supprimer utilisateur" Padding="10" IsEnabled="{Binding SelectedUtilisateur, Converter={StaticResource selected2isEnable}}"/>
 
-        </Grid>
+        </StackPanel>
 
-        
 
     </Grid>
 </UserControl>
