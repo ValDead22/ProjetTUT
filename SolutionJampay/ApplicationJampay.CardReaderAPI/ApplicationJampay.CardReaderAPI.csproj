@@ -108,5 +108,9 @@
     <Compile Include="Exceptions\UnsupportedFeatureException.cs" />
     <Compile Include="Exceptions\WinErrorInsufficientBufferException.cs" />
   </ItemGroup>
+  <ItemGroup>
+    <Content Include="AUTHORS.txt" />
+    <Content Include="COPYING.txt" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
