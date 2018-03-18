@@ -155,5 +155,17 @@ namespace ApplicationJampay.Model.DAL.Menu
                 throw new Exception(ex.Message);
             }
         }
+
+        public Entity.Menu GetTheLastInsertedMenu()
+        {
+            try
+            {
+                return _menuDAL.GetTheLastInsertedMenu();
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
     }
 }

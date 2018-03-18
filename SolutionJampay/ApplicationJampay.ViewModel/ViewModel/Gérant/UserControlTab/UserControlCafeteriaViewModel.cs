@@ -175,7 +175,6 @@ namespace ApplicationJampay.ViewModel.ViewModel.Gérant.UserControlTab
             try
             {
 
-
                 _menuBusiness.SetMenuDuJour(SelectedMenu);
                 UpdateMenuDuJour();
             }
@@ -202,7 +201,24 @@ namespace ApplicationJampay.ViewModel.ViewModel.Gérant.UserControlTab
 
         private void DuplicateMenu()
         {
-            DialogService.ShowErrorWindow("Pas encore implémenté");
+            try
+            {
+                Menu menu = new Menu(SelectedMenu.IdGerant, SelectedMenu.DateElaboration, SelectedMenu.Categorie, SelectedMenu.Nom, SelectedMenu.Observation);
+                _menuBusiness.AddMenu(menu);
+
+                Menu lastInsertedMenu = _menuBusiness.GetTheLastInsertedMenu();
+
+                foreach(Plat p in SelectedMenu.ListPLats)
+                {
+                    _menuBusiness.AddPlatToMenu(p, lastInsertedMenu);
+                }
+                UpdateMenu();
+
+            }
+            catch (Exception ex)
+            {
+                DialogService.ShowErrorWindow(ex.Message);
+            }
         }
 
         private void DeleteMenu()

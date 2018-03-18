@@ -45,7 +45,7 @@ namespace ApplicationJampay.Model.DAL.Menu
         public void DeleteMenu(Entity.Menu menu)
         {
             
-            var query = "DELETE FROM Menu WHERE CodeMenu = " + "\"" + menu.CodeMenu + "\"; DELETE FROM CompositionMenu WHERE CodeMenu = " + "\"" + menu.CodeMenu + "\"";
+            var query = "DELETE FROM CompositionMenu WHERE CodeMenu = " + "\"" + menu.CodeMenu + "\"" + ";" + "DELETE FROM Menu WHERE CodeMenu = " + "\"" + menu.CodeMenu + "\"";
             MySqlDataReader mySqlDataReader = _sQLService.Load(query);
             mySqlDataReader.Close();
         }
@@ -152,7 +152,12 @@ namespace ApplicationJampay.Model.DAL.Menu
 
                 while (mySqlDataReader.Read())
                 {
-                    Entity.Menu produit = new Entity.Menu((int)mySqlDataReader["idGerant"], (DateTime)mySqlDataReader["DateElaboration"], mySqlDataReader["Categorie"] as string, mySqlDataReader["Nom"] as string, mySqlDataReader["Observation"] as string, (int)mySqlDataReader["CodeMenu"]);
+                    Entity.Menu produit = new Entity.Menu((int)mySqlDataReader["idGerant"], 
+                        (DateTime)mySqlDataReader["DateElaboration"], 
+                        mySqlDataReader["Categorie"] as string, 
+                        mySqlDataReader["Nom"] as string, 
+                        mySqlDataReader["Observation"] as string, 
+                        (int)mySqlDataReader["CodeMenu"]);
 
                     list.Add(produit);
                 }
@@ -182,6 +187,36 @@ namespace ApplicationJampay.Model.DAL.Menu
             {
 
                 throw new Exception("Menu déjà présent en menu du jour");
+            }
+        }
+
+        public Entity.Menu GetTheLastInsertedMenu()
+        {
+            var query = "SELECT * FROM Menu Where CodeMenu=(SELECT MAX(CodeMenu) FROM Menu)";
+            var mySqlDataReader = _sQLService.Load(query);
+            try
+            {
+
+                mySqlDataReader.Read();
+
+
+                Entity.Menu menu = new Entity.Menu((int)mySqlDataReader["idGerant"],
+                        (DateTime)mySqlDataReader["DateElaboration"],
+                        mySqlDataReader["Categorie"] as string,
+                        mySqlDataReader["Nom"] as string,
+                        mySqlDataReader["Observation"] as string,
+                        (int)mySqlDataReader["CodeMenu"]);
+
+
+                return menu;
+            }
+            catch
+            {
+                throw new Exception("Problème lors du chargement du dernier menu !");
+            }
+            finally
+            {
+                mySqlDataReader.Close();
             }
         }
     }

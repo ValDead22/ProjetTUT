@@ -47,5 +47,7 @@ namespace ApplicationJampay.Model.DAL.Menu
         List<Entity.Menu> GetMenusDuJour();
 
         void SetMenuDuJour(Entity.Menu menu);
+
+        Entity.Menu GetTheLastInsertedMenu();
     }
 }
