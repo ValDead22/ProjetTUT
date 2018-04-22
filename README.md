@@ -7,14 +7,17 @@ Implémentation d’un lecteur de badges dans le cadre d’un système de Gestio
 
 
 ## Membres du projet
+**`TUTEUR`**
+M. Bernard JAMPY
+
 **`DEVELOPPEURS`**
 -	Tom SANCHEZ
 -	Charly RASCLARD
 -	Maxime VIDAL
--	Valentin REVERSAT
+-	Ilyes NOURINE
 
 **`CHEF DE PROJET`**
--	Ilyes NOURINE
+-	Valentin REVERSAT
 
 
 
